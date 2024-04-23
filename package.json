@@ -1,0 +1,49 @@
+{
+  "name": "bys_ui",
+  "version": "0.1.0",
+  "private": false,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@ant-design/nextjs-registry": "^1.0.0",
+    "@tiptap/extension-blockquote": "^2.3.0",
+    "@tiptap/extension-bold": "^2.3.0",
+    "@tiptap/extension-color": "^2.3.0",
+    "@tiptap/extension-font-family": "^2.3.0",
+    "@tiptap/extension-heading": "^2.3.0",
+    "@tiptap/extension-highlight": "^2.3.0",
+    "@tiptap/extension-horizontal-rule": "^2.3.0",
+    "@tiptap/extension-italic": "^2.3.0",
+    "@tiptap/extension-link": "^2.3.0",
+    "@tiptap/extension-text": "^2.3.0",
+    "@tiptap/extension-text-align": "^2.3.0",
+    "@tiptap/extension-text-style": "^2.3.0",
+    "@tiptap/extension-underline": "^2.3.0",
+    "@tiptap/pm": "^2.3.0",
+    "@tiptap/react": "^2.3.0",
+    "@tiptap/starter-kit": "^2.3.0",
+    "@vercel/otel": "^1.8.1",
+    "antd": "^5.16.4",
+    "next": "14.2.2",
+    "next-auth": "^4.24.7",
+    "react": "^18",
+    "react-dom": "^18",
+    "swr": "^2.2.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.2",
+    "postcss": "^8",
+    "prettier": "^3.2.5",
+    "tailwindcss": "^3.4.1",
+    "ts-prune": "^0.10.3",
+    "typescript": "^5"
+  }
+}
