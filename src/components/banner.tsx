@@ -1,12 +1,12 @@
 import * as React from "react";
 import { FC } from "react";
 import Autoplay from "embla-carousel-autoplay";
-import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
+import { banner_images } from "@/utils/banner_images";
 
 export const Banner: FC = () => {
   const plugin = React.useRef(
@@ -16,20 +16,14 @@ export const Banner: FC = () => {
   return (
     <Carousel
       plugins={[plugin.current]}
-      className="w-full max-w-xs"
+      className="w-full"
       onMouseEnter={plugin.current.stop}
       onMouseLeave={plugin.current.reset}
     >
       <CarouselContent>
-        {Array.from({ length: 5 }).map((_, index) => (
-          <CarouselItem key={index}>
-            <div className="p-1">
-              <Card>
-                <CardContent className="flex aspect-square items-center justify-center p-6">
-                  <span className="text-4xl font-semibold">{index + 1}</span>
-                </CardContent>
-              </Card>
-            </div>
+        {banner_images.map((img, i) => (
+          <CarouselItem key={i}>
+            <div className="px-1.5">{img}</div>
           </CarouselItem>
         ))}
       </CarouselContent>

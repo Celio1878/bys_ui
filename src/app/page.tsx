@@ -8,6 +8,7 @@ import { Facebook, Instagram, Search, Twitter, User } from "lucide-react";
 import { NavMenu } from "@/components/nav-menu";
 import { Banner } from "@/components/banner";
 import { Books } from "@/components/books";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -32,15 +33,25 @@ export default function Home() {
       <section className="flex flex-col items-center justify-center">
         <Banner />
       </section>
-      <section className="flex flex-col items-center justify-center">
+      <section className="flex flex-col items-center justify-center gap-32 mt-20">
+        <Books />
+        <Books />
+        <Books />
+        <Books />
         <Books />
       </section>
-      <footer className="flex flex-col items-center justify-center gap-4">
+      <footer className="flex flex-col items-center justify-center gap-4 mt-32">
         <Logo {...{ width: 100, height: 100 }} />
-        <div className="flex flex-row items-center gap-4">
-          <Facebook />
-          <Instagram />
-          <Twitter />
+        <div className="flex flex-row items-center gap-6">
+          <Link href="https://facebook.com" passHref={true} target={"_blank"}>
+            <Facebook className="fill-blue-400 text-blue-400 hover:opacity-80 cursor-pointer" />
+          </Link>
+          <Link href="https://instagram.com" passHref={true} target={"_blank"}>
+            <Instagram className="text-pink-500 hover:opacity-80 cursor-pointer" />
+          </Link>
+          <Link href="https://x.com" passHref={true} target={"_blank"}>
+            <Twitter className="fill-sky-500 text-sky-500 hover:opacity-70 cursor-pointer" />
+          </Link>
         </div>
         <p>© 2024 - Be Your Stories. All rights reserved.</p>
       </footer>
