@@ -7,9 +7,9 @@ interface LogoProps {
   height: number;
 }
 
-export const Logo: FC<LogoProps> = ({ width, height }) => {
+export const LogoIcon: FC<LogoProps> = ({ width, height }) => {
   return (
-    <Link href="/">
+    <Link href="/public">
       <Image
         {...{ src: "/logo.png", alt: "logo", title: "BYS", width, height }}
       />
