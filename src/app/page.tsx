@@ -4,11 +4,13 @@ import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/mode-toggle";
 import { Logo } from "@/components/logo";
 import { Input } from "@/components/ui/input";
-import { Facebook, Instagram, Search, Twitter, User } from "lucide-react";
+import { Search, User } from "lucide-react";
 import { NavMenu } from "@/components/nav-menu";
 import { Banner } from "@/components/banner";
 import { Books } from "@/components/books";
-import Link from "next/link";
+import { FacebookIcon } from "@/components/facebook-icon";
+import { InstagramIcon } from "@/components/instagram-icon";
+import { TwitterIcon } from "@/components/twitter-icon";
 
 export default function Home() {
   return (
@@ -43,17 +45,13 @@ export default function Home() {
       <footer className="flex flex-col items-center justify-center gap-4 mt-32">
         <Logo {...{ width: 100, height: 100 }} />
         <div className="flex flex-row items-center gap-6">
-          <Link href="https://facebook.com" passHref={true} target={"_blank"}>
-            <Facebook className="fill-blue-400 text-blue-400 hover:opacity-80 cursor-pointer" />
-          </Link>
-          <Link href="https://instagram.com" passHref={true} target={"_blank"}>
-            <Instagram className="text-pink-500 hover:opacity-80 cursor-pointer" />
-          </Link>
-          <Link href="https://x.com" passHref={true} target={"_blank"}>
-            <Twitter className="fill-sky-500 text-sky-500 hover:opacity-70 cursor-pointer" />
-          </Link>
+          <FacebookIcon />
+          <InstagramIcon />
+          <TwitterIcon />
         </div>
-        <p>© 2024 - Be Your Stories. All rights reserved.</p>
+        <p className="text-sm">
+          © 2024 - Be Your Stories. All rights reserved.
+        </p>
       </footer>
     </main>
   );
