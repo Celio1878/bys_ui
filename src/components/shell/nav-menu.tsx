@@ -11,7 +11,7 @@ import {
 
 export const NavMenu: FC = () => {
   return (
-    <nav className="flex w-full items-center justify-center py-5">
+    <nav className="flex w-full items-center justify-center py-3">
       <Carousel
         opts={{ align: "center" }}
         className="w-full max-w-xs sm:max-w-2xl md:max-w-full"

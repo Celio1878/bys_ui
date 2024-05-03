@@ -73,7 +73,7 @@ export const Books: FC = () => {
         <CarouselPrevious />
         <CarouselNext />
       </Carousel>
-      <div className="flex justify-center gap-3">
+      <div className="flex justify-center gap-3 mr-3 md:mr-0 lg:mr-4">
         {Array.from({ length: count }).map((_, index) => (
           <button
             key={index}
