@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24dfe38b-6d18-4700-8386-86f955cbefc3" name="Changes" comment="style: Nav menu responsive">
-      <change afterPath="$PROJECT_DIR$/src/components/facebook-icon.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/instagram-icon.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/twitter-icon.tsx" afterDir="false" />
+    <list default="true" id="24dfe38b-6d18-4700-8386-86f955cbefc3" name="Changes" comment="ci: Git Ignore">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/books.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/books.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/nav-menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/nav-menu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/carousel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/carousel.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,7 +143,8 @@
       <workItem from="1714573554938" duration="14000" />
       <workItem from="1714573582347" duration="32000" />
       <workItem from="1714573619903" duration="147000" />
-      <workItem from="1714573777097" duration="12301000" />
+      <workItem from="1714573777097" duration="12776000" />
+      <workItem from="1714727989202" duration="4639000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Add Shadcn-ui">
       <option name="closed" value="true" />
@@ -163,7 +162,31 @@
       <option name="project" value="LOCAL" />
       <updated>1714591468852</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="feat: Create social icons">
+      <option name="closed" value="true" />
+      <created>1714592517654</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1714592517654</updated>
+    </task>
+    <task id="LOCAL-00004" summary="feat: Create social icons">
+      <option name="closed" value="true" />
+      <created>1714592722802</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1714592722802</updated>
+    </task>
+    <task id="LOCAL-00005" summary="ci: Git Ignore">
+      <option name="closed" value="true" />
+      <created>1714592960947</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1714592960947</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -173,6 +196,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="feat: Add Shadcn-ui" />
     <MESSAGE value="style: Nav menu responsive" />
-    <option name="LAST_COMMIT_MESSAGE" value="style: Nav menu responsive" />
+    <MESSAGE value="feat: Create social icons" />
+    <MESSAGE value="ci: Git Ignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="ci: Git Ignore" />
   </component>
 </project>

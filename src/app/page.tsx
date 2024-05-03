@@ -28,9 +28,7 @@ export default function Home() {
         <ModeToggle />
       </header>
 
-      <nav className="flex w-full items-center justify-center py-5">
-        <NavMenu />
-      </nav>
+      <NavMenu />
 
       <section className="flex flex-col items-center justify-center">
         <Banner />
