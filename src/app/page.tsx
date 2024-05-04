@@ -1,13 +1,20 @@
 "use client";
 
-import { Banner } from "@/components/shell/banner";
-import { Contents } from "@/components/shell/contents";
+import { Banner } from "@/components/banner";
+import { Books } from "@/components/books";
 
 export default function Home() {
   return (
     <>
       <Banner />
-      <Contents />
+      <div className="">
+        <Books />
+        <Books />
+        <Books />
+        <Books />
+        <Books />
+        <Books />
+      </div>
     </>
   );
 }

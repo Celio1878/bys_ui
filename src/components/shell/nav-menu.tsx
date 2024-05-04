@@ -20,7 +20,7 @@ export const NavMenu: FC = () => {
           {navbar_items.map((item) => (
             <CarouselItem
               key={item.key}
-              className="basis-24 md:basis-[5.5rem] lg:basis-1/12 text-center hover:bg-slate-200 dark:hover:bg-slate-800 transition-all duration-300 p-0 py-2 rounded-md"
+              className="basis-24 md:basis-[5.5rem] lg:basis-1/12 text-center hover:bg-slate-200 dark:hover:bg-slate-700 transition-all duration-300 p-0 py-2 rounded-md"
             >
               <Link href={item.href}>{item.label}</Link>
             </CarouselItem>
