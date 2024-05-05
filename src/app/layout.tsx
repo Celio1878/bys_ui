@@ -52,7 +52,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           >
             <MainLayout>{children}</MainLayout>
           </ThemeProvider>
-          <SpeedInsight />
+          <SpeedInsights />
         </body>
         <Analytics />
       </UserProvider>
