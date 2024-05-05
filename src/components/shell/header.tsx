@@ -41,6 +41,7 @@ export const Header: FC = () => {
                 width={45}
                 height={45}
                 alt={session ? session?.name : "User"}
+                priority={true}
               />
             </PopoverTrigger>
             <PopoverContent className="flex flex-col items-center justify-center divide-y gap-4">
@@ -53,7 +54,6 @@ export const Header: FC = () => {
                 <Link
                   className="border rounded-md py-2.5 px-4 font-semibold hover:text-white hover:bg-indigo-700 transition-all duration-300"
                   href="/profile"
-                  target="_top"
                 >
                   Perfil
                 </Link>
