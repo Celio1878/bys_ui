@@ -57,7 +57,9 @@ export const Header: FC = () => {
                 >
                   Perfil
                 </Link>
-                <Button onClick={() => signOut()}>Sair</Button>
+                <Button variant="destructive" onClick={() => signOut()}>
+                  Sair
+                </Button>
               </div>
             </PopoverContent>
           </Popover>
