@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="accountSettings">
+    <option name="activeProfile" value="profile:default" />
     <option name="activeRegion" value="sa-east-1" />
     <option name="recentlyUsedProfiles">
       <list>
-        <option value="profile:celio1878" />
         <option value="profile:default" />
+        <option value="profile:celio1878" />
         <option value="profile:celio1878-adm" />
         <option value="profile:471112855673_AdministratorAccess" />
       </list>

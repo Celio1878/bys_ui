@@ -4,9 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24dfe38b-6d18-4700-8386-86f955cbefc3" name="Changes" comment="feat: Profile image priority">
+    <list default="true" id="24dfe38b-6d18-4700-8386-86f955cbefc3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/search-input.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/aws.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/aws.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/profile/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/banner.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/banner.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/books.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/books.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/contents.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/contents.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shell/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shell/header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/navbar_items.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/navbar_items.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +84,7 @@
     "npm.dev.executor": "Run",
     "prettierjs.PrettierConfiguration.Package": "/home/swango/Documents/projects/be_your_stories/bys_ui/node_modules/prettier",
     "rearrange.code.on.save": "true",
-    "settings.editor.selected.configurable": "preferences.customizations",
+    "settings.editor.selected.configurable": "actions.on.save",
     "ts.external.directory.path": "/home/swango/Documents/projects/be_your_stories/bys_ui/node_modules/typescript/lib"
   }
 }]]></component>
@@ -150,6 +158,7 @@
       <workItem from="1714727989202" duration="8024000" />
       <workItem from="1714827813062" duration="2196000" />
       <workItem from="1714910337355" duration="5358000" />
+      <workItem from="1714923380496" duration="3655000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Add Shadcn-ui">
       <option name="closed" value="true" />
@@ -239,7 +248,23 @@
       <option name="project" value="LOCAL" />
       <updated>1714922019579</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="feat: Popover User">
+      <option name="closed" value="true" />
+      <created>1714926980336</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1714926980336</updated>
+    </task>
+    <task id="LOCAL-00013" summary="feat: My books page">
+      <option name="closed" value="true" />
+      <created>1714927035280</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1714927035280</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -272,7 +297,9 @@
     <MESSAGE value="feat: Google Login" />
     <MESSAGE value="feat: Login success header" />
     <MESSAGE value="feat: Profile image priority" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Profile image priority" />
+    <MESSAGE value="feat: Popover User" />
+    <MESSAGE value="feat: My books page" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: My books page" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

@@ -9,7 +9,11 @@ import {
 } from "@/components/ui/carousel";
 import Image from "next/image";
 
-export const Books: FC = () => {
+interface BookCarouselProps {
+  title: string;
+}
+
+export const Books: FC<BookCarouselProps> = ({ title }) => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   const [count, setCount] = useState(0);
@@ -28,8 +32,8 @@ export const Books: FC = () => {
   }, [api]);
 
   return (
-    <div className="flex flex-col gap-4">
-      <h1 className="text-2xl font-semibold underline">Originais</h1>
+    <div className="flex flex-col">
+      <h1 className="text-2xl font-semibold underline">{title}</h1>
       <Carousel
         setApi={setApi}
         opts={{
@@ -55,7 +59,7 @@ export const Books: FC = () => {
           {Array.from({ length: 20 }).map((_, i) => (
             <CarouselItem
               key={i}
-              className="basis-1/2 md:basis-1/4 lg:basis-1/5 xl:basis-1/6"
+              className="basis-1/2 md:basis-1/4 lg:basis-1/5 xl:basis-1/6 p-4"
             >
               <Image
                 className={
