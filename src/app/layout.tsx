@@ -6,6 +6,8 @@ import { ReactNode } from "react";
 import { ThemeProvider } from "@/components/theme-provider";
 import { MainLayout } from "@/components/shell/main-layout";
 import { UserProvider } from "@/components/shell/user-provider";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -51,6 +53,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
             <MainLayout>{children}</MainLayout>
           </ThemeProvider>
         </body>
+        <SpeedInsights />
+        <Analytics />
       </UserProvider>
     </html>
   );
