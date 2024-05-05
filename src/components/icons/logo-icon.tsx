@@ -9,7 +9,7 @@ interface LogoProps {
 
 export const LogoIcon: FC<LogoProps> = ({ width, height }) => {
   return (
-    <Link href="/public">
+    <Link href="/">
       <Image
         {...{ src: "/logo.png", alt: "logo", title: "BYS", width, height }}
       />

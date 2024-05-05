@@ -5,6 +5,7 @@ import "../styles/globals.css";
 import { ReactNode } from "react";
 import { ThemeProvider } from "@/components/theme-provider";
 import { MainLayout } from "@/components/shell/main-layout";
+import { UserProvider } from "@/components/shell/user-provider";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -34,21 +35,23 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
-      <body
-        className={cn(
-          "flex-1 flex-col min-h-screen items-center justify-between bg-background font-sans antialiased",
-          inter.variable,
-        )}
-      >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
+      <UserProvider>
+        <body
+          className={cn(
+            "flex-1 flex-col min-h-screen items-center justify-between bg-background font-sans antialiased",
+            inter.variable,
+          )}
         >
-          <MainLayout>{children}</MainLayout>
-        </ThemeProvider>
-      </body>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <MainLayout>{children}</MainLayout>
+          </ThemeProvider>
+        </body>
+      </UserProvider>
     </html>
   );
 }
