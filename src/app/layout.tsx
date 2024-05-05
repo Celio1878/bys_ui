@@ -52,8 +52,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
           >
             <MainLayout>{children}</MainLayout>
           </ThemeProvider>
+          <SpeedInsights />
         </body>
-        <SpeedInsights />
         <Analytics />
       </UserProvider>
     </html>
