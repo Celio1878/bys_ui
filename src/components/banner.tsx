@@ -14,7 +14,7 @@ export const Banner: FC = () => {
   );
 
   return (
-    <section className="flex flex-col items-center justify-center">
+    <section className="flex flex-col items-center justify-center mt-2 mb-20">
       <Carousel
         plugins={[plugin.current]}
         className="w-full"
