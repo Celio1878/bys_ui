@@ -17,7 +17,7 @@ export const Header: FC = () => {
       <LogoIcon {...{ width: 60, height: 60 }} />
       <SearchInput />
 
-      {status === "unauthenticated" && session?.email ? (
+      {status === "unauthenticated" ? (
         <Button className="gap-1" onClick={() => signIn("google")}>
           Login <GoogleIcon width={20} height={20} />
         </Button>
