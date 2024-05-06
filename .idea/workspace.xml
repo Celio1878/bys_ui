@@ -5,14 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24dfe38b-6d18-4700-8386-86f955cbefc3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/search-input.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/aws.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/aws.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/search/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/profile/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/banner.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/banner.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/books.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/books.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/contents.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/contents.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/not-found.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/not-found.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shell/footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shell/footer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/shell/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shell/header.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/navbar_items.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/navbar_items.ts" afterDir="false" />
     </list>
@@ -84,7 +82,7 @@
     "npm.dev.executor": "Run",
     "prettierjs.PrettierConfiguration.Package": "/home/swango/Documents/projects/be_your_stories/bys_ui/node_modules/prettier",
     "rearrange.code.on.save": "true",
-    "settings.editor.selected.configurable": "actions.on.save",
+    "settings.editor.selected.configurable": "aws.codewhisperer",
     "ts.external.directory.path": "/home/swango/Documents/projects/be_your_stories/bys_ui/node_modules/typescript/lib"
   }
 }]]></component>
@@ -99,6 +97,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/app/search" />
       <recent name="$PROJECT_DIR$/src/app/api/auth" />
       <recent name="$PROJECT_DIR$/src/components" />
       <recent name="$PROJECT_DIR$/src/components/shell" />
