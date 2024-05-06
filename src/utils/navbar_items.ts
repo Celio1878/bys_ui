@@ -17,8 +17,8 @@ export const navbar_items: NavbarItem[] = [
   },
   {
     label: "Comedia",
-    key: "humor",
-    href: "/search?genre=humor",
+    key: "comedy",
+    href: "/search?genre=comedy",
   },
   {
     label: "Fantasia",
