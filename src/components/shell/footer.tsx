@@ -13,7 +13,7 @@ export const Footer: FC = () => {
         <InstagramIcon />
         <TwitterIcon />
       </div>
-      <p className="text-sm">
+      <p className="text-sm text-center">
         © 2024 - Be Your Stories. Todos os direitos reservados.
       </p>
     </footer>
