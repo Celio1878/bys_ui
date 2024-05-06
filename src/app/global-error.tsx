@@ -9,10 +9,10 @@ interface GlobalErrorProps {
 }
 
 export default function GlobalError({ error, reset }: GlobalErrorProps) {
-  console.log(error, "ERROR");
+  console.error(error, "ERROR");
 
   return (
-    <div className="flex flex-col items-center justify-center text-center">
+    <>
       <Image
         {...{
           src: "/website-maintenance.gif",
@@ -24,8 +24,7 @@ export default function GlobalError({ error, reset }: GlobalErrorProps) {
       />
       <div className="w-full flex flex-col gap-4">
         <p className="text-4xl text-white underline">
-          {" "}
-          Aconteceu algo não planejado!{" "}
+          Aconteceu algo não planejado!
         </p>
         <div className="w-full flex flex-row gap-4 justify-center">
           <Link
@@ -42,6 +41,6 @@ export default function GlobalError({ error, reset }: GlobalErrorProps) {
           </button>
         </div>
       </div>
-    </div>
+    </>
   );
 }

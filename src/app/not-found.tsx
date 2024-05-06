@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <main className="flex flex-col min-h-screen items-center justify-center bg-black font-sans antialiased">
+    <>
       <Image
         {...{
           src: "/website-maintenance.gif",
@@ -14,7 +14,7 @@ export default function NotFound() {
         }}
       />
 
-      <div className="w-full flex flex-col items-center gap-4">
+      <div className="w-full flex flex-col items-center">
         <p className="text-4xl text-white underline"> Página Não Encontrada </p>
         <p className="text-zinc-500">A página que vocé procura não existe.</p>
         <Link
@@ -24,6 +24,6 @@ export default function NotFound() {
           Voltar para a página inicial
         </Link>
       </div>
-    </main>
+    </>
   );
 }
