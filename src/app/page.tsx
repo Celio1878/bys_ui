@@ -9,7 +9,7 @@ export default function Home() {
     <Suspense fallback={<div>Loading...</div>}>
       <Banner />
       <div className="flex flex-col gap-20">
-        <Books title="Livros em destaque" />
+        <Books title="Destaque" />
         <Books title="Original" />
         <Books title="Terror" />
         <Books title="Fantasia" />
