@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24dfe38b-6d18-4700-8386-86f955cbefc3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/google-login-button.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ui/separator.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/shell/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shell/header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/banner.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/banner.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/books.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/books.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shell/nav-menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shell/nav-menu.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +33,7 @@
     <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="staging" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -81,7 +85,7 @@
     &quot;npm.dev.executor&quot;: &quot;Run&quot;,
     &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/home/swango/Documents/projects/be_your_stories/bys_ui/node_modules/prettier&quot;,
     &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;aws.codewhisperer&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.customizations&quot;,
     &quot;ts.external.directory.path&quot;: &quot;/home/swango/Documents/projects/be_your_stories/bys_ui/node_modules/typescript/lib&quot;
   }
 }</component>
@@ -130,6 +134,7 @@
         <item itemvalue="npm.build" />
         <item itemvalue="npm.dev" />
         <item itemvalue="npm.build" />
+        <item itemvalue="npm.dev" />
       </list>
     </recent_temporary>
   </component>
@@ -159,6 +164,8 @@
       <workItem from="1714827813062" duration="2196000" />
       <workItem from="1714910337355" duration="5358000" />
       <workItem from="1714923380496" duration="3655000" />
+      <workItem from="1715071492711" duration="1006000" />
+      <workItem from="1715072505735" duration="4216000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Add Shadcn-ui">
       <option name="closed" value="true" />
@@ -264,7 +271,23 @@
       <option name="project" value="LOCAL" />
       <updated>1714927035280</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="fix: Verify if user is authenticated">
+      <option name="closed" value="true" />
+      <created>1714995364576</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1714995364576</updated>
+    </task>
+    <task id="LOCAL-00015" summary="style: Layout">
+      <option name="closed" value="true" />
+      <created>1715076718580</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1715076718580</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -299,7 +322,9 @@
     <MESSAGE value="feat: Profile image priority" />
     <MESSAGE value="feat: Popover User" />
     <MESSAGE value="feat: My books page" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: My books page" />
+    <MESSAGE value="fix: Verify if user is authenticated" />
+    <MESSAGE value="style: Layout" />
+    <option name="LAST_COMMIT_MESSAGE" value="style: Layout" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

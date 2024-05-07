@@ -33,10 +33,11 @@ export const Books: FC<BookCarouselProps> = ({ title }) => {
 
   return (
     <div className="flex flex-col">
-      <h1 className="text-2xl font-semibold underline">{title}</h1>
+      <h1 className="text-2xl font-semibold underline ml-2">{title}</h1>
       <Carousel
         setApi={setApi}
         opts={{
+          loop: true,
           align: "center",
           breakpoints: {
             "(max-width: 640px)": {
@@ -55,15 +56,15 @@ export const Books: FC<BookCarouselProps> = ({ title }) => {
         }}
         className="max-w-xs sm:max-w-screen-sm md:max-w-lg lg:max-w-screen-md xl:max-w-screen-lg"
       >
-        <CarouselContent>
+        <CarouselContent className="ml-0.5 sm:ml-0">
           {Array.from({ length: 20 }).map((_, i) => (
             <CarouselItem
               key={i}
-              className="basis-1/2 md:basis-1/4 lg:basis-1/5 xl:basis-1/6 p-4"
+              className="basis-1/2 md:basis-1/4 lg:basis-1/5 xl:basis-1/6 p-2"
             >
               <Image
                 className={
-                  "cursor-pointer hover:scale-110 transition duration-700"
+                  "cursor-pointer hover:scale-105 transition duration-500"
                 }
                 src={"/cover.jpg"}
                 alt={"cover"}
@@ -71,17 +72,20 @@ export const Books: FC<BookCarouselProps> = ({ title }) => {
                 height={160}
                 priority={false}
               />
+              <h3 className="hover:font-semibold hover:cursor-pointer hover:underline transition-all duration-150 mt-2">
+                Titulo
+              </h3>
             </CarouselItem>
           ))}
         </CarouselContent>
         <CarouselPrevious />
         <CarouselNext />
       </Carousel>
-      <div className="flex justify-center gap-3 mr-3 md:mr-0 lg:mr-4">
+      <div className="flex justify-center gap-3 mt-4 mr-0 lg:mr-3">
         {Array.from({ length: count }).map((_, index) => (
           <button
             key={index}
-            onClick={() => {}}
+            onClick={() => api?.scrollTo(index)}
             className={`w-2 h-2 rounded-full ${
               index + 1 === current ? "bg-slate-500" : "bg-slate-300"
             }`}
