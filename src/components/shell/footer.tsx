@@ -6,7 +6,7 @@ import { FC } from "react";
 
 export const Footer: FC = () => {
   return (
-    <footer className="flex flex-col items-center justify-center gap-4">
+    <footer className="flex flex-col items-center justify-center gap-10 bg-slate-100 dark:bg-slate-950 pb-4 pt-12">
       <LogoIcon {...{ width: 100, height: 100 }} />
       <div className="flex flex-row items-center gap-6">
         <FacebookIcon />
