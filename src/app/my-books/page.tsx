@@ -1,13 +1,12 @@
 "use client";
 
-import { Suspense } from "react";
 import { PlusIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
 export default function MyBooksPage() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <>
       <div className="flex flex-row items-center pt-10 pb-6">
         <h1 className="w-full text-4xl font-bold text-center">Meus Livros</h1>
         <Button className="absolute right-32 gap-2 items-center justify-center">
@@ -32,6 +31,6 @@ export default function MyBooksPage() {
           </div>
         ))}
       </div>
-    </Suspense>
+    </>
   );
 }
