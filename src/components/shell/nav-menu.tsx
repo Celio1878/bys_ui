@@ -13,7 +13,7 @@ import {
 import { useSearchParams } from "next/navigation";
 
 export const NavMenu: FC = () => {
-  const genre = useSearchParams().get("genre");
+  const text = useSearchParams().get("text");
 
   return (
     <nav className="flex w-full items-center justify-center py-3">
@@ -26,7 +26,7 @@ export const NavMenu: FC = () => {
             return (
               <CarouselItem
                 key={item.key}
-                className={`basis-24 md:basis-[5.5rem] lg:basis-1/12 text-center hover:bg-slate-200 dark:hover:bg-slate-700 transition-all duration-300 p-0 py-2 md:mx-1 rounded-md ${item.key === genre && "text-sky-500 bg-slate-200 dark:text-sky-200 dark:bg-slate-950"}`}
+                className={`basis-24 md:basis-[5.5rem] lg:basis-1/12 text-center hover:bg-slate-200 dark:hover:bg-slate-700 transition-all duration-300 p-0 py-2 md:mx-1 rounded-md ${item.key === text && "text-sky-500 bg-slate-200 dark:text-sky-200 dark:bg-slate-950"}`}
               >
                 <Link href={item.href}>{item.label}</Link>
               </CarouselItem>
