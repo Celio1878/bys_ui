@@ -5,70 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24dfe38b-6d18-4700-8386-86f955cbefc3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/app/model/story.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/book-drawer.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/book-items-confirm-form.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/book.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/books-carousel.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/cancel-button.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/carousel-dots.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/form-fields/checkbox-list-form-field.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/form-fields/input-form-field.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/form-fields/input-tag-form-field.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/form-fields/select-form-field.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/form-fields/select-items-search-form-field.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/form-fields/tag-items.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/form-fields/tag-search-items.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/form-fields/text-area-form-field.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/go-back-button.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/insert-book-cover-form.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/loading.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/logout-button.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/my-books-header.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/my-books-link.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/new-book-button.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/new-book-drawer-buttons.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/new-book-drawer-confirm-buttons.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/new-book-drawer-cover-buttons.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/new-book-drawer-form-buttons.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/new-book-form.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/new-book-steps.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/next-step-button.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/pagination-component.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/popover-user-data-buttons.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/popover-user-data.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/popover_inf_user.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/search-section-title.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ui/badge.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ui/checkbox.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ui/command.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ui/dialog.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ui/drawer.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ui/form.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ui/select.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ui/tabs.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ui/textarea.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/update-book-button.tsx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/lib/use-carousel-component.ts" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/utils/book_sections.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/cover1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/api/auth/[...nextauth]/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/auth/[...nextauth]/route.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/my-books/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/my-books/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/search/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/search/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/banner.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/banner-carousel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/books.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/contents.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/contents.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/google-login-button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/google-login-button.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/popover-user.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/popover-user.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/shell/nav-menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shell/nav-menu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/carousel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/carousel.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/web-vitals.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/web-vitals.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -236,7 +178,7 @@
       <workItem from="1715620413270" duration="16018000" />
       <workItem from="1715677574551" duration="18000" />
       <workItem from="1715677599849" duration="1747000" />
-      <workItem from="1715679356557" duration="10074000" />
+      <workItem from="1715679356557" duration="10411000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Add Shadcn-ui">
       <option name="closed" value="true" />
@@ -374,7 +316,31 @@
       <option name="project" value="LOCAL" />
       <updated>1715101316472</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="feat: items types">
+      <option name="closed" value="true" />
+      <created>1715689993455</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1715689993455</updated>
+    </task>
+    <task id="LOCAL-00019" summary="fix: logging safety">
+      <option name="closed" value="true" />
+      <created>1715690053154</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1715690053154</updated>
+    </task>
+    <task id="LOCAL-00020" summary="feat: Componentization">
+      <option name="closed" value="true" />
+      <created>1715690154839</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1715690154839</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -413,7 +379,10 @@
     <MESSAGE value="style: Layout" />
     <MESSAGE value="fix: Suspense boundary over main" />
     <MESSAGE value="feat: Add Suspense component and Update my-books page" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Add Suspense component and Update my-books page" />
+    <MESSAGE value="feat: items types" />
+    <MESSAGE value="fix: logging safety" />
+    <MESSAGE value="feat: Componentization" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Componentization" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
