@@ -5,13 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24dfe38b-6d18-4700-8386-86f955cbefc3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/ui/pagination.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/web-vitals.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/use-carousel-component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/book_sections.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/my-books/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/my-books/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/search/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/search/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/search-input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/search-input.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/shell/nav-menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shell/nav-menu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/navbar_items.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/navbar_items.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/web-vitals.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/web-vitals.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +86,7 @@
     &quot;npm.dev.executor&quot;: &quot;Run&quot;,
     &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/home/swango/Documents/projects/be_your_stories/bys_ui/node_modules/prettier&quot;,
     &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.customizations&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;,
     &quot;ts.external.directory.path&quot;: &quot;/home/swango/Documents/projects/be_your_stories/bys_ui/node_modules/typescript/lib&quot;
   }
 }</component>
@@ -101,14 +101,14 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/lib" />
       <recent name="$PROJECT_DIR$/src/app/search" />
       <recent name="$PROJECT_DIR$/src/app/api/auth" />
       <recent name="$PROJECT_DIR$/src/components" />
       <recent name="$PROJECT_DIR$/src/components/shell" />
-      <recent name="$PROJECT_DIR$/src/styles" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.build">
+  <component name="RunManager" selected="npm.dev">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -131,10 +131,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.build" />
-        <item itemvalue="npm.dev" />
         <item itemvalue="npm.dev" />
         <item itemvalue="npm.build" />
+        <item itemvalue="npm.build" />
+        <item itemvalue="npm.dev" />
         <item itemvalue="npm.dev" />
       </list>
     </recent_temporary>
@@ -168,6 +168,17 @@
       <workItem from="1715071492711" duration="1006000" />
       <workItem from="1715072505735" duration="4216000" />
       <workItem from="1715091132268" duration="11588000" />
+      <workItem from="1715115834185" duration="412000" />
+      <workItem from="1715160031206" duration="2054000" />
+      <workItem from="1715250289246" duration="4789000" />
+      <workItem from="1715338832674" duration="4450000" />
+      <workItem from="1715442345840" duration="16465000" />
+      <workItem from="1715510622582" duration="9243000" />
+      <workItem from="1715589956061" duration="12643000" />
+      <workItem from="1715620413270" duration="16018000" />
+      <workItem from="1715677574551" duration="18000" />
+      <workItem from="1715677599849" duration="1747000" />
+      <workItem from="1715679356557" duration="10411000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Add Shadcn-ui">
       <option name="closed" value="true" />
@@ -305,7 +316,31 @@
       <option name="project" value="LOCAL" />
       <updated>1715101316472</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="feat: items types">
+      <option name="closed" value="true" />
+      <created>1715689993455</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1715689993455</updated>
+    </task>
+    <task id="LOCAL-00019" summary="fix: logging safety">
+      <option name="closed" value="true" />
+      <created>1715690053154</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1715690053154</updated>
+    </task>
+    <task id="LOCAL-00020" summary="feat: Componentization">
+      <option name="closed" value="true" />
+      <created>1715690154839</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1715690154839</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -344,7 +379,10 @@
     <MESSAGE value="style: Layout" />
     <MESSAGE value="fix: Suspense boundary over main" />
     <MESSAGE value="feat: Add Suspense component and Update my-books page" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Add Suspense component and Update my-books page" />
+    <MESSAGE value="feat: items types" />
+    <MESSAGE value="fix: logging safety" />
+    <MESSAGE value="feat: Componentization" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Componentization" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
