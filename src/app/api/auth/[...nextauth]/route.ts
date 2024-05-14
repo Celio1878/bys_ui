@@ -10,7 +10,8 @@ const auth_options: NextAuthOptions = {
     GoogleProvider({
       clientId: `${google_client_id}`,
       clientSecret: `${google_client_secret}`,
-      allowDangerousEmailAccountLinking: true,
+      allowDangerousEmailAccountLinking: false,
+
       async profile(profile) {
         return {
           id: profile.sub,

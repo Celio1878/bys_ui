@@ -21,15 +21,16 @@ export const NavMenu: FC = () => {
         opts={{ align: "center" }}
         className="w-full max-w-xs sm:max-w-2xl md:max-w-full"
       >
-        <CarouselContent className="md:justify-center mx-0.5 md:mx-0">
+        <CarouselContent className="md:justify-center -mr-0.5 -ml-0.5 md:-mx-0">
           {navbar_items.map((item) => {
             return (
-              <CarouselItem
+              <Link
+                className={`text-center hover:bg-slate-200 dark:hover:bg-slate-700 transition-all duration-300 py-2 px-3 mx-1 md:mx-0.5 rounded-md ${item.key === text && "text-sky-500 bg-slate-200 dark:text-sky-200 dark:bg-slate-950"}`}
+                href={item.href}
                 key={item.key}
-                className={`basis-24 md:basis-[5.5rem] lg:basis-1/12 text-center hover:bg-slate-200 dark:hover:bg-slate-700 transition-all duration-300 p-0 py-2 md:mx-1 rounded-md ${item.key === text && "text-sky-500 bg-slate-200 dark:text-sky-200 dark:bg-slate-950"}`}
               >
-                <Link href={item.href}>{item.label}</Link>
-              </CarouselItem>
+                <CarouselItem className="p-0">{item.label}</CarouselItem>
+              </Link>
             );
           })}
         </CarouselContent>

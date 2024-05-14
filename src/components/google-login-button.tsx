@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 export const GoogleLoginButton: FC = () => {
   return (
     <Button className="gap-1" onClick={() => signIn("google")}>
-      Login <GoogleIcon width={20} height={20} />
+      <span>Login</span> <GoogleIcon width={20} height={20} />
     </Button>
   );
 };
