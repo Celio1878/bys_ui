@@ -1,8 +1,8 @@
 import { FC } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { NewBookForm } from "@/components/new-book-form";
-import { InsertBookCoverForm } from "@/components/insert-book-cover-form";
-import { BookItemsConfirmForm } from "@/components/book-items-confirm-form";
+import { NewBookForm } from "@/components/form/new-book-form";
+import { InsertBookCoverForm } from "@/components/form/insert-book-cover-form";
+import { BookItemsConfirmForm } from "@/components/form/book-items-confirm-form";
 
 interface NewBookStepsProps {
   tab_name: string;

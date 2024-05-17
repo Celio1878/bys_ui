@@ -22,7 +22,7 @@ import {
   CommandList,
 } from "@/components/ui/command";
 import { cn } from "@/lib/utils";
-import { TagSearchItems } from "@/components/form-fields/tag-search-items";
+import { TagSearchItems } from "@/components/form/tag-search-items";
 
 interface SelectItemsSearchFormFieldProps {
   name: string;

@@ -2,18 +2,18 @@ import { FC } from "react";
 import { Form } from "@/components/ui/form";
 import { Card } from "@/components/ui/card";
 import { useForm } from "react-hook-form";
-import { InputFormField } from "@/components/form-fields/input-form-field";
-import { TextAreaFormField } from "@/components/form-fields/text-area-form-field";
-import { SelectFormField } from "@/components/form-fields/select-form-field";
+import { InputFormField } from "@/components/form/fields/input-form-field";
+import { TextAreaFormField } from "@/components/form/fields/text-area-form-field";
+import { SelectFormField } from "@/components/form/fields/select-form-field";
 import {
   AgeRangeTags,
   CopyrightTags,
   GenreTags,
   WarningTags,
 } from "@/app/model/story";
-import { CheckboxListFormField } from "@/components/form-fields/checkbox-list-form-field";
-import { InputTagFormField } from "@/components/form-fields/input-tag-form-field";
-import { SelectItemsSearchFormField } from "@/components/form-fields/select-items-search-form-field";
+import { CheckboxListFormField } from "@/components/form/fields/checkbox-list-form-field";
+import { InputTagFormField } from "@/components/form/fields/input-tag-form-field";
+import { SelectItemsSearchFormField } from "@/components/form/fields/select-items-search-form-field";
 
 export const NewBookForm: FC = () => {
   const form = useForm({

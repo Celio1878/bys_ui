@@ -1,7 +1,7 @@
 import { FC } from "react";
-import { NewBookDrawerConfirmButtons } from "@/components/new-book-drawer-confirm-buttons";
-import { NewBookDrawerFormButtons } from "@/components/new-book-drawer-form-buttons";
-import { NewBookDrawerCoverButtons } from "@/components/new-book-drawer-cover-buttons";
+import { NewBookDrawerConfirmButtons } from "@/components/buttons/new-book-drawer-confirm-buttons";
+import { NewBookDrawerFormButtons } from "@/components/buttons/new-book-drawer-form-buttons";
+import { NewBookDrawerCoverButtons } from "@/components/buttons/new-book-drawer-cover-buttons";
 
 interface BookDrawerButtonsProps {
   tab_name: string;

@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { GoBackButton } from "@/components/go-back-button";
+import { GoBackButton } from "@/components/buttons/go-back-button";
 import { Button } from "@/components/ui/button";
 
 interface NewBookDrawerConfirmButtonsProps {

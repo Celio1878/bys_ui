@@ -9,7 +9,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { FC, useState } from "react";
-import { NewBookDrawerButtons } from "@/components/new-book-drawer-buttons";
+import { NewBookDrawerButtons } from "@/components/buttons/new-book-drawer-buttons";
 import { NewBookSteps } from "@/components/new-book-steps";
 import { PlusIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";

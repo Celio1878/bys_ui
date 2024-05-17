@@ -25,7 +25,7 @@ export const NavMenu: FC = () => {
           {navbar_items.map((item) => {
             return (
               <Link
-                className={`text-center hover:bg-slate-200 dark:hover:bg-slate-700 transition-all duration-300 py-2 px-3 mx-1 md:mx-0.5 rounded-md ${item.key === text && "text-sky-500 bg-slate-200 dark:text-sky-200 dark:bg-slate-950"}`}
+                className={`text-center text-sm font-light hover:bg-slate-200 dark:hover:bg-slate-700 transition-all duration-300 py-2 px-3 mx-1 md:mx-0.5 rounded-md ${item.key === text && "text-sky-500 font-semibold bg-slate-200 dark:text-sky-200 dark:bg-slate-950"}`}
                 href={item.href}
                 key={item.key}
               >

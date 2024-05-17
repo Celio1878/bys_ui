@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { MyBooksLink } from "@/components/my-books-link";
-import { LogoutButton } from "@/components/logout-button";
+import { LogoutButton } from "@/components/buttons/logout-button";
 import { signOut } from "next-auth/react";
 
 interface PopoverUserDataButtonsProps {

@@ -7,7 +7,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { TagItems } from "@/components/form-fields/tag-items";
+import { TagItems } from "@/components/form/tag-items";
 
 interface InputTagFormFieldProps {
   form_control: any;
