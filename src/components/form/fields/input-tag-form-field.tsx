@@ -8,39 +8,47 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { TagItems } from "@/components/form/tag-items";
+import { useFieldArray, UseFormReturn } from "react-hook-form";
+import { useManagerTags } from "@/hooks/useManagerTags";
 
 interface InputTagFormFieldProps {
-  form_control: any;
   label: string;
   name: string;
   placeholder?: string;
+  form: UseFormReturn;
 }
 
 export const InputTagFormField: FC<InputTagFormFieldProps> = ({
-  form_control,
   label,
   name,
   placeholder = "",
+  form,
 }) => {
+  const { append, remove } = useFieldArray({
+    control: form.control,
+    name,
+  });
+  const { handle_key_down, ref, tag_values } = useManagerTags({
+    form,
+    name,
+    on_change: append,
+  });
+
   return (
     <FormField
-      control={form_control}
+      control={form.control}
       name={name}
-      render={({ field }) => (
+      render={() => (
         <FormItem>
           <FormLabel>{label}</FormLabel>
           <FormControl>
             <Input
+              ref={ref}
               placeholder={placeholder}
-              onKeyDown={(event) => {
-                if (event.key === "Enter") {
-                  event.preventDefault();
-                  field.onChange([...field.value, event.currentTarget.value]);
-                }
-              }}
+              onKeyDown={handle_key_down}
             />
           </FormControl>
-          <TagItems tags={field.value} on_change={field.onChange} />
+          <TagItems tags={tag_values} on_remove={remove} />
           <FormMessage />
         </FormItem>
       )}

@@ -6,67 +6,62 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Tag } from "@/app/model/story";
+import { Tag, Warning } from "@/app/model/story";
 import { Checkbox } from "@/components/ui/checkbox";
+import { useFieldArray, UseFormReturn } from "react-hook-form";
+import { useManagerTags } from "@/hooks/useManagerTags";
 
 interface CheckboxListFormFieldProps {
-  form_control: any;
+  form: UseFormReturn;
   label: string;
   name: string;
-  list_items: Tag<any>[];
+  list_items: Tag<Warning>[];
 }
 
 export const CheckboxListFormField: FC<CheckboxListFormFieldProps> = ({
   list_items,
-  form_control,
+  form,
   label,
   name,
 }) => {
+  const { append, remove } = useFieldArray({ control: form.control, name });
+  const { sanitized_tags, tag_values, handle_selected_tag } = useManagerTags({
+    form,
+    name,
+    on_change: append,
+  });
+
   return (
-    <FormField
-      control={form_control}
-      name={name}
-      render={() => (
-        <FormItem>
-          <FormLabel>{label}</FormLabel>
-          <div className="grid grid-flow-row-dense grid-cols-2 gap-3">
-            {list_items.map((item) => (
-              <FormField
-                key={item.id}
-                control={form_control}
-                name={name}
-                render={({ field }) => {
-                  return (
-                    <FormItem
-                      key={item.id}
-                      className="flex flex-row items-center space-x-3 space-y-0"
-                    >
-                      <FormControl>
-                        <Checkbox
-                          checked={field.value?.includes(item.id)}
-                          onCheckedChange={(checked) => {
-                            return checked
-                              ? field.onChange([...field.value, item.id])
-                              : field.onChange(
-                                  field.value?.filter(
-                                    (value: string) => value !== item.id,
-                                  ),
-                                );
-                          }}
-                        />
-                      </FormControl>
-                      <FormLabel className="font-normal text-xs">
-                        {item.title}
-                      </FormLabel>
-                    </FormItem>
-                  );
-                }}
-              />
-            ))}
-          </div>
-          <FormMessage />
-        </FormItem>
-      )}
-    />
+    <FormItem>
+      <FormLabel>{label}</FormLabel>
+      <div className="grid grid-flow-row-dense grid-cols-2 gap-3">
+        {list_items.map((item) => (
+          <FormField
+            key={item.id}
+            control={form.control}
+            name={name}
+            render={() => {
+              return (
+                <FormItem
+                  key={item.id}
+                  className="flex flex-row items-center space-x-3 space-y-0"
+                >
+                  <FormControl>
+                    <Checkbox
+                      checked={sanitized_tags.has(item.id)}
+                      onCheckedChange={() => handle_selected_tag(item, remove)}
+                    />
+                  </FormControl>
+                  <FormLabel className="font-normal text-xs">
+                    {item.title}
+                  </FormLabel>
+                </FormItem>
+              );
+            }}
+          />
+        ))}
+      </div>
+      <FormMessage />
+    </FormItem>
   );
 };

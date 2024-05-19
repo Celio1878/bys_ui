@@ -13,10 +13,23 @@ import { NewBookDrawerButtons } from "@/components/buttons/new-book-drawer-butto
 import { NewBookSteps } from "@/components/new-book-steps";
 import { PlusIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { FormProvider, useForm } from "react-hook-form";
 
 export const BookDrawer: FC = () => {
   const [open, setOpen] = useState(false);
   const [tab_name, set_tab_name] = useState("content");
+  const form_methods = useForm({
+    defaultValues: {
+      title: "",
+      description: "",
+      genre: "",
+      copyright: "",
+      age_range: "",
+      tags: [],
+      warnings: [],
+      coauthors: [],
+    },
+  });
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -27,15 +40,20 @@ export const BookDrawer: FC = () => {
         </Button>
       </DialogTrigger>
       <DialogContent>
-        <DialogHeader>
-          <DialogTitle>Novo Livro</DialogTitle>
-        </DialogHeader>
-        <NewBookSteps tab_name={tab_name} />
-        <DialogFooter>
-          <NewBookDrawerButtons
-            {...{ tab_name, set_tab_name, on_cancel: () => setOpen(false) }}
-          />
-        </DialogFooter>
+        <FormProvider {...form_methods}>
+          <DialogHeader>
+            <DialogTitle>Novo Livro</DialogTitle>
+          </DialogHeader>
+          <NewBookSteps tab_name={tab_name} />
+          <DialogFooter>
+            <NewBookDrawerButtons
+              tab_name={tab_name}
+              set_tab_name={set_tab_name}
+              book_values={form_methods.getValues()}
+              on_cancel={() => setOpen(false)}
+            />
+          </DialogFooter>
+        </FormProvider>
       </DialogContent>
     </Dialog>
   );
