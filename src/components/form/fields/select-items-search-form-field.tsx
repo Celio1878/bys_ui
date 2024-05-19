@@ -20,7 +20,9 @@ interface SelectItemsSearchFormFieldProps {
   text_on_empty?: string;
 }
 
-export const SelectItemsSearchFormField: FC<SelectItemsSearchFormFieldProps> = ({
+export const SelectItemsSearchFormField: FC<
+  SelectItemsSearchFormFieldProps
+> = ({
   form,
   name,
   label,
