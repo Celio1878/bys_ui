@@ -5,27 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24dfe38b-6d18-4700-8386-86f955cbefc3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/form/select-combobox/combobox-trigger.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/form/select-combobox/memoized-command-item.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/form/select-combobox/select-combobox.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ui/toast.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ui/toaster.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ui/use-toast.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hooks/useManagerTags.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/create-tag.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/model/story.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/model/story.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/book-drawer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/book-drawer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/buttons/new-book-drawer-buttons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/buttons/new-book-drawer-buttons.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/form/fields/checkbox-list-form-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/fields/checkbox-list-form-field.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/fields/input-form-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/fields/input-form-field.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/form/fields/input-tag-form-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/fields/input-tag-form-field.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/form/fields/select-items-search-form-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/fields/select-items-search-form-field.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/fields/select-form-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/fields/select-form-field.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/fields/text-area-form-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/fields/text-area-form-field.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/form/new-book-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/new-book-form.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/form/tag-items.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/tag-items.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/form/tag-search-items.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/tag-search-items.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/shell/nav-menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shell/nav-menu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/select-combobox/select-combobox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/select-combobox/select-combobox.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useManagerTags.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/use-manager-tags.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,8 +23,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -85,7 +73,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;code.cleanup.on.save&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/swango/Documents/projects/be_your_stories/bys_ui/src/app/my-books/book/[id]&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/swango/Documents/projects/bys&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
@@ -100,7 +88,7 @@
     &quot;npm.dev.executor&quot;: &quot;Run&quot;,
     &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/home/swango/Documents/projects/be_your_stories/bys_ui/node_modules/prettier&quot;,
     &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.Color Scheme Font&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;,
     &quot;ts.external.directory.path&quot;: &quot;/home/swango/Documents/projects/be_your_stories/bys_ui/node_modules/typescript/lib&quot;
   }
 }</component>
@@ -114,15 +102,12 @@
     </option>
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/app/my-books/book/[id]" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/components/form/select-combobox" />
-      <recent name="$PROJECT_DIR$/src/hooks" />
-      <recent name="$PROJECT_DIR$/src/components/form" />
-      <recent name="$PROJECT_DIR$/src/components/buttons" />
-      <recent name="$PROJECT_DIR$/src/components/form-fields" />
+      <recent name="$PROJECT_DIR$/src/lib" />
+      <recent name="$PROJECT_DIR$/src/app/search" />
+      <recent name="$PROJECT_DIR$/src/app/api/auth" />
+      <recent name="$PROJECT_DIR$/src/components" />
+      <recent name="$PROJECT_DIR$/src/components/shell" />
     </key>
   </component>
   <component name="RunManager" selected="npm.dev">
@@ -196,16 +181,6 @@
       <workItem from="1715677574551" duration="18000" />
       <workItem from="1715677599849" duration="1747000" />
       <workItem from="1715679356557" duration="10411000" />
-      <workItem from="1715771768355" duration="2607000" />
-      <workItem from="1715794654389" duration="606000" />
-      <workItem from="1715862241115" duration="2834000" />
-      <workItem from="1715865696553" duration="1400000" />
-      <workItem from="1715942683342" duration="606000" />
-      <workItem from="1715943956791" duration="739000" />
-      <workItem from="1716034652435" duration="15272000" />
-      <workItem from="1716064260647" duration="5108000" />
-      <workItem from="1716120748196" duration="2048000" />
-      <workItem from="1716130111406" duration="1361000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Add Shadcn-ui">
       <option name="closed" value="true" />
@@ -409,6 +384,7 @@
     <MESSAGE value="feat: items types" />
     <MESSAGE value="fix: logging safety" />
     <MESSAGE value="feat: Componentization" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Componentization" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

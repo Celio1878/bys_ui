@@ -9,7 +9,7 @@ import {
 import { Tag, Warning } from "@/app/model/story";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useFieldArray, UseFormReturn } from "react-hook-form";
-import { useManagerTags } from "@/hooks/useManagerTags";
+import { useManagerTags } from "@/hooks/use-manager-tags";
 
 interface CheckboxListFormFieldProps {
   form: UseFormReturn;
@@ -25,7 +25,7 @@ export const CheckboxListFormField: FC<CheckboxListFormFieldProps> = ({
   name,
 }) => {
   const { append, remove } = useFieldArray({ control: form.control, name });
-  const { sanitized_tags, tag_values, handle_selected_tag } = useManagerTags({
+  const { sanitized_tags, handle_selected_tag } = useManagerTags({
     form,
     name,
     on_change: append,

@@ -1,6 +1,6 @@
 import { useFieldArray, UseFormReturn } from "react-hook-form";
 import { FC } from "react";
-import { useManagerTags } from "@/hooks/useManagerTags";
+import { useManagerTags } from "@/hooks/use-manager-tags";
 import { Popover, PopoverContent } from "@/components/ui/popover";
 import {
   Command,
