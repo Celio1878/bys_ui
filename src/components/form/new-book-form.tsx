@@ -22,22 +22,18 @@ export const NewBookForm: FC = () => {
     <Card className="max-h-[35rem] px-8 py-4 mt-2 bg-slate-50 overflow-y-scroll">
       <Form {...form}>
         <form className="space-y-6">
-          <InputFormField
-            form_control={form.control}
-            name={"title"}
-            label={"Titulo"}
-          />
+          <InputFormField form={form} name={"title"} label={"Titulo"} />
 
           <TextAreaFormField
             name={"description"}
             label={"Sinopse"}
-            form_control={form.control}
+            form={form}
           />
 
           <SelectFormField
             name={"genre"}
             label={"Categorias"}
-            form_control={form.control}
+            form={form}
             placeholder={"Selecione uma categoria"}
             list_items={GenreTags}
             key={"genre"}
@@ -46,7 +42,7 @@ export const NewBookForm: FC = () => {
           <SelectFormField
             name={"age_range"}
             label={"Faixa Etaria"}
-            form_control={form.control}
+            form={form}
             placeholder={"Selecione a faixa etaria"}
             list_items={AgeRangeTags}
             key={"age_range"}
@@ -63,7 +59,7 @@ export const NewBookForm: FC = () => {
           <SelectFormField
             name={"copyright"}
             label={"Direitos Autorais"}
-            form_control={form.control}
+            form={form}
             list_items={CopyrightTags}
             placeholder={"Selecione o Copyright"}
             key={"copyright"}
