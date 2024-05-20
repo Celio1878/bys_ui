@@ -1,5 +1,4 @@
-import * as React from "react";
-import { FC } from "react";
+import { FC, useRef } from "react";
 import Autoplay from "embla-carousel-autoplay";
 import {
   Carousel,
@@ -7,13 +6,11 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import { banner_images } from "@/utils/banner_images";
-import { CarouselDots } from "@/components/carousel-dots";
+import { CarouselDots } from "@/components/carousel/carousel-dots";
 import { useCarouselComponent } from "@/lib/use-carousel-component";
 
 export const BannerCarousel: FC = () => {
-  const plugin = React.useRef(
-    Autoplay({ delay: 2000, stopOnInteraction: true }),
-  );
+  const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
   const { current, count, setApi, api } = useCarouselComponent();
 
   return (

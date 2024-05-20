@@ -1,12 +1,12 @@
 "use client";
 
 import { FC } from "react";
-import { ModeToggle } from "@/components/mode-toggle";
+import { ModeToggle } from "@/components/buttons/mode-toggle";
 import { LogoIcon } from "@/components/icons/logo-icon";
 import { useSession } from "next-auth/react";
-import { SearchInput } from "@/components/search-input";
+import { SearchInput } from "@/components/form/search-input";
 import { PopoverUser } from "@/components/popover-user";
-import { GoogleLoginButton } from "@/components/google-login-button";
+import { GoogleLoginButton } from "@/components/buttons/google-login-button";
 
 export const Header: FC = () => {
   const { data: session, status } = useSession() as any;

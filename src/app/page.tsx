@@ -1,10 +1,10 @@
 "use client";
 
-import { BannerCarousel } from "@/components/banner-carousel";
+import { BannerCarousel } from "@/components/carousel/banner-carousel";
 import { Suspense } from "react";
 import { Loading } from "@/components/loading";
 import { book_sections } from "@/utils/book_sections";
-import { BooksCarousel } from "@/components/books-carousel";
+import { BooksCarousel } from "@/components/carousel/books-carousel";
 
 export default function Home() {
   return (
