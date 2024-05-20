@@ -20,9 +20,13 @@ export default function SearchPage() {
         <SearchSectionTitle title={text} />
 
         <Card className="flex flex-wrap w-full items-center justify-center gap-8 py-8">
-          {Array.from({ length: 10 }).map((_, i) => (
-            <Book title={"Title"} key={i} />
-          ))}
+          {Array.from({ length: 10 }).map((_, i) => {
+            const title = `Livro ${i + 1}`;
+            const id = title.replace(/\s/g, "-").toLowerCase();
+            const href = `/book/${id}`;
+
+            return <Book title={title} key={i} href={href} />;
+          })}
         </Card>
 
         <PaginationComponent {...{ page: Number(page), pathname, text }} />

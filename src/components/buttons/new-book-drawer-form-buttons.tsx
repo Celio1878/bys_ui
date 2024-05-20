@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { CancelButton } from "@/components/cancel-button";
-import { NextStepButton } from "@/components/next-step-button";
+import { CancelButton } from "@/components/buttons/cancel-button";
+import { NextStepButton } from "@/components/buttons/next-step-button";
 
 interface NewBookDrawerFormButtonsProps {
   on_cancel: VoidFunction;

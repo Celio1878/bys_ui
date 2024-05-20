@@ -2,7 +2,7 @@ import { FC, ReactNode, Suspense } from "react";
 import { Header } from "@/components/shell/header";
 import { NavMenu } from "@/components/shell/nav-menu";
 import { Footer } from "@/components/shell/footer";
-import { Contents } from "@/components/contents";
+import { Contents } from "@/components/shell/contents";
 import { Separator } from "@/components/ui/separator";
 
 interface MainLayoutProps {

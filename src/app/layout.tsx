@@ -3,12 +3,12 @@ import { Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
 import "../styles/globals.css";
 import { ReactNode } from "react";
-import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeProvider } from "@/components/shell/theme-provider";
 import { MainLayout } from "@/components/shell/main-layout";
 import { UserProvider } from "@/components/shell/user-provider";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
-import { WebVitals } from "@/components/web-vitals";
+import { WebVitals } from "@/utils/web-vitals";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 

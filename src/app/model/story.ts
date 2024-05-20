@@ -101,7 +101,7 @@ export const WarningTags: Tag<Warning>[] = [
   { id: Warning.RAPE, title: "Estupro" },
   { id: Warning.SENSITIVE_CONTENT, title: "Conteudo Sensivel" },
   { id: Warning.SEX, title: "Sexo" },
-  { id: Warning.SEX_INSINUATION, title: "Insinuação de Sexo" },
+  // { id: Warning.SEX_INSINUATION, title: "Insinuação de Sexo" },
   { id: Warning.SPOILERS, title: "Spoilers" },
   { id: Warning.SUICIDE, title: "Suicídio" },
   { id: Warning.TORTURE, title: "Tortura" },

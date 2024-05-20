@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { GoBackButton } from "@/components/go-back-button";
-import { NextStepButton } from "@/components/next-step-button";
+import { GoBackButton } from "@/components/buttons/go-back-button";
+import { NextStepButton } from "@/components/buttons/next-step-button";
 
 interface NewBookDrawerCoverButtonsProps {
   disabled: boolean;
