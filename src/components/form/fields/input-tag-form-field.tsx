@@ -9,7 +9,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { TagItems } from "@/components/form/tag-items";
 import { useFieldArray, UseFormReturn } from "react-hook-form";
-import { useManagerTags } from "@/hooks/useManagerTags";
+import { useManagerTags } from "@/hooks/use-manager-tags";
 
 interface InputTagFormFieldProps {
   label: string;

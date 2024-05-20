@@ -48,7 +48,7 @@ export const useManagerTags = ({
         ? on_remove(tag_index)
         : on_change(selected_tag);
     },
-    [on_change, sanitized_tags],
+    [on_change, sanitized_tags, tags],
   );
 
   return {

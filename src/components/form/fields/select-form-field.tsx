@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo, useCallback } from "react";
 import {
   FormControl,
   FormField,
@@ -14,27 +14,22 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Tag } from "@/app/model/story";
+import { UseFormReturn } from "react-hook-form";
 
 interface SelectFormFieldProps {
   name: string;
   label: string;
   placeholder?: string;
-  form_control: any;
+  form: UseFormReturn;
   list_items: Tag<any>[];
 }
 
-export const SelectFormField: FC<SelectFormFieldProps> = ({
-  form_control,
-  placeholder,
-  label,
-  name,
-  list_items,
-}) => {
-  return (
-    <FormField
-      control={form_control}
-      name={name}
-      render={({ field }) => (
+export const SelectFormField: FC<SelectFormFieldProps> = memo(
+  ({ form, placeholder, label, name, list_items }) => {
+    form.watch(name);
+
+    const render_form_field = useCallback(
+      ({ field }: any) => (
         <FormItem>
           <FormLabel>{label}</FormLabel>
           <Select onValueChange={field.onChange} defaultValue={field.value}>
@@ -53,7 +48,18 @@ export const SelectFormField: FC<SelectFormFieldProps> = ({
           </Select>
           <FormMessage />
         </FormItem>
-      )}
-    />
-  );
-};
+      ),
+      [label, placeholder, list_items],
+    );
+
+    return (
+      <FormField
+        control={form.control}
+        name={name}
+        render={render_form_field}
+      />
+    );
+  },
+);
+
+SelectFormField.displayName = "SelectFormField";
