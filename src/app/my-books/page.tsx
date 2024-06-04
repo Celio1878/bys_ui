@@ -14,7 +14,7 @@ export default function MyBooksPage() {
         {Array.from({ length: 10 }).map((_, i) => {
           const title = "Livro " + i;
           const id = title.replace(/\s/g, "-").toLowerCase();
-          const href = `/book/${id}`;
+          const href = `/my-books/book/${id}`;
 
           return (
             <Book
