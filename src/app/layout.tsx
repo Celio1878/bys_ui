@@ -9,6 +9,7 @@ import { UserProvider } from "@/components/shell/user-provider";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import { WebVitals } from "@/utils/web-vitals";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -52,6 +53,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             disableTransitionOnChange
           >
             <MainLayout>{children}</MainLayout>
+            <Toaster />
           </ThemeProvider>
           <SpeedInsights />
           <WebVitals />
