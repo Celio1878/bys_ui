@@ -32,7 +32,7 @@ export const SelectFormField: FC<SelectFormFieldProps> = memo(
       ({ field }: any) => (
         <FormItem>
           <FormLabel>{label}</FormLabel>
-          <Select onValueChange={field.onChange} defaultValue={field.value}>
+          <Select onValueChange={field.onChange}>
             <FormControl>
               <SelectTrigger>
                 <SelectValue placeholder={placeholder} />
@@ -40,7 +40,7 @@ export const SelectFormField: FC<SelectFormFieldProps> = memo(
             </FormControl>
             <SelectContent>
               {list_items.map((item) => (
-                <SelectItem key={item.id} value={item.id}>
+                <SelectItem key={item.id} value={JSON.stringify(item)}>
                   {item.title}
                 </SelectItem>
               ))}

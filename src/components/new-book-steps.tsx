@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { NewBookForm } from "@/components/form/new-book-form";
 import { InsertBookCoverForm } from "@/components/form/insert-book-cover-form";
@@ -9,8 +9,10 @@ interface NewBookStepsProps {
 }
 
 export const NewBookSteps: FC<NewBookStepsProps> = ({ tab_name }) => {
+  const [book_data, set_book_data] = useState<any>(null);
+
   return (
-    <Tabs className="w-full" value={tab_name}>
+    <Tabs value={tab_name}>
       <TabsList>
         <TabsTrigger value="content" disabled={tab_name !== "content"}>
           Conteudo
@@ -23,13 +25,13 @@ export const NewBookSteps: FC<NewBookStepsProps> = ({ tab_name }) => {
         </TabsTrigger>
       </TabsList>
       <TabsContent value="content">
-        <NewBookForm />
+        <NewBookForm set_book_data={set_book_data} />
       </TabsContent>
       <TabsContent value="cover">
         <InsertBookCoverForm />
       </TabsContent>
       <TabsContent value="confirm">
-        <BookItemsConfirmForm />
+        <BookItemsConfirmForm book_data={book_data} />
       </TabsContent>
     </Tabs>
   );
