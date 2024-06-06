@@ -32,7 +32,7 @@ export const BookDrawer: FC = () => {
   });
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog modal open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button className="absolute right-5 sm:right-32 sm:gap-2 items-center justify-center">
           <PlusIcon />
@@ -44,7 +44,9 @@ export const BookDrawer: FC = () => {
           <DialogHeader>
             <DialogTitle>Novo Livro</DialogTitle>
           </DialogHeader>
-          <NewBookSteps tab_name={tab_name} />
+          <div>
+            <NewBookSteps tab_name={tab_name} />
+          </div>
           <DialogFooter>
             <NewBookDrawerButtons
               tab_name={tab_name}

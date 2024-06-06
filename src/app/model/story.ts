@@ -1,6 +1,6 @@
 export type Tag<T> = {
   id: T;
-  title: string | number;
+  title: string;
 };
 
 export enum Genre {
@@ -82,10 +82,10 @@ export const CopyrightTags: Tag<Copyright>[] = [
 
 export const AgeRangeTags: Tag<AgeRange>[] = [
   { id: AgeRange.FREE, title: "Livre" },
-  { id: AgeRange.TEN, title: "10" },
-  { id: AgeRange.TWELVE, title: "12" },
-  { id: AgeRange.SIXTEEN, title: "16" },
-  { id: AgeRange.EIGHTEEN, title: "18" },
+  { id: AgeRange.TEN, title: "+10" },
+  { id: AgeRange.TWELVE, title: "+12" },
+  { id: AgeRange.SIXTEEN, title: "+16" },
+  { id: AgeRange.EIGHTEEN, title: "+18" },
 ];
 
 export const WarningTags: Tag<Warning>[] = [
