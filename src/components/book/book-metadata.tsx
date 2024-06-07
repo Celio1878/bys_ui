@@ -26,7 +26,7 @@ export const BookMetadata: FC<BookMetadataProps> = ({ book_data, tags }) => {
         <h2 className="font-medium text-2xl text-center sm:text-start">
           {book_data.title}
         </h2>
-        <div className="flex flex-wrap gap-1">
+        <div className="flex flex-wrap gap-1.5">
           <h3 className="bg-red-500 text-xs items-center justify-center p-0.5 text-white font-medium content-center rounded-sm">
             {book_data.age_range}
           </h3>
