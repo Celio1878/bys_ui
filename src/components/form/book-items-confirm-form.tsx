@@ -4,6 +4,7 @@ import { Card } from "@/components/ui/card";
 import { BookMetadata } from "@/components/book/book-metadata";
 import { Tag } from "@/app/model/story";
 import { format } from "date-fns";
+import { get_tag_by_id } from "@/utils/get_tag_by_id";
 
 type Book = {
   title: string;
@@ -25,9 +26,9 @@ export const BookItemsConfirmForm: FC<BookItemsConfirmFormProps> = ({
 }) => {
   const book = {
     ...book_data,
-    age_range: JSON.parse(book_data.age_range).title,
-    genre: JSON.parse(book_data.genre).title,
-    copyright: JSON.parse(book_data.copyright).title,
+    age_range: get_tag_by_id(book_data.age_range, "age_range").title,
+    copyright: get_tag_by_id(book_data.copyright, "copyright").title,
+    genre: get_tag_by_id(book_data.genre, "genre").title,
     publish_date: format(new Date(), "dd/MM/yyyy"),
   };
 

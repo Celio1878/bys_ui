@@ -13,7 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Tag } from "@/app/model/story";
+import { AgeRange, Copyright, Genre, Tag } from "@/app/model/story";
 import { UseFormReturn } from "react-hook-form";
 
 interface SelectFormFieldProps {
@@ -21,7 +21,7 @@ interface SelectFormFieldProps {
   label: string;
   placeholder?: string;
   form: UseFormReturn;
-  list_items: Tag<any>[];
+  list_items: Tag<AgeRange | Copyright | Genre>[];
 }
 
 export const SelectFormField: FC<SelectFormFieldProps> = memo(
@@ -32,7 +32,7 @@ export const SelectFormField: FC<SelectFormFieldProps> = memo(
       ({ field }: any) => (
         <FormItem>
           <FormLabel>{label}</FormLabel>
-          <Select onValueChange={field.onChange}>
+          <Select onValueChange={field.onChange} defaultValue={field.value}>
             <FormControl>
               <SelectTrigger>
                 <SelectValue placeholder={placeholder} />
@@ -40,7 +40,7 @@ export const SelectFormField: FC<SelectFormFieldProps> = memo(
             </FormControl>
             <SelectContent>
               {list_items.map((item) => (
-                <SelectItem key={item.id} value={JSON.stringify(item)}>
+                <SelectItem key={item.id} value={item.id}>
                   {item.title}
                 </SelectItem>
               ))}
