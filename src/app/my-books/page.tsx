@@ -1,9 +1,12 @@
+"use client";
+
 import { Suspense } from "react";
 import { Loading } from "@/components/loading";
 import { MyBooksHeader } from "@/components/my-books-header";
 import { Book } from "@/components/book";
-import { UpdateBookButton } from "@/components/buttons/update-book-button";
 import { Card } from "@/components/ui/card";
+import { BookDrawer } from "@/components/book-drawer";
+import { UpdateButtonLabel } from "@/components/buttons/update-button-label";
 
 export default function MyBooksPage() {
   return (
@@ -19,7 +22,14 @@ export default function MyBooksPage() {
           return (
             <Book
               title={title}
-              buttons={<UpdateBookButton />}
+              buttons={
+                <BookDrawer
+                  button_label={<UpdateButtonLabel />}
+                  button_type="outline"
+                  modal_title="Editar Livro"
+                  id={id}
+                />
+              }
               key={i}
               href={href}
             />
