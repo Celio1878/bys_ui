@@ -11,6 +11,7 @@ import { Color } from "@tiptap/extension-color";
 import TextStyle from "@tiptap/extension-text-style";
 import TextAlign from "@tiptap/extension-text-align";
 import { Toolbar } from "@/components/chapter/toolbar";
+import { HorizontalRule } from "@tiptap/extension-horizontal-rule";
 
 interface ChapterContentFormFieldProps {
   content: string;
@@ -31,6 +32,7 @@ export const ChapterContentFormField: FC<ChapterContentFormFieldProps> = ({
       Typography,
       Color,
       TextStyle,
+      HorizontalRule,
       TextAlign.configure({
         types: ["heading", "paragraph"],
         alignments: ["left", "center", "right"],
