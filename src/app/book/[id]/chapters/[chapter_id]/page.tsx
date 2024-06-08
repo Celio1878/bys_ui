@@ -10,7 +10,7 @@ export default function ChapterPage() {
 
   return (
     <div className="flex flex-col items-center justify-center gap-10">
-      <Card className="w-3/5 py-4 px-16">
+      <Card className="w-10/12 lg:w-2/3 xl:w-3/5 py-4 px-6 sm:px-16">
         <CardHeader>
           <CardTitle className="text-center">Chapter Name</CardTitle>
         </CardHeader>

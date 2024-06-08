@@ -31,7 +31,7 @@ export const BookContent: FC<BookContentProps> = ({ book_data }) => {
   const in_my_library = pathname.includes("my-books");
 
   return (
-    <div className="flex flex-col sm:flex-row gap-6 items-center sm:items-start justify-center">
+    <div className="flex flex-col sm:flex-row gap-6 items-center sm:items-start justify-center md:px-8 lg:px-0">
       <div className="flex flex-col items-center justify-center gap-2">
         <Image
           className="hover:shadow-lg hover:shadow-black/50 transition duration-500"

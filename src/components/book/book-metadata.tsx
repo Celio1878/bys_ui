@@ -21,7 +21,7 @@ interface BookMetadataProps {
 
 export const BookMetadata: FC<BookMetadataProps> = ({ book_data, tags }) => {
   return (
-    <div className="flex flex-col gap-2.5 w-full sm:max-w-xl">
+    <div className="flex flex-col gap-2.5 w-full sm:max-w-xl px-4 sm:px-0">
       <div className={"flex flex-col gap-1"}>
         <h2 className="font-medium text-2xl text-center sm:text-start">
           {book_data.title}
