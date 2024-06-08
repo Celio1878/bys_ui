@@ -37,7 +37,7 @@ export const ChaptersPagination: FC<ChaptersPaginationProps> = ({
       <PaginationContent>
         <PaginationItem>
           <PaginationPrevious
-            className={`${current_chapter.index === 0 && "cursor-not-allowed opacity-50 text-xs"} text-xs`}
+            className={`${current_chapter.index === 0 && "cursor-not-allowed opacity-50"} text-xs`}
             href={`${current_chapter.index > 0 ? `${chapters_tags[current_chapter.index - 1].id}` : ""} `}
           />
         </PaginationItem>
@@ -77,7 +77,7 @@ export const ChaptersPagination: FC<ChaptersPaginationProps> = ({
 
         <PaginationItem>
           <PaginationNext
-            className={`${current_chapter.index === chapters_tags.length - 1 && "cursor-not-allowed opacity-50 text-xs"} text-xs`}
+            className={`${current_chapter.index === chapters_tags.length - 1 && "cursor-not-allowed opacity-50"} text-xs`}
             href={`${current_chapter.index < chapters_tags.length - 1 ? `${chapters_tags[current_chapter.index + 1].id}` : ""} `}
           />
         </PaginationItem>
