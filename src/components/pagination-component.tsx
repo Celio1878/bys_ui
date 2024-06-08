@@ -25,12 +25,13 @@ export const PaginationComponent: FC<PaginationComponentProps> = ({
       <PaginationContent>
         <PaginationItem>
           <PaginationPrevious
-            className={`${page === 1 && "cursor-not-allowed opacity-50"}`}
+            className={`${page === 1 && "cursor-not-allowed opacity-50"} text-xs`}
             href={`${page > 1 ? `${pathname}?text=${text}&page=${page - 1}` : ""} `}
           />
         </PaginationItem>
         <PaginationItem>
           <PaginationLink
+            className="text-xs"
             href={`${pathname}?text=${text}&page=1`}
             isActive={page === 1}
           >
@@ -39,6 +40,7 @@ export const PaginationComponent: FC<PaginationComponentProps> = ({
         </PaginationItem>
         <PaginationItem>
           <PaginationLink
+            className="text-xs"
             href={`${pathname}?text=${text}&page=2`}
             isActive={page === 2}
           >
@@ -47,6 +49,7 @@ export const PaginationComponent: FC<PaginationComponentProps> = ({
         </PaginationItem>
         <PaginationItem>
           <PaginationLink
+            className="text-xs"
             href={`${pathname}?text=${text}&page=3`}
             isActive={page === 3}
           >
@@ -58,6 +61,7 @@ export const PaginationComponent: FC<PaginationComponentProps> = ({
         </PaginationItem>
         <PaginationItem>
           <PaginationLink
+            className="text-xs"
             href={`${pathname}?text=${text}&page=5`}
             isActive={page === 5}
           >
@@ -66,7 +70,7 @@ export const PaginationComponent: FC<PaginationComponentProps> = ({
         </PaginationItem>
         <PaginationItem>
           <PaginationNext
-            className={`${page === 5 && "cursor-not-allowed opacity-50"}`}
+            className={`${page === 5 && "cursor-not-allowed opacity-50"} text-xs`}
             href={`${page < 5 ? `${pathname}?text=${text}&page=${page + 1}` : ""} `}
           />
         </PaginationItem>
