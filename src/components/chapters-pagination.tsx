@@ -21,7 +21,7 @@ export const ChaptersPagination: FC<ChaptersPaginationProps> = ({
   chapters_tags,
 }) => {
   const { chapter_id } = useParams() as { chapter_id: string };
-  
+
   const current_chapter = useMemo(() => {
     const chapter_index = chapters_tags.findIndex(
       (tag) => tag.id === chapter_id,
