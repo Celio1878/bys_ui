@@ -5,35 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24dfe38b-6d18-4700-8386-86f955cbefc3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/app/book/[id]/chapters/[chapter_id]/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/my-books/book/[id]/chapters/update/[chapter_id]/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/book-context.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/book/book-data.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/book/my-book-chapters.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/buttons/new-book-button-label.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/buttons/update-button-label.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/chapter-link.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/chapter/chapter-form-card.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/chapters-pagination.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/remove-chapter-toast.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/get_tag_by_id.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/book/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/book/[id]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/model/story.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/model/story.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/my-books/book/[id]/chapters/new-chapter/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/my-books/book/[id]/chapters/new-chapter/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/my-books/book/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/my-books/book/[id]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/my-books/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/my-books/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/book-drawer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/book-drawer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/book/book-chapters.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/book/book-chapters.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/book/book-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/book/book-content.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/book/book-metadata.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/book/book-metadata.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/buttons/update-book-button.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/chapter/toolbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/chapter/toolbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/form/book-items-confirm-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/book-items-confirm-form.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/form/fields/chapter-content-form-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/fields/chapter-content-form-field.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/form/fields/select-form-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/fields/select-form-field.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/my-books-header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/my-books-header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/pagination.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/pagination.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pagination-component.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pagination-component.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,6 +127,9 @@
       <list>
         <item itemvalue="npm.dev" />
         <item itemvalue="npm.build" />
+        <item itemvalue="npm.dev" />
+        <item itemvalue="npm.build" />
+        <item itemvalue="npm.dev" />
       </list>
     </recent_temporary>
   </component>
@@ -205,12 +180,10 @@
       <workItem from="1717359157979" duration="5196000" />
       <workItem from="1717410950639" duration="6700000" />
       <workItem from="1717471492387" duration="13822000" />
-      <workItem from="1717665858761" duration="14727000" />
-      <workItem from="1717712736278" duration="7514000" />
-      <workItem from="1717759728412" duration="16000" />
-      <workItem from="1717759750912" duration="8607000" />
-      <workItem from="1717784984271" duration="12276000" />
-      <workItem from="1717798940555" duration="14000" />
+      <workItem from="1717509678718" duration="4884000" />
+      <workItem from="1717637214751" duration="3164000" />
+      <workItem from="1717844949534" duration="6277000" />
+      <workItem from="1717858746665" duration="1311000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Add Shadcn-ui">
       <option name="closed" value="true" />
@@ -372,7 +345,23 @@
       <option name="project" value="LOCAL" />
       <updated>1715690154839</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="fix: Pagination length">
+      <option name="closed" value="true" />
+      <created>1717859723142</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1717859723142</updated>
+    </task>
+    <task id="LOCAL-00022" summary="style: Responsible">
+      <option name="closed" value="true" />
+      <created>1717859780293</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1717859780293</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -414,6 +403,9 @@
     <MESSAGE value="feat: items types" />
     <MESSAGE value="fix: logging safety" />
     <MESSAGE value="feat: Componentization" />
+    <MESSAGE value="fix: Pagination length" />
+    <MESSAGE value="style: Responsible" />
+    <option name="LAST_COMMIT_MESSAGE" value="style: Responsible" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
