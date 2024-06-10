@@ -11,7 +11,7 @@ import { TagItems } from "@/components/form/tag-items";
 import { useFieldArray, UseFormReturn } from "react-hook-form";
 import { useManagerTags } from "@/hooks/use-manager-tags";
 import { Info } from "lucide-react";
-import { TooltipItem } from "@/components/tooltip-item";
+import { PopoverInf } from "@/components/popover-inf";
 
 interface InputTagFormFieldProps {
   label: string;
@@ -42,13 +42,13 @@ export const InputTagFormField: FC<InputTagFormFieldProps> = ({
       name={name}
       render={() => (
         <>
-          <TooltipItem
+          <PopoverInf
             trigger={<Info className="w-4 h-4 opacity-70 text-amber-400" />}
           >
             <p className="text-slate-500 dark:text-slate-100">
-              <b>Pressione ENTER</b> para adicionar uma tag
+              <b>Pressione ENTER</b> para adicionar uma tag.
             </p>
-          </TooltipItem>
+          </PopoverInf>
           <FormItem>
             <FormLabel>{label}</FormLabel>
             <FormControl>
