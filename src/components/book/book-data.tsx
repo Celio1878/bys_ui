@@ -13,7 +13,7 @@ export const BookData: FC<BookDataProps> = ({
   chapters_component,
 }) => {
   return (
-    <Card className="flex flex-col w-full items-center justify-center py-8">
+    <Card className="flex flex-col w-full items-center justify-center py-8 bg-slate-100">
       <BookContent book_data={book_data} />
       <Separator className="w-11/12 my-10" />
       {chapters_component}

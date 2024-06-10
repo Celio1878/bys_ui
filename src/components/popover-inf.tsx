@@ -5,15 +5,18 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-interface TooltipItemProps {
+interface PopoverInfProps {
   trigger: ReactNode | string;
   children: ReactNode;
 }
 
-export const PopoverInf: FC<TooltipItemProps> = ({ children, trigger }) => {
+export const PopoverInf: FC<PopoverInfProps> = ({ children, trigger }) => {
   return (
     <Popover>
-      <PopoverTrigger className="relative top-11 right-3 float-end cursor-default">
+      <PopoverTrigger
+        className="relative top-11 right-3 float-end"
+        title="Pressione ENTER para inserir TAG"
+      >
         {trigger}
       </PopoverTrigger>
       <PopoverContent className="text-xs">{children}</PopoverContent>

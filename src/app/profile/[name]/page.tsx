@@ -29,7 +29,7 @@ export default function ProfilePage() {
 
       <MyBooksHeader />
 
-      <Card className="flex flex-wrap w-full items-center justify-center gap-8 py-8">
+      <Card className="flex flex-wrap w-full items-center justify-center gap-8 py-8 bg-zinc-50 dark:bg-neutral-950 dark:border-neutral-950">
         {Array.from({ length: 10 }).map((_, i) => {
           const title = "Livro " + i;
           const id = title.replace(/\s/g, "-").toLowerCase();
@@ -41,7 +41,7 @@ export default function ProfilePage() {
               buttons={
                 <BookDrawer
                   button_label={<UpdateButtonLabel />}
-                  button_type="secondary"
+                  button_type="outline"
                   modal_title="Editar Livro"
                   id={id}
                 />
