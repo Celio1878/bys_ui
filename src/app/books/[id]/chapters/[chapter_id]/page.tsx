@@ -6,11 +6,16 @@ import { useContext } from "react";
 import { BookContext } from "@/components/book-context";
 import { BreadcrumbComponent } from "@/components/breadcrumb-component";
 import { useParams } from "next/navigation";
+import { Separator } from "@/components/ui/separator";
+import { useSession } from "next-auth/react";
+import { CreateComment } from "@/components/create-comment";
+import { Comment } from "@/components/comment";
 
 export default function ChapterPage() {
   const { book } = useContext(BookContext);
   const chapter_title = book.chapters[0].title;
   const { id } = useParams() as { id: string };
+  const { data: session } = useSession() as any;
 
   return (
     <div className="flex flex-col items-center justify-center gap-10 pt-8">
@@ -20,7 +25,7 @@ export default function ChapterPage() {
         chapter_title={chapter_title}
         book_title={book.title}
       />
-      <Card className="w-11/12 lg:w-2/3 xl:w-3/5 py-2 px-6 sm:px-16">
+      <Card className="w-11/12 lg:w-2/3 xl:w-3/5 py-2 px-6 sm:px-16 bg-amber-50">
         <CardHeader>
           <CardTitle className="text-center">{chapter_title}</CardTitle>
         </CardHeader>
@@ -31,6 +36,20 @@ export default function ChapterPage() {
       </Card>
 
       <ChaptersPagination chapters_tags={book.chapters} />
+      <Separator />
+      <Card className="w-full flex flex-col bg-slate-50">
+        <CardHeader>
+          <CardTitle>Comentarios</CardTitle>
+        </CardHeader>
+        <Separator />
+        <CardContent className="flex flex-col w-full mt-7 gap-10">
+          <CreateComment user_name={session?.user.name} />
+          <Separator />
+          <Comment user_name={session?.user.name} />
+          <Comment user_name={session?.user.name} />
+          <Comment user_name={session?.user.name} />
+        </CardContent>
+      </Card>
     </div>
   );
 }
