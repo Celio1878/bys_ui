@@ -5,10 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24dfe38b-6d18-4700-8386-86f955cbefc3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/comment.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/create-comment.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/books/[id]/chapters/[chapter_id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/books/[id]/chapters/[chapter_id]/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/books/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/books/[id]/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/profile/[name]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/profile/[name]/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/book/book-chapters.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/book/book-chapters.tsx" afterDir="false" />
@@ -196,7 +192,7 @@
       <workItem from="1717970246505" duration="2520000" />
       <workItem from="1718021181312" duration="8376000" />
       <workItem from="1718049933650" duration="2988000" />
-      <workItem from="1718052934228" duration="7714000" />
+      <workItem from="1718052934228" duration="8188000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Add Shadcn-ui">
       <option name="closed" value="true" />
@@ -406,7 +402,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718032315181</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="feat: Create Comments component">
+      <option name="closed" value="true" />
+      <created>1718061437612</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1718061437612</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -429,7 +433,6 @@
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat: Add Shadcn-ui" />
     <MESSAGE value="style: Nav menu responsive" />
     <MESSAGE value="feat: Create social icons" />
     <MESSAGE value="ci: Git Ignore" />
@@ -454,7 +457,8 @@
     <MESSAGE value="feat: Create Tooltip info to insert tag" />
     <MESSAGE value="feat: Create components about user profile" />
     <MESSAGE value="style: Responsible and dark mode button color" />
-    <option name="LAST_COMMIT_MESSAGE" value="style: Responsible and dark mode button color" />
+    <MESSAGE value="feat: Create Comments component" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Create Comments component" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
