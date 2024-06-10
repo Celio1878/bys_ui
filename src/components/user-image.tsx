@@ -21,6 +21,7 @@ export const UserImage: FC<UserImageProps> = ({ width, height }) => {
         width,
         height,
         priority: true,
+        quality: 100,
       }}
     />
   );

@@ -16,7 +16,7 @@ interface MemoizedCommandItemProps {
 export const MemoizedCommandItem: FC<MemoizedCommandItemProps> = memo(
   ({ item, sanitized_tags, remove, handle_selected_tag }) => (
     <CommandItem
-      className={`${sanitized_tags.has(item.id) ? "bg-slate-100 " : ""}`}
+      className={`${sanitized_tags.has(item.id) ? "bg-slate-100 dark:bg-slate-800" : ""}`}
       value={item.id}
       key={item.id}
       onSelect={() => {

@@ -13,13 +13,13 @@ export const TagItems: FC<TagItemsProps> = ({ tags, on_remove }) => {
     <div className="flex flex-wrap gap-1">
       {tags.map((tag, i: number) => (
         <Badge
-          className="gap-1.5 text-slate-600 bg-sky-50"
+          className="gap-1.5 text-slate-600 bg-sky-50 dark:bg-sky-950"
           variant="outline"
           key={i}
         >
           <span>{tag.title}</span>
           <button
-            className="rounded-full p-0.5 hover:bg-slate-200 hover:opacity-75 transition-all duration-150"
+            className="rounded-full p-0.5 hover:bg-slate-200 dark:hover:bg-slate-600 hover:opacity-75 transition-all duration-150"
             onClick={(event) => {
               event.preventDefault();
               on_remove(i);

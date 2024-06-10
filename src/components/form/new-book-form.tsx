@@ -27,7 +27,7 @@ export const NewBookForm: FC<NewBookFormProps> = ({ set_book_data }) => {
   }, [form]);
 
   return (
-    <Card className="max-h-[35rem] px-8 py-4 mt-2 bg-slate-50 overflow-y-scroll">
+    <Card className="max-h-[30rem] px-8 py-4 mt-2 bg-slate-50 overflow-y-scroll">
       <Form {...form}>
         <form className="space-y-6">
           <InputFormField form={form} name={"title"} label={"Titulo"} />

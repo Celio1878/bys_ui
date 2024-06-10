@@ -28,7 +28,7 @@ export const BookContent: FC<BookContentProps> = ({ book_data }) => {
     );
   }
 
-  const in_my_library = pathname.includes("my-books");
+  const in_my_library = pathname.includes("profile");
 
   return (
     <div className="flex flex-col sm:flex-row gap-6 items-center sm:items-start justify-center md:px-8 lg:px-0">
