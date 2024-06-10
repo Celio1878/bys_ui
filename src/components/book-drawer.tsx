@@ -72,6 +72,10 @@ export const BookDrawer: FC<BookDrawerProps> = ({
     return () => form_methods.reset(initial_values);
   }, [id]);
 
+  useEffect(() => {
+    if (open) set_tab_name("content");
+  }, [open]);
+
   return (
     <Dialog modal open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
@@ -83,22 +87,20 @@ export const BookDrawer: FC<BookDrawerProps> = ({
         </Button>
       </DialogTrigger>
       <DialogContent>
+        <DialogHeader>
+          <DialogTitle>{modal_title}</DialogTitle>
+        </DialogHeader>
         <FormProvider {...form_methods}>
-          <DialogHeader>
-            <DialogTitle>{modal_title}</DialogTitle>
-          </DialogHeader>
-          <div>
-            <NewBookSteps tab_name={tab_name} />
-          </div>
-          <DialogFooter>
-            <NewBookDrawerButtons
-              tab_name={tab_name}
-              set_tab_name={set_tab_name}
-              book_values={form_methods.getValues()}
-              on_cancel={() => setOpen(false)}
-            />
-          </DialogFooter>
+          <NewBookSteps tab_name={tab_name} />
         </FormProvider>
+        <DialogFooter>
+          <NewBookDrawerButtons
+            tab_name={tab_name}
+            set_tab_name={set_tab_name}
+            book_values={form_methods.getValues()}
+            on_cancel={() => setOpen(false)}
+          />
+        </DialogFooter>
       </DialogContent>
     </Dialog>
   );

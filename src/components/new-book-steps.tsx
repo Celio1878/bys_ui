@@ -12,7 +12,7 @@ export const NewBookSteps: FC<NewBookStepsProps> = ({ tab_name }) => {
   const [book_data, set_book_data] = useState<any>(null);
 
   return (
-    <Tabs value={tab_name}>
+    <Tabs value={tab_name} defaultValue="content">
       <TabsList>
         <TabsTrigger value="content" disabled={tab_name !== "content"}>
           Conteudo

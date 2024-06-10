@@ -10,6 +10,8 @@ import { Input } from "@/components/ui/input";
 import { TagItems } from "@/components/form/tag-items";
 import { useFieldArray, UseFormReturn } from "react-hook-form";
 import { useManagerTags } from "@/hooks/use-manager-tags";
+import { Info } from "lucide-react";
+import { TooltipItem } from "@/components/tooltip-item";
 
 interface InputTagFormFieldProps {
   label: string;
@@ -39,18 +41,27 @@ export const InputTagFormField: FC<InputTagFormFieldProps> = ({
       control={form.control}
       name={name}
       render={() => (
-        <FormItem>
-          <FormLabel>{label}</FormLabel>
-          <FormControl>
-            <Input
-              ref={ref}
-              placeholder={placeholder}
-              onKeyDown={handle_key_down}
-            />
-          </FormControl>
-          <TagItems tags={tag_values} on_remove={remove} />
-          <FormMessage />
-        </FormItem>
+        <>
+          <TooltipItem
+            trigger={<Info className="w-4 h-4 opacity-70 text-amber-400" />}
+          >
+            <p className="text-slate-500 dark:text-slate-100">
+              <b>Pressione ENTER</b> para adicionar uma tag
+            </p>
+          </TooltipItem>
+          <FormItem>
+            <FormLabel>{label}</FormLabel>
+            <FormControl>
+              <Input
+                ref={ref}
+                placeholder={placeholder}
+                onKeyDown={handle_key_down}
+              />
+            </FormControl>
+            <TagItems tags={tag_values} on_remove={remove} />
+            <FormMessage />
+          </FormItem>
+        </>
       )}
     />
   );

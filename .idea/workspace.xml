@@ -5,7 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24dfe38b-6d18-4700-8386-86f955cbefc3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/components/pagination-component.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pagination-component.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/follow-component.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/follow-modal.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/follow-trigger.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/book-drawer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/book-drawer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/book/book-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/book/book-content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/buttons/new-book-drawer-buttons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/buttons/new-book-drawer-buttons.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/buttons/new-book-drawer-confirm-buttons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/buttons/new-book-drawer-confirm-buttons.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/buttons/new-book-drawer-cover-buttons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/buttons/new-book-drawer-cover-buttons.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/buttons/new-book-drawer-form-buttons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/buttons/new-book-drawer-form-buttons.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/new-book-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/new-book-form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/select-combobox/memoized-command-item.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/select-combobox/memoized-command-item.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/tag-items.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/tag-items.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/tag-search-items.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/tag-search-items.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/new-book-steps.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/new-book-steps.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,11 +108,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/app/profile/[name]" />
       <recent name="$PROJECT_DIR$/src/lib" />
       <recent name="$PROJECT_DIR$/src/app/search" />
       <recent name="$PROJECT_DIR$/src/app/api/auth" />
       <recent name="$PROJECT_DIR$/src/components" />
-      <recent name="$PROJECT_DIR$/src/components/shell" />
     </key>
   </component>
   <component name="RunManager" selected="npm.dev">
@@ -184,6 +197,9 @@
       <workItem from="1717637214751" duration="3164000" />
       <workItem from="1717844949534" duration="6277000" />
       <workItem from="1717858746665" duration="1311000" />
+      <workItem from="1717927143092" duration="9209000" />
+      <workItem from="1717970246505" duration="2520000" />
+      <workItem from="1718021181312" duration="8376000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Add Shadcn-ui">
       <option name="closed" value="true" />
@@ -361,7 +377,31 @@
       <option name="project" value="LOCAL" />
       <updated>1717859780293</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="style: Remove unnecessary definitions">
+      <option name="closed" value="true" />
+      <created>1717860334305</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1717860334305</updated>
+    </task>
+    <task id="LOCAL-00024" summary="feat: Create Tooltip info to insert tag">
+      <option name="closed" value="true" />
+      <created>1718029790833</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1718029790833</updated>
+    </task>
+    <task id="LOCAL-00025" summary="feat: Create components about user profile">
+      <option name="closed" value="true" />
+      <created>1718029940609</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1718029940609</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -405,7 +445,10 @@
     <MESSAGE value="feat: Componentization" />
     <MESSAGE value="fix: Pagination length" />
     <MESSAGE value="style: Responsible" />
-    <option name="LAST_COMMIT_MESSAGE" value="style: Responsible" />
+    <MESSAGE value="style: Remove unnecessary definitions" />
+    <MESSAGE value="feat: Create Tooltip info to insert tag" />
+    <MESSAGE value="feat: Create components about user profile" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Create components about user profile" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

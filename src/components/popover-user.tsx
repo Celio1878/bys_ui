@@ -15,9 +15,7 @@ export const PopoverUser: FC<Props> = ({ session }) => {
       <PopoverTrigger>
         <UserImage {...{ width: 45, height: 45 }} />
       </PopoverTrigger>
-      <PopoverInfUser
-        {...{ session, on_close_popover: () => set_open(false) }}
-      />
+      <PopoverInfUser {...{ session }} />
     </Popover>
   );
 };

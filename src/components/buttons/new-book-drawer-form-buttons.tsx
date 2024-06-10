@@ -5,16 +5,18 @@ import { NextStepButton } from "@/components/buttons/next-step-button";
 interface NewBookDrawerFormButtonsProps {
   on_cancel: VoidFunction;
   next_step_click: VoidFunction;
+  disabled: boolean;
 }
 
 export const NewBookDrawerFormButtons: FC<NewBookDrawerFormButtonsProps> = ({
   on_cancel,
   next_step_click,
+  disabled,
 }) => {
   return (
-    <div className={"w-[12rem] flex justify-between items-end self-end"}>
+    <div className="flex justify-between items-end self-end gap-2">
       <CancelButton on_click={on_cancel} />
-      <NextStepButton on_click={next_step_click} />
+      <NextStepButton on_click={next_step_click} disabled={disabled} />
     </div>
   );
 };
