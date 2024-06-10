@@ -36,7 +36,7 @@ export const BooksCarousel: FC<BookCarouselProps> = ({ section_title }) => {
           {Array.from({ length: 20 }).map((_, i) => {
             const title = "Livro " + i;
             const id = title.replace(/\s/g, "-").toLowerCase();
-            const href = `/book/${id}`;
+            const href = `/books/${id}`;
 
             return (
               <CarouselItem

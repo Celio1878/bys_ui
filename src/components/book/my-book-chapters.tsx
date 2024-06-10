@@ -29,7 +29,7 @@ export const MyBookChapters: FC<MyBookChaptersProps> = ({ chapters_tags }) => {
   }
 
   return (
-    <Card className="w-11/12 divide-y divide-dashed">
+    <Card className="w-11/12 divide-y divide-dashed divide-slate-200 dark:divide-slate-800">
       <CardHeader className="flex flex-row items-center justify-between">
         <CardTitle className="text-4xl">Capitulos</CardTitle>
         <NewChapterButton />

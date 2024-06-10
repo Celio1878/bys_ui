@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   title: "Be Your Stories",
   description: "Create Books",
   applicationName: "BYS",
-  keywords: ["beYourStories", "stories", "story", "book", "create-book"],
+  keywords: ["beYourStories", "stories", "story", "book", "create-books"],
   category: "entertainment",
   classification: "free",
   creator: "Celio Vieira",
