@@ -14,7 +14,7 @@ export const NewBookDrawerCoverButtons: FC<NewBookDrawerCoverButtonsProps> = ({
   disabled,
 }) => {
   return (
-    <div className={"w-[12rem] flex justify-between items-end self-end"}>
+    <div className="flex justify-between items-end self-end gap-2">
       <GoBackButton on_click={go_back_click} />
       <NextStepButton disabled={disabled} on_click={next_step_click} />
     </div>

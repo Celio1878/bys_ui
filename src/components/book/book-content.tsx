@@ -27,7 +27,7 @@ export const BookContent: FC<BookContentProps> = ({ book_data }) => {
       }),
     );
   }
-  
+
   const in_my_library = pathname.includes("profile");
 
   return (

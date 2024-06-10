@@ -71,7 +71,7 @@ export const BookDrawer: FC<BookDrawerProps> = ({
 
     return () => form_methods.reset(initial_values);
   }, [id]);
-  
+
   useEffect(() => {
     if (open) set_tab_name("content");
   }, [open]);

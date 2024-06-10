@@ -16,6 +16,15 @@ export const NewBookDrawerButtons: FC<BookDrawerButtonsProps> = ({
   on_cancel,
   book_values,
 }) => {
+  const disable =
+    !book_values.title ||
+    !book_values.description ||
+    !book_values.genre ||
+    !book_values.copyright ||
+    !book_values.age_range ||
+    book_values.warnings.length === 0 ||
+    book_values.coauthors.length === 0;
+
   switch (tab_name) {
     case "content":
       return (
@@ -23,15 +32,15 @@ export const NewBookDrawerButtons: FC<BookDrawerButtonsProps> = ({
           on_cancel={on_cancel}
           next_step_click={() => {
             console.log(book_values, "BOOK VALUES");
-
             set_tab_name("cover");
           }}
+          disabled={disable}
         />
       );
     case "cover":
       return (
         <NewBookDrawerCoverButtons
-          disabled={false}
+          disabled={disable}
           go_back_click={() => set_tab_name("content")}
           next_step_click={() => set_tab_name("confirm")}
         />
@@ -40,8 +49,9 @@ export const NewBookDrawerButtons: FC<BookDrawerButtonsProps> = ({
     case "confirm":
       return (
         <NewBookDrawerConfirmButtons
-          disabled={false}
+          disabled={disable}
           go_back_click={() => set_tab_name("cover")}
+          on_confirm_click={() => console.log(book_values, "BOOK VALUES")}
         />
       );
   }
