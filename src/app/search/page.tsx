@@ -23,7 +23,7 @@ export default function SearchPage() {
           {Array.from({ length: 10 }).map((_, i) => {
             const title = `Livro ${i + 1}`;
             const id = title.replace(/\s/g, "-").toLowerCase();
-            const href = `/book/${id}`;
+            const href = `/books/${id}`;
 
             return <Book title={title} key={i} href={href} />;
           })}
