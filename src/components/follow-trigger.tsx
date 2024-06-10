@@ -12,12 +12,12 @@ export const FollowTrigger: FC<FollowTriggerProps> = ({
   icon,
 }) => {
   return (
-    <div className="flex flex-col items-center gap-2 border rounded-md p-2 hover:bg-slate-100 dark:hover:bg-slate-800">
+    <div className="flex flex-col items-center gap-2 border dark:border-slate-700 rounded-md p-2 hover:bg-slate-100 dark:hover:bg-slate-800">
       <div className="flex flex-row gap-2">
         {icon}
         <h6 className="opacity-70">{label}</h6>
       </div>
-      {quantity}
+      <span className="font-semibold">{quantity}</span>
     </div>
   );
 };

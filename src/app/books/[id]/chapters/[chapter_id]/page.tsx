@@ -4,15 +4,25 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChaptersPagination } from "@/components/chapters-pagination";
 import { useContext } from "react";
 import { BookContext } from "@/components/book-context";
+import { BreadcrumbComponent } from "@/components/breadcrumb-component";
+import { useParams } from "next/navigation";
 
 export default function ChapterPage() {
   const { book } = useContext(BookContext);
+  const chapter_title = book.chapters[0].title;
+  const { id } = useParams() as { id: string };
 
   return (
-    <div className="flex flex-col items-center justify-center gap-10">
-      <Card className="w-10/12 lg:w-2/3 xl:w-3/5 py-4 px-6 sm:px-16">
+    <div className="flex flex-col items-center justify-center gap-10 pt-8">
+      <BreadcrumbComponent
+        book_link={`/books/${id}`}
+        chapters_link={`/books/${id}/#chapters`}
+        chapter_title={chapter_title}
+        book_title={book.title}
+      />
+      <Card className="w-11/12 lg:w-2/3 xl:w-3/5 py-2 px-6 sm:px-16">
         <CardHeader>
-          <CardTitle className="text-center">Chapter Name</CardTitle>
+          <CardTitle className="text-center">{chapter_title}</CardTitle>
         </CardHeader>
         <CardContent
           className="flex flex-col gap-1 p-0 leading-6 indent-2.5"

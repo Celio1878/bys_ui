@@ -33,7 +33,7 @@ export default function ProfilePage() {
         {Array.from({ length: 10 }).map((_, i) => {
           const title = "Livro " + i;
           const id = title.replace(/\s/g, "-").toLowerCase();
-          const href = `${pathname}/book/${id}`;
+          const href = `${pathname}/books/${id}`;
 
           return (
             <Book
@@ -41,7 +41,7 @@ export default function ProfilePage() {
               buttons={
                 <BookDrawer
                   button_label={<UpdateButtonLabel />}
-                  button_type="outline"
+                  button_type="secondary"
                   modal_title="Editar Livro"
                   id={id}
                 />
