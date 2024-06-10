@@ -46,7 +46,7 @@ export const InputTagFormField: FC<InputTagFormFieldProps> = ({
             trigger={<Info className="w-4 h-4 opacity-70 text-amber-400" />}
           >
             <p className="text-slate-500 dark:text-slate-100">
-              <b>Pressione ENTER</b> para adicionar uma tag.
+              <b>Pressione ENTER</b> para inserir uma tag.
             </p>
           </PopoverInf>
           <FormItem>

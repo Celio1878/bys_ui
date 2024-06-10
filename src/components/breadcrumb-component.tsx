@@ -11,8 +11,8 @@ import { FC } from "react";
 interface BreadcrumbComponentProps {
   book_title: string;
   book_link: string;
-  chapter_title: string;
-  chapters_link: string;
+  chapter_title?: string;
+  chapters_link?: string;
 }
 
 export const BreadcrumbComponent: FC<BreadcrumbComponentProps> = ({
@@ -22,7 +22,7 @@ export const BreadcrumbComponent: FC<BreadcrumbComponentProps> = ({
   book_title,
 }) => {
   return (
-    <Breadcrumb className="absolute top-[10rem] left-11 mr-auto">
+    <Breadcrumb className="absolute top-[10rem] sm:left-11 mr-auto">
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink href={"/"}>Home</BreadcrumbLink>
@@ -33,16 +33,24 @@ export const BreadcrumbComponent: FC<BreadcrumbComponentProps> = ({
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbLink href={book_link}>{book_title}</BreadcrumbLink>
+          {chapter_title && chapters_link ? (
+            <BreadcrumbLink href={book_link}>{book_title}</BreadcrumbLink>
+          ) : (
+            <BreadcrumbPage>{book_title}</BreadcrumbPage>
+          )}
         </BreadcrumbItem>
-        <BreadcrumbSeparator />
-        <BreadcrumbItem>
-          <BreadcrumbLink href={chapters_link}>Capitulos</BreadcrumbLink>
-        </BreadcrumbItem>
-        <BreadcrumbSeparator />
-        <BreadcrumbItem>
-          <BreadcrumbPage>{chapter_title}</BreadcrumbPage>
-        </BreadcrumbItem>
+        {chapter_title && chapters_link && (
+          <>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink href={chapters_link}>Capitulos</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>{chapter_title}</BreadcrumbPage>
+            </BreadcrumbItem>
+          </>
+        )}
       </BreadcrumbList>
     </Breadcrumb>
   );
