@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext } from "react";
-import { book_data } from "@/app/model/story";
+import { book_data } from "@/utils/mocks";
 
 export const BookContext = createContext({
   book: book_data,

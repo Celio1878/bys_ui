@@ -3,6 +3,6 @@ import { LoaderCircle } from "lucide-react";
 
 export const Loading: FC = () => {
   return (
-    <LoaderCircle className="fixed top-1/2 w-20 h-20 animate-spin text-violet-600 z-20" />
+    <LoaderCircle className="absolute top-1/2 left-[37rem] w-20 h-20 animate-spin text-violet-600 z-20" />
   );
 };

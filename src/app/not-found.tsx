@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export default function NotFound() {
   return (
@@ -11,18 +12,18 @@ export default function NotFound() {
           height: 500,
           alt: "404-Error",
           priority: true,
+          className: "relative bottom-20",
         }}
       />
 
-      <div className="w-full flex flex-col items-center">
-        <p className="text-4xl text-white underline"> Página Não Encontrada </p>
+      <div className="relative bottom-10 w-full flex flex-col items-center gap-4 text-center bg-slate-200 dark:bg-slate-900 rounded-md py-10">
+        <p className="text-3xl sm:text-4xl text-red-500 underline">
+          Página Não Encontrada
+        </p>
         <p className="text-zinc-500">A página que vocé procura não existe.</p>
-        <Link
-          className="w-10/12 sm:w-1/3 bg-indigo-800 py-2 rounded hover:opacity-80 duration-300 mt-4 text-center text-slate-300"
-          href="/"
-        >
-          Voltar para a página inicial
-        </Link>
+        <Button className="bg-sky-600 hover:bg-sky-700 dark:bg-sky-800 dark:hover:bg-sky-900 dark:text-white transition-all duration-300">
+          <Link href="/">Voltar para a página inicial</Link>
+        </Button>
       </div>
     </>
   );

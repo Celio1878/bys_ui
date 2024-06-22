@@ -5,6 +5,7 @@ import { BookMetadata } from "@/components/book/book-metadata";
 import { Tag } from "@/app/model/story";
 import { format } from "date-fns";
 import { get_tag_by_id } from "@/utils/get_tag_by_id";
+import { useSession } from "next-auth/react";
 
 type Book = {
   title: string;
@@ -24,8 +25,15 @@ interface BookItemsConfirmFormProps {
 export const BookItemsConfirmForm: FC<BookItemsConfirmFormProps> = ({
   book_data,
 }) => {
+  const { data: session } = useSession();
+  const author: Tag<string> = {
+    id: session?.user?.email!,
+    title: session?.user?.name!,
+  };
+
   const book = {
     ...book_data,
+    coauthors: book_data.coauthors.concat(author),
     age_range: get_tag_by_id(book_data.age_range, "age_range").title,
     copyright: get_tag_by_id(book_data.copyright, "copyright").title,
     genre: get_tag_by_id(book_data.genre, "genre").title,
