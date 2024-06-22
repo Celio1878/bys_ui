@@ -2,17 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { signIn } from "next-auth/react";
 
-interface GlobalErrorProps {
-  error: Error & { digest?: string };
-  reset: VoidFunction;
-}
-
-export default function GlobalError({ error, reset }: GlobalErrorProps) {
-  console.error(error, "ERROR");
-
+export default function AuthError() {
   return (
     <>
       <Image
@@ -38,7 +32,7 @@ export default function GlobalError({ error, reset }: GlobalErrorProps) {
             <ArrowLeft />
             <span>Voltar</span>
           </Link>
-          <Button onClick={reset}>Tente de Novo</Button>
+          <Button onClick={() => signIn("google")}>Tente de Novo</Button>
         </div>
       </section>
     </>

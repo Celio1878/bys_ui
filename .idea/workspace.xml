@@ -5,14 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24dfe38b-6d18-4700-8386-86f955cbefc3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/app/books/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/books/[id]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/profile/[name]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/profile/[name]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/book/book-chapters.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/book/book-chapters.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/book/book-data.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/book/book-data.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/breadcrumb-component.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/breadcrumb-component.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/buttons/chapter-list-buttons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/buttons/chapter-list-buttons.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/form/fields/input-tag-form-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/fields/input-tag-form-field.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/popover-inf.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/popover-inf.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/api/auth/error/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/model/profile-dto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hooks/fetcher.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hooks/use-profile-api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/auth/[...nextauth]/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/auth/[...nextauth]/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/global-error.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/global-error.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/not-found.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/not-found.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/buttons/google-login-button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/buttons/google-login-button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/loading.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/loading.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shell/footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shell/footer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shell/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shell/header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shell/main-layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shell/main-layout.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,31 +73,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;code.cleanup.on.save&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/swango/Documents/projects/bys&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.stylelint&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_interpreter_path&quot;: &quot;/home/swango/.nvm/versions/node/v22.0.0/bin/node&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.build.executor&quot;: &quot;Run&quot;,
-    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/home/swango/Documents/projects/be_your_stories/bys_ui/node_modules/prettier&quot;,
-    &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/home/swango/Documents/projects/be_your_stories/bys_ui/node_modules/typescript/lib&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "code.cleanup.on.save": "true",
+    "git-widget-placeholder": "develop",
+    "last_opened_file_path": "/home/swango/Documents/projects/be_your_stories/bys_ui/src/app/api/auth",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.stylelint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.stylelint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_interpreter_path": "/home/swango/.nvm/versions/node/v22.0.0/bin/node",
+    "nodejs_package_manager_path": "npm",
+    "npm.build.executor": "Run",
+    "npm.dev.executor": "Run",
+    "prettierjs.PrettierConfiguration.Package": "/home/swango/Documents/projects/be_your_stories/bys_ui/node_modules/prettier",
+    "rearrange.code.on.save": "true",
+    "settings.editor.selected.configurable": "aws.codewhisperer",
+    "ts.external.directory.path": "/home/swango/Documents/projects/be_your_stories/bys_ui/node_modules/typescript/lib"
   }
-}</component>
+}]]></component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -101,11 +108,14 @@
     </option>
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/app/api/auth" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/app/api/auth" />
       <recent name="$PROJECT_DIR$/src/app/profile/[name]" />
       <recent name="$PROJECT_DIR$/src/lib" />
       <recent name="$PROJECT_DIR$/src/app/search" />
-      <recent name="$PROJECT_DIR$/src/app/api/auth" />
       <recent name="$PROJECT_DIR$/src/components" />
     </key>
   </component>
@@ -134,13 +144,15 @@
       <list>
         <item itemvalue="npm.dev" />
         <item itemvalue="npm.build" />
+        <item itemvalue="npm.dev" />
+        <item itemvalue="npm.build" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-WS-241.17890.13" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-WS-241.18034.50" />
       </set>
     </attachedChunks>
   </component>
@@ -193,6 +205,13 @@
       <workItem from="1718021181312" duration="8376000" />
       <workItem from="1718049933650" duration="2988000" />
       <workItem from="1718052934228" duration="8188000" />
+      <workItem from="1718097029980" duration="17573000" />
+      <workItem from="1718129220584" duration="4003000" />
+      <workItem from="1718879345063" duration="34000" />
+      <workItem from="1718879887122" duration="4596000" />
+      <workItem from="1718904526214" duration="13304000" />
+      <workItem from="1719052730539" duration="20000" />
+      <workItem from="1719052759151" duration="8428000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Add Shadcn-ui">
       <option name="closed" value="true" />
@@ -458,7 +477,6 @@
     <MESSAGE value="feat: Create components about user profile" />
     <MESSAGE value="style: Responsible and dark mode button color" />
     <MESSAGE value="feat: Create Comments component" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Create Comments component" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
