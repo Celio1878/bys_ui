@@ -13,14 +13,9 @@ import { NewBookDrawerButtons } from "@/components/buttons/new-book-drawer-butto
 import { NewBookSteps } from "@/components/new-book-steps";
 import { Button } from "@/components/ui/button";
 import { FormProvider, useForm } from "react-hook-form";
-import {
-  AgeRangeTags,
-  CopyrightTags,
-  GenreTags,
-  Tag,
-  Warning,
-  WarningTags,
-} from "@/app/model/story";
+import { Tag, Warning } from "@/app/model/story";
+import { get_book_data } from "@/utils/mocks";
+import { useSession } from "next-auth/react";
 
 type BookFormValues = {
   title: string;
@@ -57,6 +52,7 @@ export const BookDrawer: FC<BookDrawerProps> = ({
   button_type,
   modal_title,
 }) => {
+  const { data: session } = useSession();
   const [open, setOpen] = useState(false);
   const [tab_name, set_tab_name] = useState("content");
   const form_methods = useForm({
@@ -75,6 +71,11 @@ export const BookDrawer: FC<BookDrawerProps> = ({
   useEffect(() => {
     if (open) set_tab_name("content");
   }, [open]);
+
+  const book_data = {
+    ...form_methods.getValues(),
+    author: { id: session?.user?.email!, title: session?.user?.name! },
+  };
 
   return (
     <Dialog modal open={open} onOpenChange={setOpen}>
@@ -97,7 +98,7 @@ export const BookDrawer: FC<BookDrawerProps> = ({
           <NewBookDrawerButtons
             tab_name={tab_name}
             set_tab_name={set_tab_name}
-            book_values={form_methods.getValues()}
+            book_values={book_data}
             on_cancel={() => setOpen(false)}
           />
         </DialogFooter>
@@ -105,24 +106,3 @@ export const BookDrawer: FC<BookDrawerProps> = ({
     </Dialog>
   );
 };
-
-function get_book_data(id: string): BookFormValues {
-  return {
-    title: "Livro " + id,
-    description:
-      "Todo autor aspira em ser esse tecelão de realidades e de conseguir arrebatar o leitor dessa maneira. Penso que, mais do que uma boa história e bons personagens, o que captura o leitor é a prosa e as descrições. Quando escrevemos, lutamos para encaixar no vocabulário aquilo que o olhar da mente enxerga com tanta clareza. Quando lemos, sentimos desgosto e abandonamos livros que falham em descrever de maneira clara o mundo que vivemos, ou o mundo imaginário, em todas as suas camadas físicas, psicológicas e emocionais.",
-    tags: [{ id: "taste", title: "taste" }],
-    age_range: AgeRangeTags[0].id,
-    warnings: [
-      { id: WarningTags[1].id, title: WarningTags[1].title },
-      { id: WarningTags[3].id, title: WarningTags[3].title },
-      { id: WarningTags[4].id, title: WarningTags[4].title },
-    ],
-    coauthors: [
-      { title: "Autor 3", id: "author_3" },
-      { title: "Autor 4", id: "author_4" },
-    ],
-    copyright: CopyrightTags[1].id,
-    genre: GenreTags[0].id,
-  };
-}
