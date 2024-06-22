@@ -48,6 +48,7 @@ export const CheckboxListFormField: FC<CheckboxListFormFieldProps> = ({
                 >
                   <FormControl>
                     <Checkbox
+                      className="bg-white"
                       checked={sanitized_tags.has(item.id)}
                       onCheckedChange={() => handle_selected_tag(item, remove)}
                     />
