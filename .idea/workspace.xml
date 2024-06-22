@@ -6,10 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="24dfe38b-6d18-4700-8386-86f955cbefc3" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/src/utils/mocks.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/model/story.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/model/story.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/profile/[name]/books/[id]/chapters/update/[chapter_id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/profile/[name]/books/[id]/chapters/update/[chapter_id]/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/book-context.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/book-context.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/book-drawer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/book-drawer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/book/book-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/book/book-content.tsx" afterDir="false" />
@@ -209,7 +207,7 @@
       <workItem from="1718904526214" duration="13304000" />
       <workItem from="1719052730539" duration="20000" />
       <workItem from="1719052759151" duration="10005000" />
-      <workItem from="1719062773689" duration="13772000" />
+      <workItem from="1719062773689" duration="14157000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Add Shadcn-ui">
       <option name="closed" value="true" />
@@ -467,7 +465,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719061539657</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="ci: Update libs">
+      <option name="closed" value="true" />
+      <created>1719092545732</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1719092545732</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -490,7 +496,6 @@
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="ci: Update GitIgnore" />
     <MESSAGE value="feat: Google Login" />
     <MESSAGE value="feat: Login success header" />
     <MESSAGE value="feat: Profile image priority" />
@@ -515,6 +520,7 @@
     <MESSAGE value="feat: Fetcher data" />
     <MESSAGE value="style: Loading" />
     <MESSAGE value="ci: Add new libs" />
+    <MESSAGE value="ci: Update libs" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
