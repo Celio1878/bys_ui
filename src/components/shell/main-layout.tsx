@@ -4,6 +4,7 @@ import { NavMenu } from "@/components/shell/nav-menu";
 import { Footer } from "@/components/shell/footer";
 import { Contents } from "@/components/shell/contents";
 import { Separator } from "@/components/ui/separator";
+import { Loading } from "@/components/loading";
 
 interface MainLayoutProps {
   children: ReactNode;
@@ -11,7 +12,7 @@ interface MainLayoutProps {
 
 export const MainLayout: FC<MainLayoutProps> = ({ children }) => {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<Loading />}>
       <main className="flex-1 flex-col min-h-screen">
         <Header />
         <NavMenu />

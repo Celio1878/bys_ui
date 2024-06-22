@@ -5,14 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24dfe38b-6d18-4700-8386-86f955cbefc3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/app/books/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/books/[id]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/profile/[name]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/profile/[name]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/book/book-chapters.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/book/book-chapters.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/book/book-data.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/book/book-data.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/breadcrumb-component.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/breadcrumb-component.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/buttons/chapter-list-buttons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/buttons/chapter-list-buttons.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/form/fields/input-tag-form-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/fields/input-tag-form-field.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/popover-inf.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/popover-inf.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/fields/checkbox-list-form-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/fields/checkbox-list-form-field.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/fields/select-form-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/fields/select-form-field.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +16,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -72,7 +66,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;code.cleanup.on.save&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/swango/Documents/projects/bys&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/swango/Documents/projects/be_your_stories/bys_ui/src/app/api/auth&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
@@ -87,7 +81,7 @@
     &quot;npm.dev.executor&quot;: &quot;Run&quot;,
     &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/home/swango/Documents/projects/be_your_stories/bys_ui/node_modules/prettier&quot;,
     &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;aws.codewhisperer&quot;,
     &quot;ts.external.directory.path&quot;: &quot;/home/swango/Documents/projects/be_your_stories/bys_ui/node_modules/typescript/lib&quot;
   }
 }</component>
@@ -101,15 +95,18 @@
     </option>
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/app/api/auth" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/app/api/auth" />
       <recent name="$PROJECT_DIR$/src/app/profile/[name]" />
       <recent name="$PROJECT_DIR$/src/lib" />
       <recent name="$PROJECT_DIR$/src/app/search" />
-      <recent name="$PROJECT_DIR$/src/app/api/auth" />
       <recent name="$PROJECT_DIR$/src/components" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.dev">
+  <component name="RunManager" selected="npm.build">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -132,6 +129,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.build" />
+        <item itemvalue="npm.dev" />
         <item itemvalue="npm.dev" />
         <item itemvalue="npm.build" />
       </list>
@@ -140,7 +139,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-WS-241.17890.13" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-WS-241.18034.50" />
       </set>
     </attachedChunks>
   </component>
@@ -193,6 +192,14 @@
       <workItem from="1718021181312" duration="8376000" />
       <workItem from="1718049933650" duration="2988000" />
       <workItem from="1718052934228" duration="8188000" />
+      <workItem from="1718097029980" duration="17573000" />
+      <workItem from="1718129220584" duration="4003000" />
+      <workItem from="1718879345063" duration="34000" />
+      <workItem from="1718879887122" duration="4596000" />
+      <workItem from="1718904526214" duration="13304000" />
+      <workItem from="1719052730539" duration="20000" />
+      <workItem from="1719052759151" duration="10005000" />
+      <workItem from="1719062773689" duration="14741000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Add Shadcn-ui">
       <option name="closed" value="true" />
@@ -410,7 +417,71 @@
       <option name="project" value="LOCAL" />
       <updated>1718061437612</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="fix: Error pages">
+      <option name="closed" value="true" />
+      <created>1719061346707</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1719061346707</updated>
+    </task>
+    <task id="LOCAL-00029" summary="feat: Memoization components">
+      <option name="closed" value="true" />
+      <created>1719061448851</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1719061448851</updated>
+    </task>
+    <task id="LOCAL-00030" summary="feat: Fetcher data">
+      <option name="closed" value="true" />
+      <created>1719061490211</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1719061490211</updated>
+    </task>
+    <task id="LOCAL-00031" summary="style: Loading">
+      <option name="closed" value="true" />
+      <created>1719061516425</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1719061516425</updated>
+    </task>
+    <task id="LOCAL-00032" summary="ci: Add new libs">
+      <option name="closed" value="true" />
+      <created>1719061539657</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1719061539657</updated>
+    </task>
+    <task id="LOCAL-00033" summary="ci: Update libs">
+      <option name="closed" value="true" />
+      <created>1719092545732</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1719092545732</updated>
+    </task>
+    <task id="LOCAL-00034" summary="feat: Mocks">
+      <option name="closed" value="true" />
+      <created>1719092871982</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1719092871982</updated>
+    </task>
+    <task id="LOCAL-00035" summary="feat: Add author in book form">
+      <option name="closed" value="true" />
+      <created>1719093381369</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1719093381369</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -433,14 +504,6 @@
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="style: Nav menu responsive" />
-    <MESSAGE value="feat: Create social icons" />
-    <MESSAGE value="ci: Git Ignore" />
-    <MESSAGE value="feat: Nav Menu" />
-    <MESSAGE value="feat: Main layout" />
-    <MESSAGE value="ci: Update GitIgnore" />
-    <MESSAGE value="feat: Google Login" />
-    <MESSAGE value="feat: Login success header" />
     <MESSAGE value="feat: Profile image priority" />
     <MESSAGE value="feat: Popover User" />
     <MESSAGE value="feat: My books page" />
@@ -458,7 +521,15 @@
     <MESSAGE value="feat: Create components about user profile" />
     <MESSAGE value="style: Responsible and dark mode button color" />
     <MESSAGE value="feat: Create Comments component" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Create Comments component" />
+    <MESSAGE value="fix: Error pages" />
+    <MESSAGE value="feat: Memoization components" />
+    <MESSAGE value="feat: Fetcher data" />
+    <MESSAGE value="style: Loading" />
+    <MESSAGE value="ci: Add new libs" />
+    <MESSAGE value="ci: Update libs" />
+    <MESSAGE value="feat: Mocks" />
+    <MESSAGE value="feat: Add author in book form" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Add author in book form" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

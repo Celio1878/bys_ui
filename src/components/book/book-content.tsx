@@ -29,6 +29,10 @@ export const BookContent: FC<BookContentProps> = ({ book_data }) => {
   }
 
   const in_my_library = pathname.includes("profile");
+  const book_values = {
+    ...book_data,
+    coauthors: book_data.coauthors.concat(book_data.author),
+  };
 
   return (
     <div className="flex flex-col sm:flex-row gap-6 items-center sm:items-start justify-center md:px-8 lg:px-0">
@@ -62,7 +66,7 @@ export const BookContent: FC<BookContentProps> = ({ book_data }) => {
           </div>
         )}
       </div>
-      <BookMetadata book_data={book_data} />
+      <BookMetadata book_data={book_values} />
     </div>
   );
 };

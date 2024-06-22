@@ -25,12 +25,26 @@ const auth_options: NextAuthOptions = {
     }),
   ],
   callbacks: {
-    jwt: async ({ token, user }) => ({ ...user, ...token }),
-    session: async ({ session, token }) => ({ ...token, ...session }),
+    jwt: async ({ token, user, account }) => {
+      if (account) {
+        token.account = account;
+      }
+
+      return {
+        ...user,
+        ...token,
+      };
+    },
+    session: async ({ session, token }) => {
+      return {
+        ...token,
+        ...session,
+      };
+    },
     redirect: async () => "/",
   },
   session: { strategy: "jwt" },
-  pages: { signIn: "/", signOut: "/" },
+  pages: { signIn: "/", signOut: "/", error: "/api/auth/error" },
 };
 
 const handler = NextAuth(auth_options);

@@ -34,13 +34,17 @@ export const SelectFormField: FC<SelectFormFieldProps> = memo(
           <FormLabel>{label}</FormLabel>
           <Select onValueChange={field.onChange} defaultValue={field.value}>
             <FormControl>
-              <SelectTrigger>
+              <SelectTrigger className="opacity-65">
                 <SelectValue placeholder={placeholder} />
               </SelectTrigger>
             </FormControl>
             <SelectContent>
               {list_items.map((item) => (
-                <SelectItem key={item.id} value={item.id}>
+                <SelectItem
+                  className="cursor-pointer hover:font-semibold"
+                  key={item.id}
+                  value={item.id}
+                >
                   {item.title}
                 </SelectItem>
               ))}
