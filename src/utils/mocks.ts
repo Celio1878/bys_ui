@@ -75,3 +75,10 @@ export const chapter = {
 <p><em>The workshop was a revelation</em>, <u>Emily</u> recalled, her eyes shining with newfound purpose. <strong>Under the guidance of a seasoned author, she learned to weave words into tapestries of emotion, painting vivid scenes that transported her readers to distant lands and into the depths of the human experience.</strong></p>
 <p>As the weeks passed, Emily's confidence grew, and her passion for writing blossomed. She found herself lost in the worlds she created, her fingers dancing across the keyboard as she poured her heart and soul into every sentence.</p><p>Little did she know, this was just the beginning of a journey that would forever change the course of her life.</p>`,
 };
+
+export const users: Tag<string>[] = Array.from({ length: 1000 }).map(
+  (_, i) => ({
+    id: `user ${i}`,
+    title: "User " + i,
+  }),
+);
