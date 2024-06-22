@@ -2,6 +2,7 @@ import { FC } from "react";
 import { Badge } from "@/components/ui/badge";
 import { CalendarFold, Copyright, Users } from "lucide-react";
 import { Tag } from "@/app/model/story";
+import Link from "next/link";
 
 export type BookData = {
   title: string;
@@ -42,11 +43,15 @@ export const BookMetadata: FC<BookMetadataProps> = ({ book_data, tags }) => {
       <div className="flex flex-row gap-1 items-end">
         <Users className="w-5 mr-1 opacity-30" />
         {book_data.coauthors.map((author, index, authors) => (
-          <h3 key={author.id} className="text-xs">
+          <Link
+            href={`/authors/${author.id}`}
+            key={author.id}
+            className="text-xs hover:font-semibold hover:underline transition-all duration-200"
+          >
             {index === authors.length - 1
               ? author.title + "."
               : author.title + ","}
-          </h3>
+          </Link>
         ))}
       </div>
       <h3 className="flex flex-row items-end text-xs gap-x-2">

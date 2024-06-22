@@ -11,9 +11,10 @@ import { usePathname } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { UserImage } from "@/components/user-image";
 import { FollowComponent } from "@/components/follow-component";
+import { users } from "@/utils/mocks";
 
 export default function ProfilePage() {
-  const { data: session } = useSession() as any;
+  const { data: session } = useSession();
   const pathname = usePathname();
 
   return (
@@ -24,7 +25,7 @@ export default function ProfilePage() {
       >
         <UserImage width={150} height={150} />
         <h1 className="text-2xl font-bold">{session?.user?.name}</h1>
-        <FollowComponent />
+        <FollowComponent followers={users} following={users} />
       </section>
 
       <MyBooksHeader />
