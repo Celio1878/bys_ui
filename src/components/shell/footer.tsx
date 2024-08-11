@@ -14,7 +14,7 @@ export const Footer: FC = memo(() => {
         <TwitterIcon />
       </div>
       <p className="text-sm text-center">
-        © 2024 - Be Your Stories. Todos os direitos reservados.
+        © 2024 - BeYourStories. Todos os direitos reservados.
       </p>
     </footer>
   );

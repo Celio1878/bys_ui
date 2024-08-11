@@ -3,25 +3,32 @@ import { Button } from "@/components/ui/button";
 import { FilePenLine, Trash } from "lucide-react";
 
 interface ChapterListButtonsProp {
-  on_remove: () => void;
-  on_edit: () => void;
+  onRemove: () => void;
+  onEdit: () => void;
 }
 
 export const ChapterListButtons: FC<ChapterListButtonsProp> = ({
-  on_edit,
-  on_remove,
+  onEdit,
+  onRemove,
 }) => {
   return (
-    <div className="flex flex-row gap-2">
+    <div className="flex flex-row gap-4">
       <Button
-        onClick={on_edit}
-        className="bg-sky-700 hover:bg-sky-600 dark:bg-sky-900 dark:hover:bg-sky-800"
+        id="update-chapter-button"
+        title="Editar capítulo"
+        variant="outline"
+        onClick={onEdit}
       >
-        <FilePenLine className="text-slate-100 dark:text-slate-300" />
+        <FilePenLine className="text-sky-400 hover:opacity-65 transition-opacity duration-500" />
       </Button>
-      <Button variant="destructive" onClick={on_remove}>
+      <button
+        id="remove-chapter-button"
+        title="Remover capítulo"
+        className="text-red-500 hover:opacity-50 transition-opacity duration-500"
+        onClick={onRemove}
+      >
         <Trash />
-      </Button>
+      </button>
     </div>
   );
 };

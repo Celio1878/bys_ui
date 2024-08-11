@@ -6,13 +6,13 @@ import { create_tag } from "@/utils/create-tag";
 interface UseManagerTagsProps {
   form: UseFormReturn;
   name: string;
-  on_change: (tag: Tag<string>) => void;
+  onChange: (tag: Tag<string>) => void;
 }
 
 export const useManagerTags = ({
   form,
   name,
-  on_change,
+  onChange,
 }: UseManagerTagsProps) => {
   const tags: Tag<string>[] = form.watch(name);
 
@@ -33,12 +33,12 @@ export const useManagerTags = ({
 
         if (sanitized_tags.has(tag.id)) return;
 
-        on_change(tag);
+        onChange(tag);
         ref.current.value = "";
         event.stopPropagation();
       }
     },
-    [on_change, sanitized_tags],
+    [onChange, sanitized_tags],
   );
 
   const handle_selected_tag = useCallback(
@@ -46,9 +46,9 @@ export const useManagerTags = ({
       const tag_index = tags.findIndex((tag) => tag.id === selected_tag.id);
       sanitized_tags.has(selected_tag.id)
         ? on_remove(tag_index)
-        : on_change(selected_tag);
+        : onChange(selected_tag);
     },
-    [on_change, sanitized_tags, tags],
+    [onChange, sanitized_tags, tags],
   );
 
   return {

@@ -16,14 +16,14 @@ import { InputTagFormField } from "@/components/form/fields/input-tag-form-field
 import { SelectItemsSearchFormField } from "@/components/form/fields/select-items-search-form-field";
 
 interface NewBookFormProps {
-  set_book_data: (book_data: any) => void;
+  setBookData: (book_data: any) => void;
 }
 
-export const NewBookForm: FC<NewBookFormProps> = ({ set_book_data }) => {
+export const NewBookForm: FC<NewBookFormProps> = ({ setBookData }) => {
   const form = useFormContext();
 
   useEffect(() => {
-    form.watch((value) => set_book_data(value));
+    form.watch((value) => setBookData(value));
   }, [form]);
 
   return (
@@ -48,7 +48,7 @@ export const NewBookForm: FC<NewBookFormProps> = ({ set_book_data }) => {
           />
 
           <SelectFormField
-            name={"age_range"}
+            name={"ageRange"}
             label={"Faixa Etaria"}
             form={form}
             placeholder={"Selecione a faixa etaria"}

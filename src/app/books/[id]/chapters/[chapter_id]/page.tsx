@@ -2,8 +2,6 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChaptersPagination } from "@/components/chapters-pagination";
-import { useContext } from "react";
-import { BookContext } from "@/components/book-context";
 import { BreadcrumbComponent } from "@/components/breadcrumb-component";
 import { useParams } from "next/navigation";
 import { Separator } from "@/components/ui/separator";
@@ -12,8 +10,7 @@ import { CreateComment } from "@/components/create-comment";
 import { Comment } from "@/components/comment";
 
 export default function ChapterPage() {
-  const { book } = useContext(BookContext);
-  const chapter_title = book.chapters[0].title;
+  const chapter_title = "test";
   const { id } = useParams() as { id: string };
   const { data: session } = useSession() as any;
 
@@ -23,7 +20,7 @@ export default function ChapterPage() {
         book_link={`/books/${id}`}
         chapters_link={`/books/${id}/#chapters`}
         chapter_title={chapter_title}
-        book_title={book.title}
+        book_title={"text"}
       />
       <Card className="w-11/12 lg:w-2/3 xl:w-3/5 py-2 px-6 sm:px-16 bg-amber-50">
         <CardHeader>
@@ -35,7 +32,7 @@ export default function ChapterPage() {
         />
       </Card>
 
-      <ChaptersPagination chapters_tags={book.chapters} />
+      <ChaptersPagination chapters_tags={[]} />
       <Separator />
       <Card className="w-full flex flex-col bg-slate-50">
         <CardHeader>

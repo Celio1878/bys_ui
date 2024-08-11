@@ -33,7 +33,7 @@ export const InputTagFormField: FC<InputTagFormFieldProps> = ({
   const { handle_key_down, ref, tag_values } = useManagerTags({
     form,
     name,
-    on_change: append,
+    onChange: append,
   });
 
   return (

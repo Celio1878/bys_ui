@@ -28,7 +28,7 @@ export const FollowModal: FC<FollowModalProps> = ({
         </DialogHeader>
         <Separator />
         <div className="grid grid-cols-3 gap-4">
-          {users.map((user, index) => {
+          {users?.map((user, index) => {
             return (
               <span className="text-xs font-medium" key={index}>
                 {user.name}

@@ -5,33 +5,35 @@ import { InsertBookCoverForm } from "@/components/form/insert-book-cover-form";
 import { BookItemsConfirmForm } from "@/components/form/book-items-confirm-form";
 
 interface NewBookStepsProps {
-  tab_name: string;
+  tabName: string;
 }
 
-export const NewBookSteps: FC<NewBookStepsProps> = ({ tab_name }) => {
-  const [book_data, set_book_data] = useState<any>(null);
+export const NewBookSteps: FC<NewBookStepsProps> = ({ tabName }) => {
+  const [bookData, setBookData] = useState<any>(null);
+  const bookId =
+    bookData?.title.toLowerCase().replace(/\s/g, "-") + "-" + Date.now();
 
   return (
-    <Tabs value={tab_name} defaultValue="content">
+    <Tabs value={tabName} defaultValue="content">
       <TabsList>
-        <TabsTrigger value="content" disabled={tab_name !== "content"}>
+        <TabsTrigger value="content" disabled={tabName !== "content"}>
           Conteudo
         </TabsTrigger>
-        <TabsTrigger value="cover" disabled={tab_name !== "cover"}>
+        <TabsTrigger value="cover" disabled={tabName !== "cover"}>
           Capa
         </TabsTrigger>
-        <TabsTrigger value="confirm" disabled={tab_name !== "confirm"}>
+        <TabsTrigger value="confirm" disabled={tabName !== "confirm"}>
           Confirmar
         </TabsTrigger>
       </TabsList>
       <TabsContent value="content">
-        <NewBookForm set_book_data={set_book_data} />
+        <NewBookForm setBookData={setBookData} />
       </TabsContent>
       <TabsContent value="cover">
-        <InsertBookCoverForm />
+        <InsertBookCoverForm bookId={bookId} />
       </TabsContent>
       <TabsContent value="confirm">
-        <BookItemsConfirmForm book_data={book_data} />
+        <BookItemsConfirmForm bookData={bookData} />
       </TabsContent>
     </Tabs>
   );

@@ -3,12 +3,17 @@ import { Tag } from "@/app/model/story";
 export type CreateProfileDto = {
   email: string;
   name: string;
-  image: string;
-  created_at: EpochTimeStamp;
-  my_read_list: Tag<string>[] | [];
-  my_stories: Tag<string>[] | [];
-  following: Tag<string>[] | [];
-  followers: Tag<string>[] | [];
+  urlImage: string;
 };
 
-export type ProfileDto = CreateProfileDto;
+export type ProfileDto = {
+  id: string;
+  email: string;
+  name: string;
+  urlImage: string;
+  createdAt: EpochTimeStamp;
+  myReadList: Tag<string>[];
+  myStories: Tag<string>[];
+  following: Tag<string>[];
+  followers: Tag<string>[];
+};

@@ -28,7 +28,7 @@ export const CheckboxListFormField: FC<CheckboxListFormFieldProps> = ({
   const { sanitized_tags, handle_selected_tag } = useManagerTags({
     form,
     name,
-    on_change: append,
+    onChange: append,
   });
 
   return (

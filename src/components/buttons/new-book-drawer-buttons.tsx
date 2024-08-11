@@ -2,37 +2,74 @@ import { FC } from "react";
 import { NewBookDrawerConfirmButtons } from "@/components/buttons/new-book-drawer-confirm-buttons";
 import { NewBookDrawerFormButtons } from "@/components/buttons/new-book-drawer-form-buttons";
 import { NewBookDrawerCoverButtons } from "@/components/buttons/new-book-drawer-cover-buttons";
+import { useSession } from "next-auth/react";
+import { fetcher } from "@/hooks/fetcher";
+import { toast } from "@/components/ui/use-toast";
+import useSWRMutation from "swr/mutation";
+
+const SERVICE_URL = String(process.env.NEXT_PUBLIC_BOOKS_API_URL);
 
 interface BookDrawerButtonsProps {
-  tab_name: string;
-  set_tab_name: (tab_name: string) => void;
-  on_cancel: VoidFunction;
-  book_values: any;
+  tabName: string;
+  setTabName: (tab_name: string) => void;
+  onClose: VoidFunction;
+  bookValues: any;
+  bookCreated: VoidFunction;
 }
 
 export const NewBookDrawerButtons: FC<BookDrawerButtonsProps> = ({
-  tab_name,
-  set_tab_name,
-  on_cancel,
-  book_values,
+  tabName,
+  setTabName,
+  onClose,
+  bookValues,
+  bookCreated,
 }) => {
-  const disable =
-    !book_values.title ||
-    !book_values.description ||
-    !book_values.genre ||
-    !book_values.copyright ||
-    !book_values.age_range ||
-    book_values.warnings.length === 0;
+  const { data: session } = useSession() as any;
 
-  switch (tab_name) {
+  const disable =
+    !bookValues.title ||
+    !bookValues.description ||
+    !bookValues.genre ||
+    !bookValues.copyright ||
+    !bookValues.ageRange ||
+    bookValues.warnings.length === 0;
+
+  const isJson = (str: string) => {
+    try {
+      return JSON.parse(str);
+    } catch (e) {
+      return { id: "", title: "" };
+    }
+  };
+
+  const dto = {
+    id: bookValues.title.toLowerCase().replace(/\s/g, "-") + "-" + Date.now(),
+    title: bookValues.title,
+    description: bookValues.description,
+    genre: isJson(bookValues.genre),
+    copyright: isJson(bookValues.copyright),
+    ageRange: isJson(bookValues.ageRange),
+    author: bookValues.author,
+    tags: bookValues.tags,
+    warnings: bookValues.warnings,
+    coauthors: bookValues.coauthors,
+    cover: "",
+  };
+
+  const { trigger } = useSWRMutation(
+    `${SERVICE_URL}/books`,
+    fetcher<any>({
+      body: dto,
+      token: session?.access_token,
+    }).post,
+  );
+
+  switch (tabName) {
     case "content":
       return (
         <NewBookDrawerFormButtons
-          on_cancel={on_cancel}
-          next_step_click={() => {
-            console.log(book_values, "BOOK VALUES");
-            set_tab_name("cover");
-          }}
+          onCancel={onClose}
+          nextStepClick={() => setTabName("cover")}
           disabled={disable}
         />
       );
@@ -40,8 +77,8 @@ export const NewBookDrawerButtons: FC<BookDrawerButtonsProps> = ({
       return (
         <NewBookDrawerCoverButtons
           disabled={disable}
-          go_back_click={() => set_tab_name("content")}
-          next_step_click={() => set_tab_name("confirm")}
+          goBackClick={() => setTabName("content")}
+          nextStepClick={() => setTabName("confirm")}
         />
       );
 
@@ -49,8 +86,19 @@ export const NewBookDrawerButtons: FC<BookDrawerButtonsProps> = ({
       return (
         <NewBookDrawerConfirmButtons
           disabled={disable}
-          go_back_click={() => set_tab_name("cover")}
-          on_confirm_click={() => console.log(book_values, "BOOK VALUES")}
+          goBackClick={() => setTabName("cover")}
+          onConfirmClick={() => {
+            trigger().then(() => {
+              toast({
+                className: "bg-violet-500 text-white",
+                title: `Livro ${dto.title} criado!`,
+                description: "Seu livro foi criado com sucesso!",
+                type: "foreground",
+              });
+              bookCreated();
+              onClose();
+            });
+          }}
         />
       );
   }

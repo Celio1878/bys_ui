@@ -5,12 +5,104 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24dfe38b-6d18-4700-8386-86f955cbefc3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/app/authors/[id]/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/buttons/follow-button.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.storybook/main.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.storybook/preview.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/model/chapter.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/Button.stories.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/Button.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/Configure.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/Header.stories.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/Header.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/Page.stories.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/Page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/assets/accessibility.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/assets/accessibility.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/assets/addon-library.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/assets/assets.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/assets/avif-test-image.avif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/assets/context.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/assets/discord.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/assets/docs.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/assets/figma-plugin.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/assets/github.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/assets/share.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/assets/styling.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/assets/testing.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/assets/theming.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/assets/tutorials.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/assets/youtube.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/button.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/header.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/page.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/aws.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/aws.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next.config.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/auth/[...nextauth]/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/auth/[...nextauth]/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/auth/error/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/auth/error/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/books/[id]/chapters/[chapter_id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/books/[id]/chapters/[chapter_id]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/books/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/books/[id]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/global-error.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/global-error.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/model/profile-dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/model/profile-dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/model/story.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/model/story.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/not-found.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/not-found.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/profile/[name]/books/[id]/chapters/new-chapter/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/profile/[name]/books/[id]/chapters/new-chapter/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/profile/[name]/books/[id]/chapters/update/[chapter_id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/profile/[name]/books/[id]/chapters/[chapter_id]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/profile/[name]/books/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/profile/[name]/books/[id]/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/profile/[name]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/profile/[name]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/book-context.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/book-drawer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/book-drawer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/book.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/book.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/book/book-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/book/book-content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/book/book-data.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/book/book-data.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/book/book-metadata.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/book/book-metadata.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/book/my-book-chapters.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/book/my-book-chapters.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/buttons/cancel-button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/buttons/cancel-button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/buttons/chapter-list-buttons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/buttons/chapter-list-buttons.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/buttons/go-back-button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/buttons/go-back-button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/buttons/new-book-button-label.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/buttons/new-book-button-label.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/buttons/new-book-drawer-buttons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/buttons/new-book-drawer-buttons.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/buttons/new-book-drawer-confirm-buttons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/buttons/new-book-drawer-confirm-buttons.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/buttons/new-book-drawer-cover-buttons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/buttons/new-book-drawer-cover-buttons.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/buttons/new-book-drawer-form-buttons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/buttons/new-book-drawer-form-buttons.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/buttons/next-step-button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/buttons/next-step-button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/buttons/update-button-label.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/carousel/books-carousel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/carousel/books-carousel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/carousel/carousel-dots.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/carousel/carousel-dots.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/chapter/chapter-form-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/chapter/chapter-form-card.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/chapter/toolbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/chapter/toolbar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/follow-component.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/follow-component.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/follow-modal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/follow-modal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/book-items-confirm-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/book-items-confirm-form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/fields/chapter-content-form-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/fields/chapter-content-form-field.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/fields/chapter-title-form-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/fields/chapter-title-form-field.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/fields/checkbox-list-form-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/fields/checkbox-list-form-field.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/fields/input-tag-form-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/fields/input-tag-form-field.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/fields/select-form-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/fields/select-form-field.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/insert-book-cover-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/insert-book-cover-form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/new-book-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/new-book-form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/select-combobox/select-combobox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/select-combobox/select-combobox.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/loading.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/loading.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/my-books-header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/my-books-header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/new-book-steps.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/new-book-steps.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/popover-user-data.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/popover-user-data.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/popover-user.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/popover-user.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/popover_inf_user.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/popover_inf_user.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/remove-chapter-toast.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/remove-chapter-toast.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shell/footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shell/footer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shell/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shell/header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/carousel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/carousel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/user-image.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/user-image.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/fetcher.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/fetcher.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/use-manager-tags.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/use-manager-tags.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/use-profile-api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/use-profile-api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/book_sections.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/get_tag_by_id.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/mocks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/mocks.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -21,8 +113,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -51,8 +143,15 @@
     &quot;accountId&quot;: &quot;c8afca05-f292-4dca-8d1c-17807c2d68d2&quot;
   }
 }</component>
+  <component name="JsBowerSettings">
+    <bower-package value="" />
+    <bower.json value="" />
+  </component>
   <component name="OptimizeOnSaveOptions">
     <option name="myRunOnSave" value="true" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
@@ -68,10 +167,13 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Docker.services-docker.yml.bys-ui: Compose Deployment.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;code.cleanup.on.save&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/swango/Documents/projects/be_your_stories/bys_ui/src/app/api/auth&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;22.4.1&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;20.14.10&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/swango/Documents/projects/be_your_stories/bys_ui&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
@@ -80,13 +182,13 @@
     &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
     &quot;node.js.selected.package.stylelint&quot;: &quot;&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_interpreter_path&quot;: &quot;/home/swango/.nvm/versions/node/v22.0.0/bin/node&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;npm.build.executor&quot;: &quot;Run&quot;,
     &quot;npm.dev.executor&quot;: &quot;Run&quot;,
     &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/home/swango/Documents/projects/be_your_stories/bys_ui/node_modules/prettier&quot;,
     &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;aws.codewhisperer&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;,
     &quot;ts.external.directory.path&quot;: &quot;/home/swango/Documents/projects/be_your_stories/bys_ui/node_modules/typescript/lib&quot;
   }
 }</component>
@@ -104,14 +206,20 @@
       <recent name="$PROJECT_DIR$/src/app/api/auth" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/app/profile/[name]/books/[id]/chapters" />
       <recent name="$PROJECT_DIR$/src/app/api/auth" />
       <recent name="$PROJECT_DIR$/src/app/profile/[name]" />
       <recent name="$PROJECT_DIR$/src/lib" />
       <recent name="$PROJECT_DIR$/src/app/search" />
-      <recent name="$PROJECT_DIR$/src/components" />
     </key>
   </component>
   <component name="RunManager" selected="npm.build">
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -129,15 +237,17 @@
         <script value="dev" />
       </scripts>
       <node-interpreter value="project" />
+      <node-options value="--trace-warnings ..." />
       <envs />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="npm.build" />
+      <item itemvalue="npm.dev" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="npm.build" />
-        <item itemvalue="npm.dev" />
-        <item itemvalue="npm.build" />
-        <item itemvalue="npm.dev" />
         <item itemvalue="npm.dev" />
       </list>
     </recent_temporary>
@@ -206,6 +316,47 @@
       <workItem from="1719052730539" duration="20000" />
       <workItem from="1719052759151" duration="10005000" />
       <workItem from="1719062773689" duration="14741000" />
+      <workItem from="1719135392377" duration="1493000" />
+      <workItem from="1719137994722" duration="2131000" />
+      <workItem from="1719749314731" duration="25000" />
+      <workItem from="1719749347447" duration="322000" />
+      <workItem from="1719756951830" duration="632000" />
+      <workItem from="1719773539877" duration="1215000" />
+      <workItem from="1720537058430" duration="63000" />
+      <workItem from="1720537132045" duration="412000" />
+      <workItem from="1720552800478" duration="817000" />
+      <workItem from="1720726519492" duration="166000" />
+      <workItem from="1720726693994" duration="751000" />
+      <workItem from="1720787640896" duration="1045000" />
+      <workItem from="1720875055171" duration="1317000" />
+      <workItem from="1720876464720" duration="12553000" />
+      <workItem from="1720953870379" duration="5052000" />
+      <workItem from="1720982697787" duration="10966000" />
+      <workItem from="1721037323202" duration="2878000" />
+      <workItem from="1721555762786" duration="615000" />
+      <workItem from="1721557959057" duration="19919000" />
+      <workItem from="1721649493833" duration="787000" />
+      <workItem from="1721651999638" duration="87000" />
+      <workItem from="1721652093305" duration="88000" />
+      <workItem from="1721652192159" duration="63000" />
+      <workItem from="1721652262600" duration="15615000" />
+      <workItem from="1721723017089" duration="691000" />
+      <workItem from="1721819361559" duration="817000" />
+      <workItem from="1721821122235" duration="2183000" />
+      <workItem from="1722629701131" duration="256000" />
+      <workItem from="1722629966993" duration="1461000" />
+      <workItem from="1722801404987" duration="998000" />
+      <workItem from="1722854095986" duration="1945000" />
+      <workItem from="1722940106387" duration="6273000" />
+      <workItem from="1723040914039" duration="21478000" />
+      <workItem from="1723114008343" duration="5836000" />
+      <workItem from="1723199027035" duration="219000" />
+      <workItem from="1723199251823" duration="7568000" />
+      <workItem from="1723210505666" duration="6522000" />
+      <workItem from="1723223571778" duration="10774000" />
+      <workItem from="1723292067082" duration="13545000" />
+      <workItem from="1723318871817" duration="2864000" />
+      <workItem from="1723371989204" duration="23387000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Add Shadcn-ui">
       <option name="closed" value="true" />
@@ -487,7 +638,31 @@
       <option name="project" value="LOCAL" />
       <updated>1719093381369</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="feat: Authors page">
+      <option name="closed" value="true" />
+      <created>1719097134089</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1719097134089</updated>
+    </task>
+    <task id="LOCAL-00037" summary="feat: Create follow data components">
+      <option name="closed" value="true" />
+      <created>1719097187383</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1719097187383</updated>
+    </task>
+    <task id="LOCAL-00038" summary="feat: Authors link">
+      <option name="closed" value="true" />
+      <created>1719097202946</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1719097202946</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -510,9 +685,6 @@
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat: Profile image priority" />
-    <MESSAGE value="feat: Popover User" />
-    <MESSAGE value="feat: My books page" />
     <MESSAGE value="fix: Verify if user is authenticated" />
     <MESSAGE value="style: Layout" />
     <MESSAGE value="fix: Suspense boundary over main" />
@@ -535,7 +707,9 @@
     <MESSAGE value="ci: Update libs" />
     <MESSAGE value="feat: Mocks" />
     <MESSAGE value="feat: Add author in book form" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Add author in book form" />
+    <MESSAGE value="feat: Authors page" />
+    <MESSAGE value="feat: Create follow data components" />
+    <MESSAGE value="feat: Authors link" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

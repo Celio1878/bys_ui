@@ -2,7 +2,6 @@ import { FC, memo } from "react";
 import { FollowModal } from "@/components/follow-modal";
 import { UserRoundCheck, UsersRound } from "lucide-react";
 import { FollowTrigger } from "@/components/follow-trigger";
-import { users } from "@/utils/mocks";
 import { Tag } from "@/app/model/story";
 
 interface FollowComponentProps {
@@ -11,7 +10,7 @@ interface FollowComponentProps {
 }
 
 function users_name(users: Tag<string>[]) {
-  return users.map((user) => {
+  return users?.map((user) => {
     return {
       name: user.title,
     };
@@ -28,7 +27,7 @@ export const FollowComponent: FC<FollowComponentProps> = memo(
             <FollowTrigger
               icon={<UsersRound className="text-indigo-600" />}
               label={"Seguidores"}
-              quantity={followers.length}
+              quantity={followers?.length}
             />
           }
           users={users_name(followers)}
@@ -39,7 +38,7 @@ export const FollowComponent: FC<FollowComponentProps> = memo(
             <FollowTrigger
               icon={<UserRoundCheck className="text-emerald-600" />}
               label={"Seguindo"}
-              quantity={users.length}
+              quantity={following?.length}
             />
           }
           users={users_name(following)}

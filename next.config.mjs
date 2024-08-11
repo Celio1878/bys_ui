@@ -10,6 +10,10 @@ const nextConfig = {
                 protocol: "https",
                 hostname: "lh3.googleusercontent.com",
             },
+            {
+                protocol: "https",
+                hostname: "khzp4cg919.execute-api.sa-east-1.amazonaws.com"
+            }
         ],
     },
     eslint: {

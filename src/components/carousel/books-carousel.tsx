@@ -9,19 +9,30 @@ import {
 import { Book } from "@/components/book";
 import { CarouselDots } from "@/components/carousel/carousel-dots";
 import { useCarouselComponent } from "@/lib/use-carousel-component";
+import { Story } from "@/app/model/story";
 
 interface BookCarouselProps {
-  section_title: string;
+  sectionTitle: string;
+  books: Story[];
 }
 
-export const BooksCarousel: FC<BookCarouselProps> = ({ section_title }) => {
+export const BooksCarousel: FC<BookCarouselProps> = ({
+  sectionTitle,
+  books,
+}) => {
   const { current, count, setApi, api, books_breakpoints } =
     useCarouselComponent();
+
+  function carouselLength(standard: number, length: number) {
+    if (length < standard) return length;
+
+    return standard;
+  }
 
   return (
     <div className="w-full flex flex-col">
       <h1 className="text-2xl font-semibold underline ml-0.5 lg:ml-1">
-        {section_title}
+        {sectionTitle}
       </h1>
       <Carousel
         setApi={setApi}
@@ -33,17 +44,14 @@ export const BooksCarousel: FC<BookCarouselProps> = ({ section_title }) => {
         className="max-w-xs sm:max-w-screen-sm md:max-w-2xl lg:max-w-screen-md xl:max-w-screen-lg"
       >
         <CarouselContent className="-mr-3.5 lg:-ml-3.5">
-          {Array.from({ length: 20 }).map((_, i) => {
-            const title = "Livro " + i;
-            const id = title.replace(/\s/g, "-").toLowerCase();
-            const href = `/books/${id}`;
-
+          {books?.map((book) => {
+            const href = `/books/${book.id}`;
             return (
               <CarouselItem
-                key={i}
-                className="basis-1/2 md:basis-1/4 lg:basis-1/5 xl:basis-1/6 p-2"
+                key={book.id}
+                className={`basis-1/${carouselLength(2, books.length)} md:basis-1/${carouselLength(4, books.length)} lg:basis-1/${carouselLength(5, books.length)} xl:basis-1/${carouselLength(6, books.length)} p-2`}
               >
-                <Book {...{ title, href }} />
+                <Book {...{ title: book.title, href }} />
               </CarouselItem>
             );
           })}

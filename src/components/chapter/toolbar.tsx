@@ -16,12 +16,12 @@ import { PasteTextButton } from "@/components/buttons/paste-text-button";
 
 interface ToolbarProps {
   editor: any;
-  text_color: string;
-  set_text_color: (color: string) => void;
+  textColor: string;
+  setTextColor: (color: string) => void;
 }
 
 export const Toolbar: FC<ToolbarProps> = memo(
-  ({ set_text_color, text_color, editor }) => {
+  ({ setTextColor, textColor, editor }) => {
     return (
       <div className="flex flex-wrap gap-1.5">
         <ToggleButton
@@ -62,7 +62,7 @@ export const Toolbar: FC<ToolbarProps> = memo(
           <SquareSplitVertical size={20} />
         </Button>
 
-        <ColorPicker color={text_color} set_color={set_text_color} />
+        <ColorPicker color={textColor} set_color={setTextColor} />
 
         <ToggleButton
           title="Alinhar Esquerda"

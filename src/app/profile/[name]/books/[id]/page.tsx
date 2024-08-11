@@ -1,19 +1,31 @@
 "use client";
 
 import { Loading } from "@/components/loading";
-import { Suspense, useContext } from "react";
+import { Suspense } from "react";
 import { BookData } from "@/components/book/book-data";
 import { MyBookChapters } from "@/components/book/my-book-chapters";
-import { BookContext } from "@/components/book-context";
+import useSWR from "swr";
+import { fetcher } from "@/hooks/fetcher";
+import { Story } from "@/app/model/story";
+import { useParams } from "next/navigation";
+
+const SERVICE_URL = String(process.env.NEXT_PUBLIC_BOOKS_API_URL);
 
 export default function MyBookPage() {
-  const { book } = useContext(BookContext);
+  const { id } = useParams();
+
+  const { data: book, isLoading } = useSWR(
+    `${SERVICE_URL}/book/${id}`,
+    fetcher<Story>({}).get,
+  );
+
+  if (isLoading) return <Loading />;
 
   return (
     <Suspense fallback={<Loading />}>
       <BookData
-        book_data={book}
-        chapters_component={<MyBookChapters chapters_tags={book.chapters} />}
+        bookData={book!}
+        chaptersComponent={<MyBookChapters chaptersTags={book?.chapters!} />}
       />
     </Suspense>
   );

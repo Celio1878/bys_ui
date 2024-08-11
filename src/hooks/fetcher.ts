@@ -8,57 +8,65 @@ enum HttpMethod {
 
 type MakeReq<T> = {
   url: string;
-  http_method: HttpMethod;
+  httpMethod: HttpMethod;
   token?: string;
-  body?: T;
+  body?: T | null;
 };
 
-async function make_req<T>({ http_method, url, body, token }: MakeReq<T>) {
+type Fetcher<T> = {
+  body?: T | null;
+  token?: string;
+};
+
+async function make_req<T>({ httpMethod, url, body, token }: MakeReq<T>) {
   const res = await fetch(url, {
-    method: http_method,
+    method: httpMethod,
     headers: {
-      Authorization: token ? `Bearer ${token}` : "",
+      Authorization: !!token ? `Bearer ${token}` : "",
       "Content-Type": "application/json",
     },
     body: body ? JSON.stringify(body) : null,
   });
 
-  if (!res.ok)
+  if (!res.ok) {
     throw new Error(`Request Error! - ${res.status} - ${res.statusText}`);
+  }
 
-  return await res.json();
+  const result = await res.json();
+
+  return result.body;
 }
 
-export function fetcher<T>(data?: T, token?: string) {
+export function fetcher<T>({ body, token }: Fetcher<T>) {
   return {
     get: async (url: string): Promise<T> =>
-      await make_req<T>({ url, http_method: HttpMethod.GET }),
+      await make_req<T>({ url, httpMethod: HttpMethod.GET, token }),
 
     post: async (url: string): Promise<void> =>
       await make_req<T>({
         url,
-        body: data,
-        http_method: HttpMethod.POST,
+        body,
+        httpMethod: HttpMethod.POST,
         token,
       }),
 
     patch: async (url: string): Promise<void> =>
       await make_req<T>({
         url,
-        http_method: HttpMethod.PATCH,
-        body: data,
+        httpMethod: HttpMethod.PATCH,
+        body,
         token,
       }),
 
     put: async (url: string): Promise<void> =>
       await make_req<T>({
         url,
-        http_method: HttpMethod.PUT,
-        body: data,
+        httpMethod: HttpMethod.PUT,
+        body,
         token,
       }),
 
-    delete: async (url: string, token: string): Promise<void> =>
-      await make_req<void>({ url, http_method: HttpMethod.DELETE, token }),
+    delete: async (url: string): Promise<void> =>
+      await make_req<T>({ url, httpMethod: HttpMethod.DELETE, token }),
   };
 }

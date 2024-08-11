@@ -2,16 +2,16 @@ import { FC } from "react";
 import { Button } from "@/components/ui/button";
 
 interface NextStepButtonProps {
-  on_click: VoidFunction;
+  onClick: VoidFunction;
   disabled?: boolean;
 }
 
 export const NextStepButton: FC<NextStepButtonProps> = ({
-  on_click,
+  onClick,
   disabled,
 }) => {
   return (
-    <Button disabled={disabled} onClick={on_click}>
+    <Button disabled={disabled} onClick={onClick}>
       Avancar
     </Button>
   );

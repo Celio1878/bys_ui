@@ -35,7 +35,7 @@ export const SelectComboBox: FC<SelectComboboxProps> = ({
   const { sanitized_tags, handle_selected_tag } = useManagerTags({
     form,
     name,
-    on_change: append,
+    onChange: append,
   });
 
   return (

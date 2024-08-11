@@ -6,8 +6,8 @@
     <option name="recentlyUsedProfiles">
       <list>
         <option value="profile:default" />
-        <option value="profile:celio1878" />
         <option value="profile:celio1878-adm" />
+        <option value="profile:celio1878" />
         <option value="profile:471112855673_AdministratorAccess" />
       </list>
     </option>
@@ -18,7 +18,7 @@
     </option>
   </component>
   <component name="connectionManager">
-    <option name="activeConnectionId" value="sso;us-east-1;https://view.awsapps.com/start" />
+    <option name="activeConnectionId" value="AwsConnectionManagerConnection" />
   </component>
   <component name="explorerToolWindow">
     <option name="selectedTab" value="Explorer" />

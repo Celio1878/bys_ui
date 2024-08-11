@@ -29,7 +29,6 @@ export enum Warning {
   RAPE = "rape",
   HETEROSEXUAL = "heterosexual",
   HOMOSEXUAL = "homosexual",
-  SEX_INSINUATION = "sex-insinuation",
   INTERSEXUALITY = "intersexuality",
   INAPPROPRIATE_LANGUAGE = "inappropriate-language",
   SEX = "sex",
@@ -50,28 +49,28 @@ export enum AgeRange {
 export type Story = {
   id: string;
   title: string;
-  synopsis: string;
-  genre: Tag<Genre>;
+  description: string;
+  genre: Tag<string>;
   tags: Tag<string>[];
   copyright: Tag<Copyright>;
-  age_range: Tag<AgeRange>;
-  warns: Tag<Warning>[];
+  ageRange: Tag<AgeRange>;
+  warnings: Tag<Warning>[];
   author: Tag<string>;
   coauthors: Tag<string>[];
   chapters: Tag<string>[];
-  created_at: number;
-  comments_id: string;
-  who_liked: Tag<string>[];
+  publishAt: number;
+  followers: Tag<string>[];
+  cover: string;
 };
 
 export const GenreTags: Tag<Genre>[] = [
-  { id: Genre.ACTION, title: "Acao" },
+  { id: Genre.ORIGINAL, title: "Original" },
+  { id: Genre.TERROR, title: "Terror" },
   { id: Genre.ADVENTURE, title: "Aventura" },
+  { id: Genre.ACTION, title: "Acao" },
   { id: Genre.FANTASY, title: "Fantasia" },
   { id: Genre.HUMOR, title: "Humor" },
-  { id: Genre.ORIGINAL, title: "Original" },
   { id: Genre.ROMANCE, title: "Romance" },
-  { id: Genre.TERROR, title: "Terror" },
   { id: Genre.THRILLER, title: "Suspense" },
 ];
 
@@ -101,7 +100,6 @@ export const WarningTags: Tag<Warning>[] = [
   { id: Warning.RAPE, title: "Estupro" },
   { id: Warning.SENSITIVE_CONTENT, title: "Conteudo Sensivel" },
   { id: Warning.SEX, title: "Sexo" },
-  // { id: Warning.SEX_INSINUATION, title: "Insinuação de Sexo" },
   { id: Warning.SPOILERS, title: "Spoilers" },
   { id: Warning.SUICIDE, title: "Suicídio" },
   { id: Warning.TORTURE, title: "Tortura" },

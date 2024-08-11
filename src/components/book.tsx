@@ -10,20 +10,20 @@ interface BookProps {
 
 export const Book: FC<BookProps> = ({ title, buttons, href = "" }) => {
   return (
-    <div className="flex flex-col w-[10rem] gap-2 items-center">
+    <div className="flex flex-col w-[10rem] h-[20rem] gap-2 items-center">
       <Link href={href}>
         <Image
           className="cursor-pointer hover:scale-105 hover:shadow-lg hover:shadow-black/50 hover:opacity-90 transition duration-500"
           src={"/cover.jpg"}
           alt={"cover"}
-          width={140}
-          height={160}
+          width={120}
+          height={140}
           priority={true}
         />
       </Link>
 
       <Link
-        className="w-10/12 hover:font-semibold hover:cursor-pointer hover:underline transition-all duration-150 text-start"
+        className="w-10/12 text-xs hover:font-semibold hover:cursor-pointer hover:underline transition-all duration-150 text-start"
         href={href}
       >
         {title}

@@ -11,95 +11,112 @@ import {
 import { FC, ReactNode, useEffect, useState } from "react";
 import { NewBookDrawerButtons } from "@/components/buttons/new-book-drawer-buttons";
 import { NewBookSteps } from "@/components/new-book-steps";
-import { Button } from "@/components/ui/button";
 import { FormProvider, useForm } from "react-hook-form";
-import { Tag, Warning } from "@/app/model/story";
-import { get_book_data } from "@/utils/mocks";
+import { Story, Tag, Warning } from "@/app/model/story";
 import { useSession } from "next-auth/react";
+import useSWRMutation from "swr/mutation";
+import { fetcher } from "@/hooks/fetcher";
 
-type BookFormValues = {
+export type BookFormValues = {
   title: string;
   description: string;
   genre: string;
   copyright: string;
-  age_range: string;
+  ageRange: string;
   tags: Tag<string>[];
   warnings: Tag<Warning>[];
   coauthors: Tag<string>[];
+  author: Tag<string>;
 };
 
-const initial_values: BookFormValues = {
+const initialValues: BookFormValues = {
   title: "",
   description: "",
   genre: "",
   copyright: "",
-  age_range: "",
+  ageRange: "",
   tags: [],
   warnings: [],
   coauthors: [],
+  author: { id: "", title: "" },
 };
 
 interface BookDrawerProps {
   id?: string;
-  button_type: "default" | "secondary" | "outline" | "ghost";
-  button_label: string | ReactNode;
-  modal_title: string;
+  buttonType: "default" | "secondary" | "outline" | "ghost";
+  buttonLabel: string | ReactNode;
+  modalTitle: string;
+  bookCreated: VoidFunction;
 }
+
+const BOOK_SERVICE_URL = String(process.env.NEXT_PUBLIC_BOOKS_API_URL);
 
 export const BookDrawer: FC<BookDrawerProps> = ({
   id,
-  button_label,
-  button_type,
-  modal_title,
+  buttonLabel,
+  buttonType,
+  modalTitle,
+  bookCreated,
 }) => {
   const { data: session } = useSession();
   const [open, setOpen] = useState(false);
-  const [tab_name, set_tab_name] = useState("content");
-  const form_methods = useForm({
-    defaultValues: initial_values,
+  const [tabName, setTabName] = useState("content");
+  const formMethods = useForm({
+    defaultValues: initialValues,
   });
 
+  const { trigger, data: book } = useSWRMutation(
+    `${BOOK_SERVICE_URL}/book/${id}`,
+    fetcher<Story>({}).get,
+  );
+
   useEffect(() => {
-    if (id) {
-      const book_data = get_book_data(id);
-      return form_methods.reset(book_data);
+    if (book) {
+      const bookToForm: BookFormValues = {
+        ageRange: JSON.stringify(book.ageRange),
+        copyright: JSON.stringify(book.copyright),
+        genre: JSON.stringify(book.genre),
+        title: book.title,
+        description: book.description,
+        warnings: book.warnings,
+        coauthors: book.coauthors,
+        author: book.author,
+        tags: book.tags,
+      };
+      return formMethods.reset(bookToForm);
     }
 
-    return () => form_methods.reset(initial_values);
-  }, [id]);
+    return () => formMethods.reset(initialValues);
+  }, [book]);
 
   useEffect(() => {
-    if (open) set_tab_name("content");
+    if (open) setTabName("content");
   }, [open]);
 
-  const book_data = {
-    ...form_methods.getValues(),
+  const bookData = {
+    ...formMethods.getValues(),
     author: { id: session?.user?.email!, title: session?.user?.name! },
   };
 
   return (
     <Dialog modal open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button
-          variant={button_type}
-          className="sm:gap-2 items-center justify-center"
-        >
-          {button_label}
-        </Button>
+        <button onClick={() => trigger()}>{buttonLabel}</button>
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent aria-describedby={"Insert Book Steps"}>
         <DialogHeader>
-          <DialogTitle>{modal_title}</DialogTitle>
+          <DialogTitle>{modalTitle}</DialogTitle>
         </DialogHeader>
-        <FormProvider {...form_methods}>
-          <NewBookSteps tab_name={tab_name} />
+        <FormProvider {...formMethods}>
+          <NewBookSteps tabName={tabName} />
         </FormProvider>
         <DialogFooter>
           <NewBookDrawerButtons
-            tab_name={tab_name}
-            set_tab_name={set_tab_name}
-            book_values={book_data}
-            on_cancel={() => setOpen(false)}
+            tabName={tabName}
+            setTabName={setTabName}
+            bookValues={bookData}
+            onClose={() => setOpen(false)}
+            bookCreated={bookCreated}
           />
         </DialogFooter>
       </DialogContent>
