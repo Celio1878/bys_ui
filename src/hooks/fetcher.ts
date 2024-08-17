@@ -6,11 +6,12 @@ enum HttpMethod {
   DELETE = "DELETE",
 }
 
-type MakeReq<T> = {
+type DoReq<T> = {
   url: string;
   httpMethod: HttpMethod;
   token?: string;
   body?: T | null;
+  headers?: HeadersInit;
 };
 
 type Fetcher<T> = {
@@ -18,7 +19,7 @@ type Fetcher<T> = {
   token?: string;
 };
 
-async function make_req<T>({ httpMethod, url, body, token }: MakeReq<T>) {
+async function doReq<T>({ httpMethod, url, body, token }: DoReq<T>) {
   const res = await fetch(url, {
     method: httpMethod,
     headers: {
@@ -34,16 +35,20 @@ async function make_req<T>({ httpMethod, url, body, token }: MakeReq<T>) {
 
   const result = await res.json();
 
+  if (result.statusCode >= 400) {
+    throw new Error(result.body);
+  }
+
   return result.body;
 }
 
 export function fetcher<T>({ body, token }: Fetcher<T>) {
   return {
     get: async (url: string): Promise<T> =>
-      await make_req<T>({ url, httpMethod: HttpMethod.GET, token }),
+      await doReq<T>({ url, httpMethod: HttpMethod.GET, token }),
 
     post: async (url: string): Promise<void> =>
-      await make_req<T>({
+      await doReq<T>({
         url,
         body,
         httpMethod: HttpMethod.POST,
@@ -51,7 +56,7 @@ export function fetcher<T>({ body, token }: Fetcher<T>) {
       }),
 
     patch: async (url: string): Promise<void> =>
-      await make_req<T>({
+      await doReq<T>({
         url,
         httpMethod: HttpMethod.PATCH,
         body,
@@ -59,7 +64,7 @@ export function fetcher<T>({ body, token }: Fetcher<T>) {
       }),
 
     put: async (url: string): Promise<void> =>
-      await make_req<T>({
+      await doReq<T>({
         url,
         httpMethod: HttpMethod.PUT,
         body,
@@ -67,6 +72,6 @@ export function fetcher<T>({ body, token }: Fetcher<T>) {
       }),
 
     delete: async (url: string): Promise<void> =>
-      await make_req<T>({ url, httpMethod: HttpMethod.DELETE, token }),
+      await doReq<T>({ url, httpMethod: HttpMethod.DELETE, token }),
   };
 }

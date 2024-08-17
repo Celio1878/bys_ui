@@ -16,7 +16,7 @@ export default function BookPage() {
   const { id } = useParams() as { id: string };
 
   const { data: book, isLoading } = useSWR(
-    `${SERVICE_URL}/book/${id}`,
+    `${SERVICE_URL}/${id}`,
     fetcher<Story>({}).get,
   );
 
@@ -26,8 +26,8 @@ export default function BookPage() {
     <Suspense fallback={<Loading />}>
       <div className="w-full mb-8">
         <BreadcrumbComponent
-          book_link={`/books/${id}`}
-          book_title={book?.title!}
+          bookLink={`/books/${id}`}
+          bookTitle={book?.title!}
         />
       </div>
       <BookData

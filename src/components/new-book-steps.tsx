@@ -1,17 +1,19 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { NewBookForm } from "@/components/form/new-book-form";
 import { InsertBookCoverForm } from "@/components/form/insert-book-cover-form";
 import { BookItemsConfirmForm } from "@/components/form/book-items-confirm-form";
+import { useSession } from "next-auth/react";
 
 interface NewBookStepsProps {
   tabName: string;
+  bookDto: any;
 }
 
-export const NewBookSteps: FC<NewBookStepsProps> = ({ tabName }) => {
-  const [bookData, setBookData] = useState<any>(null);
+export const NewBookSteps: FC<NewBookStepsProps> = ({ tabName, bookDto }) => {
+  const { data: session } = useSession() as any;
   const bookId =
-    bookData?.title.toLowerCase().replace(/\s/g, "-") + "-" + Date.now();
+    bookDto.title.toLowerCase().replace(/\s/g, "-") + "-" + session?.user?.id;
 
   return (
     <Tabs value={tabName} defaultValue="content">
@@ -27,13 +29,13 @@ export const NewBookSteps: FC<NewBookStepsProps> = ({ tabName }) => {
         </TabsTrigger>
       </TabsList>
       <TabsContent value="content">
-        <NewBookForm setBookData={setBookData} />
+        <NewBookForm />
       </TabsContent>
       <TabsContent value="cover">
-        <InsertBookCoverForm bookId={bookId} />
+        <InsertBookCoverForm session={session} bookId={bookId} />
       </TabsContent>
       <TabsContent value="confirm">
-        <BookItemsConfirmForm bookData={bookData} />
+        <BookItemsConfirmForm session={session} book={bookDto} />
       </TabsContent>
     </Tabs>
   );

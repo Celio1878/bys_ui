@@ -9,7 +9,7 @@ import {
 import { Book } from "@/components/book";
 import { CarouselDots } from "@/components/carousel/carousel-dots";
 import { useCarouselComponent } from "@/lib/use-carousel-component";
-import { Story } from "@/app/model/story";
+import { Story, Tag } from "@/app/model/story";
 
 interface BookCarouselProps {
   sectionTitle: string;
@@ -45,13 +45,17 @@ export const BooksCarousel: FC<BookCarouselProps> = ({
       >
         <CarouselContent className="-mr-3.5 lg:-ml-3.5">
           {books?.map((book) => {
-            const href = `/books/${book.id}`;
+            const tag: Tag<string> = {
+              id: book.id,
+              title: book.tite,
+            };
+
             return (
               <CarouselItem
                 key={book.id}
                 className={`basis-1/${carouselLength(2, books.length)} md:basis-1/${carouselLength(4, books.length)} lg:basis-1/${carouselLength(5, books.length)} xl:basis-1/${carouselLength(6, books.length)} p-2`}
               >
-                <Book {...{ title: book.title, href }} />
+                <Book bookTag={tag} href={`/books/${book.id}`} />
               </CarouselItem>
             );
           })}

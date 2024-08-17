@@ -40,6 +40,17 @@ export const Header: FC = memo(() => {
     if (session?.error === "RefreshAccessTokenError") {
       signIn("google").then(() => console.info(`${session.user.name} logged!`));
     }
+
+    if (dateNow >= session?.expires_at * 1000) {
+      console.log("Refreshing");
+      signIn("google").then(() => console.info(`${session.user.name} logged!`));
+    }
+
+    return () => {
+      if (session) {
+        clearInterval(session);
+      }
+    };
   }, [session]);
 
   return (

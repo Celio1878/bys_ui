@@ -26,7 +26,7 @@ export default function NewChapterPage() {
   };
 
   const { trigger } = useSWRMutation(
-    `${SERVICE_URL}/books/${id}/chapters`,
+    `${SERVICE_URL}/${id}/chapters`,
     fetcher<CreateChapter>({ body: dto, token: session?.access_token }).post,
   );
 

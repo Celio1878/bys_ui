@@ -1,7 +1,7 @@
 import { useCallback, useMemo, useRef } from "react";
 import { Tag } from "@/app/model/story";
 import { UseFormReturn } from "react-hook-form";
-import { create_tag } from "@/utils/create-tag";
+import { createTag } from "@/utils/create-tag";
 
 interface UseManagerTagsProps {
   form: UseFormReturn;
@@ -23,13 +23,13 @@ export const useManagerTags = ({
 
   const ref: any = useRef(null);
 
-  const handle_key_down = useCallback(
+  const handleKeyDown = useCallback(
     (event: any) => {
       if (event.key === "Enter") {
         event.preventDefault();
         const value = ref.current?.value;
         if (!value) return;
-        const tag = create_tag(value);
+        const tag = createTag(value);
 
         if (sanitized_tags.has(tag.id)) return;
 
@@ -52,7 +52,7 @@ export const useManagerTags = ({
   );
 
   return {
-    handle_key_down,
+    handle_key_down: handleKeyDown,
     handle_selected_tag,
     ref,
     sanitized_tags,

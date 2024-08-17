@@ -25,7 +25,7 @@ export const MyBookChapters: FC<MyBookChaptersProps> = ({ chaptersTags }) => {
 
   async function onRemove(chapterId: string) {
     await fetcher<void>({ token: session?.access_token }).delete(
-      `${SERVICE_URL}/books/${id}/chapters/${chapterId}`,
+      `${SERVICE_URL}/${id}/chapters/${chapterId}`,
     );
   }
 

@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import { Form } from "@/components/ui/form";
 import { Card } from "@/components/ui/card";
 import { useFormContext } from "react-hook-form";
@@ -15,16 +15,8 @@ import { CheckboxListFormField } from "@/components/form/fields/checkbox-list-fo
 import { InputTagFormField } from "@/components/form/fields/input-tag-form-field";
 import { SelectItemsSearchFormField } from "@/components/form/fields/select-items-search-form-field";
 
-interface NewBookFormProps {
-  setBookData: (book_data: any) => void;
-}
-
-export const NewBookForm: FC<NewBookFormProps> = ({ setBookData }) => {
+export const NewBookForm: FC = () => {
   const form = useFormContext();
-
-  useEffect(() => {
-    form.watch((value) => setBookData(value));
-  }, [form]);
 
   return (
     <Card className="max-h-[30rem] px-8 py-4 mt-2 bg-slate-50 overflow-y-scroll">

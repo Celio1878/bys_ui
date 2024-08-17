@@ -15,7 +15,7 @@ export default function MyBookPage() {
   const { id } = useParams();
 
   const { data: book, isLoading } = useSWR(
-    `${SERVICE_URL}/book/${id}`,
+    `${SERVICE_URL}/${id}`,
     fetcher<Story>({}).get,
   );
 

@@ -35,17 +35,19 @@ export const BookMetadata: FC<BookMetadataProps> = ({ bookData, tags }) => {
       </h3>
       <div className="flex flex-row gap-1 items-end">
         <Users className="w-5 mr-1 opacity-30" />
-        {bookData.coauthors.map((author: any, index: any, authors: any) => (
-          <Link
-            href={`/authors/${author.id}`}
-            key={author.id}
-            className="text-xs hover:font-semibold hover:underline transition-all duration-200"
-          >
-            {index === authors.length - 1
-              ? author.title + "."
-              : author.title + ","}
-          </Link>
-        ))}
+        {bookData.coauthors.map(
+          (author: Tag<string>, index: number, authors: Tag<string>[]) => (
+            <Link
+              href={`/authors/${author.id}`}
+              key={author.id}
+              className="text-xs hover:font-semibold hover:underline transition-all duration-200"
+            >
+              {index === authors.length - 1
+                ? author.title + "."
+                : author.title + ","}
+            </Link>
+          ),
+        )}
       </div>
       <h3 className="flex flex-row items-end text-xs gap-x-2">
         <CalendarFold className="w-5 opacity-30" />
@@ -57,7 +59,7 @@ export const BookMetadata: FC<BookMetadataProps> = ({ bookData, tags }) => {
       </span>
       {tags && tags.length > 0 && (
         <div className="flex flex-wrap gap-1.5">
-          {tags.map((tag: Tag<string>) => (
+          {tags.map((tag) => (
             <Badge variant="outline" key={tag.id}>
               {tag.title}
             </Badge>

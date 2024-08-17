@@ -1,4 +1,4 @@
-export const banner_images = [
+export const bannerImages = [
   <picture key={`banner-pic-${1}`}>
     <source media="(max-width: 767px)" srcSet={`/reader.png`} />
     <source media="(max-width: 1024px)" srcSet={`/reader1.png`} />

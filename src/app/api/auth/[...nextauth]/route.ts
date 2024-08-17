@@ -24,35 +24,6 @@ const handler = NextAuth({
     }),
   ],
   callbacks: {
-    signIn: async ({ user, account }) => {
-      if (account && user) {
-        try {
-          const profile = await fetcher<ProfileDto>({}).get(
-            `${SERVICE_URL}/profile?id=${user.email}`,
-          );
-
-          if (!profile.id && !profile.name) {
-            const dto = {
-              email: String(user.email),
-              name: String(user.name),
-              urlImage: String(user.image),
-            };
-
-            await fetcher<CreateProfileDto>({
-              body: dto,
-              token: account?.id_token,
-            }).put(`${SERVICE_URL}/profile`);
-
-            return true;
-          }
-        } catch (error) {
-          console.error(error);
-
-          return false;
-        }
-      }
-      return true;
-    },
     async jwt({ token, account, profile }) {
       if (account) {
         return {
@@ -113,6 +84,36 @@ const handler = NextAuth({
         access_token: token.id_token,
         expires_at: token.expires_at,
       };
+    },
+    signIn: async ({ user, account }) => {
+      if (account && user) {
+        try {
+          const profile = await fetcher<ProfileDto>({}).get(
+            `${SERVICE_URL}/profile/${user.email}`,
+          );
+
+          if (!profile.id && !profile.name) {
+            const dto = {
+              id: String(user.id),
+              email: String(user.email),
+              name: String(user.name),
+              urlImage: String(user.image),
+            };
+
+            await fetcher<CreateProfileDto>({
+              body: dto,
+              token: account?.id_token,
+            }).put(`${SERVICE_URL}/profile`);
+
+            return true;
+          }
+        } catch (error) {
+          console.error(error);
+
+          return false;
+        }
+      }
+      return true;
     },
     redirect: async () => "/",
   },

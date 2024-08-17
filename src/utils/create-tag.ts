@@ -3,7 +3,7 @@ interface CreateTagReturn {
   title: string;
 }
 
-export function create_tag(value: string): CreateTagReturn {
+export function createTag(value: string): CreateTagReturn {
   const id = value.toLowerCase().replace(/\s+/g, "-");
   const title = value.trim();
 

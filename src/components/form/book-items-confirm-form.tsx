@@ -1,48 +1,41 @@
 import { FC } from "react";
-import Image from "next/image";
 import { Card } from "@/components/ui/card";
 import { BookMetadata } from "@/components/book/book-metadata";
 import { Tag } from "@/app/model/story";
-import { format } from "date-fns";
-import { useSession } from "next-auth/react";
+import useSWR from "swr";
+import { fetcher } from "@/hooks/fetcher";
 
-type Book = {
-  title: string;
-  description: string;
-  ageRange: string;
-  copyright: string;
-  genre: string;
-  warnings: Tag<string>[];
-  coauthors: Tag<string>[];
-  tags: Tag<string>[];
-};
+const SERVICE_URL = String(process.env.NEXT_PUBLIC_BOOKS_API_URL);
 
 interface BookItemsConfirmFormProps {
-  bookData: Book;
+  book: any;
+  session: any;
 }
 
 export const BookItemsConfirmForm: FC<BookItemsConfirmFormProps> = ({
-  bookData,
+  book,
+  session,
 }) => {
-  const { data: session } = useSession();
   const author: Tag<string> = {
     id: session?.user?.email!,
     title: session?.user?.name!,
   };
 
-  const book = {
-    ...bookData,
-    coauthors: bookData.coauthors.concat(author),
-    ageRange: JSON.parse(bookData.ageRange),
-    copyright: JSON.parse(bookData.copyright),
-    genre: JSON.parse(bookData.genre),
-    publishAt: format(new Date(), "dd/MM/yyyy"),
+  const { data: s3Url } = useSWR(
+    `${SERVICE_URL}/${book.id}/cover/image`,
+    fetcher<string>({ token: session?.account?.id_token }).get,
+  );
+
+  const newBookData = {
+    ...book,
+    coauthors: book.coauthors.concat(author),
+    publishAt: Date.now() / 1000,
   };
 
-  return (
+  eturn(
     <Card className="flex flex-col max-h-96 items-center gap-4 px-8 py-4 mt-2 bg-slate-50 overflow-y-auto">
-      <Image src="/cover.jpg" alt="cover" width={150} height={150} />
-      <BookMetadata bookData={book} tags={bookData.tags} />
-    </Card>
+      <Iage src={s3Url!} alt="cover" width={120} height={150} />
+      <BookMetadata bookData={newBookData} tags={book.tags} />
+    </Card>,
   );
 };

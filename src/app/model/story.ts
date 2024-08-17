@@ -60,7 +60,6 @@ export type Story = {
   chapters: Tag<string>[];
   publishAt: number;
   followers: Tag<string>[];
-  cover: string;
 };
 
 export const GenreTags: Tag<Genre>[] = [
@@ -105,3 +104,16 @@ export const WarningTags: Tag<Warning>[] = [
   { id: Warning.TORTURE, title: "Tortura" },
   { id: Warning.VIOLENCE, title: "Violência" },
 ];
+
+export type CreateBookDto = {
+  id: string;
+  title: string;
+  description: string;
+  genre: Tag<string>;
+  copyright: Tag<string>;
+  ageRange: Tag<string>;
+  author: Tag<string>;
+  tags: Tag<string>[];
+  warnings: Tag<string>[];
+  coauthors: Tag<string>[];
+};

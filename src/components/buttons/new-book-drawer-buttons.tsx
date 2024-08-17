@@ -3,9 +3,6 @@ import { NewBookDrawerConfirmButtons } from "@/components/buttons/new-book-drawe
 import { NewBookDrawerFormButtons } from "@/components/buttons/new-book-drawer-form-buttons";
 import { NewBookDrawerCoverButtons } from "@/components/buttons/new-book-drawer-cover-buttons";
 import { useSession } from "next-auth/react";
-import { fetcher } from "@/hooks/fetcher";
-import { toast } from "@/components/ui/use-toast";
-import useSWRMutation from "swr/mutation";
 
 const SERVICE_URL = String(process.env.NEXT_PUBLIC_BOOKS_API_URL);
 
@@ -14,7 +11,7 @@ interface BookDrawerButtonsProps {
   setTabName: (tab_name: string) => void;
   onClose: VoidFunction;
   bookValues: any;
-  bookCreated: VoidFunction;
+  onConfirmClick: VoidFunction;
 }
 
 export const NewBookDrawerButtons: FC<BookDrawerButtonsProps> = ({
@@ -22,7 +19,7 @@ export const NewBookDrawerButtons: FC<BookDrawerButtonsProps> = ({
   setTabName,
   onClose,
   bookValues,
-  bookCreated,
+  onConfirmClick,
 }) => {
   const { data: session } = useSession() as any;
 
@@ -34,35 +31,26 @@ export const NewBookDrawerButtons: FC<BookDrawerButtonsProps> = ({
     !bookValues.ageRange ||
     bookValues.warnings.length === 0;
 
-  const isJson = (str: string) => {
+  function convertToJson(str: string) {
     try {
       return JSON.parse(str);
     } catch (e) {
       return { id: "", title: "" };
     }
-  };
+  }
 
   const dto = {
     id: bookValues.title.toLowerCase().replace(/\s/g, "-") + "-" + Date.now(),
     title: bookValues.title,
     description: bookValues.description,
-    genre: isJson(bookValues.genre),
-    copyright: isJson(bookValues.copyright),
-    ageRange: isJson(bookValues.ageRange),
-    author: bookValues.author,
+    genre: convertToJson(bookValues.genre),
+    copyright: convertToJson(bookValues.copyright),
+    ageRange: convertToJson(bookValues.ageRange),
+    author: { id: session?.user?.id!, title: session?.user?.name! },
     tags: bookValues.tags,
     warnings: bookValues.warnings,
     coauthors: bookValues.coauthors,
-    cover: "",
   };
-
-  const { trigger } = useSWRMutation(
-    `${SERVICE_URL}/books`,
-    fetcher<any>({
-      body: dto,
-      token: session?.access_token,
-    }).post,
-  );
 
   switch (tabName) {
     case "content":
@@ -87,18 +75,7 @@ export const NewBookDrawerButtons: FC<BookDrawerButtonsProps> = ({
         <NewBookDrawerConfirmButtons
           disabled={disable}
           goBackClick={() => setTabName("cover")}
-          onConfirmClick={() => {
-            trigger().then(() => {
-              toast({
-                className: "bg-violet-500 text-white",
-                title: `Livro ${dto.title} criado!`,
-                description: "Seu livro foi criado com sucesso!",
-                type: "foreground",
-              });
-              bookCreated();
-              onClose();
-            });
-          }}
+          onConfirmClick={onConfirmClick}
         />
       );
   }

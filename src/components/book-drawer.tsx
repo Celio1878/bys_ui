@@ -12,114 +12,147 @@ import { FC, ReactNode, useEffect, useState } from "react";
 import { NewBookDrawerButtons } from "@/components/buttons/new-book-drawer-buttons";
 import { NewBookSteps } from "@/components/new-book-steps";
 import { FormProvider, useForm } from "react-hook-form";
-import { Story, Tag, Warning } from "@/app/model/story";
+import { BookFormValues, initialValues } from "@/utils/form-data";
+import { CreateBookDto, Story, Tag } from "@/app/model/story";
+import { useBookApi } from "@/hooks/useBookApi";
 import { useSession } from "next-auth/react";
-import useSWRMutation from "swr/mutation";
 import { fetcher } from "@/hooks/fetcher";
-
-export type BookFormValues = {
-  title: string;
-  description: string;
-  genre: string;
-  copyright: string;
-  ageRange: string;
-  tags: Tag<string>[];
-  warnings: Tag<Warning>[];
-  coauthors: Tag<string>[];
-  author: Tag<string>;
-};
-
-const initialValues: BookFormValues = {
-  title: "",
-  description: "",
-  genre: "",
-  copyright: "",
-  ageRange: "",
-  tags: [],
-  warnings: [],
-  coauthors: [],
-  author: { id: "", title: "" },
-};
+import useSWR from "swr";
 
 interface BookDrawerProps {
-  id?: string;
-  buttonType: "default" | "secondary" | "outline" | "ghost";
+  bookId?: string;
   buttonLabel: string | ReactNode;
   modalTitle: string;
-  bookCreated: VoidFunction;
+  onConfirmClick: VoidFunction;
+  trigger?: VoidFunction;
 }
 
 const BOOK_SERVICE_URL = String(process.env.NEXT_PUBLIC_BOOKS_API_URL);
 
 export const BookDrawer: FC<BookDrawerProps> = ({
-  id,
+  bookId,
   buttonLabel,
-  buttonType,
   modalTitle,
-  bookCreated,
+  onConfirmClick,
+  trigger,
 }) => {
-  const { data: session } = useSession();
-  const [open, setOpen] = useState(false);
-  const [tabName, setTabName] = useState("content");
+  const { data: session } = useSession() as any;
+  const [openForm, setOpenForm] = useState(false);
+  const [tabName, setTabName] = usState("content");
   const formMethods = useForm({
     defaultValues: initialValues,
   });
+  const { updateBook, createBook } = useBookApi();
 
-  const { trigger, data: book } = useSWRMutation(
-    `${BOOK_SERVICE_URL}/book/${id}`,
-    fetcher<Story>({}).get,
+  const { data: book } = useSWR(
+    bookId && `${BOOK_SERVICE_URL}/${bookId}`,
+    fetcher<Story>({ token: session?.access_token }).get,
   );
 
   useEffect(() => {
     if (book) {
-      const bookToForm: BookFormValues = {
+      const bookFormState: BookFormValues = {
+        ...book,
         ageRange: JSON.stringify(book.ageRange),
         copyright: JSON.stringify(book.copyright),
         genre: JSON.stringify(book.genre),
-        title: book.title,
-        description: book.description,
-        warnings: book.warnings,
-        coauthors: book.coauthors,
-        author: book.author,
-        tags: book.tags,
       };
-      return formMethods.reset(bookToForm);
-    }
 
-    return () => formMethods.reset(initialValues);
+      return formMethods.reset(bookFormState);
+    }
   }, [book]);
 
   useEffect(() => {
-    if (open) setTabName("content");
-  }, [open]);
+    if (openForm) setTabName("content");
+  }, [openForm]);
 
-  const bookData = {
-    ...formMethods.getValues(),
-    author: { id: session?.user?.email!, title: session?.user?.name! },
+  const authorTag: Tag<string> = {
+    id: session?.user?.id,
+    title: session?.user?.name,
   };
+  const newBookDto = createBookDto(authorTag, formMethods.getValues());
+
+  const updatedBook = book && updateBookDto(book!, formMethods.getValues());
 
   return (
-    <Dialog modal open={open} onOpenChange={setOpen}>
+    <Dialog modal open={openForm} onOpenChange={setOpenForm}>
       <DialogTrigger asChild>
-        <button onClick={() => trigger()}>{buttonLabel}</button>
+        <button onClick={trigger}>{buttonLabel}</button>
       </DialogTrigger>
       <DialogContent aria-describedby={"Insert Book Steps"}>
         <DialogHeader>
           <DialogTitle>{modalTitle}</DialogTitle>
         </DialogHeader>
         <FormProvider {...formMethods}>
-          <NewBookSteps tabName={tabName} />
+          <NewBookSteps tabName={tabName} bookDto={newBookDto} />
         </FormProvider>
         <DialogFooter>
           <NewBookDrawerButtons
             tabName={tabName}
             setTabName={setTabName}
-            bookValues={bookData}
-            onClose={() => setOpen(false)}
-            bookCreated={bookCreated}
+            bookValues={formMethods.getValues()}
+            onClose={() => setOpenForm(false)}
+            onConfirmClick={async () => {
+              book
+                ? updateBook(book.id, updatedBook!).then(() => {
+                    setOpenForm(false);
+                    onConfirmClick();
+                  })
+                : createBook(newBookDto).then(() => {
+                    setOpenForm(false);
+                    onConfirmClick();
+                  });
+            }}
           />
         </DialogFooter>
       </DialogContent>
     </Dialog>
   );
 };
+
+function convertToJson(str: string) {
+  try {
+    return JSON.parse(str);
+  } catch (e) {
+    return { id: "", title: "" };
+  }
+}
+
+function createBookDto(
+  authorTag: Tag<string>,
+  bookValues: BookFormValues,
+): CreateBookDto {
+  return {
+    id: bookValues.title.toLowerCase().replace(/\s/g, "-") + "-" + authorTag.id,
+    title: bookValues.title,
+    description: bookValues.description,
+    genre: convertToJson(bookValues.genre),
+    copyright: convertToJson(bookValues.copyright),
+    ageRange: convertToJson(bookValues.ageRange),
+    author: authorTag,
+    tags: bookValues.tags,
+    warnings: bookValues.warnings,
+    coauthors: bookValues.coauthors,
+  };
+}
+
+function updateBookDto(
+  initialValues: Story,
+  bookValues: BookFormValues,
+): Story {
+  return {
+    id: initialValues.id,
+    title: bookValues.title,
+    description: bookValues.description,
+    genre: convertToJson(bookValues.genre),
+    copyright: convertToJson(bookValues.copyright),
+    ageRange: convertToJson(bookValues.ageRange),
+    author: initialValues.author,
+    tags: bookValues.tags,
+    warnings: bookValues.warnings,
+    coauthors: bookValues.coauthors,
+    publishAt: initialValues.publishAt,
+    chapters: initialValues.chapters,
+    followers: initialValues.followers,
+  };
+}

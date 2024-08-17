@@ -8,16 +8,28 @@ import useSWR from "swr";
 import { fetcher } from "@/hooks/fetcher";
 import GlobalError from "@/app/global-error";
 import { GenreTags, Story } from "@/app/model/story";
+import { ProfileDto } from "@/app/model/profile-dto";
+import Image from "next/image";
+import Link from "next/link";
 
-const SERVICE_URL = process.env.NEXT_PUBLIC_BOOKS_API_URL!;
+const BOOKS_SERVICE_URL = process.env.NEXT_PUBLIC_BOOKS_API_URL!;
+const PROFILES_SERVICE_URL = process.env.NEXT_PUBLIC_PROFILES_API_URL!;
 
 export default function Home() {
-  const { data, error, mutate } = useSWR(
-    `${SERVICE_URL}/books`,
-    fetcher<Story[]>({}).get,
-  );
+  const {
+    data: books,
+    error: booksErr,
+    mutate: getBooks,
+  } = useSWR(BOOKS_SERVICE_URL, fetcher<Story[]>({}).get);
+  const {
+    data: profiles,
+    error: profilesErr,
+    mutate: getProfiles,
+  } = useSWR(PROFILES_SERVICE_URL, fetcher<ProfileDto[]>({}).get);
 
-  if (error) return <GlobalError error={error} reset={mutate} />;
+  if (booksErr) return <GlobalError error={booksErr} reset={getBooks} />;
+  if (profilesErr)
+    return <GlobalError error={profilesErr} reset={getProfiles} />;
 
   return (
     <Suspense fallback={<Loading />}>
@@ -26,21 +38,57 @@ export default function Home() {
         <BooksCarousel
           key={"highlighted"}
           sectionTitle={"Destaque"}
-          books={data!}
+          books={books!}
         />
         {GenreTags.map((section) => {
-          const books = data?.filter((book) => book.genre.id === section.id);
+          const booksByGenre = books?.filter(
+            (book) => book.genre.id === section.id,
+          );
 
-          if (!books || books.length === 0) return null;
+          if (!booksByGenre || booksByGenre.length === 0) return null;
 
           return (
             <BooksCarousel
               key={section.id}
               sectionTitle={section.title}
-              books={books}
+              books={booksByGenre}
             />
           );
         })}
+      </section>
+
+      <section className="w-full flex flex-col gap-8 justify-center items-center">
+        <h1 className="font-bold text-3xl underline underline-offset-4">
+          Principais Autores
+        </h1>
+        <div>
+          {profiles?.map((profile) => (
+            <div
+              className="flex flex-wrap gap-4 justify-center items-center"
+              key={profile.id}
+            >
+              <div className="flex flex-col justify-center items-center gap-2">
+                <Image
+                  className="rounded-full"
+                  {...{
+                    src: profile.urlImage,
+                    alt: profile.name,
+                    width: 100,
+                    height: 100,
+                    priority: true,
+                    quality: 100,
+                  }}
+                />
+                <Link
+                  className="text-sm hover:underline hover:font-semibold transition-all duration-150"
+                  href={`authors/${profile.id}`}
+                >
+                  {profile.name}
+                </Link>
+              </div>
+            </div>
+          ))}
+        </div>
       </section>
     </Suspense>
   );
