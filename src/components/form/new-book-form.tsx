@@ -1,28 +1,34 @@
-import {FC} from "react";
-import {Form} from "@/components/ui/form";
-import {Card} from "@/components/ui/card";
-import {useFormContext} from "react-hook-form";
-import {InputFormField} from "@/components/form/fields/input-form-field";
-import {TextAreaFormField} from "@/components/form/fields/text-area-form-field";
-import {SelectFormField} from "@/components/form/fields/select-form-field";
-import {CheckboxListFormField} from "@/components/form/fields/checkbox-list-form-field";
-import {InputTagFormField} from "@/components/form/fields/input-tag-form-field";
-import {SelectItemsSearchFormField} from "@/components/form/fields/select-items-search-form-field";
-import {AgeRangeTags, CopyrightTags, GenreTags, Tag, WarningTags} from "@/app/model/tags";
+import { FC } from "react";
+import { Form } from "@/components/ui/form";
+import { Card } from "@/components/ui/card";
+import { useFormContext } from "react-hook-form";
+import { InputFormField } from "@/components/form/fields/input-form-field";
+import { TextAreaFormField } from "@/components/form/fields/text-area-form-field";
+import { SelectFormField } from "@/components/form/fields/select-form-field";
+import { CheckboxListFormField } from "@/components/form/fields/checkbox-list-form-field";
+import { InputTagFormField } from "@/components/form/fields/input-tag-form-field";
+import { SelectItemsSearchFormField } from "@/components/form/fields/select-items-search-form-field";
+import {
+  AgeRangeTags,
+  CopyrightTags,
+  GenreTags,
+  Tag,
+  WarningTags,
+} from "@/app/model/tags";
 import useSWR from "swr";
-import {fetcher} from "@/hooks/fetcher";
-import {ProfileDto} from "@/app/model/profile-dto";
+import { fetcher } from "@/hooks/fetcher";
+import { ProfileDto } from "@/app/model/profile-dto";
 
 const PROFILES_SERVICE_URL = String(process.env.NEXT_PUBLIC_PROFILES_API_URL);
 
 export const NewBookForm: FC = () => {
   const form = useFormContext();
-  
-  const {data: profiles} = useSWR(
+
+  const { data: profiles } = useSWR(
     PROFILES_SERVICE_URL!,
-    fetcher<ProfileDto[]>({})get,
-  )
-  
+    fetcher<ProfileDto[]>({}).get,
+  );
+
   const authorTagList = tagList(profiles!);
 
   return (
@@ -99,7 +105,7 @@ export const NewBookForm: FC = () => {
 
 function tagList(profiles: ProfileDto[]): Tag<string>[] {
   const profileTags: Tag<string>[] = [];
-  profiles?.forEach((p) => profileTags.push({id: p.id, title: p.name}));
-  
+  profiles?.forEach((p) => profileTags.push({ id: p.id, title: p.name }));
+
   return profileTags;
 }

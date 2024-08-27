@@ -1,8 +1,13 @@
-import {FC} from "react";
-import {FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form";
-import {TagSearchItems} from "@/components/form/tag-search-items";
-import {UseFormReturn} from "react-hook-form";
-import {SelectComboBox} from "@/components/form/select-combobox/select-combobox";
+import { FC } from "react";
+import {
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { TagSearchItems } from "@/components/form/tag-search-items";
+import { UseFormReturn } from "react-hook-form";
+import { SelectComboBox } from "@/components/form/select-combobox/select-combobox";
 
 interface SelectItemsSearchFormFieldProps {
   name: string;
@@ -15,7 +20,9 @@ interface SelectItemsSearchFormFieldProps {
   textOnEmpty?: string;
 }
 
-export const SelectItemsSearchFormField: FC<SelectItemsSearchFormFieldProps> = ({
+export const SelectItemsSearchFormField: FC<
+  SelectItemsSearchFormFieldProps
+> = ({
   form,
   name,
   label,
@@ -31,7 +38,7 @@ export const SelectItemsSearchFormField: FC<SelectItemsSearchFormFieldProps> = (
       name={name}
       render={({ field }) => (
         <FormItem className="flex flex-col">
-          <FormLabel>{label}<FormLabel>
+          <FormLabel>{label}</FormLabel>
           <SelectComboBox
             name={name}
             listItems={listItems}

@@ -1,5 +1,3 @@
-"use client";
-
 import { useFieldArray, UseFormReturn } from "react-hook-form";
 import { FC } from "react";
 import { useManagerTags } from "@/hooks/use-manager-tags";
