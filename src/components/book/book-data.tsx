@@ -2,10 +2,10 @@ import { FC, ReactNode } from "react";
 import { BookContent } from "@/components/book/book-content";
 import { Separator } from "@/components/ui/separator";
 import { Card } from "@/components/ui/card";
-import { Story } from "@/app/model/story";
+import { BookDto } from "@/app/model/book-dto";
 
 interface BookDataProps {
-  bookData: Story;
+  bookData: BookDto;
   chaptersComponent: ReactNode;
 }
 

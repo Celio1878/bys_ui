@@ -10,7 +10,7 @@ import { CreateComment } from "@/components/create-comment";
 import { Comment } from "@/components/comment";
 import useSWR from "swr";
 import { fetcher } from "@/hooks/fetcher";
-import { ChapterDto } from "@/app/model/chapter";
+import { ChapterDto } from "@/app/model/chapter-dto";
 import { Loading } from "@/components/loading";
 import { Suspense } from "react";
 

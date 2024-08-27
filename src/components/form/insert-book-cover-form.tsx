@@ -4,8 +4,10 @@ import { Input } from "@/components/ui/input";
 import { fetcher } from "@/hooks/fetcher";
 import { Loading } from "@/components/loading";
 import useSWRMutation from "swr/mutation";
+import { useFormContext } from "react-hook-form";
 
 const SERVICE_URL = String(process.env.NEXT_PUBLIC_BOOKS_API_URL);
+const BUCKET_URL = String(process.env.NEXT_PUBLIC_BUCKET_URL);
 
 interface InsertBookCoverFormProps {
   session: any;
@@ -18,8 +20,11 @@ export const InsertBookCoverForm: FC<InsertBookCoverFormProps> = ({
 }) => {
   const { trigger, isMutating } = useSWRMutation(
     `${SERVICE_URL}/${bookId}/cover`,
-    fetcher<string>({ token: session?.account?.id_token }).get,
+    fetcher<string>({ token: session?.access_token }).get,
   );
+
+  const form = useFormContext();
+  form.setValue("cover", `${BUCKET_URL}/books/${bookId}/cover.jpeg`);
 
   if (isMutating) return <Loading />;
 
@@ -34,10 +39,9 @@ export const InsertBookCoverForm: FC<InsertBookCoverFormProps> = ({
       },
     });
 
-    if (res.ok) {
-      console.log("File uploaded successfully");
-    } else {
-      console.error("Upload failed");
+    if (!res.ok) {
+      console.error("Upload failed" + res.statusText);
+      return;
     }
   };
 

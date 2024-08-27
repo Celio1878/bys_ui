@@ -6,7 +6,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Tag, Warning } from "@/app/model/story";
+import { Tag, Warning } from "@/app/model/book-dto";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useFieldArray, UseFormReturn } from "react-hook-form";
 import { useManagerTags } from "@/hooks/use-manager-tags";
@@ -25,7 +25,7 @@ export const CheckboxListFormField: FC<CheckboxListFormFieldProps> = ({
   name,
 }) => {
   const { append, remove } = useFieldArray({ control: form.control, name });
-  const { sanitized_tags, handle_selected_tag } = useManagerTags({
+  const { sanitizedTags, handleSelectedTag } = useManagerTags({
     form,
     name,
     onChange: append,
@@ -49,8 +49,8 @@ export const CheckboxListFormField: FC<CheckboxListFormFieldProps> = ({
                   <FormControl>
                     <Checkbox
                       className="bg-white"
-                      checked={sanitized_tags.has(item.id)}
-                      onCheckedChange={() => handle_selected_tag(item, remove)}
+                      checked={sanitizedTags.has(item.id)}
+                      onCheckedChange={() => handleSelectedTag(item, remove)}
                     />
                   </FormControl>
                   <FormLabel className="font-normal text-xs">

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ChapterFormCard } from "@/components/chapter/chapter-form-card";
 import useSWRMutation from "swr/mutation";
 import { fetcher } from "@/hooks/fetcher";
-import { CreateChapter } from "@/app/model/chapter";
+import { CreateChapter } from "@/app/model/chapter-dto";
 import { useParams, useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { toast } from "@/components/ui/use-toast";

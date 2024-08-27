@@ -5,21 +5,48 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24dfe38b-6d18-4700-8386-86f955cbefc3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/public/m1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/m2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/m3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/tablet_img1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/tablet_img2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/tablet_img3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/model/search-dto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/model/tags.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/model/chapter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/model/chapter.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/authors/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/authors/[id]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/books/[id]/chapters/[chapter_id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/books/[id]/chapters/[chapter_id]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/books/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/books/[id]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/model/chapter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/model/chapter-dto.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/model/profile-dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/model/profile-dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/model/story.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/model/story.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/model/story.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/model/book-dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/profile/[name]/books/[id]/chapters/[chapter_id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/profile/[name]/books/[id]/chapters/[chapter_id]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/profile/[name]/books/[id]/chapters/new-chapter/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/profile/[name]/books/[id]/chapters/new-chapter/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/profile/[name]/books/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/profile/[name]/books/[id]/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/profile/[name]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/profile/[name]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/search/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/search/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/book-drawer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/book-drawer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/icons/logo-icon.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icons/logo-icon.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useBookApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/use-book-api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/banner-images.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/banner-images.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/book.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/book.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/book/book-chapters.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/book/book-chapters.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/book/book-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/book/book-content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/book/book-data.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/book/book-data.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/book/book-metadata.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/book/book-metadata.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/book/my-book-chapters.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/book/my-book-chapters.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/buttons/new-book-drawer-buttons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/buttons/new-book-drawer-buttons.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/carousel/books-carousel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/carousel/books-carousel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/chapters-pagination.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/chapters-pagination.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/follow-component.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/follow-component.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/book-items-confirm-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/book-items-confirm-form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/fields/checkbox-list-form-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/fields/checkbox-list-form-field.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/fields/input-tag-form-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/fields/input-tag-form-field.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/fields/select-form-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/fields/select-form-field.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/fields/select-items-search-form-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/fields/select-items-search-form-field.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/insert-book-cover-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/insert-book-cover-form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/new-book-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/new-book-form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/select-combobox/combobox-trigger.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/select-combobox/combobox-trigger.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/select-combobox/memoized-command-item.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/select-combobox/memoized-command-item.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/select-combobox/select-combobox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/select-combobox/select-combobox.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/tag-items.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/tag-items.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/tag-search-items.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/tag-search-items.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/use-book-api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/use-book-api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/use-manager-tags.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/use-manager-tags.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/form-data.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/form-data.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/mocks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/mocks.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -289,7 +316,7 @@
       <workItem from="1724405734621" duration="296000" />
       <workItem from="1724406037053" duration="613000" />
       <workItem from="1724674787719" duration="6909000" />
-      <workItem from="1724749535657" duration="8782000" />
+      <workItem from="1724749535657" duration="17983000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Add Shadcn-ui">
       <option name="closed" value="true" />
@@ -611,7 +638,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724755218534</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="feat: Change Url images">
+      <option name="closed" value="true" />
+      <created>1724758567862</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1724758567862</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -634,7 +669,6 @@
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="fix: Suspense boundary over main" />
     <MESSAGE value="feat: Add Suspense component and Update my-books page" />
     <MESSAGE value="feat: items types" />
     <MESSAGE value="fix: logging safety" />
@@ -659,7 +693,8 @@
     <MESSAGE value="feat: Authors link" />
     <MESSAGE value="feat: Project" />
     <MESSAGE value="fix: Refresh token and syntax" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: Refresh token and syntax" />
+    <MESSAGE value="feat: Change Url images" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Change Url images" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

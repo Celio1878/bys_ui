@@ -8,7 +8,7 @@ import { BreadcrumbComponent } from "@/components/breadcrumb-component";
 import { useParams } from "next/navigation";
 import useSWR from "swr";
 import { fetcher } from "@/hooks/fetcher";
-import { Story } from "@/app/model/story";
+import { BookDto } from "@/app/model/book-dto";
 
 const SERVICE_URL = String(process.env.NEXT_PUBLIC_BOOKS_API_URL);
 
@@ -17,7 +17,7 @@ export default function BookPage() {
 
   const { data: book, isLoading } = useSWR(
     `${SERVICE_URL}/${id}`,
-    fetcher<Story>({}).get,
+    fetcher<BookDto>({}).gt,
   );
 
   if (isLoading) return <Loading />;

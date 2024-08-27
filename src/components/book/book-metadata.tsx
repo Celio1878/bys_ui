@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Badge } from "@/components/ui/badge";
 import { CalendarFold, Copyright, NotebookText, Users } from "lucide-react";
-import { Tag } from "@/app/model/story";
+import { Tag } from "@/app/model/book-dto";
 import Link from "next/link";
 import { format, fromUnixTime } from "date-fns";
 

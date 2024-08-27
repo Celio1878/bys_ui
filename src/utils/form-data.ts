@@ -1,4 +1,4 @@
-import { Tag, Warning } from "@/app/model/story";
+import { Tag, Warning } from "@/app/model/book-dto";
 
 export type BookFormValues = {
   id?: string;
@@ -11,6 +11,7 @@ export type BookFormValues = {
   warnings: Tag<Warning>[];
   coauthors: Tag<string>[];
   author: Tag<string>;
+  cover: string;
 };
 
 export const initialValues: BookFormValues = {
@@ -23,4 +24,5 @@ export const initialValues: BookFormValues = {
   warnings: [],
   coauthors: [],
   author: { id: "", title: "" },
+  cover: "",
 };

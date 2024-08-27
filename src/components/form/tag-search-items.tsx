@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Badge } from "@/components/ui/badge";
-import { Tag } from "@/app/model/story";
+import { Tag } from "@/app/model/book-dto";
 
 interface TagSearchItemsProps {
   tags: Tag<string>[];

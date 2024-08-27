@@ -46,23 +46,6 @@ export enum AgeRange {
   EIGHTEEN = "eighteen",
 }
 
-export type Story = {
-  id: string;
-  title: string;
-  description: string;
-  genre: Tag<string>;
-  copyright: Tag<Copyright>;
-  ageRange: Tag<AgeRange>;
-  author: Tag<string>;
-  tags: Tag<string>[];
-  warnings: Tag<Warning>[];
-  coauthors: Tag<string>[];
-  chapters: Tag<string>[];
-  followers: Tag<string>[];
-  createdAt: number;
-  cover: string;
-};
-
 export const GenreTags: Tag<Genre>[] = [
   { id: Genre.ORIGINAL, title: "Original" },
   { id: Genre.TERROR, title: "Terror" },
@@ -105,17 +88,3 @@ export const WarningTags: Tag<Warning>[] = [
   { id: Warning.TORTURE, title: "Tortura" },
   { id: Warning.VIOLENCE, title: "Violência" },
 ];
-
-export type CreateBookDto = {
-  id: string;
-  title: string;
-  description: string;
-  genre: Tag<string>;
-  copyright: Tag<string>;
-  ageRange: Tag<string>;
-  author: Tag<string>;
-  tags: Tag<string>[];
-  warnings: Tag<string>[];
-  coauthors: Tag<string>[];
-  cover: string;
-};

@@ -26,7 +26,7 @@ export default function ProfilePage() {
 
   const { data: profile, mutate: getProfile } = useSWR(
     `${PROFILE_SERVICE_URL}/${session?.user?.id}`,
-    fetcher<ProfileDto>({ token: session?.access_token }).gt,
+    fetcher<ProfileDto>({ token: session?.access_token }).get,
   );
 
   return (
@@ -47,23 +47,23 @@ export default function ProfilePage() {
       {profile
         ? profile?.authorship?.length > 0 && (
             <Card className="flex flex-wrap w-full items-center justify-center gap-8 py-8 bg-zinc-50 dark:bg-neutral-950 dark:border-neutral-950">
-              {profile?.authorship.map((tag, k) => {
-                const href = `${pathname}/books/${tag.id}`;
+              {profile?.authorship.map((t, k) => {
+                const href = `${pathname}/books/${t.id}`;
 
                 return (
                   <Book
-                    bookTag={tag}
+                    bookTag={t}
                     buttons={
                       <div className="flex flex-row gap-6 mt-2">
                         <BookDrawer
                           buttonLabel={<UpdateBookButtonLabel />}
                           modalTitle="Editar Livro"
-                          bookId={tag.id}
+                          bookId={t.id}
                           onConfirmClick={getProfile}
                         />
                         <DeleteButton
                           onClick={() =>
-                            deleteBook(tag.id).then(() => getProfile())
+                            deleteBook(t.id).then(() => getProfile())
                           }
                         />
                       </div>

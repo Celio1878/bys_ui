@@ -7,10 +7,11 @@ import { BooksCarousel } from "@/components/carousel/books-carousel";
 import useSWR from "swr";
 import { fetcher } from "@/hooks/fetcher";
 import GlobalError from "@/app/global-error";
-import { GenreTags, Story } from "@/app/model/story";
+import { BookDto } from "@/app/model/book-dto";
 import { ProfileDto } from "@/app/model/profile-dto";
 import Image from "next/image";
 import Link from "next/link";
+import { GenreTags } from "@/app/model/tags";
 
 const BOOKS_SERVICE_URL = process.env.NEXT_PUBLIC_BOOKS_API_URL!;
 const PROFILES_SERVICE_URL = process.env.NEXT_PUBLIC_PROFILES_API_URL!;
@@ -20,7 +21,7 @@ export default function Home() {
     data: books,
     error: booksErr,
     mutate: getBooks,
-  } = useSWR(BOOKS_SERVICE_URL, fetcher<Story[]>({}).get);
+  } = useSWR(BOOKS_SERVICE_URL, fetcher<BookDto[]>({}).get);
   const {
     data: profiles,
     error: profilesErr,

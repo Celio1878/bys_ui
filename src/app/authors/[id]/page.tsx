@@ -15,7 +15,7 @@ import {ProfileDto} from "@/app/model/profile-dto";
 import Image from "next/image";
 import useSWRMutation from "swr/mutation";
 import {useSession} from "next-auth/react";
-import {Tag} from "@/app/model/story";
+import {Tag} from "@/app/model/book-dto";
 
 const PROFILE_SERVICE_URL = String(process.env.NEXT_PUBLIC_PROFILES_API_URL);
 
@@ -40,7 +40,7 @@ export default function AuthorPage() {
 
   const { trigger } = useSWRMutation(
     `${PROFILE_SERVICE_URL}/${id}`,
-    fetcher<ProfileDto>({ body: dto!, token: session?.access_tokn }).put
+    fetcher<ProfileDto>({body: dto!, token: session?.access_tokn}).put
   );
 
   return (
@@ -90,9 +90,9 @@ export default function AuthorPage() {
       </h1>
 
       {profile
-        ? profile?.myStories?.length > 0 && (
+        ? profile?.authorship?.length > 0 && (
             <Card className="flex flex-wrap w-full items-center justify-center gap-8 py-8 bg-zinc-50 dark:bg-neutral-950 dark:border-neutral-950">
-              {profile?.myStories.map((tag, k) => {
+              {profile?.authorship.map((tag, k) => {
                 const href = `/books/${tag.id}`;
 
                 return <Book bookTag={tag} href={href} key={k} />;

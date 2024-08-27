@@ -6,7 +6,7 @@ import { BookData } from "@/components/book/book-data";
 import { MyBookChapters } from "@/components/book/my-book-chapters";
 import useSWR from "swr";
 import { fetcher } from "@/hooks/fetcher";
-import { Story } from "@/app/model/story";
+import { BookDto } from "@/app/model/book-dto";
 import { useParams } from "next/navigation";
 
 const SERVICE_URL = String(process.env.NEXT_PUBLIC_BOOKS_API_URL);
@@ -16,7 +16,7 @@ export default function MyBookPage() {
 
   const { data: book, isLoading } = useSWR(
     `${SERVICE_URL}/${id}`,
-    fetcher<Story>({}).get,
+    fetcher<BookDto>({}).gt,
   );
 
   if (isLoading) return <Loading />;

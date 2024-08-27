@@ -1,5 +1,5 @@
 import { useSession } from "next-auth/react";
-import { CreateBookDto, Story } from "@/app/model/story";
+import { BookDto, CreateBookDto } from "@/app/model/book-dto";
 import { fetcher } from "@/hooks/fetcher";
 
 const BOOK_SERVICE_URL = String(process.env.NEXT_PUBLIC_BOOKS_API_URL);
@@ -14,8 +14,8 @@ export function useBookApi() {
         token: session?.access_token,
       }).post(BOOK_SERVICE_URL),
 
-    updateBook: async (id: string, dto: Story) =>
-      await fetcher<Story>({ body: dto, token: session?.access_token }).put(
+    updateBook: async (id: string, dto: BookDto) =>
+      await fetcher<BookDto>({ body: dto, token: session?.access_token }).put(
         `${BOOK_SERVICE_URL}/${id}`,
       ),
     deleteBook: async (id: string) =>

@@ -4,7 +4,7 @@ import { ChapterFormCard } from "@/components/chapter/chapter-form-card";
 import { useParams, useRouter } from "next/navigation";
 import useSWR from "swr";
 import { fetcher } from "@/hooks/fetcher";
-import { ChapterDto, CreateChapter } from "@/app/model/chapter";
+import { ChapterDto, CreateChapter } from "@/app/model/chapter-dto";
 import { useSession } from "next-auth/react";
 import { Suspense, useEffect, useState } from "react";
 import useSWRMutation from "swr/mutation";

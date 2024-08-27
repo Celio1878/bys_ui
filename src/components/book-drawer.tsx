@@ -14,11 +14,12 @@ import { NewBookDrawerButtons } from "@/components/buttons/new-book-drawer-butto
 import { NewBookSteps } from "@/components/new-book-steps";
 import { FormProvider, useForm } from "react-hook-form";
 import { BookFormValues, initialValues } from "@/utils/form-data";
-import { CreateBookDto, Story, Tag } from "@/app/model/story";
+import { BookDto, createBookDto, updateBookDto } from "@/app/model/book-dto";
 import { useBookApi } from "@/hooks/use-book-api";
 import { useSession } from "next-auth/react";
 import { fetcher } from "@/hooks/fetcher";
 import useSWR from "swr";
+import { Tag } from "@/app/model/tags";
 
 interface BookDrawerProps {
   bookId?: string;
@@ -47,7 +48,7 @@ export const BookDrawer: FC<BookDrawerProps> = ({
 
   const { data: book } = useSWR(
     bookId && `${BOOK_SERVICE_URL}/${bookId}`,
-    fetcher<Story>({ token: session?.access_token }).get,
+    fetcher<BookDto>({ token: session?.access_token }).gt,
   );
 
   useEffect(() => {
@@ -81,9 +82,7 @@ export const BookDrawer: FC<BookDrawerProps> = ({
         <button onClick={trigger}>{buttonLabel}</button>
       </DialogTrigger>
       <DialogContent aria-describedby={"Insert Book Steps"}>
-        <DialogDescription>
-          Upsert Book Steps to create a new book
-        </DialogDescription>
+        <DialogDescription></DialogDescription>
         <DialogHeader>
           <DialogTitle>{modalTitle}</DialogTitle>
         </DialogHeader>
@@ -113,50 +112,3 @@ export const BookDrawer: FC<BookDrawerProps> = ({
     </Dialog>
   );
 };
-
-function convertToJson(str: string) {
-  try {
-    return JSON.parse(str);
-  } catch (e) {
-    return { id: "", title: "" };
-  }
-}
-
-function createBookDto(
-  authorTag: Tag<string>,
-  bookValues: BookFormValues,
-): CreateBookDto {
-  return {
-    id: bookValues.title.toLowerCase().replace(/\s/g, "-") + "-" + authorTag.id,
-    title: bookValues.title,
-    description: bookValues.description,
-    genre: convertToJson(bookValues.genre),
-    copyright: convertToJson(bookValues.copyright),
-    ageRange: convertToJson(bookValues.ageRange),
-    author: authorTag,
-    tags: bookValues.tags,
-    warnings: bookValues.warnings,
-    coauthors: bookValues.coauthors,
-  };
-}
-
-function updateBookDto(
-  initialValues: Story,
-  bookValues: BookFormValues,
-): Story {
-  return {
-    id: initialValues.id,
-    title: bookValues.title,
-    description: bookValues.description,
-    genre: convertToJson(bookValues.genre),
-    copyright: convertToJson(bookValues.copyright),
-    ageRange: convertToJson(bookValues.ageRange),
-    author: initialValues.author,
-    tags: bookValues.tags,
-    warnings: bookValues.warnings,
-    coauthors: bookValues.coauthors,
-    publishAt: initialValues.publishAt,
-    chapters: initialValues.chapters,
-    followers: initialValues.followers,
-  };
-}

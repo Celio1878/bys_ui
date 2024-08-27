@@ -5,7 +5,7 @@ import { Heart, Share2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { usePathname } from "next/navigation";
 import { toast } from "@/components/ui/use-toast";
-import { Story } from "@/app/model/story";
+import { BookDto } from "@/app/model/book-dto";
 import useSWRMutation from "swr/mutation";
 import { fetcher } from "@/hooks/fetcher";
 import { useSession } from "next-auth/react";
@@ -14,7 +14,7 @@ import useSWR from "swr";
 const SERVICE_URL = String(process.env.NEXT_PUBLIC_BOOKS_API_URL);
 
 interface BookContentProps {
-  bookData: Story;
+  bookData: BookDto;
 }
 
 export const BookContent: FC<BookContentProps> = ({ bookData }) => {
@@ -45,7 +45,7 @@ export const BookContent: FC<BookContentProps> = ({ bookData }) => {
     ];
   }
 
-  const dto: Story = {
+  const dto: BookDto = {
     ...bookData,
     followers: followerList(),
   };

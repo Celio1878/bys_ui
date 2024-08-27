@@ -2,9 +2,6 @@ import { FC } from "react";
 import { NewBookDrawerConfirmButtons } from "@/components/buttons/new-book-drawer-confirm-buttons";
 import { NewBookDrawerFormButtons } from "@/components/buttons/new-book-drawer-form-buttons";
 import { NewBookDrawerCoverButtons } from "@/components/buttons/new-book-drawer-cover-buttons";
-import { useSession } from "next-auth/react";
-
-const SERVICE_URL = String(process.env.NEXT_PUBLIC_BOOKS_API_URL);
 
 interface BookDrawerButtonsProps {
   tabName: string;
@@ -21,8 +18,6 @@ export const NewBookDrawerButtons: FC<BookDrawerButtonsProps> = ({
   bookValues,
   onConfirmClick,
 }) => {
-  const { data: session } = useSession() as any;
-
   const disable =
     !bookValues.title ||
     !bookValues.description ||
@@ -30,27 +25,6 @@ export const NewBookDrawerButtons: FC<BookDrawerButtonsProps> = ({
     !bookValues.copyright ||
     !bookValues.ageRange ||
     bookValues.warnings.length === 0;
-
-  function convertToJson(str: string) {
-    try {
-      return JSON.parse(str);
-    } catch (e) {
-      return { id: "", title: "" };
-    }
-  }
-
-  const dto = {
-    id: bookValues.title.toLowerCase().replace(/\s/g, "-") + "-" + Date.now(),
-    title: bookValues.title,
-    description: bookValues.description,
-    genre: convertToJson(bookValues.genre),
-    copyright: convertToJson(bookValues.copyright),
-    ageRange: convertToJson(bookValues.ageRange),
-    author: { id: session?.user?.id!, title: session?.user?.name! },
-    tags: bookValues.tags,
-    warnings: bookValues.warnings,
-    coauthors: bookValues.coauthors,
-  };
 
   switch (tabName) {
     case "content":

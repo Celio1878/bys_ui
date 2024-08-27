@@ -2,7 +2,7 @@
 
 import { FC } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tag } from "@/app/model/story";
+import { Tag } from "@/app/model/book-dto";
 import { usePathname } from "next/navigation";
 import { ChapterLink } from "@/components/chapter-link";
 

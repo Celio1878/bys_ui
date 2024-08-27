@@ -1,4 +1,4 @@
-import { Tag } from "@/app/model/story";
+import { Tag } from "@/app/model/book-dto";
 
 export type CreateProfileDto = {
   email: string;

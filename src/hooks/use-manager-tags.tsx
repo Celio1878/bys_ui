@@ -1,5 +1,5 @@
 import { useCallback, useMemo, useRef } from "react";
-import { Tag } from "@/app/model/story";
+import { Tag } from "@/app/model/tags";
 import { UseFormReturn } from "react-hook-form";
 import { createTag } from "@/utils/create-tag";
 
@@ -16,10 +16,7 @@ export const useManagerTags = ({
 }: UseManagerTagsProps) => {
   const tags: Tag<string>[] = form.watch(name);
 
-  const sanitized_tags = useMemo(
-    () => new Set(tags.map((tag) => tag.id)),
-    [tags],
-  );
+  const sanitizedTags = useMemo(() => new Set(tags.map((t) => t.id)), [tags]);
 
   const ref: any = useRef(null);
 
@@ -31,31 +28,31 @@ export const useManagerTags = ({
         if (!value) return;
         const tag = createTag(value);
 
-        if (sanitized_tags.has(tag.id)) return;
+        if (sanitizedTags.has(tag.id)) return;
 
         onChange(tag);
         ref.current.value = "";
         event.stopPropagation();
       }
     },
-    [onChange, sanitized_tags],
+    [onChange, sanitizedTags],
   );
 
-  const handle_selected_tag = useCallback(
-    (selected_tag: Tag<string>, on_remove: (index: number) => any) => {
-      const tag_index = tags.findIndex((tag) => tag.id === selected_tag.id);
-      sanitized_tags.has(selected_tag.id)
-        ? on_remove(tag_index)
-        : onChange(selected_tag);
+  const handleSelectedTag = useCallback(
+    (selectedTag: Tag<string>, onRemove: (index: number) => void) => {
+      const tagIndex = tags.findIndex((t) => t.id === selectedTag.id);
+      sanitizedTags.has(selectedTag.id)
+        ? onRemove(tagIndex)
+        : onChange(selectedTag);
     },
-    [onChange, sanitized_tags, tags],
+    [onChange, sanitizedTags, tags],
   );
 
   return {
-    handle_key_down: handleKeyDown,
-    handle_selected_tag,
+    handleKeyDown,
+    handleSelectedTag,
     ref,
-    sanitized_tags,
-    tag_values: tags,
+    sanitizedTags,
+    tags,
   };
 };

@@ -11,7 +11,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
-import { Tag } from "@/app/model/story";
+import { Tag } from "@/app/model/book-dto";
 
 interface ChaptersPaginationProps {
   chaptersTags: Tag<string>[];
