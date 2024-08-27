@@ -15,7 +15,7 @@ import { NewBookSteps } from "@/components/new-book-steps";
 import { FormProvider, useForm } from "react-hook-form";
 import { BookFormValues, initialValues } from "@/utils/form-data";
 import { CreateBookDto, Story, Tag } from "@/app/model/story";
-import { useBookApi } from "@/hooks/useBookApi";
+import { useBookApi } from "@/hooks/use-book-api";
 import { useSession } from "next-auth/react";
 import { fetcher } from "@/hooks/fetcher";
 import useSWR from "swr";

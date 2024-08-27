@@ -15,7 +15,7 @@ import useSWR from "swr";
 import { ProfileDto } from "@/app/model/profile-dto";
 import { UpdateBookButtonLabel } from "@/components/buttons/update-book-button-label";
 import { DeleteButton } from "@/components/buttons/delete-button";
-import { useBookApi } from "@/hooks/useBookApi";
+import { useBookApi } from "@/hooks/use-book-api";
 
 const PROFILE_SERVICE_URL = String(process.env.NEXT_PUBLIC_PROFILES_API_URL);
 
@@ -45,9 +45,9 @@ export default function ProfilePage() {
       <MyBooksHeader onConfirmClick={getProfile} />
 
       {profile
-        ? profile?.myStories?.length > 0 && (
+        ? profile?.authorship?.length > 0 && (
             <Card className="flex flex-wrap w-full items-center justify-center gap-8 py-8 bg-zinc-50 dark:bg-neutral-950 dark:border-neutral-950">
-              {profile?.myStories.map((tag, k) => {
+              {profile?.authorship.map((tag, k) => {
                 const href = `${pathname}/books/${tag.id}`;
 
                 return (

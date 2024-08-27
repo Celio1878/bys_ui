@@ -51,15 +51,16 @@ export type Story = {
   title: string;
   description: string;
   genre: Tag<string>;
-  tags: Tag<string>[];
   copyright: Tag<Copyright>;
   ageRange: Tag<AgeRange>;
-  warnings: Tag<Warning>[];
   author: Tag<string>;
+  tags: Tag<string>[];
+  warnings: Tag<Warning>[];
   coauthors: Tag<string>[];
   chapters: Tag<string>[];
-  publishAt: number;
   followers: Tag<string>[];
+  createdAt: number;
+  cover: string;
 };
 
 export const GenreTags: Tag<Genre>[] = [
@@ -116,4 +117,5 @@ export type CreateBookDto = {
   tags: Tag<string>[];
   warnings: Tag<string>[];
   coauthors: Tag<string>[];
+  cover: string;
 };

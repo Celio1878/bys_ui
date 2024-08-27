@@ -13,5 +13,6 @@ export type ChapterDto = {
   content: string;
   author: Tag<string>;
   bookId: string;
-  publishAt: number;
+  createdAt: number;
+  comments: any[];
 };

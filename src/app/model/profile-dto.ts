@@ -12,8 +12,8 @@ export type ProfileDto = {
   name: string;
   urlImage: string;
   createdAt: EpochTimeStamp;
-  myReadList: Tag<string>[];
-  myStories: Tag<string>[];
+  readList: Tag<string>[];
+  authorship: Tag<string>[];
   following: Tag<string>[];
   followers: Tag<string>[];
 };
