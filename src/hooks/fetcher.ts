@@ -22,6 +22,11 @@ type Fetcher<T> = {
 async function doReq<T>({ httpMethod, url, body, token }: DoReq<T>) {
   const res = await fetch(url, {
     method: httpMethod,
+    mode: "cors",
+    opentelemetry: {
+      attributes: { url, httpMethod, token },
+      spanName: `fetch - ${url}`,
+    },
     headers: {
       Authorization: !!token ? `Bearer ${token}` : "",
       "Content-Type": "application/json",

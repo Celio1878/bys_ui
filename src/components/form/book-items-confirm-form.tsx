@@ -4,6 +4,7 @@ import { BookMetadata } from "@/components/book/book-metadata";
 import { Tag } from "@/app/model/story";
 import useSWR from "swr";
 import { fetcher } from "@/hooks/fetcher";
+import Image from "next/image";
 
 const SERVICE_URL = String(process.env.NEXT_PUBLIC_BOOKS_API_URL);
 
@@ -32,10 +33,10 @@ export const BookItemsConfirmForm: FC<BookItemsConfirmFormProps> = ({
     publishAt: Date.now() / 1000,
   };
 
-  eturn(
+  return (
     <Card className="flex flex-col max-h-96 items-center gap-4 px-8 py-4 mt-2 bg-slate-50 overflow-y-auto">
-      <Iage src={s3Url!} alt="cover" width={120} height={150} />
+      <Image src={s3Url!} alt="cover" width={120} height={150} />
       <BookMetadata bookData={newBookData} tags={book.tags} />
-    </Card>,
+    </Card>
   );
 };

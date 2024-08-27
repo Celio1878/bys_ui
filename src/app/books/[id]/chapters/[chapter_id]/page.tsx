@@ -1,19 +1,18 @@
 "use client";
 
-import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
-import {ChaptersPagination} from "@/components/chapters-pagination";
-import {BreadcrumbComponent} from "@/components/breadcrumb-component";
-import {useParams} from "next/navigation";
-import {Separator} from "@/components/ui/separator";
-import {useSession} from "next-auth/react";
-import {CreateComment} from "@/components/create-comment";
-import {Comment} from "@/components/comment";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ChaptersPagination } from "@/components/chapters-pagination";
+import { BreadcrumbComponent } from "@/components/breadcrumb-component";
+import { useParams } from "next/navigation";
+import { Separator } from "@/components/ui/separator";
+import { useSession } from "next-auth/react";
+import { CreateComment } from "@/components/create-comment";
+import { Comment } from "@/components/comment";
 import useSWR from "swr";
-import {fetcher} from "@/hooks/fetcher";
-import {ChapterDto} from "@/app/model/chapter";
-import {Story} from "@/app/model/story";
-import {Loading} from "@/components/loading";
-import {Suspense} from "react";
+import { fetcher } from "@/hooks/fetcher";
+import { ChapterDto } from "@/app/model/chapter";
+import { Loading } from "@/components/loading";
+import { Suspense } from "react";
 
 const CHAPTER_SERVICE_URL = String(process.env.NEXT_PUBLIC_CHAPTERS_API_URL);
 const BOOK_SERVICE_URL = String(process.env.NEXT_PUBLIC_BOOKS_API_URL);
@@ -24,13 +23,13 @@ export default function ChapterPage() {
 
   const { data: book } = useSWR(
     `${BOOK_SERVICE_URL}/${id}`,
-    fetcher<Story>({}).gt,
+    fetcher<Stor>({}).get,
   );
 
   const { data: chapter } = useSWR(
     `${CHAPTER_SERVICE_URL}/${id}/chapters/${chapter_id}`,
-    fetcher<ChapterDto>({ token: session?.access_token })get,
-  )
+    fetcher<ChapterDto>({ token: session?.access_token }).get,
+  );
 
   return (
     <Suspense fallback={<Loading />}>

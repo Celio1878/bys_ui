@@ -1,21 +1,21 @@
 "use client";
 
-import {Suspense} from "react";
-import {Loading} from "@/components/loading";
-import {MyBooksHeader} from "@/components/my-books-header";
-import {Book} from "@/components/book";
-import {Card} from "@/components/ui/card";
-import {BookDrawer} from "@/components/book-drawer";
-import {usePathname} from "next/navigation";
-import {useSession} from "next-auth/react";
-import {UserImage} from "@/components/user-image";
-import {FollowComponent} from "@/components/follow-component";
-import {fetcher} from "@/hooks/fetcher";
+import { Suspense } from "react";
+import { Loading } from "@/components/loading";
+import { MyBooksHeader } from "@/components/my-books-header";
+import { Book } from "@/components/book";
+import { Card } from "@/components/ui/card";
+import { BookDrawer } from "@/components/book-drawer";
+import { usePathname } from "next/navigation";
+import { useSession } from "next-auth/react";
+import { UserImage } from "@/components/user-image";
+import { FollowComponent } from "@/components/follow-component";
+import { fetcher } from "@/hooks/fetcher";
 import useSWR from "swr";
-import {ProfileDto} from "@/app/model/profile-dto";
-import {UpdateBookButtonLabel} from "@/components/buttons/update-book-button-label";
-import {DeleteButton} from "@/components/buttons/delete-button";
-import {useBookApi} from "@/hooks/useBookApi";
+import { ProfileDto } from "@/app/model/profile-dto";
+import { UpdateBookButtonLabel } from "@/components/buttons/update-book-button-label";
+import { DeleteButton } from "@/components/buttons/delete-button";
+import { useBookApi } from "@/hooks/useBookApi";
 
 const PROFILE_SERVICE_URL = String(process.env.NEXT_PUBLIC_PROFILES_API_URL);
 
@@ -23,11 +23,11 @@ export default function ProfilePage() {
   const pathname = usePathname();
   const { data: session } = useSession() as any;
   const { deleteBook } = useBookApi();
-  
-  const {data: profile, mutate: getProfile} = useSWR(
+
+  const { data: profile, mutate: getProfile } = useSWR(
     `${PROFILE_SERVICE_URL}/${session?.user?.id}`,
-    fetcher<ProfileDto>({token: session?.access_token})get,
-  )
+    fetcher<ProfileDto>({ token: session?.access_token }).gt,
+  );
 
   return (
     <Suspense fallback={<Loading />}>
@@ -42,7 +42,7 @@ export default function ProfilePage() {
           following={profile?.following || []}
         />
       </section>
-      <MyBooksHeader onConfirmClick={getProfile}/>
+      <MyBooksHeader onConfirmClick={getProfile} />
 
       {profile
         ? profile?.myStories?.length > 0 && (
@@ -56,7 +56,7 @@ export default function ProfilePage() {
                     buttons={
                       <div className="flex flex-row gap-6 mt-2">
                         <BookDrawer
-                          buttonLabel={<UpdateBookButtonLabel/>}
+                          buttonLabel={<UpdateBookButtonLabel />}
                           modalTitle="Editar Livro"
                           bookId={tag.id}
                           onConfirmClick={getProfile}

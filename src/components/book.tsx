@@ -25,12 +25,12 @@ export const Book: FC<BookProps> = ({ bookTag, buttons, href }) => {
       <div className="flex flex-col w-[10rem] h-[20rem] gap-2 items-center">
         <Link href={href}>
           <Image
-            className="cursor-pointer hover:scale-105 hover:shadow-lg hover:shadow-black/50 hover:opacity-90 transition duration-500"
+            className="object-cover cursor-pointer hover:scale-105 hover:shadow-lg hover:shadow-black/50 hover:opacity-90 transition duration-500"
             src={s3Url ? s3Url : "/user.png"}
             alt={"Book Cover"}
             width={120}
             height={140}
-            priority={true}
+            loading={"lazy"}
           />
         </Link>
 

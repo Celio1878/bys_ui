@@ -8,10 +8,9 @@ import { PaginationComponent } from "@/components/pagination-component";
 import { Card } from "@/components/ui/card";
 import useSWR from "swr";
 import { fetcher } from "@/hooks/fetcher";
-import { Story } from "@/app/model/story";
 import { Book } from "@/components/book";
 
-const BOOKS_SERVICE_URL = process.env.NEXT_PUBLIC_BOOKS_API_URL!;
+const SEARCH_SERVICE_URL = process.env.NEXT_PUBLIC_BOOKS_API_URL!;
 
 export default function SearchPage() {
   const searchParams = useSearchParams();
@@ -19,15 +18,17 @@ export default function SearchPage() {
   const page = searchParams.get("page");
   const pathname = usePathname();
 
-  const { data: books } = useSWR(BOOKS_SERVICE_URL, fetcher<Story[]>({}).get);
+  const { data } = useSWR(SEARCH_SERVICE_URL, fetcher<any[]>({}).get);
 
-  const booksByFilter = books?.filter((book) => book.genre.id === text);
+  const booksByFilter = data?.filter((book) => book.genre.id === text);
 
   if (!booksByFilter?.length) {
     return (
       <div className="flex flex-col items-center justify-center gap-4">
         <SearchSectionTitle title={text} />
-        <h1 className="text-2xl font-bold">Nao ha livros dessa categoria</h1>
+        <h1 className="text-2xl font-bold">
+          Nao foram encontrados conteudos com essa pesquisa
+        </h1>
       </div>
     );
   }

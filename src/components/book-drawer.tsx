@@ -3,6 +3,7 @@
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
@@ -38,7 +39,7 @@ export const BookDrawer: FC<BookDrawerProps> = ({
 }) => {
   const { data: session } = useSession() as any;
   const [openForm, setOpenForm] = useState(false);
-  const [tabName, setTabName] = usState("content");
+  const [tabName, setTabName] = useState("content");
   const formMethods = useForm({
     defaultValues: initialValues,
   });
@@ -80,6 +81,9 @@ export const BookDrawer: FC<BookDrawerProps> = ({
         <button onClick={trigger}>{buttonLabel}</button>
       </DialogTrigger>
       <DialogContent aria-describedby={"Insert Book Steps"}>
+        <DialogDescription>
+          Upsert Book Steps to create a new book
+        </DialogDescription>
         <DialogHeader>
           <DialogTitle>{modalTitle}</DialogTitle>
         </DialogHeader>

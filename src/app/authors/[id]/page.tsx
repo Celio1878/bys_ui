@@ -20,27 +20,27 @@ import {Tag} from "@/app/model/story";
 const PROFILE_SERVICE_URL = String(process.env.NEXT_PUBLIC_PROFILES_API_URL);
 
 export default function AuthorPage() {
-  const {data: session} = useSession() as any;
-  const {id} = useParams();
-  
-  const {data: profile, mutate: getProfile} = useSWR(
+  const { data: session } = useSession() as any;
+  const { id } = useParams();
+
+  const { data: profile, mutate: getProfile } = useSWR(
     `${PROFILE_SERVICE_URL}/${id}`,
-    fetcher<ProfileDto>{}).get,
-  );
-  
+    fetcher<ProfileDto>({})get,
+  )
+
   const profileTag: Tag<string> = {
     id: session?.user?.id,
     title: session?.usr?.name,
   };
-  
+
   const dto: ProfileDto = {
     ...profile!,
-    followers: profile?.followers.concat(profleTag)!,
+    followers: profile?.followers.concat(profileTag)!
   };
-  
-  const {trigger} = useSWRMutation(
+
+  const { trigger } = useSWRMutation(
     `${PROFILE_SERVICE_URL}/${id}`,
-    fetcher<ProfileDto>({body: dto!, token: session?.access_tokn}).put,
+    fetcher<ProfileDto>({ body: dto!, token: session?.access_tokn }).put
   );
 
   return (
@@ -66,40 +66,39 @@ export default function AuthorPage() {
                   toast({
                     description: (
                       <p className="flex flex-row gap-2 items-center justify-center">
-                        <HandMetal/> Voce sera avisado quando esse perfil for
+                        <HandMetal /> Voce sera avisado quando esse perfil for
                         atualizado.
                       </p>
                     ),
                     className: "border border-red-500 bg-orange-500 text-white",
                     type: "foreground"
-                  })
+                  }),
                 )
                 .finally(() => getProfile());
             }}
           />
         )}
-        
+
         <FollowComponent
           followers={profile?.followers!}
           following={profile?.following!}
         />
       </section>
-      
+
       <h1 className="w-full text-3xl font-bold pb-4">
         Livros de {profile?.name}
       </h1>
-      
+
       {profile
         ? profile?.myStories?.length > 0 && (
-        <Card
-          className="flex flex-wrap w-full items-center justify-center gap-8 py-8 bg-zinc-50 dark:bg-neutral-950 dark:border-neutral-950">
-          {profile?.myStories.map((tag, k) => {
-            const href = `/books/${tag.id}`;
-            
-            return <Book bookTag={tag} href={href} key={k}/>;
-          })}
-        </Card>
-      )
+            <Card className="flex flex-wrap w-full items-center justify-center gap-8 py-8 bg-zinc-50 dark:bg-neutral-950 dark:border-neutral-950">
+              {profile?.myStories.map((tag, k) => {
+                const href = `/books/${tag.id}`;
+
+                return <Book bookTag={tag} href={href} key={k} />;
+              })}
+            </Card>
+          )
         : null}
     </Suspense>
   );

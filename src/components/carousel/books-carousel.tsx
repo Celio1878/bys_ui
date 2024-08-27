@@ -47,7 +47,7 @@ export const BooksCarousel: FC<BookCarouselProps> = ({
           {books?.map((book) => {
             const tag: Tag<string> = {
               id: book.id,
-              title: book.tite,
+              title: book.title,
             };
 
             return (

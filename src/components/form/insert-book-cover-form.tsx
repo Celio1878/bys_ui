@@ -23,7 +23,7 @@ export const InsertBookCoverForm: FC<InsertBookCoverFormProps> = ({
 
   if (isMutating) return <Loading />;
 
-  const handleileUpload = async (file: File) => {
+  const handleFileUpload = async (file: File) => {
     const s3Url = await trigger();
 
     const res = await fetch(s3Url!, {

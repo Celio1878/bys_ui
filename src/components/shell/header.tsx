@@ -22,7 +22,7 @@ import { toast } from "@/components/ui/use-toast";
 // };
 
 export const Header: FC = memo(() => {
-  const { data: session, status } = useSession() as any;
+  const { data: session, status, update } = useSession() as any;
   const dateNow = Date.now();
 
   useEffect(() => {
@@ -37,21 +37,16 @@ export const Header: FC = memo(() => {
   }, [status]);
 
   useEffect(() => {
+    const oneHour = 1000 * 60 * 60;
+    const interval = setInterval(() => update(), oneHour);
+    return () => clearInterval(interval);
+  }, [update]);
+
+  useEffect(() => {
     if (session?.error === "RefreshAccessTokenError") {
-      signIn("google").then(() => console.info(`${session.user.name} logged!`));
+      signIn("google").then(() => null);
     }
-
-    if (dateNow >= session?.expires_at * 1000) {
-      console.log("Refreshing");
-      signIn("google").then(() => console.info(`${session.user.name} logged!`));
-    }
-
-    return () => {
-      if (session) {
-        clearInterval(session);
-      }
-    };
-  }, [session]);
+  }, [session?.error]);
 
   return (
     <header className="flex flex-row w-full justify-around items-center gap-4 sm:gap-0 pt-4 px-2">
