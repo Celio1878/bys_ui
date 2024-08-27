@@ -48,7 +48,7 @@ export const BookDrawer: FC<BookDrawerProps> = ({
 
   const { data: book } = useSWR(
     bookId && `${BOOK_SERVICE_URL}/${bookId}`,
-    fetcher<BookDto>({ token: session?.access_token }).gt,
+    fetcher<BookDto>({ token: session?.access_token }).get,
   );
 
   useEffect(() => {

@@ -13,6 +13,7 @@ import { fetcher } from "@/hooks/fetcher";
 import { ChapterDto } from "@/app/model/chapter-dto";
 import { Loading } from "@/components/loading";
 import { Suspense } from "react";
+import { BookDto } from "@/app/model/book-dto";
 
 const CHAPTER_SERVICE_URL = String(process.env.NEXT_PUBLIC_CHAPTERS_API_URL);
 const BOOK_SERVICE_URL = String(process.env.NEXT_PUBLIC_BOOKS_API_URL);
@@ -23,7 +24,7 @@ export default function ChapterPage() {
 
   const { data: book } = useSWR(
     `${BOOK_SERVICE_URL}/${id}`,
-    fetcher<Stor>({}).get,
+    fetcher<BookDto>({}).get,
   );
 
   const { data: chapter } = useSWR(

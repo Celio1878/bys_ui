@@ -2,7 +2,7 @@ import { FC, memo } from "react";
 import { FollowModal } from "@/components/follow-modal";
 import { UserRoundCheck, UsersRound } from "lucide-react";
 import { FollowTrigger } from "@/components/follow-trigger";
-import { Tag } from "@/app/model/book-dto";
+import { Tag } from "@/app/model/tags";
 
 interface FollowComponentProps {
   followers: Tag<string>[];

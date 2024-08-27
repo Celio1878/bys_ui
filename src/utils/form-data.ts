@@ -1,4 +1,4 @@
-import { Tag, Warning } from "@/app/model/book-dto";
+import { Tag, Warning } from "@/app/model/tags";
 
 export type BookFormValues = {
   id?: string;

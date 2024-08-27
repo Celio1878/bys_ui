@@ -6,7 +6,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Tag, Warning } from "@/app/model/book-dto";
+import { Tag, Warning } from "@/app/model/tags";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useFieldArray, UseFormReturn } from "react-hook-form";
 import { useManagerTags } from "@/hooks/use-manager-tags";

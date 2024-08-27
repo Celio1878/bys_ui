@@ -1,4 +1,4 @@
-import { Tag } from "@/app/model/book-dto";
+import { Tag } from "@/app/model/tags";
 
 export type CreateChapter = {
   bookId: string;

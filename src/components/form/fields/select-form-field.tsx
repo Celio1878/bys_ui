@@ -13,7 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { AgeRange, Copyright, Genre, Tag } from "@/app/model/book-dto";
+import { AgeRange, Copyright, Genre, Tag } from "@/app/model/tags";
 import { UseFormReturn } from "react-hook-form";
 
 interface SelectFormFieldProps {

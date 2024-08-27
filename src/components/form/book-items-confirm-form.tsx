@@ -23,7 +23,7 @@ export const BookItemsConfirmForm: FC<BookItemsConfirmFormProps> = ({
   const newBookData = {
     ...book,
     coauthors: book.coauthors.concat(author),
-    publishAt: Date.now() / 1000,
+    createdAt: Date.now() / 1000,
   };
 
   return (
@@ -34,7 +34,7 @@ export const BookItemsConfirmForm: FC<BookItemsConfirmFormProps> = ({
         width={120}
         height={150}
       />
-      <BookMetadata bookData={newBookData} tags={book.tags} />
+      <BookMetadata book={newBookData} tags={book.tags} />
     </Card>
   );
 };

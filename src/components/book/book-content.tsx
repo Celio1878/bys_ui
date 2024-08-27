@@ -120,7 +120,7 @@ export const BookContent: FC<BookContentProps> = ({ bookData }) => {
           </div>
         )}
       </div>
-      <BookMetadata bookData={bookValues} />
+      <BookMetadata book={bookValues} />
     </div>
   );
 };

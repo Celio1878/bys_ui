@@ -1,7 +1,7 @@
 import { FC, ReactNode, Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Tag } from "@/app/model/book-dto";
+import { Tag } from "@/app/model/tags";
 import { Loading } from "@/components/loading";
 
 interface BookProps {

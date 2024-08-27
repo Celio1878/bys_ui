@@ -16,7 +16,7 @@ export default function MyBookPage() {
 
   const { data: book, isLoading } = useSWR(
     `${SERVICE_URL}/${id}`,
-    fetcher<BookDto>({}).gt,
+    fetcher<BookDto>({}).get,
   );
 
   if (isLoading) return <Loading />;

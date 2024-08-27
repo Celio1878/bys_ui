@@ -2,7 +2,7 @@
 
 import { FC } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tag } from "@/app/model/book-dto";
+import { Tag } from "@/app/model/tags";
 import { NewChapterButton } from "@/components/buttons/new-chapter-button";
 import { ChapterListButtons } from "@/components/buttons/chapter-list-buttons";
 import { useParams, usePathname, useRouter } from "next/navigation";
