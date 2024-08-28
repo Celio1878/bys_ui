@@ -20,16 +20,19 @@ import { useSession } from "next-auth/react";
 import { fetcher } from "@/hooks/fetcher";
 import useSWR from "swr";
 import { Tag } from "@/app/model/tags";
+import { ProfileDto } from "@/app/model/profile-dto";
 
 interface BookDrawerProps {
-  bookId?: string;
   buttonLabel: string | ReactNode;
   modalTitle: string;
   onConfirmClick: VoidFunction;
+  profile: ProfileDto;
+  bookId?: string;
   trigger?: VoidFunction;
 }
 
 const BOOK_SERVICE_URL = String(process.env.NEXT_PUBLIC_BOOKS_API_URL);
+const PROFILE_SERVICE_URL = String(process.env.NEXT_PUBLIC_PROFILES_API_URL);
 
 export const BookDrawer: FC<BookDrawerProps> = ({
   bookId,
@@ -37,6 +40,7 @@ export const BookDrawer: FC<BookDrawerProps> = ({
   modalTitle,
   onConfirmClick,
   trigger,
+  profile,
 }) => {
   const { data: session } = useSession() as any;
   const [openForm, setOpenForm] = useState(false);
@@ -62,7 +66,7 @@ export const BookDrawer: FC<BookDrawerProps> = ({
 
       return formMethods.reset(bookFormState);
     }
-  }, [book]);
+  }, [book, formMethods]);
 
   useEffect(() => {
     if (openForm) setTabName("content");
@@ -73,7 +77,6 @@ export const BookDrawer: FC<BookDrawerProps> = ({
     title: session?.user?.name,
   };
   const newBookDto = createBookDto(authorTag, formMethods.getValues());
-
   const updatedBook = book && updateBookDto(book!, formMethods.getValues());
 
   return (
@@ -97,11 +100,23 @@ export const BookDrawer: FC<BookDrawerProps> = ({
             onClose={() => setOpenForm(false)}
             onConfirmClick={async () => {
               book
-                ? updateBook(book.id, updatedBook!).then(() => {
+                ? Promise.all([
+                    updateBook(book.id, updatedBook!),
+                    fetcher({
+                      body: addAuthorship(profile!, formMethods.getValues()),
+                      token: session?.access_token,
+                    }).put(`${PROFILE_SERVICE_URL}/${profile?.id}`),
+                  ]).then(() => {
                     setOpenForm(false);
                     onConfirmClick();
                   })
-                : createBook(newBookDto).then(() => {
+                : Promise.all([
+                    createBook(newBookDto),
+                    fetcher({
+                      body: addAuthorship(profile!, formMethods.getValues()),
+                      token: session?.access_token,
+                    }).put(`${PROFILE_SERVICE_URL}/${profile?.id}`),
+                  ]).then(() => {
                     setOpenForm(false);
                     onConfirmClick();
                   });
@@ -112,3 +127,14 @@ export const BookDrawer: FC<BookDrawerProps> = ({
     </Dialog>
   );
 };
+
+function addAuthorship(author: ProfileDto, book: BookFormValues): ProfileDto {
+  const bookTag: Tag<string> = {
+    id: book.title.toLowerCase().replace(/\s/g, "-") + "-" + author.id,
+    title: book.title,
+  };
+
+  author.authorship.push(bookTag);
+
+  return author;
+}

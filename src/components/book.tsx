@@ -20,7 +20,7 @@ export const Book: FC<BookProps> = ({ bookTag, buttons, href }) => {
           <Image
             className="object-cover cursor-pointer hover:scale-105 hover:shadow-lg hover:shadow-black/50 hover:opacity-90 transition duration-500"
             src={`${BUCKET_URL}/books/${bookTag.id}/cover.jpeg`}
-            alt={"Book Cover"}
+            alt={bookTag.title}
             width={120}
             height={140}
             loading={"lazy"}
@@ -28,7 +28,7 @@ export const Book: FC<BookProps> = ({ bookTag, buttons, href }) => {
         </Link>
 
         <Link
-          className="w-10/12 text-xs hover:font-semibold hover:cursor-pointer hover:underline transition-all duration-150 text-start"
+          className="text-xs hover:font-semibold hover:cursor-pointer hover:underline transition-all duration-150 text-start"
           href={href}
         >
           {bookTag.title}

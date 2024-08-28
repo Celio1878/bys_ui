@@ -68,25 +68,25 @@ export default function Home() {
               className="flex flex-wrap gap-4 justify-center items-center"
               key={profile.id}
             >
-              <div className="flex flex-col justify-center items-center gap-2">
-                <Image
-                  className="rounded-full"
-                  {...{
-                    src: profile.urlImage,
-                    alt: profile.name,
-                    width: 100,
-                    height: 100,
-                    priority: true,
-                    quality: 100,
-                  }}
-                />
-                <Link
-                  className="text-sm hover:underline hover:font-semibold transition-all duration-150"
-                  href={`authors/${profile.id}`}
-                >
+              <Link
+                className="text-sm hover:underline hover:font-semibold transition-all duration-150"
+                href={`authors/${profile.id}`}
+              >
+                <div className="flex flex-col justify-center items-center gap-2">
+                  <Image
+                    className="rounded-full"
+                    {...{
+                      src: profile.urlImage,
+                      alt: profile.name,
+                      width: 100,
+                      height: 100,
+                      priority: true,
+                      quality: 100,
+                    }}
+                  />
                   {profile.name}
-                </Link>
-              </div>
+                </div>
+              </Link>
             </div>
           ))}
         </div>

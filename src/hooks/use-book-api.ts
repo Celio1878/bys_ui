@@ -20,7 +20,7 @@ export function useBookApi() {
       ),
     deleteBook: async (id: string) =>
       await fetcher({ token: session?.access_token }).delete(
-        `${BOOK_SERVICE_URL}/book/${id}`,
+        `${BOOK_SERVICE_URL}/${id}`,
       ),
   };
 }

@@ -31,7 +31,7 @@ export const BooksCarousel: FC<BookCarouselProps> = ({
 
   return (
     <div className="w-full flex flex-col">
-      <h1 className="text-2xl font-semibold underline ml-0.5 lg:ml-1">
+      <h1 className="text-2xl font-semibold underline text-center">
         {sectionTitle}
       </h1>
       <Carousel
@@ -43,12 +43,12 @@ export const BooksCarousel: FC<BookCarouselProps> = ({
         }}
         className="max-w-xs sm:max-w-screen-sm md:max-w-2xl lg:max-w-screen-md xl:max-w-screen-lg"
       >
-        <CarouselContent className="-mr-3.5 lg:-ml-3.5">
+        <CarouselContent className="">
           {books?.map((book) => {
             return (
               <CarouselItem
                 key={book.id}
-                className={`basis-1/${carouselLength(2, books.length)} md:basis-1/${carouselLength(4, books.length)} lg:basis-1/${carouselLength(5, books.length)} xl:basis-1/${carouselLength(6, books.length)} p-2`}
+                className={`basis-1/${carouselLength(2, books.length)} md:basis-1/${carouselLength(4, books.length)} lg:basis-1/${carouselLength(5, books.length)} xl:basis-1/${carouselLength(6, books.length)} py-2`}
               >
                 <Book bookTag={book} href={`/books/${book.id}`} />
               </CarouselItem>

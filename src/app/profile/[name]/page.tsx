@@ -42,7 +42,7 @@ export default function ProfilePage() {
           following={profile?.following || []}
         />
       </section>
-      <MyBooksHeader onConfirmClick={getProfile} />
+      <MyBooksHeader profile={profile!} onConfirmClick={getProfile} />
 
       {profile
         ? profile?.authorship?.length > 0 && (
@@ -56,15 +56,23 @@ export default function ProfilePage() {
                     buttons={
                       <div className="flex flex-row gap-6 mt-2">
                         <BookDrawer
+                          profile={profile}
                           buttonLabel={<UpdateBookButtonLabel />}
                           modalTitle="Editar Livro"
                           bookId={t.id}
                           onConfirmClick={getProfile}
                         />
                         <DeleteButton
-                          onClick={() =>
-                            deleteBook(t.id).then(() => getProfile())
-                          }
+                          onClick={async () => {
+                            const authorship = removeAuthorship(profile, t.id);
+                            await Promise.all([
+                              deleteBook(t.id),
+                              fetcher({
+                                body: authorship,
+                                token: session?.access_token,
+                              }).put(`${PROFILE_SERVICE_URL}/${profile?.id}`),
+                            ]).then(() => getProfile());
+                          }}
                         />
                       </div>
                     }
@@ -78,4 +86,10 @@ export default function ProfilePage() {
         : null}
     </Suspense>
   );
+}
+
+function removeAuthorship(author: ProfileDto, id: string): ProfileDto {
+  author.authorship = author.authorship.filter((t) => t.id !== id);
+
+  return author;
 }

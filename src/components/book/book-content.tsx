@@ -9,7 +9,6 @@ import { BookDto } from "@/app/model/book-dto";
 import useSWRMutation from "swr/mutation";
 import { fetcher } from "@/hooks/fetcher";
 import { useSession } from "next-auth/react";
-import useSWR from "swr";
 
 const SERVICE_URL = String(process.env.NEXT_PUBLIC_BOOKS_API_URL);
 
@@ -22,11 +21,6 @@ export const BookContent: FC<BookContentProps> = ({ bookData }) => {
   const pathname = usePathname();
   const bysUrl = `https://beyourstories.com/${pathname}`;
   const [following, setFollowing] = useState(false);
-
-  const { data: s3Url } = useSWR(
-    `${SERVICE_URL}/${bookData.id}/cover/image`,
-    fetcher<string>({}).get,
-  );
 
   const liked = bookData.followers.some(
     (follower) => follower.id === session?.user.email,
@@ -81,7 +75,7 @@ export const BookContent: FC<BookContentProps> = ({ bookData }) => {
       <div className="flex flex-col items-center justify-center gap-2">
         <Image
           className="hover:shadow-lg hover:shadow-black/50 transition duration-500"
-          src={s3Url ? s3Url : "/user.png"}
+          src={bookData.cover}
           alt={"cover"}
           width={200}
           height={220}
