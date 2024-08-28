@@ -2,12 +2,12 @@ import { FC } from "react";
 import { Button } from "@/components/ui/button";
 
 interface CancelButtonProps {
-  on_click: VoidFunction;
+  onClick: VoidFunction;
 }
 
-export const CancelButton: FC<CancelButtonProps> = ({ on_click }) => {
+export const CancelButton: FC<CancelButtonProps> = ({ onClick }) => {
   return (
-    <Button onClick={on_click} variant={"destructive"}>
+    <Button onClick={onClick} variant={"destructive"}>
       Cancelar
     </Button>
   );

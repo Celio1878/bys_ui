@@ -2,31 +2,32 @@ import { FC, memo } from "react";
 import { CommandItem } from "@/components/ui/command";
 import { Check } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Tag } from "@/app/model/tags";
 
 interface MemoizedCommandItemProps {
-  item: { title: string; id: string };
-  sanitized_tags: Set<string>;
+  item: Tag<string>;
+  sanitizedTags: Set<string>;
   remove: (index: number) => void;
-  handle_selected_tag: (
-    item: { title: string; id: string },
+  handleSelectedTag: (
+    item: Tag<string>,
     remove: (index: number) => void,
   ) => void;
 }
 
 export const MemoizedCommandItem: FC<MemoizedCommandItemProps> = memo(
-  ({ item, sanitized_tags, remove, handle_selected_tag }) => (
+  ({ item, sanitizedTags, remove, handleSelectedTag }) => (
     <CommandItem
-      className={`${sanitized_tags.has(item.id) ? "bg-slate-100 dark:bg-slate-800" : ""}`}
-      value={item.id}
+      className={`${sanitizedTags.has(item.id) ? "bg-slate-100 dark:bg-slate-800" : ""}`}
+      value={item.title}
       key={item.id}
       onSelect={() => {
-        handle_selected_tag(item, remove);
+        handleSelectedTag(item, remove);
       }}
     >
       <Check
         className={cn(
           "mr-2 h-4 w-4",
-          sanitized_tags.has(item.id) ? "opacity-100" : "opacity-0",
+          sanitizedTags.has(item.id) ? "opacity-100" : "opacity-0",
         )}
       />
       {item.title}

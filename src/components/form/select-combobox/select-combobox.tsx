@@ -11,49 +11,51 @@ import {
 } from "@/components/ui/command";
 import { MemoizedCommandItem } from "@/components/form/select-combobox/memoized-command-item";
 import { ComboboxTrigger } from "@/components/form/select-combobox/combobox-trigger";
+import { Tag } from "@/app/model/tags";
 
 interface SelectComboboxProps {
   name: string;
   form: UseFormReturn;
   heading: string;
-  list_items: { title: string; id: string }[];
-  button_text: string;
-  input_placeholder?: string;
-  text_on_empty?: string;
+  listItems: Tag<string>[];
+  buttonText: string;
+  inputPlaceholder?: string;
+  textOnEmpty?: string;
 }
 
 export const SelectComboBox: FC<SelectComboboxProps> = ({
   form,
   name,
-  input_placeholder,
+  inputPlaceholder,
   heading,
-  list_items,
-  text_on_empty,
-  button_text,
+  listItems,
+  textOnEmpty,
+  buttonText,
 }) => {
   const { append, remove } = useFieldArray({ control: form.control, name });
-  const { sanitized_tags, handle_selected_tag } = useManagerTags({
+  const { sanitizedTags, handleSelectedTag } = useManagerTags({
     form,
     name,
-    on_change: append,
+    onChange: append,
   });
 
   return (
     <Popover>
-      <ComboboxTrigger button_text={button_text} />
+      {" "}
+      <ComboboxTrigger buttonText={buttonText} />
       <PopoverContent className="p-0">
         <Command>
-          <CommandInput placeholder={input_placeholder} />
+          <CommandInput placeholder={inputPlaceholder} />
           <CommandList>
-            <CommandEmpty>{text_on_empty}</CommandEmpty>
+            <CommandEmpty>{textOnEmpty}</CommandEmpty>
             <CommandGroup heading={heading}>
-              {list_items.map((item) => (
+              {listItems.map((item) => (
                 <MemoizedCommandItem
                   key={item.id}
                   item={item}
                   remove={remove}
-                  sanitized_tags={sanitized_tags}
-                  handle_selected_tag={handle_selected_tag}
+                  sanitizedTags={sanitizedTags}
+                  handleSelectedTag={handleSelectedTag}
                 />
               ))}
             </CommandGroup>

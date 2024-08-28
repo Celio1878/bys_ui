@@ -1,34 +1,40 @@
-import { FC, ReactNode } from "react";
+import { FC, ReactNode, Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Tag } from "@/app/model/tags";
+import { Loading } from "@/components/loading";
 
 interface BookProps {
-  href: string;
-  title: string;
+  bookTag: Tag<string>;
   buttons?: ReactNode;
+  href: string;
 }
 
-export const Book: FC<BookProps> = ({ title, buttons, href = "" }) => {
-  return (
-    <div className="flex flex-col w-[10rem] gap-2 items-center">
-      <Link href={href}>
-        <Image
-          className="cursor-pointer hover:scale-105 hover:shadow-lg hover:shadow-black/50 hover:opacity-90 transition duration-500"
-          src={"/cover.jpg"}
-          alt={"cover"}
-          width={140}
-          height={160}
-          priority={true}
-        />
-      </Link>
+const BUCKET_URL = String(process.env.NEXT_PUBLIC_BUCKET_URL);
 
-      <Link
-        className="w-10/12 hover:font-semibold hover:cursor-pointer hover:underline transition-all duration-150 text-start"
-        href={href}
-      >
-        {title}
-      </Link>
-      {buttons}
-    </div>
+export const Book: FC<BookProps> = ({ bookTag, buttons, href }) => {
+  return (
+    <Suspense fallback={<Loading />}>
+      <div className="flex flex-col w-[10rem] h-[20rem] gap-2 items-center">
+        <Link href={href}>
+          <Image
+            className="object-cover cursor-pointer hover:scale-105 hover:shadow-lg hover:shadow-black/50 hover:opacity-90 transition duration-500"
+            src={`${BUCKET_URL}/books/${bookTag.id}/cover.jpeg`}
+            alt={bookTag.title}
+            width={120}
+            height={140}
+            loading={"lazy"}
+          />
+        </Link>
+
+        <Link
+          className="text-xs hover:font-semibold hover:cursor-pointer hover:underline transition-all duration-150 text-start"
+          href={href}
+        >
+          {bookTag.title}
+        </Link>
+        {buttons}
+      </div>
+    </Suspense>
   );
 };

@@ -2,7 +2,6 @@ import { FC } from "react";
 import {
   Pagination,
   PaginationContent,
-  PaginationEllipsis,
   PaginationItem,
   PaginationLink,
   PaginationNext,
@@ -13,12 +12,14 @@ interface PaginationComponentProps {
   page: number;
   pathname: string;
   text: string;
+  total?: any[];
 }
 
 export const PaginationComponent: FC<PaginationComponentProps> = ({
   page,
   pathname,
   text,
+  total,
 }) => {
   return (
     <Pagination>
@@ -29,49 +30,23 @@ export const PaginationComponent: FC<PaginationComponentProps> = ({
             href={`${page > 1 ? `${pathname}?text=${text}&page=${page - 1}` : ""} `}
           />
         </PaginationItem>
-        <PaginationItem>
-          <PaginationLink
-            className="text-xs"
-            href={`${pathname}?text=${text}&page=1`}
-            isActive={page === 1}
-          >
-            1
-          </PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink
-            className="text-xs"
-            href={`${pathname}?text=${text}&page=2`}
-            isActive={page === 2}
-          >
-            2
-          </PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink
-            className="text-xs"
-            href={`${pathname}?text=${text}&page=3`}
-            isActive={page === 3}
-          >
-            3
-          </PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationEllipsis />
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink
-            className="text-xs"
-            href={`${pathname}?text=${text}&page=5`}
-            isActive={page === 5}
-          >
-            5
-          </PaginationLink>
-        </PaginationItem>
+
+        {total?.map((_, k) => (
+          <PaginationItem key={k}>
+            <PaginationLink
+              className="text-xs"
+              href={`${pathname}?text=${text}&page=${k + 1}`}
+              isActive={page === k + 1}
+            >
+              {k + 1}
+            </PaginationLink>
+          </PaginationItem>
+        ))}
+
         <PaginationItem>
           <PaginationNext
-            className={`${page === 5 && "cursor-not-allowed opacity-50"} text-xs`}
-            href={`${page < 5 ? `${pathname}?text=${text}&page=${page + 1}` : ""} `}
+            className={`${page === total?.length && "cursor-not-allowed opacity-50"} text-xs`}
+            href={`${page < total?.length! ? `${pathname}?text=${text}&page=${page + 1}` : ""} `}
           />
         </PaginationItem>
       </PaginationContent>

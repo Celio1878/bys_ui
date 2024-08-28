@@ -2,7 +2,7 @@
 
 import { FC } from "react";
 import Link from "next/link";
-import { navbar_items } from "@/utils/navbar_items";
+import { navbarItems } from "@/utils/navbar-items";
 import {
   Carousel,
   CarouselContent,
@@ -22,7 +22,7 @@ export const NavMenu: FC = () => {
         className="w-full max-w-xs sm:max-w-2xl md:max-w-full"
       >
         <CarouselContent className="md:justify-center -mr-0.5 -ml-0.5 md:-mx-0">
-          {navbar_items.map((item) => {
+          {navbarItems.map((item) => {
             return (
               <Link
                 className={`text-center font-semibold text-sm hover:bg-slate-200 dark:hover:bg-slate-700 transition-all duration-300 py-2 px-3 mx-1 md:mx-0.5 rounded-md ${item.key === text && "text-sky-500 font-semibold bg-slate-200 dark:text-sky-200 dark:bg-slate-950"}`}

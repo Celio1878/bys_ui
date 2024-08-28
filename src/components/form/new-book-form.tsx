@@ -1,30 +1,35 @@
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import { Form } from "@/components/ui/form";
 import { Card } from "@/components/ui/card";
 import { useFormContext } from "react-hook-form";
 import { InputFormField } from "@/components/form/fields/input-form-field";
 import { TextAreaFormField } from "@/components/form/fields/text-area-form-field";
 import { SelectFormField } from "@/components/form/fields/select-form-field";
+import { CheckboxListFormField } from "@/components/form/fields/checkbox-list-form-field";
+import { InputTagFormField } from "@/components/form/fields/input-tag-form-field";
+import { SelectItemsSearchFormField } from "@/components/form/fields/select-items-search-form-field";
 import {
   AgeRangeTags,
   CopyrightTags,
   GenreTags,
+  Tag,
   WarningTags,
-} from "@/app/model/story";
-import { CheckboxListFormField } from "@/components/form/fields/checkbox-list-form-field";
-import { InputTagFormField } from "@/components/form/fields/input-tag-form-field";
-import { SelectItemsSearchFormField } from "@/components/form/fields/select-items-search-form-field";
+} from "@/app/model/tags";
+import useSWR from "swr";
+import { fetcher } from "@/hooks/fetcher";
+import { ProfileDto } from "@/app/model/profile-dto";
 
-interface NewBookFormProps {
-  set_book_data: (book_data: any) => void;
-}
+const PROFILES_SERVICE_URL = String(process.env.NEXT_PUBLIC_PROFILES_API_URL);
 
-export const NewBookForm: FC<NewBookFormProps> = ({ set_book_data }) => {
+export const NewBookForm: FC = () => {
   const form = useFormContext();
 
-  useEffect(() => {
-    form.watch((value) => set_book_data(value));
-  }, [form]);
+  const { data: profiles } = useSWR(
+    PROFILES_SERVICE_URL!,
+    fetcher<ProfileDto[]>({}).get,
+  );
+
+  const authorTagList = tagList(profiles!);
 
   return (
     <Card className="max-h-[30rem] px-8 py-4 mt-2 bg-slate-50 overflow-y-scroll">
@@ -48,7 +53,7 @@ export const NewBookForm: FC<NewBookFormProps> = ({ set_book_data }) => {
           />
 
           <SelectFormField
-            name={"age_range"}
+            name={"ageRange"}
             label={"Faixa Etaria"}
             form={form}
             placeholder={"Selecione a faixa etaria"}
@@ -83,13 +88,13 @@ export const NewBookForm: FC<NewBookFormProps> = ({ set_book_data }) => {
 
           <SelectItemsSearchFormField
             form={form}
-            list_items={authors}
+            listItems={authorTagList}
             name={"coauthors"}
             label={"CoAutores"}
-            input_placeholder={"Procure pelo autor ..."}
+            inputPlaceholder={"Procure pelo autor ..."}
             heading={"Autores"}
-            text_on_empty={"Autor nao encontrado."}
-            button_text={"Selecione os CoAutores"}
+            textOnEmpty={"Autor nao encontrado."}
+            buttonText={"Selecione os CoAutores"}
             key={"coauthors"}
           />
         </form>
@@ -98,14 +103,9 @@ export const NewBookForm: FC<NewBookFormProps> = ({ set_book_data }) => {
   );
 };
 
-const authors = [
-  { title: "Autor 1", id: "author_1" },
-  { title: "Autor 2", id: "author_2" },
-  { title: "Autor 3", id: "author_3" },
-  { title: "Autor 4", id: "author_4" },
-  { title: "Autor 5", id: "author_5" },
-  { title: "Autor 6", id: "author_6" },
-  { title: "Autor 7", id: "author_7" },
-  { title: "Autor 8", id: "author_8" },
-  { title: "Autor 9", id: "author_9" },
-];
+function tagList(profiles: ProfileDto[]): Tag<string>[] {
+  const profileTags: Tag<string>[] = [];
+  profiles?.forEach((p) => profileTags.push({ id: p.id, title: p.name }));
+
+  return profileTags;
+}

@@ -14,10 +14,10 @@ interface SelectItemsSearchFormFieldProps {
   form: UseFormReturn;
   label: string;
   heading: string;
-  list_items: { title: string; id: string }[];
-  button_text: string;
-  input_placeholder?: string;
-  text_on_empty?: string;
+  listItems: { title: string; id: string }[];
+  buttonText: string;
+  inputPlaceholder?: string;
+  textOnEmpty?: string;
 }
 
 export const SelectItemsSearchFormField: FC<
@@ -26,11 +26,11 @@ export const SelectItemsSearchFormField: FC<
   form,
   name,
   label,
-  input_placeholder,
+  inputPlaceholder,
   heading,
-  list_items,
-  text_on_empty,
-  button_text,
+  listItems,
+  textOnEmpty,
+  buttonText,
 }) => {
   return (
     <FormField
@@ -41,12 +41,12 @@ export const SelectItemsSearchFormField: FC<
           <FormLabel>{label}</FormLabel>
           <SelectComboBox
             name={name}
-            list_items={list_items}
+            listItems={listItems}
             form={form}
             heading={heading}
-            button_text={button_text}
-            text_on_empty={text_on_empty}
-            input_placeholder={input_placeholder}
+            buttonText={buttonText}
+            textOnEmpty={textOnEmpty}
+            inputPlaceholder={inputPlaceholder}
           />
           <FormMessage />
           <TagSearchItems tags={field.value} />

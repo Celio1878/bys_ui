@@ -1,31 +1,36 @@
 "use client";
 
-import { FC, useState } from "react";
+import { FC } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tag } from "@/app/model/story";
+import { Tag } from "@/app/model/tags";
 import { NewChapterButton } from "@/components/buttons/new-chapter-button";
 import { ChapterListButtons } from "@/components/buttons/chapter-list-buttons";
-import { usePathname, useRouter } from "next/navigation";
-import { useToast } from "@/components/ui/use-toast";
+import { useParams, usePathname, useRouter } from "next/navigation";
+import { toast } from "@/components/ui/use-toast";
 import { RemoveChapterToast } from "@/components/remove-chapter-toast";
+import { fetcher } from "@/hooks/fetcher";
+import { useSession } from "next-auth/react";
 
 interface MyBookChaptersProps {
-  chapters_tags: Tag<string>[];
+  chaptersTags: Tag<string>[];
 }
 
-export const MyBookChapters: FC<MyBookChaptersProps> = ({ chapters_tags }) => {
-  const { toast } = useToast();
-  const pathname = usePathname();
-  const router = useRouter();
-  const [chapters, set_chapters] = useState(chapters_tags);
+const SERVICE_URL = String(process.env.NEXT_PUBLIC_CHAPTERS_API_URL);
 
-  function on_remove(index: number) {
-    chapters.splice(index, 1);
-    set_chapters([...chapters]);
+export const MyBookChapters: FC<MyBookChaptersProps> = ({ chaptersTags }) => {
+  const { data: session } = useSession() as any;
+  const pathname = usePathname();
+  const { id } = useParams();
+  const router = useRouter();
+
+  async function onRemove(chapterId: string) {
+    await fetcher<void>({ token: session?.access_token }).delete(
+      `${SERVICE_URL}/${id}/chapters/${chapterId}`,
+    );
   }
 
-  function on_edit(chapter_id: string) {
-    router.push(`${pathname}/chapters/update/${chapter_id}`);
+  function onEdit(chapterId: string) {
+    router.push(`${pathname}/chapters/${chapterId}`);
   }
 
   return (
@@ -34,7 +39,7 @@ export const MyBookChapters: FC<MyBookChaptersProps> = ({ chapters_tags }) => {
         <CardTitle className="text-4xl">Capitulos</CardTitle>
         <NewChapterButton />
       </CardHeader>
-      {chapters.map((chapter, i) => (
+      {chaptersTags.map((chapter, i) => (
         <CardContent
           key={chapter.id}
           className="flex flex-row items-center justify-between w-full text-sm pt-6"
@@ -42,15 +47,19 @@ export const MyBookChapters: FC<MyBookChaptersProps> = ({ chapters_tags }) => {
           <span>{chapter.title}</span>
 
           <ChapterListButtons
-            on_remove={() =>
+            onRemove={() =>
               toast({
                 title: `Tem certeza?`,
                 type: "foreground",
                 role: "alert",
-                action: <RemoveChapterToast on_remove={() => on_remove(i)} />,
+                action: (
+                  <RemoveChapterToast
+                    onRemove={async () => await onRemove(chapter.id)}
+                  />
+                ),
               })
             }
-            on_edit={() => on_edit(chapter.id)}
+            onEdit={() => onEdit(chapter.id)}
           />
         </CardContent>
       ))}

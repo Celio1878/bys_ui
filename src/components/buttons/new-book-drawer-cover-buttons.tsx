@@ -4,19 +4,19 @@ import { NextStepButton } from "@/components/buttons/next-step-button";
 
 interface NewBookDrawerCoverButtonsProps {
   disabled: boolean;
-  next_step_click: VoidFunction;
-  go_back_click: VoidFunction;
+  nextStepClick: VoidFunction;
+  goBackClick: VoidFunction;
 }
 
 export const NewBookDrawerCoverButtons: FC<NewBookDrawerCoverButtonsProps> = ({
-  next_step_click,
-  go_back_click,
+  nextStepClick,
+  goBackClick,
   disabled,
 }) => {
   return (
     <div className="flex justify-between items-end self-end gap-2">
-      <GoBackButton on_click={go_back_click} />
-      <NextStepButton disabled={disabled} on_click={next_step_click} />
+      <GoBackButton onClick={goBackClick} />
+      <NextStepButton disabled={disabled} onClick={nextStepClick} />
     </div>
   );
 };

@@ -30,10 +30,14 @@ export const InputTagFormField: FC<InputTagFormFieldProps> = ({
     control: form.control,
     name,
   });
-  const { handle_key_down, ref, tag_values } = useManagerTags({
+  const {
+    handleKeyDown,
+    ref,
+    tags: tagValues,
+  } = useManagerTags({
     form,
     name,
-    on_change: append,
+    onChange: append,
   });
 
   return (
@@ -55,10 +59,10 @@ export const InputTagFormField: FC<InputTagFormFieldProps> = ({
               <Input
                 ref={ref}
                 placeholder={placeholder}
-                onKeyDown={handle_key_down}
+                onKeyDown={handleKeyDown}
               />
             </FormControl>
-            <TagItems tags={tag_values} on_remove={remove} />
+            <TagItems tags={tagValues} on_remove={remove} />
             <FormMessage />
           </FormItem>
         </>

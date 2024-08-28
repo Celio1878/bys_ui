@@ -17,6 +17,7 @@ export default function AuthError() {
           alt: "500-Error",
           priority: true,
           className: "relative bottom-20",
+          unoptimized: true,
         }}
       />
       <section className="relative bottom-10 w-full flex flex-col items-center gap-6 bg-slate-200 dark:bg-slate-900 rounded-md py-10">

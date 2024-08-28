@@ -13,6 +13,7 @@ export default function NotFound() {
           alt: "404-Error",
           priority: true,
           className: "relative bottom-20",
+          unoptimized: true,
         }}
       />
 

@@ -11,18 +11,17 @@ import { Color } from "@tiptap/extension-color";
 import TextStyle from "@tiptap/extension-text-style";
 import TextAlign from "@tiptap/extension-text-align";
 import { Toolbar } from "@/components/chapter/toolbar";
-import { HorizontalRule } from "@tiptap/extension-horizontal-rule";
 
 interface ChapterContentFormFieldProps {
   content: string;
-  on_change: (content: string) => void;
+  onChange: (content: string) => void;
 }
 
 export const ChapterContentFormField: FC<ChapterContentFormFieldProps> = ({
   content,
-  on_change,
+  onChange,
 }) => {
-  const [text_color, set_text_color] = useState("#000000");
+  const [textColor, setTextColor] = useState("#000000");
 
   const editor = useEditor({
     extensions: [
@@ -32,7 +31,6 @@ export const ChapterContentFormField: FC<ChapterContentFormFieldProps> = ({
       Typography,
       Color,
       TextStyle,
-      HorizontalRule,
       TextAlign.configure({
         types: ["heading", "paragraph"],
         alignments: ["left", "center", "right"],
@@ -43,19 +41,20 @@ export const ChapterContentFormField: FC<ChapterContentFormFieldProps> = ({
         class: "outline-none min-h-[15rem] overflow-y-auto",
       },
     },
-    content: content,
+    content,
     editable: true,
     autofocus: false,
     injectCSS: false,
     onUpdate: ({ editor }) => {
-      const editor_content = editor.getHTML();
-      on_change(editor_content);
+      const htmlContent = editor.getHTML();
+      onChange(htmlContent);
     },
+    immediatelyRender: false,
   });
 
   useLayoutEffect(() => {
-    editor?.commands.setColor(text_color);
-  }, [text_color]);
+    editor?.commands.setColor(textColor);
+  }, [editor, textColor]);
 
   if (!editor) {
     return null;
@@ -68,8 +67,8 @@ export const ChapterContentFormField: FC<ChapterContentFormFieldProps> = ({
         <CardContent className="flex flex-col gap-y-4">
           <Toolbar
             editor={editor}
-            set_text_color={set_text_color}
-            text_color={text_color}
+            setTextColor={setTextColor}
+            textColor={textColor}
           />
           <Separator />
           <EditorContent {...{ editor }} />

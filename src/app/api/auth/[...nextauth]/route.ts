@@ -1,51 +1,44 @@
-import type { NextAuthOptions } from "next-auth";
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
+import { signin } from "@/app/api/auth/[...nextauth]/signin";
+import { getSession } from "@/app/api/auth/[...nextauth]/session";
+import { validateToken } from "@/app/api/auth/[...nextauth]/validate-token";
 
-const google_client_id = process.env.GOOGLE_CLIENT_ID;
-const google_client_secret = process.env.GOOGLE_CLIENT_SECRET;
+const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
+const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
 
-const auth_options: NextAuthOptions = {
+const handler = NextAuth({
   providers: [
     GoogleProvider({
-      clientId: `${google_client_id}`,
-      clientSecret: `${google_client_secret}`,
+      clientId: GOOGLE_CLIENT_ID!,
+      clientSecret: GOOGLE_CLIENT_SECRET!,
       allowDangerousEmailAccountLinking: false,
-
-      async profile(profile) {
-        return {
-          id: profile.sub,
-          name: profile.name,
-          firstname: profile.given_name,
-          lastname: profile.family_name,
-          email: profile.email,
-          image: profile.picture,
-        };
+      authorization: {
+        params: {
+          access_type: "offline",
+          prompt: "consent",
+          response_type: "code",
+        },
       },
     }),
   ],
   callbacks: {
-    jwt: async ({ token, user, account }) => {
-      if (account) {
-        token.account = account;
-      }
-
-      return {
-        ...user,
-        ...token,
-      };
-    },
-    session: async ({ session, token }) => {
-      return {
-        ...token,
-        ...session,
-      };
-    },
+    jwt: validateToken,
+    session: getSession,
+    signIn: signin,
     redirect: async () => "/",
   },
   session: { strategy: "jwt" },
   pages: { signIn: "/", signOut: "/", error: "/api/auth/error" },
-};
+});
 
-const handler = NextAuth(auth_options);
 export { handler as GET, handler as POST };
+
+declare module "next-auth/jwt" {
+  interface JWT {
+    access_token: string;
+    expires_at: number;
+    refresh_token: string;
+    error?: "RefreshAccessTokenError";
+  }
+}
