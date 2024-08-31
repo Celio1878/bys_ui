@@ -19,6 +19,7 @@ export const LogoIcon: FC<LogoProps> = ({ width, height }) => {
           title: "BYS",
           width,
           height,
+          priority: true,
         }}
       />
     </Link>

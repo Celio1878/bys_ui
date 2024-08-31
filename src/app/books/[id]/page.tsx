@@ -13,14 +13,12 @@ import { BookDto } from "@/app/model/book-dto";
 const SERVICE_URL = String(process.env.NEXT_PUBLIC_BOOKS_API_URL);
 
 export default function BookPage() {
-  const { id } = useParams() as { id: string };
+  const { id } = useParams();
 
-  const { data: book, isLoading } = useSWR(
+  const { data: book } = useSWR(
     `${SERVICE_URL}/${id}`,
     fetcher<BookDto>({}).get,
   );
-
-  if (isLoading) return <Loading />;
 
   return (
     <Suspense fallback={<Loading />}>
@@ -32,7 +30,7 @@ export default function BookPage() {
       </div>
       <BookData
         bookData={book!}
-        chaptersComponent={<BookChapters chapters_tags={book?.chapters!} />}
+        chaptersComponent={<BookChapters chaptersTags={book?.chapters!} />}
       />
     </Suspense>
   );

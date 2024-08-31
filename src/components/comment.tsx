@@ -1,29 +1,45 @@
 import { FC } from "react";
 import { UserImage } from "@/components/user-image";
-import { Flag } from "lucide-react";
+import { Flag, Trash2 } from "lucide-react";
+import { CommentData } from "@/app/model/chapter-dto";
+import { format } from "date-fns";
 
 interface CommentProps {
-  userName: string;
+  comment: CommentData;
+  onRemove: (commentId: string) => void;
 }
 
-export const Comment: FC<CommentProps> = ({ userName }) => {
+export const Comment: FC<CommentProps> = ({ onRemove, comment }) => {
+  const date = format(comment.createdAt, "dd/MM/yyyy");
+
   return (
-    <div className="flex flex-col w-11/12 self-center">
-      <div className="flex flex-row w-full gap-4">
-        <span className="flex flex-col items-center gap-1">
+    <div className="flex flex-col w-11/12 self-center gap-2">
+      <div className="flex flex-row w-full justify-between gap-4">
+        <span className="flex flex-row items-center gap-2">
           <UserImage width={40} height={40} />
           <p className="max-w-[10rem] text-xs opacity-60 text-center">
-            {userName}
+            {comment.author.title}
           </p>
         </span>
-        <p className="w-full bg-slate-100 rounded-md py-2 px-4 text-sm dark:bg-neutral-950 dark:border dark:border-neutral-900">
-          Comentario criado por <strong>{userName}</strong>
+        <p className="self-center text-xs opacity-50">{date}</p>
+      </div>
+      <div className="flex flex-row justify-between gap-4">
+        <p className="w-full bg-slate-100 rounded-md py-2 px-4 text-sm dark:bg-neutral-950 dark:border dark:border-neutral-900 opacity-70">
+          {comment.content}
         </p>
 
         <button
+          className="text-red-500 hover:opacity-60 transition-all duration-300"
+          name={`remove-comment-${comment.author.id}`}
+          title={`Remover comentario de ${comment.author.title}`}
+          onClick={() => onRemove(comment.id)}
+        >
+          <Trash2 />
+        </button>
+        <button
           className="self-center p-2 rounded-full bg-transparent text-red-500 hover:text-red-600 hover:bg-red-50 hover:scale-125 transition-all duration-300"
-          name={`report-comment-${userName}`}
-          title={`Reportar comentario de ${userName}`}
+          name={`report-comment-${comment.author.id}`}
+          title={`Reportar comentario de ${comment.author.title}`}
         >
           <Flag size={15} />
         </button>

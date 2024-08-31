@@ -7,40 +7,16 @@ import { signIn, useSession } from "next-auth/react";
 import { SearchInput } from "@/components/form/search-input";
 import { PopoverUser } from "@/components/popover-user";
 import { GoogleLoginButton } from "@/components/buttons/google-login-button";
-import { toast } from "@/components/ui/use-toast";
-
-// type UserSession = {
-//   access_token: string;
-//   expires: string;
-//   expires_at: number;
-//   user: {
-//     id: string;
-//     name: string;
-//     email: string;
-//     image: string;
-//   };
-// };
 
 export const Header: FC = memo(() => {
   const { data: session, status, update } = useSession() as any;
-  const dateNow = Date.now();
 
   useEffect(() => {
-    if (status === "authenticated") {
-      toast({
-        className: "bg-sky-500 text-white",
-        title: `Bem Vindo, ${session?.user.name}!`,
-        type: "foreground",
-        duration: 3000,
-      });
-    }
-  }, [status]);
+    const fiftyMinutes = 1000 * 60 * 50;
 
-  useEffect(() => {
-    const oneHour = 1000 * 60 * 60;
-    const interval = setInterval(() => update(), oneHour);
+    const interval = setInterval(() => update(), fiftyMinutes);
     return () => clearInterval(interval);
-  }, [update]);
+  }, [session?.expires_at, update]);
 
   useEffect(() => {
     if (session?.error === "RefreshAccessTokenError") {

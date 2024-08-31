@@ -15,7 +15,7 @@ export const BookData: FC<BookDataProps> = ({
 }) => {
   return (
     <Card className="flex flex-col w-full items-center justify-center py-8 bg-slate-100">
-      <BookContent bookData={bookData} />
+      <BookContent book={bookData} />
       <Separator className="w-11/12 my-10" />
       {chaptersComponent}
     </Card>

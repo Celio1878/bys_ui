@@ -88,3 +88,21 @@ export const WarningTags: Tag<Warning>[] = [
   { id: Warning.TORTURE, title: "Tortura" },
   { id: Warning.VIOLENCE, title: "Violência" },
 ];
+
+type SanitizeTagList = {
+  tagList: Tag<string>[];
+  newTag: Tag<string>;
+};
+
+export function sanitizeTagList({
+  tagList,
+  newTag,
+}: SanitizeTagList): Tag<string>[] {
+  const exists = tagList?.some((t) => t.id === newTag.id);
+
+  if (exists) {
+    return tagList?.filter((t) => t.id !== newTag.id);
+  }
+
+  return tagList?.concat(newTag);
+}

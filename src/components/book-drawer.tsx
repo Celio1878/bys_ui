@@ -98,12 +98,19 @@ export const BookDrawer: FC<BookDrawerProps> = ({
             setTabName={setTabName}
             bookValues={formMethods.getValues()}
             onClose={() => setOpenForm(false)}
-            onConfirmClick={async () => {
+            onConfirmClick={() => {
+              const newAuthorship = upsertAuthorship(
+                profile!,
+                formMethods.getValues(),
+              );
+
+              console.log(newAuthorship, "AUTHORSHIP");
+
               book
                 ? Promise.all([
                     updateBook(book.id, updatedBook!),
                     fetcher({
-                      body: addAuthorship(profile!, formMethods.getValues()),
+                      body: newAuthorship,
                       token: session?.access_token,
                     }).put(`${PROFILE_SERVICE_URL}/${profile?.id}`),
                   ]).then(() => {
@@ -113,7 +120,7 @@ export const BookDrawer: FC<BookDrawerProps> = ({
                 : Promise.all([
                     createBook(newBookDto),
                     fetcher({
-                      body: addAuthorship(profile!, formMethods.getValues()),
+                      body: newAuthorship,
                       token: session?.access_token,
                     }).put(`${PROFILE_SERVICE_URL}/${profile?.id}`),
                   ]).then(() => {
@@ -128,13 +135,25 @@ export const BookDrawer: FC<BookDrawerProps> = ({
   );
 };
 
-function addAuthorship(author: ProfileDto, book: BookFormValues): ProfileDto {
+function upsertAuthorship(
+  author: ProfileDto,
+  book: BookFormValues,
+): ProfileDto {
+  const bookTagId = `${book.title.toLowerCase().replace(/\s/g, "-")}-${author.id}`;
   const bookTag: Tag<string> = {
-    id: book.title.toLowerCase().replace(/\s/g, "-") + "-" + author.id,
+    id: bookTagId,
     title: book.title,
   };
 
-  author.authorship.push(bookTag);
+  const exists = author.authorship.findIndex((tag) => tag.id === bookTagId);
+  const existsCode = -1;
 
-  return author;
+  if (exists !== existsCode) {
+    return author;
+  }
+
+  return {
+    ...author,
+    authorship: [...author.authorship, bookTag],
+  };
 }

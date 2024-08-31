@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import Image from "next/image";
 import { BookMetadata } from "@/components/book/book-metadata";
 import { Heart, Share2 } from "lucide-react";
@@ -9,47 +9,65 @@ import { BookDto } from "@/app/model/book-dto";
 import useSWRMutation from "swr/mutation";
 import { fetcher } from "@/hooks/fetcher";
 import { useSession } from "next-auth/react";
+import { sanitizeTagList, Tag } from "@/app/model/tags";
+import useSWR from "swr";
+import { ProfileDto } from "@/app/model/profile-dto";
 
 const SERVICE_URL = String(process.env.NEXT_PUBLIC_BOOKS_API_URL);
+const PROFILE_SERVICE_URL = String(process.env.NEXT_PUBLIC_PROFILES_API_URL);
 
 interface BookContentProps {
-  bookData: BookDto;
+  book: BookDto;
 }
 
-export const BookContent: FC<BookContentProps> = ({ bookData }) => {
+export const BookContent: FC<BookContentProps> = ({ book }) => {
   const { data: session } = useSession() as any;
   const pathname = usePathname();
   const bysUrl = `https://beyourstories.com/${pathname}`;
-  const [following, setFollowing] = useState(false);
 
-  const liked = bookData.followers.some(
-    (follower) => follower.id === session?.user.email,
-  );
-
-  function followerList() {
-    if (liked) {
-      return bookData.followers.filter(
-        (follower) => follower.id !== session?.user.email,
-      );
-    }
-
-    return [
-      ...bookData.followers,
-      { title: session?.user.name, id: session?.user.email },
-    ];
-  }
-
-  const dto: BookDto = {
-    ...bookData,
-    followers: followerList(),
+  const userTag: Tag<string> = {
+    id: session?.user?.id!,
+    title: session?.user?.name!,
   };
 
-  const { trigger } = useSWRMutation(
-    `${SERVICE_URL}/${bookData.id}/follower`,
-    fetcher<any>({
+  const { data: profile, mutate: getProfile } = useSWR(
+    `${PROFILE_SERVICE_URL}/${session?.user?.id}`,
+    fetcher<ProfileDto>({ token: session?.access_token }).get,
+  );
+
+  const liked = book?.followers.some(
+    (follower) => follower.id === session?.user.id,
+  );
+
+  const dto: BookDto = {
+    ...book,
+    followers: sanitizeTagList({
+      tagList: book?.followers!,
+      newTag: userTag,
+    }),
+  };
+
+  const { trigger: updateBook } = useSWRMutation(
+    `${SERVICE_URL}/${book?.id}`,
+    fetcher<BookDto>({
       body: dto,
       token: session?.access_token,
     }).put,
+  );
+
+  const bookTag: Tag<string> = {
+    id: book?.id,
+    title: book?.title,
+  };
+
+  const profileDto: ProfileDto = {
+    ...profile!,
+    readList: sanitizeTagList({ tagList: profile?.readList!, newTag: bookTag }),
+  };
+
+  const { trigger: updateProfile } = useSWRMutation(
+    `${PROFILE_SERVICE_URL}/${session?.user?.id}`,
+    fetcher<ProfileDto>({ body: profileDto, token: session?.access_token }).put,
   );
 
   function copy_url_clipboard() {
@@ -65,9 +83,9 @@ export const BookContent: FC<BookContentProps> = ({ bookData }) => {
   }
 
   const inMyLibrary = pathname.includes("profile");
-  const bookValues = {
-    ...bookData,
-    coauthors: bookData.coauthors.concat(bookData.author),
+  const bookValues: BookDto = {
+    ...book!,
+    coauthors: book?.coauthors.concat(book?.author)!,
   };
 
   return (
@@ -75,7 +93,7 @@ export const BookContent: FC<BookContentProps> = ({ bookData }) => {
       <div className="flex flex-col items-center justify-center gap-2">
         <Image
           className="hover:shadow-lg hover:shadow-black/50 transition duration-500"
-          src={bookData.cover}
+          src={book?.cover! ?? "/user.png"}
           alt={"cover"}
           width={200}
           height={220}
@@ -86,21 +104,18 @@ export const BookContent: FC<BookContentProps> = ({ bookData }) => {
             <Button
               className="rounded-full hover:text-red-500 transition-all duration-500"
               variant="ghost"
-              onClick={() => {
-                trigger().then(() =>
-                  toast({
-                    title: `Curtindo ${bookData.title}.`,
-                    description: `Siga o autor ${bookData.author.title}!`,
-                    type: "background",
-                    role: "banner",
-                    className: "bg-indigo-600 text-white dark:bg-sky-800",
-                  }),
-                );
-                setFollowing(!following);
-              }}
+              onClick={() =>
+                Promise.all([updateBook(), updateProfile()]).finally(() =>
+                  getProfile(),
+                )
+              }
             >
               <Heart
-                className={liked ? "text-red-500 animate-pulse scale-110" : ""}
+                className={
+                  liked
+                    ? "text-red-500 animate-pulse scale-110 fill-red-500"
+                    : ""
+                }
               />
             </Button>
             <Button
