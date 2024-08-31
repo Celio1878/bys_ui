@@ -12,7 +12,7 @@ import { UserImage } from "@/components/user-image";
 import { FollowComponent } from "@/components/follow-component";
 import { fetcher } from "@/hooks/fetcher";
 import useSWR from "swr";
-import { ProfileDto } from "@/app/model/profile-dto";
+import { ProfileDto, removeAuthorship } from "@/app/model/profile-dto";
 import { UpdateBookButtonLabel } from "@/components/buttons/update-book-button-label";
 import { DeleteButton } from "@/components/buttons/delete-button";
 import { useBookApi } from "@/hooks/use-book-api";
@@ -86,10 +86,4 @@ export default function ProfilePage() {
         : null}
     </Suspense>
   );
-}
-
-function removeAuthorship(author: ProfileDto, id: string): ProfileDto {
-  author.authorship = author.authorship.filter((t) => t.id !== id);
-
-  return author;
 }

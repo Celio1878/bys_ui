@@ -8,9 +8,14 @@ import { useSession } from "next-auth/react";
 interface NewBookStepsProps {
   tabName: string;
   bookDto: any;
+  onUpdateCover: VoidFunction;
 }
 
-export const NewBookSteps: FC<NewBookStepsProps> = ({ tabName, bookDto }) => {
+export const NewBookSteps: FC<NewBookStepsProps> = ({
+  tabName,
+  bookDto,
+  onUpdateCover,
+}) => {
   const { data: session } = useSession() as any;
   const bookId =
     bookDto.title.toLowerCase().replace(/\s/g, "-") + "-" + session?.user?.id;
@@ -32,7 +37,7 @@ export const NewBookSteps: FC<NewBookStepsProps> = ({ tabName, bookDto }) => {
         <NewBookForm />
       </TabsContent>
       <TabsContent value="cover">
-        <InsertBookCoverForm session={session} bookId={bookId} />
+        <InsertBookCoverForm onUpdateCover={onUpdateCover} bookId={bookId} />
       </TabsContent>
       <TabsContent value="confirm">
         <BookItemsConfirmForm session={session} book={bookDto} />

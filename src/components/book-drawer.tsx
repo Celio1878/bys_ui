@@ -20,7 +20,7 @@ import { useSession } from "next-auth/react";
 import { fetcher } from "@/hooks/fetcher";
 import useSWR from "swr";
 import { Tag } from "@/app/model/tags";
-import { ProfileDto } from "@/app/model/profile-dto";
+import { ProfileDto, upsertAuthorship } from "@/app/model/profile-dto";
 
 interface BookDrawerProps {
   buttonLabel: string | ReactNode;
@@ -79,6 +79,10 @@ export const BookDrawer: FC<BookDrawerProps> = ({
   const newBookDto = createBookDto(authorTag, formMethods.getValues());
   const updatedBook = book && updateBookDto(book!, formMethods.getValues());
 
+  function onUpdateCover() {
+    setTabName("confirm");
+  }
+
   return (
     <Dialog modal open={openForm} onOpenChange={setOpenForm}>
       <DialogTrigger asChild>
@@ -90,7 +94,11 @@ export const BookDrawer: FC<BookDrawerProps> = ({
           <DialogTitle>{modalTitle}</DialogTitle>
         </DialogHeader>
         <FormProvider {...formMethods}>
-          <NewBookSteps tabName={tabName} bookDto={newBookDto} />
+          <NewBookSteps
+            tabName={tabName}
+            bookDto={newBookDto}
+            onUpdateCover={onUpdateCover}
+          />
         </FormProvider>
         <DialogFooter>
           <NewBookDrawerButtons
@@ -102,9 +110,8 @@ export const BookDrawer: FC<BookDrawerProps> = ({
               const newAuthorship = upsertAuthorship(
                 profile!,
                 formMethods.getValues(),
+                book ? book.id : newBookDto.id,
               );
-
-              console.log(newAuthorship, "AUTHORSHIP");
 
               book
                 ? Promise.all([
@@ -134,26 +141,3 @@ export const BookDrawer: FC<BookDrawerProps> = ({
     </Dialog>
   );
 };
-
-function upsertAuthorship(
-  author: ProfileDto,
-  book: BookFormValues,
-): ProfileDto {
-  const bookTagId = `${book.title.toLowerCase().replace(/\s/g, "-")}-${author.id}`;
-  const bookTag: Tag<string> = {
-    id: bookTagId,
-    title: book.title,
-  };
-
-  const exists = author.authorship.findIndex((tag) => tag.id === bookTagId);
-  const existsCode = -1;
-
-  if (exists !== existsCode) {
-    return author;
-  }
-
-  return {
-    ...author,
-    authorship: [...author.authorship, bookTag],
-  };
-}

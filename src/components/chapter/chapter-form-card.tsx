@@ -17,7 +17,7 @@ interface ChapterFormCardProps {
   content: string;
   onTitleChange: (title: string) => void;
   onContentChange: (content: string) => void;
-  onSave: () => void;
+  onSave: VoidFunction;
 }
 
 export const ChapterFormCard: FC<ChapterFormCardProps> = ({

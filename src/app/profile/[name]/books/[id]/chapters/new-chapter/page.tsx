@@ -8,8 +8,7 @@ import { CreateChapter } from "@/app/model/chapter-dto";
 import { useParams, useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { toast } from "@/components/ui/use-toast";
-import { Tag } from "@/app/model/tags";
-import { BookDto } from "@/app/model/book-dto";
+import { BookDto, upsertBookChapters } from "@/app/model/book-dto";
 import useSWR from "swr";
 
 const BOOK_SERVICE_URL = String(process.env.NEXT_PUBLIC_BOOKS_API_URL);
@@ -68,23 +67,4 @@ export default function NewChapterPage() {
       }}
     />
   );
-}
-
-function upsertBookChapters(book: BookDto, chapter: CreateChapter): BookDto {
-  const chapterTag: Tag<string> = {
-    id: chapter.id,
-    title: chapter.title,
-  };
-
-  const exists = book.chapters.findIndex((tag) => tag.id === chapterTag.id);
-  const existsCode = -1;
-
-  if (exists !== existsCode) {
-    return book;
-  }
-
-  return {
-    ...book,
-    chapters: [...book.chapters, chapterTag],
-  };
 }

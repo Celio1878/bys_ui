@@ -1,5 +1,6 @@
 import { BookFormValues } from "@/utils/form-data";
 import { AgeRange, Copyright, Tag, Warning } from "@/app/model/tags";
+import { CreateChapter } from "@/app/model/chapter-dto";
 
 export type BookDto = {
   id: string;
@@ -78,5 +79,26 @@ export function updateBookDto(
     chapters: initialValues.chapters,
     followers: initialValues.followers,
     cover: initialValues.cover,
+  };
+}
+
+export function upsertBookChapters(
+  book: BookDto,
+  chapter: CreateChapter,
+): BookDto {
+  const chapterTag: Tag<string> = {
+    id: chapter.id,
+    title: chapter.title,
+  };
+
+  const exists = book.chapters.some((tag) => tag.id === chapterTag.id);
+
+  if (exists) {
+    return book;
+  }
+
+  return {
+    ...book,
+    chapters: [...book.chapters, chapterTag],
   };
 }
