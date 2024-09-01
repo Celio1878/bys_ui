@@ -6,13 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="24dfe38b-6d18-4700-8386-86f955cbefc3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/profile/[name]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/profile/[name]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/book.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/book.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/carousel/books-carousel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/carousel/books-carousel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/carousel/carousel-dots.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/carousel/carousel-dots.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/comment.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/comment.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/shell/nav-menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shell/nav-menu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/model/search-dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/model/search-dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/search/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/search/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pagination-component.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pagination-component.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -293,7 +289,7 @@
       <workItem from="1725053629728" duration="982000" />
       <workItem from="1725105874282" duration="9852000" />
       <workItem from="1725142199690" duration="9962000" />
-      <workItem from="1725190886196" duration="311000" />
+      <workItem from="1725190886196" duration="3947000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Add Shadcn-ui">
       <option name="closed" value="true" />
@@ -663,7 +659,15 @@
       <option name="project" value="LOCAL" />
       <updated>1725152460253</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="fix: Carousel and Comments">
+      <option name="closed" value="true" />
+      <created>1725191396401</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1725191396401</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -688,7 +692,6 @@
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="style: Remove unnecessary definitions" />
     <MESSAGE value="feat: Create Tooltip info to insert tag" />
     <MESSAGE value="feat: Create components about user profile" />
     <MESSAGE value="style: Responsible and dark mode button color" />
@@ -713,7 +716,8 @@
     <MESSAGE value="fix: Requests" />
     <MESSAGE value="fix: Chapters" />
     <MESSAGE value="fix: Carousels" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: Carousels" />
+    <MESSAGE value="fix: Carousel and Comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: Carousel and Comments" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
