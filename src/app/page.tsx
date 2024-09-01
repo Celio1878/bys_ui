@@ -41,6 +41,7 @@ export default function Home() {
           sectionTitle={"Destaque"}
           books={books!}
         />
+
         {GenreTags.map((section) => {
           const booksByGenre = books?.filter(
             (book) => book.genre.id === section.id,
@@ -58,7 +59,7 @@ export default function Home() {
         })}
       </section>
 
-      <section className="w-full flex flex-col gap-8 justify-center items-center">
+      <section className="w-full flex flex-col gap-8 justify-center items-center mt-28">
         <h1 className="font-bold text-3xl underline underline-offset-4">
           Principais Autores
         </h1>

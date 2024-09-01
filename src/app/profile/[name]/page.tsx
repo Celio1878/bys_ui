@@ -46,41 +46,37 @@ export default function ProfilePage() {
 
       {profile
         ? profile?.authorship?.length > 0 && (
-            <Card className="flex flex-wrap w-full items-center justify-center gap-8 py-8 bg-zinc-50 dark:bg-neutral-950 dark:border-neutral-950">
-              {profile?.authorship.map((t, k) => {
-                const href = `${pathname}/books/${t.id}`;
-
-                return (
-                  <Book
-                    bookTag={t}
-                    buttons={
-                      <div className="flex flex-row gap-6 mt-2">
-                        <BookDrawer
-                          profile={profile}
-                          buttonLabel={<UpdateBookButtonLabel />}
-                          modalTitle="Editar Livro"
-                          bookId={t.id}
-                          onConfirmClick={getProfile}
-                        />
-                        <DeleteButton
-                          onClick={async () => {
-                            const authorship = removeAuthorship(profile, t.id);
-                            await Promise.all([
-                              deleteBook(t.id),
-                              fetcher({
-                                body: authorship,
-                                token: session?.access_token,
-                              }).put(`${PROFILE_SERVICE_URL}/${profile?.id}`),
-                            ]).then(() => getProfile());
-                          }}
-                        />
-                      </div>
-                    }
-                    key={k}
-                    href={href}
-                  />
-                );
-              })}
+            <Card className="flex flex-wrap w-full items-center justify-center gap-x-2 gap-y-10 py-8 bg-zinc-50 dark:bg-neutral-950 dark:border-neutral-950">
+              {profile?.authorship.map((t, k) => (
+                <Book
+                  bookTag={t}
+                  buttons={
+                    <div className="flex flex-row gap-6 mt-2">
+                      <BookDrawer
+                        profile={profile}
+                        buttonLabel={<UpdateBookButtonLabel />}
+                        modalTitle="Editar Livro"
+                        bookId={t.id}
+                        onConfirmClick={getProfile}
+                      />
+                      <DeleteButton
+                        onClick={async () => {
+                          const authorship = removeAuthorship(profile, t.id);
+                          await Promise.all([
+                            deleteBook(t.id),
+                            fetcher({
+                              body: authorship,
+                              token: session?.access_token,
+                            }).put(`${PROFILE_SERVICE_URL}/${profile?.id}`),
+                          ]).then(() => getProfile());
+                        }}
+                      />
+                    </div>
+                  }
+                  key={k}
+                  href={`${pathname}/books/${t.id}`}
+                />
+              ))}
             </Card>
           )
         : null}

@@ -13,7 +13,7 @@ export const CarouselDots: FC<CarouselDotsProps> = ({
   api,
 }) => {
   return (
-    <div className="flex justify-center gap-3 mt-2 mr-0 lg:mr-3">
+    <div className="flex justify-center gap-3 mt-2">
       {Array.from({ length: count }).map((_, index) => (
         <div key={index}>
           {count > 1 && (
