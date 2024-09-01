@@ -1,4 +1,4 @@
-export const solid_colors = [
+export const solidColors = [
   "#000000", // Black
   "#FF0000", // Red
   "#00FF00", // Green

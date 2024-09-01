@@ -4,7 +4,7 @@ import { UserImage } from "@/components/user-image";
 import { PopoverInfUser } from "@/components/popover_inf_user";
 
 interface Props {
-  session?: { picture: string; name: string; email: string };
+  session?: { user: { image: string; name: string; email: string } };
 }
 
 export const PopoverUser: FC<Props> = ({ session }) => {

@@ -1,37 +1,46 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { NewBookForm } from "@/components/form/new-book-form";
 import { InsertBookCoverForm } from "@/components/form/insert-book-cover-form";
 import { BookItemsConfirmForm } from "@/components/form/book-items-confirm-form";
+import { useSession } from "next-auth/react";
 
 interface NewBookStepsProps {
-  tab_name: string;
+  tabName: string;
+  bookDto: any;
+  onUpdateCover: VoidFunction;
 }
 
-export const NewBookSteps: FC<NewBookStepsProps> = ({ tab_name }) => {
-  const [book_data, set_book_data] = useState<any>(null);
+export const NewBookSteps: FC<NewBookStepsProps> = ({
+  tabName,
+  bookDto,
+  onUpdateCover,
+}) => {
+  const { data: session } = useSession() as any;
+  const bookId =
+    bookDto.title.toLowerCase().replace(/\s/g, "-") + "-" + session?.user?.id;
 
   return (
-    <Tabs value={tab_name} defaultValue="content">
+    <Tabs value={tabName} defaultValue="content">
       <TabsList>
-        <TabsTrigger value="content" disabled={tab_name !== "content"}>
+        <TabsTrigger value="content" disabled={tabName !== "content"}>
           Conteudo
         </TabsTrigger>
-        <TabsTrigger value="cover" disabled={tab_name !== "cover"}>
+        <TabsTrigger value="cover" disabled={tabName !== "cover"}>
           Capa
         </TabsTrigger>
-        <TabsTrigger value="confirm" disabled={tab_name !== "confirm"}>
+        <TabsTrigger value="confirm" disabled={tabName !== "confirm"}>
           Confirmar
         </TabsTrigger>
       </TabsList>
       <TabsContent value="content">
-        <NewBookForm set_book_data={set_book_data} />
+        <NewBookForm />
       </TabsContent>
       <TabsContent value="cover">
-        <InsertBookCoverForm />
+        <InsertBookCoverForm onUpdateCover={onUpdateCover} bookId={bookId} />
       </TabsContent>
       <TabsContent value="confirm">
-        <BookItemsConfirmForm book_data={book_data} />
+        <BookItemsConfirmForm session={session} book={bookDto} />
       </TabsContent>
     </Tabs>
   );

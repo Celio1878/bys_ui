@@ -13,7 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { AgeRange, Copyright, Genre, Tag } from "@/app/model/story";
+import { AgeRange, Copyright, Genre, Tag } from "@/app/model/tags";
 import { UseFormReturn } from "react-hook-form";
 
 interface SelectFormFieldProps {
@@ -41,9 +41,9 @@ export const SelectFormField: FC<SelectFormFieldProps> = memo(
             <SelectContent>
               {list_items.map((item) => (
                 <SelectItem
-                  className="cursor-pointer hover:font-semibold"
+                  className="cursor-pointer hover:font-semibold opacity-100"
                   key={item.id}
-                  value={item.id}
+                  value={JSON.stringify(item)}
                 >
                   {item.title}
                 </SelectItem>

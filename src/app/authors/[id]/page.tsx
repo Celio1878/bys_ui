@@ -3,49 +3,125 @@
 import { Loading } from "@/components/loading";
 import { Suspense } from "react";
 import { useParams } from "next/navigation";
-import { UserImage } from "@/components/user-image";
 import { FollowComponent } from "@/components/follow-component";
 import { Card } from "@/components/ui/card";
 import { Book } from "@/components/book";
-import { users } from "@/utils/mocks";
 import { FollowButton } from "@/components/buttons/follow-button";
 import { toast } from "@/components/ui/use-toast";
 import { HandMetal } from "lucide-react";
+import useSWR from "swr";
+import { fetcher } from "@/hooks/fetcher";
+import { ProfileDto } from "@/app/model/profile-dto";
+import Image from "next/image";
+import useSWRMutation from "swr/mutation";
+import { useSession } from "next-auth/react";
+import { Tag } from "@/app/model/tags";
+
+const PROFILE_SERVICE_URL = String(process.env.NEXT_PUBLIC_PROFILES_API_URL);
 
 export default function AuthorPage() {
-  const { id } = useParams() as { id: string };
+  const { data: session } = useSession() as any;
+  const { id } = useParams();
+
+  const { data: authorProfile, mutate: getProfile } = useSWR(
+    `${PROFILE_SERVICE_URL}/${id}`,
+    fetcher<ProfileDto>({}).get,
+  );
+
+  const { data: userProfile } = useSWR(
+    `${PROFILE_SERVICE_URL}/${id}`,
+    fetcher<ProfileDto>({}).get,
+  );
+
+  const followingTag: Tag<string> = {
+    id: authorProfile?.id!,
+    title: authorProfile?.name!,
+  };
+
+  const followerTag: Tag<string> = {
+    id: userProfile?.id!,
+    title: userProfile?.name!,
+  };
+
+  const followerDto: ProfileDto = {
+    ...authorProfile!,
+    followers: authorProfile?.followers.concat(followerTag)!,
+  };
+
+  const followingDto: ProfileDto = {
+    ...userProfile!,
+    following: userProfile?.following.concat(followingTag)!,
+  };
+
+  const { trigger: followerTrigger } = useSWRMutation(
+    `${PROFILE_SERVICE_URL}/${id}`,
+    fetcher<ProfileDto>({ body: followerDto!, token: session?.access_token })
+      .put,
+  );
+
+  const { trigger: followingTrigger } = useSWRMutation(
+    `${PROFILE_SERVICE_URL}/${userProfile?.id}`,
+    fetcher<ProfileDto>({ body: followingDto!, token: session?.access_token })
+      .put,
+  );
 
   return (
     <Suspense fallback={<Loading />}>
       <section className="flex flex-col items-center gap-4 pb-20">
-        <UserImage width={150} height={150} />
-        <h1 className="text-2xl font-bold">Autor {id}</h1>
-        <FollowButton
-          on_click={() => {
-            return toast({
-              description: (
-                <p className="flex flex-row gap-2 items-center justify-center">
-                  Seguindo ${id} <HandMetal />
-                </p>
-              ),
-              type: "foreground",
-            });
+        <Image
+          className="rounded-full"
+          {...{
+            src: authorProfile ? authorProfile.urlImage : "/user.png",
+            alt: "Profile Image",
+            width: 150,
+            height: 150,
+            priority: true,
+            quality: 100,
           }}
         />
-        <FollowComponent followers={users} following={users} />
+        <h1 className="text-2xl font-bold">{authorProfile?.name}</h1>
+        {session?.user.id !== authorProfile?.id && (
+          <FollowButton
+            on_click={() => {
+              Promise.all([followerTrigger(), followingTrigger()])
+                .then(() =>
+                  toast({
+                    description: (
+                      <p className="flex flex-row gap-2 items-center justify-center">
+                        <HandMetal /> Voce sera avisado quando esse perfil for
+                        atualizado.
+                      </p>
+                    ),
+                    className: "border border-red-500 bg-orange-500 text-white",
+                    type: "foreground",
+                  }),
+                )
+                .finally(() => getProfile());
+            }}
+          />
+        )}
+
+        <FollowComponent
+          followers={authorProfile?.followers!}
+          following={authorProfile?.following!}
+        />
       </section>
 
-      <h1 className="w-full text-4xl font-bold pb-4">Livros de {id}</h1>
+      <h1 className="w-full text-3xl font-bold pb-4">
+        Livros de {authorProfile?.name}
+      </h1>
 
-      <Card className="flex flex-wrap w-full items-center justify-center gap-8 py-8 bg-zinc-50 dark:bg-neutral-950 dark:border-neutral-950">
-        {Array.from({ length: 10 }).map((_, i) => {
-          const title = "Livro " + i;
-          const id = title.replace(/\s/g, "-").toLowerCase();
-          const href = `/books/${id}`;
+      {authorProfile
+        ? authorProfile?.authorship?.length > 0 && (
+            <Card className="flex flex-wrap w-full items-center justify-center gap-8 py-8 bg-zinc-50 dark:bg-neutral-950 dark:border-neutral-950">
+              {authorProfile?.authorship.map((t, k) => {
+                const href = `/books/${t.id}`;
 
-          return <Book title={title} key={i} href={href} />;
-        })}
-      </Card>
+                return <Book bookTag={t} href={href} key={k} />;
+              })}
+            </Card>
+          )
+        : null}
     </Suspense>
   );
 }

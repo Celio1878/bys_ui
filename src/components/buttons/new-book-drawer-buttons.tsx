@@ -1,56 +1,49 @@
 import { FC } from "react";
 import { NewBookDrawerConfirmButtons } from "@/components/buttons/new-book-drawer-confirm-buttons";
 import { NewBookDrawerFormButtons } from "@/components/buttons/new-book-drawer-form-buttons";
-import { NewBookDrawerCoverButtons } from "@/components/buttons/new-book-drawer-cover-buttons";
+import { GoBackButton } from "@/components/buttons/go-back-button";
 
 interface BookDrawerButtonsProps {
-  tab_name: string;
-  set_tab_name: (tab_name: string) => void;
-  on_cancel: VoidFunction;
-  book_values: any;
+  tabName: string;
+  setTabName: (tab_name: string) => void;
+  onClose: VoidFunction;
+  bookValues: any;
+  onConfirmClick: VoidFunction;
 }
 
 export const NewBookDrawerButtons: FC<BookDrawerButtonsProps> = ({
-  tab_name,
-  set_tab_name,
-  on_cancel,
-  book_values,
+  tabName,
+  setTabName,
+  onClose,
+  bookValues,
+  onConfirmClick,
 }) => {
   const disable =
-    !book_values.title ||
-    !book_values.description ||
-    !book_values.genre ||
-    !book_values.copyright ||
-    !book_values.age_range ||
-    book_values.warnings.length === 0;
+    !bookValues.title ||
+    !bookValues.description ||
+    !bookValues.genre ||
+    !bookValues.copyright ||
+    !bookValues.ageRange ||
+    bookValues.warnings.length === 0;
 
-  switch (tab_name) {
+  switch (tabName) {
     case "content":
       return (
         <NewBookDrawerFormButtons
-          on_cancel={on_cancel}
-          next_step_click={() => {
-            console.log(book_values, "BOOK VALUES");
-            set_tab_name("cover");
-          }}
+          onCancel={onClose}
+          nextStepClick={() => setTabName("cover")}
           disabled={disable}
         />
       );
     case "cover":
-      return (
-        <NewBookDrawerCoverButtons
-          disabled={disable}
-          go_back_click={() => set_tab_name("content")}
-          next_step_click={() => set_tab_name("confirm")}
-        />
-      );
+      return <GoBackButton onClick={() => setTabName("content")} />;
 
     case "confirm":
       return (
         <NewBookDrawerConfirmButtons
           disabled={disable}
-          go_back_click={() => set_tab_name("cover")}
-          on_confirm_click={() => console.log(book_values, "BOOK VALUES")}
+          goBackClick={() => setTabName("cover")}
+          onConfirmClick={onConfirmClick}
         />
       );
   }

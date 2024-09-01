@@ -4,12 +4,12 @@ import { Input } from "@/components/ui/input";
 
 interface ChapterTitleFormFieldProps {
   title: string;
-  on_change: (value: string) => void;
+  onChange: (value: string) => void;
 }
 
 export const ChapterTitleFormField: FC<ChapterTitleFormFieldProps> = ({
   title,
-  on_change,
+  onChange,
 }) => {
   return (
     <div className="flex flex-col w-full items-start gap-y-1">
@@ -18,7 +18,7 @@ export const ChapterTitleFormField: FC<ChapterTitleFormFieldProps> = ({
         type="text"
         id="chapter-title"
         value={title}
-        onChange={(event) => on_change(event.target.value)}
+        onChange={(event) => onChange(event.target.value)}
       />
     </div>
   );

@@ -5,7 +5,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import { banner_images } from "@/utils/banner_images";
+import { bannerImages } from "@/utils/banner-images";
 import { CarouselDots } from "@/components/carousel/carousel-dots";
 import { useCarouselComponent } from "@/lib/use-carousel-component";
 
@@ -24,7 +24,7 @@ export const BannerCarousel: FC = () => {
         onMouseLeave={plugin.current.reset}
       >
         <CarouselContent>
-          {banner_images.map((img, i) => (
+          {bannerImages.map((img, i) => (
             <CarouselItem key={i}>
               <div className="px-1.5">{img}</div>
             </CarouselItem>

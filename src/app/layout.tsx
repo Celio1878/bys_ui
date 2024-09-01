@@ -12,6 +12,7 @@ import { WebVitals } from "@/utils/web-vitals";
 import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
+const BUCKET_URL = process.env.NEXT_PUBLIC_BUCKET_URL;
 
 export const metadata: Metadata = {
   title: "Be Your Stories",
@@ -25,10 +26,10 @@ export const metadata: Metadata = {
   publisher: "Vercel",
   generator: "Next.js",
   icons: {
-    icon: "/logo.png",
-    shortcut: "/logo.png",
-    apple: "/logo.png",
-    href: "/logo.png",
+    icon: `${BUCKET_URL}/other_images/logo.png`,
+    shortcut: `${BUCKET_URL}/other_images/logo.png`,
+    apple: `${BUCKET_URL}/other_images/logo.png`,
+    href: `${BUCKET_URL}/other_images/logo.png`,
   },
 };
 

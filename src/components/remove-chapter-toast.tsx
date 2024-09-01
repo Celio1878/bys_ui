@@ -3,18 +3,18 @@ import { ToastAction } from "@/components/ui/toast";
 import { ThumbsDown, ThumbsUp } from "lucide-react";
 
 interface RemoveChapterToastProps {
-  on_remove: VoidFunction;
+  onRemove: VoidFunction;
 }
 
 export const RemoveChapterToast: FC<RemoveChapterToastProps> = ({
-  on_remove,
+  onRemove,
 }) => {
   return (
     <div className={"flex flex-row space-x-2"}>
       <ToastAction altText="No Remove">
         <ThumbsDown />
       </ToastAction>
-      <ToastAction altText="Remove" onClick={on_remove}>
+      <ToastAction altText="Remove" onClick={onRemove}>
         <ThumbsUp className="text-red-500" />
       </ToastAction>
     </div>

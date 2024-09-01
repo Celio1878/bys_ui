@@ -6,8 +6,8 @@
     <option name="recentlyUsedProfiles">
       <list>
         <option value="profile:default" />
-        <option value="profile:celio1878" />
         <option value="profile:celio1878-adm" />
+        <option value="profile:celio1878" />
         <option value="profile:471112855673_AdministratorAccess" />
       </list>
     </option>
@@ -17,10 +17,10 @@
       </list>
     </option>
   </component>
-  <component name="connectionManager">
-    <option name="activeConnectionId" value="sso;us-east-1;https://view.awsapps.com/start" />
-  </component>
   <component name="explorerToolWindow">
     <option name="selectedTab" value="Explorer" />
+  </component>
+  <component name="lambda">
+    <option name="showAllHandlerGutterIcons" value="true" />
   </component>
 </project>

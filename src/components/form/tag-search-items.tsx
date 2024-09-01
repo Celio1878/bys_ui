@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Badge } from "@/components/ui/badge";
-import { Tag } from "@/app/model/story";
+import { Tag } from "@/app/model/tags";
 
 interface TagSearchItemsProps {
   tags: Tag<string>[];
@@ -9,13 +9,13 @@ interface TagSearchItemsProps {
 export const TagSearchItems: FC<TagSearchItemsProps> = ({ tags }) => {
   return (
     <div className="flex flex-wrap gap-1">
-      {tags.map((tag, i) => (
+      {tags.map((t, i) => (
         <Badge
           className="text-slate-600 bg-sky-50 dark:bg-sky-950"
           variant="outline"
           key={i}
         >
-          {tag.title}
+          {t.title}
         </Badge>
       ))}
     </div>

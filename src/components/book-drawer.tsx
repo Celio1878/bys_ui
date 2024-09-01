@@ -3,6 +3,7 @@
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
@@ -11,95 +12,129 @@ import {
 import { FC, ReactNode, useEffect, useState } from "react";
 import { NewBookDrawerButtons } from "@/components/buttons/new-book-drawer-buttons";
 import { NewBookSteps } from "@/components/new-book-steps";
-import { Button } from "@/components/ui/button";
 import { FormProvider, useForm } from "react-hook-form";
-import { Tag, Warning } from "@/app/model/story";
-import { get_book_data } from "@/utils/mocks";
+import { BookFormValues, initialValues } from "@/utils/form-data";
+import { BookDto, createBookDto, updateBookDto } from "@/app/model/book-dto";
+import { useBookApi } from "@/hooks/use-book-api";
 import { useSession } from "next-auth/react";
-
-type BookFormValues = {
-  title: string;
-  description: string;
-  genre: string;
-  copyright: string;
-  age_range: string;
-  tags: Tag<string>[];
-  warnings: Tag<Warning>[];
-  coauthors: Tag<string>[];
-};
-
-const initial_values: BookFormValues = {
-  title: "",
-  description: "",
-  genre: "",
-  copyright: "",
-  age_range: "",
-  tags: [],
-  warnings: [],
-  coauthors: [],
-};
+import { fetcher } from "@/hooks/fetcher";
+import useSWR from "swr";
+import { Tag } from "@/app/model/tags";
+import { ProfileDto, upsertAuthorship } from "@/app/model/profile-dto";
 
 interface BookDrawerProps {
-  id?: string;
-  button_type: "default" | "secondary" | "outline" | "ghost";
-  button_label: string | ReactNode;
-  modal_title: string;
+  buttonLabel: string | ReactNode;
+  modalTitle: string;
+  onConfirmClick: VoidFunction;
+  profile: ProfileDto;
+  bookId?: string;
+  trigger?: VoidFunction;
 }
 
+const BOOK_SERVICE_URL = String(process.env.NEXT_PUBLIC_BOOKS_API_URL);
+const PROFILE_SERVICE_URL = String(process.env.NEXT_PUBLIC_PROFILES_API_URL);
+
 export const BookDrawer: FC<BookDrawerProps> = ({
-  id,
-  button_label,
-  button_type,
-  modal_title,
+  bookId,
+  buttonLabel,
+  modalTitle,
+  onConfirmClick,
+  trigger,
+  profile,
 }) => {
-  const { data: session } = useSession();
-  const [open, setOpen] = useState(false);
-  const [tab_name, set_tab_name] = useState("content");
-  const form_methods = useForm({
-    defaultValues: initial_values,
+  const { data: session } = useSession() as any;
+  const [openForm, setOpenForm] = useState(false);
+  const [tabName, setTabName] = useState("content");
+  const formMethods = useForm({
+    defaultValues: initialValues,
   });
+  const { updateBook, createBook } = useBookApi();
+
+  const { data: book } = useSWR(
+    bookId && `${BOOK_SERVICE_URL}/${bookId}`,
+    fetcher<BookDto>({ token: session?.access_token }).get,
+  );
 
   useEffect(() => {
-    if (id) {
-      const book_data = get_book_data(id);
-      return form_methods.reset(book_data);
+    if (book) {
+      const bookFormState: BookFormValues = {
+        ...book,
+        ageRange: JSON.stringify(book.ageRange),
+        copyright: JSON.stringify(book.copyright),
+        genre: JSON.stringify(book.genre),
+      };
+
+      return formMethods.reset(bookFormState);
     }
-
-    return () => form_methods.reset(initial_values);
-  }, [id]);
+  }, [book, formMethods]);
 
   useEffect(() => {
-    if (open) set_tab_name("content");
-  }, [open]);
+    if (openForm) setTabName("content");
+  }, [openForm]);
 
-  const book_data = {
-    ...form_methods.getValues(),
-    author: { id: session?.user?.email!, title: session?.user?.name! },
+  const authorTag: Tag<string> = {
+    id: session?.user?.id,
+    title: session?.user?.name,
   };
+  const newBookDto = createBookDto(authorTag, formMethods.getValues());
+  const updatedBook = book && updateBookDto(book!, formMethods.getValues());
+
+  function onUpdateCover() {
+    setTabName("confirm");
+  }
 
   return (
-    <Dialog modal open={open} onOpenChange={setOpen}>
+    <Dialog modal open={openForm} onOpenChange={setOpenForm}>
       <DialogTrigger asChild>
-        <Button
-          variant={button_type}
-          className="sm:gap-2 items-center justify-center"
-        >
-          {button_label}
-        </Button>
+        <button onClick={trigger}>{buttonLabel}</button>
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent aria-describedby={"Insert Book Steps"}>
+        <DialogDescription></DialogDescription>
         <DialogHeader>
-          <DialogTitle>{modal_title}</DialogTitle>
+          <DialogTitle>{modalTitle}</DialogTitle>
         </DialogHeader>
-        <FormProvider {...form_methods}>
-          <NewBookSteps tab_name={tab_name} />
+        <FormProvider {...formMethods}>
+          <NewBookSteps
+            tabName={tabName}
+            bookDto={newBookDto}
+            onUpdateCover={onUpdateCover}
+          />
         </FormProvider>
         <DialogFooter>
           <NewBookDrawerButtons
-            tab_name={tab_name}
-            set_tab_name={set_tab_name}
-            book_values={book_data}
-            on_cancel={() => setOpen(false)}
+            tabName={tabName}
+            setTabName={setTabName}
+            bookValues={formMethods.getValues()}
+            onClose={() => setOpenForm(false)}
+            onConfirmClick={() => {
+              const newAuthorship = upsertAuthorship(
+                profile!,
+                formMethods.getValues(),
+                book ? book.id : newBookDto.id,
+              );
+
+              book
+                ? Promise.all([
+                    updateBook(book.id, updatedBook!),
+                    fetcher({
+                      body: newAuthorship,
+                      token: session?.access_token,
+                    }).put(`${PROFILE_SERVICE_URL}/${profile?.id}`),
+                  ]).then(() => {
+                    setOpenForm(false);
+                    onConfirmClick();
+                  })
+                : Promise.all([
+                    createBook(newBookDto),
+                    fetcher({
+                      body: newAuthorship,
+                      token: session?.access_token,
+                    }).put(`${PROFILE_SERVICE_URL}/${profile?.id}`),
+                  ]).then(() => {
+                    setOpenForm(false);
+                    onConfirmClick();
+                  });
+            }}
           />
         </DialogFooter>
       </DialogContent>

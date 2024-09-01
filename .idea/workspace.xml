@@ -5,13 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24dfe38b-6d18-4700-8386-86f955cbefc3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/app/authors/[id]/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/buttons/follow-button.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/qodana.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/profile/[name]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/profile/[name]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/book/book-metadata.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/book/book-metadata.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/follow-component.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/follow-component.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/mocks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/mocks.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/search/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/search/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/search-input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/search-input.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/stories/Page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/stories/Page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,13 +19,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
-  </component>
-  <component name="FormatOnSaveOptions">
-    <option name="myRunOnSave" value="true" />
   </component>
   <component name="Git.Settings">
     <option name="PREVIEW_PUSH_PROTECTED_ONLY" value="true" />
@@ -51,8 +46,18 @@
     &quot;accountId&quot;: &quot;c8afca05-f292-4dca-8d1c-17807c2d68d2&quot;
   }
 }</component>
+  <component name="JsBowerSettings">
+    <bower-package value="" />
+    <bower.json value="" />
+  </component>
+  <component name="MaliciousPackageCheckinHandlerState">
+    <option name="packageCheck" value="true" />
+  </component>
   <component name="OptimizeOnSaveOptions">
     <option name="myRunOnSave" value="true" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="QODANA_PROBLEMS_VIEW_TAB" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
@@ -65,31 +70,52 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;code.cleanup.on.save&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/swango/Documents/projects/be_your_stories/bys_ui/src/app/api/auth&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.stylelint&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_interpreter_path&quot;: &quot;/home/swango/.nvm/versions/node/v22.0.0/bin/node&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.build.executor&quot;: &quot;Run&quot;,
-    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/home/swango/Documents/projects/be_your_stories/bys_ui/node_modules/prettier&quot;,
-    &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;aws.codewhisperer&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/home/swango/Documents/projects/be_your_stories/bys_ui/node_modules/typescript/lib&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Docker.services-docker.yml.bys-ui: Compose Deployment.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "code.cleanup.on.save": "true",
+    "git-widget-placeholder": "develop",
+    "javascript.nodejs.core.library.configured.version": "22.6.0",
+    "javascript.nodejs.core.library.typings.version": "22.3.0",
+    "last_opened_file_path": "/home/swango/Documents/projects/be_your_stories/bys_ui/src/tests",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.stylelint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.stylelint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_interpreter_path": "node",
+    "nodejs_package_manager_path": "npm",
+    "npm.build.executor": "Run",
+    "npm.dev.executor": "Run",
+    "prettierjs.PrettierConfiguration.Package": "/home/swango/Documents/projects/be_your_stories/bys_ui/node_modules/prettier",
+    "rearrange.code.on.save": "true",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "settings.javascript.linters.eslint",
+    "ts.external.directory.path": "/home/swango/Documents/projects/be_your_stories/bys_ui/node_modules/typescript/lib"
   }
-}</component>
+}]]></component>
+  <component name="QodanaHighlightedReportService">
+    <option name="localRunNotPublishedPersistedInfo">
+      <LocalReportPersistedInfo>
+        <option name="path" value="/tmp/qodana_output/qodana.sarif.json" />
+        <option name="reportGuid" value="f72b4f7f-6662-4bd1-9a1d-394f1922ae81" />
+        <option name="reportName" value="bys_ui/qodana/2024-09-01" />
+      </LocalReportPersistedInfo>
+    </option>
+  </component>
+  <component name="QodanaIsSelectedPersistenceService">
+    <option name="selectedOrLoading" value="true" />
+  </component>
+  <component name="QodanaReportsService">
+    <option name="descriptions">
+      <ReportDescription localRun="true" path="/tmp/qodana_output/qodana.sarif.json" reportGuid="f72b4f7f-6662-4bd1-9a1d-394f1922ae81" reportId="bys_ui/qodana/2024-09-01" />
+    </option>
+  </component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -104,14 +130,20 @@
       <recent name="$PROJECT_DIR$/src/app/api/auth" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/app/profile/[name]/books/[id]/chapters" />
       <recent name="$PROJECT_DIR$/src/app/api/auth" />
       <recent name="$PROJECT_DIR$/src/app/profile/[name]" />
       <recent name="$PROJECT_DIR$/src/lib" />
       <recent name="$PROJECT_DIR$/src/app/search" />
-      <recent name="$PROJECT_DIR$/src/components" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.build">
+  <component name="RunManager" selected="npm.dev">
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -129,23 +161,25 @@
         <script value="dev" />
       </scripts>
       <node-interpreter value="project" />
+      <node-options value="--trace-warnings ..." />
       <envs />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="npm.build" />
+      <item itemvalue="npm.dev" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.build" />
         <item itemvalue="npm.dev" />
         <item itemvalue="npm.build" />
-        <item itemvalue="npm.dev" />
-        <item itemvalue="npm.dev" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-WS-241.18034.50" />
+        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-WS-242.21829.149" />
       </set>
     </attachedChunks>
   </component>
@@ -206,6 +240,75 @@
       <workItem from="1719052730539" duration="20000" />
       <workItem from="1719052759151" duration="10005000" />
       <workItem from="1719062773689" duration="14741000" />
+      <workItem from="1719135392377" duration="1493000" />
+      <workItem from="1719137994722" duration="2131000" />
+      <workItem from="1719749314731" duration="25000" />
+      <workItem from="1719749347447" duration="322000" />
+      <workItem from="1719756951830" duration="632000" />
+      <workItem from="1719773539877" duration="1215000" />
+      <workItem from="1720537058430" duration="63000" />
+      <workItem from="1720537132045" duration="412000" />
+      <workItem from="1720552800478" duration="817000" />
+      <workItem from="1720726519492" duration="166000" />
+      <workItem from="1720726693994" duration="751000" />
+      <workItem from="1720787640896" duration="1045000" />
+      <workItem from="1720875055171" duration="1317000" />
+      <workItem from="1720876464720" duration="12553000" />
+      <workItem from="1720953870379" duration="5052000" />
+      <workItem from="1720982697787" duration="10966000" />
+      <workItem from="1721037323202" duration="2878000" />
+      <workItem from="1721555762786" duration="615000" />
+      <workItem from="1721557959057" duration="19919000" />
+      <workItem from="1721649493833" duration="787000" />
+      <workItem from="1721651999638" duration="87000" />
+      <workItem from="1721652093305" duration="88000" />
+      <workItem from="1721652192159" duration="63000" />
+      <workItem from="1721652262600" duration="15615000" />
+      <workItem from="1721723017089" duration="691000" />
+      <workItem from="1721819361559" duration="817000" />
+      <workItem from="1721821122235" duration="2183000" />
+      <workItem from="1722629701131" duration="256000" />
+      <workItem from="1722629966993" duration="1461000" />
+      <workItem from="1722801404987" duration="998000" />
+      <workItem from="1722854095986" duration="1945000" />
+      <workItem from="1722940106387" duration="6273000" />
+      <workItem from="1723040914039" duration="21478000" />
+      <workItem from="1723114008343" duration="5836000" />
+      <workItem from="1723199027035" duration="219000" />
+      <workItem from="1723199251823" duration="7568000" />
+      <workItem from="1723210505666" duration="6522000" />
+      <workItem from="1723223571778" duration="10774000" />
+      <workItem from="1723292067082" duration="13545000" />
+      <workItem from="1723318871817" duration="2864000" />
+      <workItem from="1723371989204" duration="23474000" />
+      <workItem from="1723457195054" duration="4992000" />
+      <workItem from="1723662228526" duration="3614000" />
+      <workItem from="1723719335424" duration="1639000" />
+      <workItem from="1723720979828" duration="20462000" />
+      <workItem from="1723806034315" duration="147000" />
+      <workItem from="1723806188028" duration="12006000" />
+      <workItem from="1723822488623" duration="18332000" />
+      <workItem from="1723891416065" duration="26010000" />
+      <workItem from="1723968761907" duration="6898000" />
+      <workItem from="1724148437120" duration="41000" />
+      <workItem from="1724239257444" duration="1262000" />
+      <workItem from="1724243484213" duration="696000" />
+      <workItem from="1724319854620" duration="603000" />
+      <workItem from="1724405734621" duration="296000" />
+      <workItem from="1724406037053" duration="613000" />
+      <workItem from="1724674787719" duration="6909000" />
+      <workItem from="1724749535657" duration="20669000" />
+      <workItem from="1724843132732" duration="5708000" />
+      <workItem from="1724867852875" duration="9704000" />
+      <workItem from="1724927669738" duration="7219000" />
+      <workItem from="1724963328733" duration="3899000" />
+      <workItem from="1725030032704" duration="1203000" />
+      <workItem from="1725035771417" duration="11531000" />
+      <workItem from="1725053604499" duration="19000" />
+      <workItem from="1725053629728" duration="982000" />
+      <workItem from="1725105874282" duration="9852000" />
+      <workItem from="1725142199690" duration="9962000" />
+      <workItem from="1725190886196" duration="5972000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Add Shadcn-ui">
       <option name="closed" value="true" />
@@ -487,11 +590,118 @@
       <option name="project" value="LOCAL" />
       <updated>1719093381369</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="feat: Authors page">
+      <option name="closed" value="true" />
+      <created>1719097134089</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1719097134089</updated>
+    </task>
+    <task id="LOCAL-00037" summary="feat: Create follow data components">
+      <option name="closed" value="true" />
+      <created>1719097187383</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1719097187383</updated>
+    </task>
+    <task id="LOCAL-00038" summary="feat: Authors link">
+      <option name="closed" value="true" />
+      <created>1719097202946</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1719097202946</updated>
+    </task>
+    <task id="LOCAL-00039" summary="feat: Project">
+      <option name="closed" value="true" />
+      <created>1723410047173</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1723410047173</updated>
+    </task>
+    <task id="LOCAL-00040" summary="fix: Refresh token and syntax">
+      <option name="closed" value="true" />
+      <created>1724755218534</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1724755218534</updated>
+    </task>
+    <task id="LOCAL-00041" summary="feat: Change Url images">
+      <option name="closed" value="true" />
+      <created>1724758567862</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1724758567862</updated>
+    </task>
+    <task id="LOCAL-00042" summary="feat: Get data from apis">
+      <option name="closed" value="true" />
+      <created>1724789268276</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1724789268276</updated>
+    </task>
+    <task id="LOCAL-00043" summary="fix: Reformat error">
+      <option name="closed" value="true" />
+      <created>1724790034772</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1724790034772</updated>
+    </task>
+    <task id="LOCAL-00044" summary="fix: Requests">
+      <option name="closed" value="true" />
+      <created>1725110527604</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1725110527604</updated>
+    </task>
+    <task id="LOCAL-00045" summary="fix: Chapters">
+      <option name="closed" value="true" />
+      <created>1725115657642</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1725115657642</updated>
+    </task>
+    <task id="LOCAL-00046" summary="fix: Carousels">
+      <option name="closed" value="true" />
+      <created>1725152460253</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1725152460253</updated>
+    </task>
+    <task id="LOCAL-00047" summary="fix: Carousel and Comments">
+      <option name="closed" value="true" />
+      <created>1725191396401</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1725191396401</updated>
+    </task>
+    <task id="LOCAL-00048" summary="feat: Pagination search results">
+      <option name="closed" value="true" />
+      <created>1725197883564</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1725197883564</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UpdateCopyrightCheckinHandler">
+    <option name="UPDATE_COPYRIGHT" value="true" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -505,25 +715,10 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CODE_SMELLS_PROFILE" value="Default" />
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat: Profile image priority" />
-    <MESSAGE value="feat: Popover User" />
-    <MESSAGE value="feat: My books page" />
-    <MESSAGE value="fix: Verify if user is authenticated" />
-    <MESSAGE value="style: Layout" />
-    <MESSAGE value="fix: Suspense boundary over main" />
-    <MESSAGE value="feat: Add Suspense component and Update my-books page" />
-    <MESSAGE value="feat: items types" />
-    <MESSAGE value="fix: logging safety" />
-    <MESSAGE value="feat: Componentization" />
-    <MESSAGE value="fix: Pagination length" />
-    <MESSAGE value="style: Responsible" />
-    <MESSAGE value="style: Remove unnecessary definitions" />
-    <MESSAGE value="feat: Create Tooltip info to insert tag" />
     <MESSAGE value="feat: Create components about user profile" />
     <MESSAGE value="style: Responsible and dark mode button color" />
     <MESSAGE value="feat: Create Comments component" />
@@ -535,9 +730,22 @@
     <MESSAGE value="ci: Update libs" />
     <MESSAGE value="feat: Mocks" />
     <MESSAGE value="feat: Add author in book form" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Add author in book form" />
+    <MESSAGE value="feat: Authors page" />
+    <MESSAGE value="feat: Create follow data components" />
+    <MESSAGE value="feat: Authors link" />
+    <MESSAGE value="feat: Project" />
+    <MESSAGE value="fix: Refresh token and syntax" />
+    <MESSAGE value="feat: Change Url images" />
+    <MESSAGE value="feat: Get data from apis" />
+    <MESSAGE value="fix: Reformat error" />
+    <MESSAGE value="feat: Update profile when do requests" />
+    <MESSAGE value="fix: Requests" />
+    <MESSAGE value="fix: Chapters" />
+    <MESSAGE value="fix: Carousels" />
+    <MESSAGE value="fix: Carousel and Comments" />
+    <MESSAGE value="feat: Pagination search results" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Pagination search results" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
-    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

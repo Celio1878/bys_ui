@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useCallback, useMemo } from "react";
 import {
   Carousel,
   CarouselContent,
@@ -9,44 +9,59 @@ import {
 import { Book } from "@/components/book";
 import { CarouselDots } from "@/components/carousel/carousel-dots";
 import { useCarouselComponent } from "@/lib/use-carousel-component";
+import { BookDto } from "@/app/model/book-dto";
 
 interface BookCarouselProps {
-  section_title: string;
+  sectionTitle: string;
+  books: BookDto[];
 }
 
-export const BooksCarousel: FC<BookCarouselProps> = ({ section_title }) => {
-  const { current, count, setApi, api, books_breakpoints } =
+export const BooksCarousel: FC<BookCarouselProps> = ({
+  sectionTitle,
+  books,
+}) => {
+  const { current, count, setApi, api, booksBreakpoints } =
     useCarouselComponent();
+
+  const carouselLength = useCallback((standard: number, length: number) => {
+    if (length < standard) return length;
+
+    return standard;
+  }, []);
+
+  const breakpointClasses = useMemo(
+    () => ({
+      base: carouselLength(2, books?.length),
+      md: carouselLength(4, books?.length),
+      lg: carouselLength(5, books?.length),
+      xl: carouselLength(6, books?.length),
+    }),
+    [books?.length, carouselLength],
+  );
 
   return (
     <div className="w-full flex flex-col">
-      <h1 className="text-2xl font-semibold underline ml-0.5 lg:ml-1">
-        {section_title}
+      <h1 className="text-2xl font-semibold underline text-start mb-1 ml-3">
+        {sectionTitle}
       </h1>
       <Carousel
         setApi={setApi}
         opts={{
-          loop: true,
+          loop: false,
           align: "center",
-          breakpoints: books_breakpoints,
+          breakpoints: booksBreakpoints,
         }}
         className="max-w-xs sm:max-w-screen-sm md:max-w-2xl lg:max-w-screen-md xl:max-w-screen-lg"
       >
-        <CarouselContent className="-mr-3.5 lg:-ml-3.5">
-          {Array.from({ length: 20 }).map((_, i) => {
-            const title = "Livro " + i;
-            const id = title.replace(/\s/g, "-").toLowerCase();
-            const href = `/books/${id}`;
-
-            return (
-              <CarouselItem
-                key={i}
-                className="basis-1/2 md:basis-1/4 lg:basis-1/5 xl:basis-1/6 p-2"
-              >
-                <Book {...{ title, href }} />
-              </CarouselItem>
-            );
-          })}
+        <CarouselContent className=" lg:-ml-3.5">
+          {books?.map((book) => (
+            <CarouselItem
+              key={book.id}
+              className={`basis-1/${breakpointClasses.base} md:basis-1/6 lg:basis-1/${breakpointClasses.lg} xl:basis-1/${breakpointClasses.xl} py-2`}
+            >
+              <Book bookTag={book} href={`/books/${book.id}`} />
+            </CarouselItem>
+          ))}
         </CarouselContent>
         <CarouselPrevious />
         <CarouselNext />

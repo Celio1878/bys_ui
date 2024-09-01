@@ -10,14 +10,14 @@ interface UserImageProps {
 }
 
 export const UserImage: FC<UserImageProps> = ({ width, height }) => {
-  const { data: session } = useSession() as any;
+  const { data } = useSession() as any;
 
   return (
     <Image
       className="rounded-full"
       {...{
-        src: session ? session?.picture : "/user.png",
-        alt: session ? session?.name : "User",
+        src: data ? data?.user.image : "/user.png",
+        alt: data ? data?.user.name : "User",
         width,
         height,
         priority: true,

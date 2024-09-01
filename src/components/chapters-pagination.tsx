@@ -11,65 +11,84 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
-import { Tag } from "@/app/model/story";
+import { Tag } from "@/app/model/tags";
 
 interface ChaptersPaginationProps {
-  chapters_tags: Tag<string>[];
+  chaptersTags: Tag<string>[];
 }
 
 export const ChaptersPagination: FC<ChaptersPaginationProps> = ({
-  chapters_tags,
+  chaptersTags,
 }) => {
-  const { chapter_id } = useParams() as { chapter_id: string };
+  const { chapter_id } = useParams();
 
-  const current_chapter = useMemo(() => {
-    const chapter_index = chapters_tags.findIndex(
-      (tag) => tag.id === chapter_id,
-    );
+  const getChapterIndex = useMemo(
+    () => (t: Tag<string>) => t.id === chapter_id,
+    [chapter_id],
+  );
 
-    return chapter_index === -1
+  const currentChapter = useMemo(() => {
+    const chapterIndex = chaptersTags?.findIndex(getChapterIndex);
+
+    return chapterIndex === -1
       ? { id: "not-found", index: -1 }
-      : { id: chapters_tags[chapter_index].id, index: chapter_index };
-  }, [chapters_tags, chapter_id]);
+      : {
+          id: chaptersTags && chaptersTags[chapterIndex]?.id,
+          index: chapterIndex,
+        };
+  }, [chaptersTags, getChapterIndex]);
+
+  const getPreviousHref = () =>
+    currentChapter.index > 0
+      ? `${chaptersTags[currentChapter.index - 1].id}`
+      : "";
+
+  const getPreviousClassName = () =>
+    `${currentChapter.index === 0 ? "cursor-not-allowed opacity-50" : ""} text-xs`;
+
+  const minChapterLength = useMemo(
+    () => Math.min(2, chaptersTags?.length),
+    [chaptersTags?.length],
+  );
 
   return (
     <Pagination>
       <PaginationContent>
         <PaginationItem>
           <PaginationPrevious
-            className={`${current_chapter.index === 0 && "cursor-not-allowed opacity-50"} text-xs`}
-            href={`${current_chapter.index > 0 ? `${chapters_tags[current_chapter.index - 1].id}` : ""} `}
+            className={getPreviousClassName()}
+            href={getPreviousHref()}
           />
         </PaginationItem>
-        {chapters_tags.slice(0, 3).map((chapter, index) => (
-          <PaginationItem key={index}>
+        {chaptersTags?.slice(0, minChapterLength).map((c, i) => (
+          <PaginationItem key={i}>
             <PaginationLink
               className="text-xs"
-              key={chapter.id}
-              href={chapter.id}
-              isActive={current_chapter.index === index}
+              key={c.id}
+              href={c.id}
+              isActive={currentChapter.index === i}
             >
-              {index + 1}
+              {i + 1}
             </PaginationLink>
           </PaginationItem>
         ))}
 
-        {chapters_tags.length - 2 && chapters_tags.length > 3 ? (
+        {chaptersTags?.length - 2 && chaptersTags?.length > 3 ? (
           <PaginationItem>
             <PaginationEllipsis />
           </PaginationItem>
         ) : null}
 
-        {chapters_tags.map((chapter, index, chapters) =>
-          index === chapters.length - 1 && index > 3 ? (
-            <PaginationItem key={index}>
+        {chaptersTags?.map((t, i, chapters) =>
+          i === chapters.length - 1 && i > 3 ? (
+            <PaginationItem key={i}>
               <PaginationLink
                 className="text-xs"
-                key={chapter.id}
-                href={`${chapter.id}`}
-                isActive={current_chapter.index === index}
+                key={t.id}
+                href={t.id}
+                isActive={currentChapter.index === i}
               >
-                {index + 1}
+                {i + 1}
               </PaginationLink>
             </PaginationItem>
           ) : null,
@@ -77,8 +96,8 @@ export const ChaptersPagination: FC<ChaptersPaginationProps> = ({
 
         <PaginationItem>
           <PaginationNext
-            className={`${current_chapter.index === chapters_tags.length - 1 && "cursor-not-allowed opacity-50"} text-xs`}
-            href={`${current_chapter.index < chapters_tags.length - 1 ? `${chapters_tags[current_chapter.index + 1].id}` : ""} `}
+            className={`${currentChapter.index === chaptersTags?.length - 1 && "cursor-not-allowed opacity-50"} text-xs`}
+            href={`${currentChapter.index < chaptersTags?.length - 1 ? `${chaptersTags[currentChapter.index + 1].id}` : ""} `}
           />
         </PaginationItem>
       </PaginationContent>

@@ -5,15 +5,15 @@ import {
 } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
 import { SwatchBook } from "lucide-react";
-import { solid_colors } from "@/utils/list_colors";
+import { solidColors } from "@/utils/list-colors";
 import { FC } from "react";
 
 interface ColorPickerProps {
   color: string;
-  set_color: (color: string) => void;
+  setColor: (color: string) => void;
 }
 
-export const ColorPicker: FC<ColorPickerProps> = ({ set_color, color }) => {
+export const ColorPicker: FC<ColorPickerProps> = ({ setColor, color }) => {
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -28,12 +28,12 @@ export const ColorPicker: FC<ColorPickerProps> = ({ set_color, color }) => {
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-64 flex flex-wrap gap-1 mt-0">
-        {solid_colors.map((color) => (
+        {solidColors.map((color) => (
           <div
             key={color}
             style={{ background: color }}
             className="rounded-md h-6 w-6 cursor-pointer active:scale-105"
-            onClick={() => set_color(color)}
+            onClick={() => setColor(color)}
           />
         ))}
       </PopoverContent>

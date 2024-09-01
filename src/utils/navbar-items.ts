@@ -4,7 +4,7 @@ export type NavbarItem = {
   href: string;
 };
 
-export const navbar_items: NavbarItem[] = [
+export const navbarItems: NavbarItem[] = [
   {
     label: "Original",
     key: "original",

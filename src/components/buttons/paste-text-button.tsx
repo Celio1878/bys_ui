@@ -3,13 +3,13 @@ import { Button } from "@/components/ui/button";
 import { ClipboardCopy } from "lucide-react";
 
 interface PasteTextButtonProps {
-  on_click: (text: string) => void;
+  onClick: (text: string) => void;
 }
 
-export const PasteTextButton: FC<PasteTextButtonProps> = ({ on_click }) => {
-  async function handle_paste() {
+export const PasteTextButton: FC<PasteTextButtonProps> = ({ onClick }) => {
+  async function handlePaste() {
     const text = await navigator.clipboard.readText();
-    on_click(text);
+    onClick(text);
   }
 
   return (
@@ -17,7 +17,7 @@ export const PasteTextButton: FC<PasteTextButtonProps> = ({ on_click }) => {
       title="Colar"
       variant="outline"
       aria-label="Toggle paste"
-      onClick={handle_paste}
+      onClick={handlePaste}
     >
       <ClipboardCopy size={20} />
     </Button>

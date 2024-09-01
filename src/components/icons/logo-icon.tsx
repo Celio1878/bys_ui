@@ -7,11 +7,20 @@ interface LogoProps {
   height: number;
 }
 
+const BUCKET_URL = process.env.NEXT_PUBLIC_BUCKET_URL;
+
 export const LogoIcon: FC<LogoProps> = ({ width, height }) => {
   return (
     <Link href="/">
       <Image
-        {...{ src: "/logo.png", alt: "logo", title: "BYS", width, height }}
+        {...{
+          src: `${BUCKET_URL}/other_images/logo.png`,
+          alt: "logo",
+          title: "BYS",
+          width,
+          height,
+          priority: true,
+        }}
       />
     </Link>
   );

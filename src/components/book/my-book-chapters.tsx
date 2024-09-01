@@ -1,31 +1,44 @@
 "use client";
 
-import { FC, useState } from "react";
+import { FC } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tag } from "@/app/model/story";
+import { Tag } from "@/app/model/tags";
 import { NewChapterButton } from "@/components/buttons/new-chapter-button";
 import { ChapterListButtons } from "@/components/buttons/chapter-list-buttons";
-import { usePathname, useRouter } from "next/navigation";
-import { useToast } from "@/components/ui/use-toast";
+import { useParams, usePathname, useRouter } from "next/navigation";
+import { toast } from "@/components/ui/use-toast";
 import { RemoveChapterToast } from "@/components/remove-chapter-toast";
+import { fetcher } from "@/hooks/fetcher";
+import { useSession } from "next-auth/react";
+import useSWR from "swr";
+import { BookDto } from "@/app/model/book-dto";
 
 interface MyBookChaptersProps {
-  chapters_tags: Tag<string>[];
+  chaptersTags: Tag<string>[];
 }
 
-export const MyBookChapters: FC<MyBookChaptersProps> = ({ chapters_tags }) => {
-  const { toast } = useToast();
-  const pathname = usePathname();
-  const router = useRouter();
-  const [chapters, set_chapters] = useState(chapters_tags);
+const BOOK_SERVICE_URL = String(process.env.NEXT_PUBLIC_BOOKS_API_URL);
+const CHAPTERS_SERVICE_URL = String(process.env.NEXT_PUBLIC_CHAPTERS_API_URL);
 
-  function on_remove(index: number) {
-    chapters.splice(index, 1);
-    set_chapters([...chapters]);
+export const MyBookChapters: FC<MyBookChaptersProps> = ({ chaptersTags }) => {
+  const { data: session } = useSession() as any;
+  const pathname = usePathname();
+  const { id } = useParams();
+  const router = useRouter();
+
+  async function onRemove(chapterId: string) {
+    await fetcher<void>({ token: session?.access_token }).delete(
+      `${CHAPTERS_SERVICE_URL}/${chapterId}?bookId=${id}`,
+    );
   }
 
-  function on_edit(chapter_id: string) {
-    router.push(`${pathname}/chapters/update/${chapter_id}`);
+  const { data: book, mutate } = useSWR(
+    `${BOOK_SERVICE_URL}/${id}`,
+    fetcher<BookDto>({ token: session?.access_token }).get,
+  );
+
+  function onEdit(chapterId: string) {
+    router.push(`${pathname}/chapters/${chapterId}`);
   }
 
   return (
@@ -34,7 +47,7 @@ export const MyBookChapters: FC<MyBookChaptersProps> = ({ chapters_tags }) => {
         <CardTitle className="text-4xl">Capitulos</CardTitle>
         <NewChapterButton />
       </CardHeader>
-      {chapters.map((chapter, i) => (
+      {chaptersTags.map((chapter) => (
         <CardContent
           key={chapter.id}
           className="flex flex-row items-center justify-between w-full text-sm pt-6"
@@ -42,18 +55,45 @@ export const MyBookChapters: FC<MyBookChaptersProps> = ({ chapters_tags }) => {
           <span>{chapter.title}</span>
 
           <ChapterListButtons
-            on_remove={() =>
+            onRemove={() =>
               toast({
                 title: `Tem certeza?`,
                 type: "foreground",
                 role: "alert",
-                action: <RemoveChapterToast on_remove={() => on_remove(i)} />,
+                action: (
+                  <RemoveChapterToast
+                    onRemove={() => {
+                      Promise.all([
+                        onRemove(chapter.id),
+                        fetcher({
+                          body: removeChapter(book!, chapter.id),
+                          token: session?.access_token,
+                        }).put(`${BOOK_SERVICE_URL}/${id}`),
+                      ]).then(() => {
+                        mutate().then(() =>
+                          toast({
+                            className: "bg-violet-500 text-white",
+                            title: `Capitulo ${chapter.title} Removido!`,
+                            description: "Livro atualizado com sucesso!",
+                            type: "foreground",
+                          }),
+                        );
+                      });
+                    }}
+                  />
+                ),
               })
             }
-            on_edit={() => on_edit(chapter.id)}
+            onEdit={() => onEdit(chapter.id)}
           />
         </CardContent>
       ))}
     </Card>
   );
 };
+
+function removeChapter(book: BookDto, id: string): BookDto {
+  book.chapters = book.chapters.filter((t) => t.id !== id);
+
+  return book;
+}

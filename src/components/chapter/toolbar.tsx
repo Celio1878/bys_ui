@@ -1,4 +1,4 @@
-import { FC, memo } from "react";
+import { FC, memo, useState } from "react";
 import { ToggleButton } from "@/components/buttons/toggle-button";
 import {
   AlignCenter,
@@ -13,43 +13,69 @@ import {
 import { Button } from "@/components/ui/button";
 import { ColorPicker } from "@/components/color-picker";
 import { PasteTextButton } from "@/components/buttons/paste-text-button";
+import { Editor } from "@tiptap/core";
 
 interface ToolbarProps {
-  editor: any;
-  text_color: string;
-  set_text_color: (color: string) => void;
+  editor: Editor;
+  textColor: string;
+  setTextColor: (color: string) => void;
 }
 
 export const Toolbar: FC<ToolbarProps> = memo(
-  ({ set_text_color, text_color, editor }) => {
+  ({ setTextColor, textColor, editor }) => {
+    const [boldActive, setBoldActive] = useState(false);
+    const [italicActive, setItalicActive] = useState(false);
+    const [underlineActive, setUnderlineActive] = useState(false);
+    const [highlightActive, setHighlightActive] = useState(false);
+    const [alignCenterActive, setAlignCenterActive] = useState(false);
+    const [alignLeftActive, setAlignLeftActive] = useState(false);
+    const [alignRightActive, setAlignRightActive] = useState(false);
+
     return (
       <div className="flex flex-wrap gap-1.5">
         <ToggleButton
+          active={boldActive}
           title="Negrito"
-          aria_label="Toggle bold"
-          data_active={editor.isActive("bold")}
-          on_click={() => editor.chain().focus().toggleBold().run()}
+          ariaLabel="Toggle bold"
+          dataActive={editor.isActive("bold")}
+          onClick={() => {
+            editor.chain().focus().toggleBold().run();
+            setBoldActive(!boldActive);
+          }}
           icon={<BoldIcon size={20} />}
         />
+
         <ToggleButton
+          active={italicActive}
           title="Italico"
-          aria_label="Toggle italic"
-          data_active={editor.isActive("italic")}
-          on_click={() => editor.chain().focus().toggleItalic().run()}
+          ariaLabel="Toggle italic"
+          dataActive={editor.isActive("italic")}
+          onClick={() => {
+            editor.chain().focus().toggleItalic().run();
+            setItalicActive(!italicActive);
+          }}
           icon={<ItalicIcon size={20} />}
         />
         <ToggleButton
+          active={underlineActive}
           title="Sublinhado"
-          aria_label="Toggle underline"
-          data_active={editor.isActive("underline")}
-          on_click={() => editor.chain().focus().toggleUnderline().run()}
+          ariaLabel="Toggle underline"
+          dataActive={editor.isActive("underline")}
+          onClick={() => {
+            editor.chain().focus().toggleUnderline().run();
+            setUnderlineActive(!underlineActive);
+          }}
           icon={<UnderlineIcon size={20} />}
         />
         <ToggleButton
+          active={highlightActive}
           title="Destaque"
-          aria_label="Toggle highlight"
-          data_active={editor.isActive("highlight")}
-          on_click={() => editor.chain().focus().toggleHighlight().run()}
+          ariaLabel="Toggle highlight"
+          dataActive={editor.isActive("highlight")}
+          onClick={() => {
+            editor.chain().focus().toggleHighlight().run();
+            setHighlightActive(!highlightActive);
+          }}
           icon={<HighlighterIcon size={20} />}
         />
 
@@ -62,32 +88,50 @@ export const Toolbar: FC<ToolbarProps> = memo(
           <SquareSplitVertical size={20} />
         </Button>
 
-        <ColorPicker color={text_color} set_color={set_text_color} />
+        <ColorPicker color={textColor} setColor={setTextColor} />
 
         <ToggleButton
+          active={alignLeftActive}
           title="Alinhar Esquerda"
-          aria_label="Text left"
-          data_active={editor.isActive({ textAlign: "left" })}
-          on_click={() => editor.chain().focus().setTextAlign("left").run()}
+          ariaLabel="Text left"
+          dataActive={editor.isActive({ textAlign: "left" })}
+          onClick={() => {
+            editor.chain().focus().setTextAlign("left").run();
+            setAlignLeftActive(!alignLeftActive);
+            setAlignCenterActive(false);
+            setAlignRightActive(false);
+          }}
           icon={<AlignLeft size={20} />}
         />
         <ToggleButton
+          active={alignCenterActive}
           title="Alinhar Centro"
-          aria_label="Text center"
-          data_active={editor.isActive({ textAlign: "center" })}
-          on_click={() => editor.chain().focus().setTextAlign("center").run()}
+          ariaLabel="Text center"
+          dataActive={editor.isActive({ textAlign: "center" })}
+          onClick={() => {
+            editor.chain().focus().setTextAlign("center").run();
+            setAlignCenterActive(!alignCenterActive);
+            setAlignLeftActive(false);
+            setAlignRightActive(false);
+          }}
           icon={<AlignCenter size={20} />}
         />
         <ToggleButton
+          active={alignRightActive}
           title="Alinhar Direita"
-          aria_label="Text right"
-          data_active={editor.isActive({ textAlign: "right" })}
-          on_click={() => editor.chain().focus().setTextAlign("right").run()}
+          ariaLabel="Text right"
+          dataActive={editor.isActive({ textAlign: "right" })}
+          onClick={() => {
+            editor.chain().focus().setTextAlign("right").run();
+            setAlignRightActive(!alignRightActive);
+            setAlignLeftActive(false);
+            setAlignCenterActive(false);
+          }}
           icon={<AlignRight size={20} />}
         />
 
         <PasteTextButton
-          on_click={(text) => editor.commands.insertContent(text)}
+          onClick={(text) => editor.commands.insertContent(text)}
         />
       </div>
     );

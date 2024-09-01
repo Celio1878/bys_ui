@@ -2,6 +2,7 @@ import { FC, ReactNode } from "react";
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -23,12 +24,13 @@ export const FollowModal: FC<FollowModalProps> = ({
     <Dialog>
       <DialogTrigger>{trigger}</DialogTrigger>
       <DialogContent className={"max-h-[25rem] overflow-auto"}>
+        <DialogDescription></DialogDescription>
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
         </DialogHeader>
         <Separator />
         <div className="grid grid-cols-3 gap-4">
-          {users.map((user, index) => {
+          {users?.map((user, index) => {
             return (
               <span className="text-xs font-medium" key={index}>
                 {user.name}

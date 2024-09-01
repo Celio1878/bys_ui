@@ -9,44 +9,48 @@ import {
 import { ChapterTitleFormField } from "@/components/form/fields/chapter-title-form-field";
 import { ChapterContentFormField } from "@/components/form/fields/chapter-content-form-field";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 interface ChapterFormCardProps {
-  form_title: string;
-  chapter_title: string;
+  formTitle: string;
+  chapterTitle: string;
   content: string;
-  on_title_change: (title: string) => void;
-  on_content_change: (content: string) => void;
-  on_save: (title: string, content: string) => void;
+  onTitleChange: (title: string) => void;
+  onContentChange: (content: string) => void;
+  onSave: VoidFunction;
 }
 
 export const ChapterFormCard: FC<ChapterFormCardProps> = ({
-  form_title,
-  on_content_change,
-  on_title_change,
+  formTitle,
+  onContentChange,
+  onTitleChange,
   content,
-  chapter_title,
-  on_save,
+  chapterTitle,
+  onSave,
 }) => {
+  const router = useRouter();
+
   return (
     <div className="flex flex-col w-full">
-      <Card className="flex flex-col sm:p-4">
+      <Card className="flex flex-col sm:p-4 bg-slate-50">
         <CardHeader>
-          <CardTitle>{form_title}</CardTitle>
+          <CardTitle>{formTitle}</CardTitle>
         </CardHeader>
         <CardContent className="flex flex-col gap-y-8">
           <ChapterTitleFormField
-            title={chapter_title}
-            on_change={on_title_change}
+            title={chapterTitle}
+            onChange={onTitleChange}
           />
           <ChapterContentFormField
             content={content}
-            on_change={on_content_change}
+            onChange={onContentChange}
           />
         </CardContent>
-        <CardFooter className="justify-end">
-          <Button onClick={() => on_save(chapter_title, content)}>
-            Salvar Capitulo
+        <CardFooter className="flex flex-row justify-end gap-4">
+          <Button onClick={router.back} variant={"destructive"}>
+            Cancelar
           </Button>
+          <Button onClick={onSave}>Salvar Capitulo</Button>
         </CardFooter>
       </Card>
     </div>
