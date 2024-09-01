@@ -75,7 +75,7 @@ export default function SearchPage() {
             page: Number(page),
             pathname,
             text,
-            total: data?.books,
+            totalPages: data?.totalPages!,
           }}
         />
       </div>

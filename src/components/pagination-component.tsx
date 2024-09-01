@@ -12,15 +12,17 @@ interface PaginationComponentProps {
   page: number;
   pathname: string;
   text: string;
-  total?: any[];
+  totalPages: number;
 }
 
 export const PaginationComponent: FC<PaginationComponentProps> = ({
   page,
   pathname,
   text,
-  total,
+  totalPages,
 }) => {
+  const items = Array.from({ length: totalPages }, (_, i) => i + 1);
+
   return (
     <Pagination>
       <PaginationContent>
@@ -31,22 +33,22 @@ export const PaginationComponent: FC<PaginationComponentProps> = ({
           />
         </PaginationItem>
 
-        {total?.map((_, k) => (
-          <PaginationItem key={k}>
+        {items?.map((_, i) => (
+          <PaginationItem key={i}>
             <PaginationLink
               className="text-xs"
-              href={`${pathname}?text=${text}&page=${k + 1}`}
-              isActive={page === k + 1}
+              href={`${pathname}?text=${text}&page=${i + 1}`}
+              isActive={page === i + 1}
             >
-              {k + 1}
+              {i + 1}
             </PaginationLink>
           </PaginationItem>
         ))}
 
         <PaginationItem>
           <PaginationNext
-            className={`${page === total?.length && "cursor-not-allowed opacity-50"} text-xs`}
-            href={`${page < total?.length! ? `${pathname}?text=${text}&page=${page + 1}` : ""} `}
+            className={`${page === totalPages! && "cursor-not-allowed opacity-50"} text-xs`}
+            href={`${page < totalPages! ? `${pathname}?text=${text}&page=${page + 1}` : ""} `}
           />
         </PaginationItem>
       </PaginationContent>

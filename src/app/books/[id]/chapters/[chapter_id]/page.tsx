@@ -10,7 +10,7 @@ import { CreateComment } from "@/components/create-comment";
 import { Comment } from "@/components/comment";
 import useSWR from "swr";
 import { fetcher } from "@/hooks/fetcher";
-import { ChapterDto } from "@/app/model/chapter-dto";
+import { ChapterDto, removeCommentToChapter } from "@/app/model/chapter-dto";
 import { Loading } from "@/components/loading";
 import { Suspense } from "react";
 import { BookDto } from "@/app/model/book-dto";
@@ -27,14 +27,18 @@ export default function ChapterPage() {
     fetcher<BookDto>({}).get,
   );
 
-  const { data: chapter } = useSWR(
-    `${CHAPTER_SERVICE_URL}/${id}/chapters/${chapter_id}`,
+  const { data: chapter, mutate: getChapter } = useSWR(
+    session && `${CHAPTER_SERVICE_URL}/${chapter_id}?bookId=${id}`,
     fetcher<ChapterDto>({ token: session?.access_token }).get,
   );
 
+  async function onSuccess() {
+    await getChapter();
+  }
+
   return (
     <Suspense fallback={<Loading />}>
-      <div className="max-w-9/12 flex flex-col items-center justify-center gap-10 pt-8">
+      <div className="max-w-9/12 w-10/12 flex flex-col items-center justify-center gap-10 pt-8">
         <BreadcrumbComponent
           bookLink={`/books/${id}`}
           chaptersLink={`/books/${id}/#chapters`}
@@ -53,17 +57,28 @@ export default function ChapterPage() {
 
         <ChaptersPagination chaptersTags={book?.chapters!} />
         <Separator />
-        <Card className="w-full flex flex-col bg-slate-50">
+        <Card className="max-w-9/12 w-8/12 flex flex-col bg-slate-50">
           <CardHeader>
             <CardTitle>Comentarios</CardTitle>
           </CardHeader>
           <Separator />
-          <CardContent className="flex flex-col w-full mt-7 gap-10">
-            <CreateComment user_name={session?.user.name} />
+          <CardContent className="flex flex-col w-full mt-10 gap-8">
+            <CreateComment chapter={chapter!} onSuccess={onSuccess} />
             <Separator />
-            <Comment userName={session?.user.name} />
-            <Comment userName={session?.user.name} />
-            <Comment userName={session?.user.name} />
+            {chapter?.comments?.map((c) => (
+              <Comment
+                key={c.id}
+                comment={c}
+                onRemove={async (id: string) => {
+                  const chapterDto = removeCommentToChapter(chapter, id);
+                  await fetcher<ChapterDto>({
+                    token: session?.access_token,
+                    body: chapterDto,
+                  }).put(`${CHAPTER_SERVICE_URL}/${chapter_id}?bookId=${id}`);
+                  await getChapter();
+                }}
+              />
+            ))}
           </CardContent>
         </Card>
       </div>

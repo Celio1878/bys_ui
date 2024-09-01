@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { NewBookDrawerConfirmButtons } from "@/components/buttons/new-book-drawer-confirm-buttons";
 import { NewBookDrawerFormButtons } from "@/components/buttons/new-book-drawer-form-buttons";
-import { NewBookDrawerCoverButtons } from "@/components/buttons/new-book-drawer-cover-buttons";
+import { GoBackButton } from "@/components/buttons/go-back-button";
 
 interface BookDrawerButtonsProps {
   tabName: string;
@@ -36,13 +36,7 @@ export const NewBookDrawerButtons: FC<BookDrawerButtonsProps> = ({
         />
       );
     case "cover":
-      return (
-        <NewBookDrawerCoverButtons
-          disabled={disable}
-          goBackClick={() => setTabName("content")}
-          nextStepClick={() => setTabName("confirm")}
-        />
-      );
+      return <GoBackButton onClick={() => setTabName("content")} />;
 
     case "confirm":
       return (

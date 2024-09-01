@@ -20,18 +20,24 @@ interface TokenParams {
   session?: any;
 }
 
-export async function validateToken({ token, account, profile }: TokenParams) {
-  if (account) {
+export async function validateToken({
+  token,
+  account,
+  profile,
+  trigger,
+}: TokenParams) {
+  if (trigger === "update") return refreshToken(token);
+
+  if (account)
     return {
       ...account,
       ...token,
       ...profile,
     };
-  } else if (Date.now() < token.expires_at * 1000) {
-    return token;
-  }
+
+  if (Date.now() < token.expires_at * 1000) return token;
 
   if (!token.refresh_token) throw new Error("Missing refresh token");
 
-  return refreshToken({ token, account, profile });
+  return refreshToken(token);
 }

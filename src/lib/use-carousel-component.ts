@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import type { CarouselApi } from "@/components/ui/carousel";
 
 interface Props {
@@ -6,7 +6,7 @@ interface Props {
   setApi: (api: CarouselApi) => void;
   current: number;
   count: number;
-  books_breakpoints: { [key: string]: { slidesToScroll: number } };
+  booksBreakpoints: { [key: string]: { slidesToScroll: number } };
 }
 
 export function useCarouselComponent(): Props {
@@ -19,9 +19,7 @@ export function useCarouselComponent(): Props {
   }, [api]);
 
   useEffect(() => {
-    if (!api) {
-      return;
-    }
+    if (!api) return;
 
     const scrollSnapList = api.scrollSnapList();
     const newCount = scrollSnapList.length;
@@ -42,26 +40,29 @@ export function useCarouselComponent(): Props {
     };
   }, [api, current, count, handleSelect]);
 
-  const books_breakpoints = {
-    "(max-width: 640px)": {
-      slidesToScroll: 2,
-    },
-    "(min-width: 768px)": {
-      slidesToScroll: 4,
-    },
-    "(min-width: 1024px)": {
-      slidesToScroll: 5,
-    },
-    "(min-width: 1280px)": {
-      slidesToScroll: 6,
-    },
-  };
+  const booksBreakpoints = useMemo(
+    () => ({
+      "(max-width: 640px)": {
+        slidesToScroll: 2,
+      },
+      "(min-width: 768px)": {
+        slidesToScroll: 4,
+      },
+      "(min-width: 1024px)": {
+        slidesToScroll: 5,
+      },
+      "(min-width: 1280px)": {
+        slidesToScroll: 6,
+      },
+    }),
+    [],
+  );
 
   return {
     api,
     setApi,
     current,
     count,
-    books_breakpoints,
+    booksBreakpoints,
   };
 }
