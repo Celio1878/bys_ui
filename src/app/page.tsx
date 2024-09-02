@@ -63,14 +63,14 @@ export default function Home() {
         <h1 className="font-bold text-3xl underline underline-offset-4">
           Principais Autores
         </h1>
-        <div>
+        <div className="flex flex-wrap gap-8 justify-center items-center">
           {profiles?.map((profile) => (
             <div
-              className="flex flex-wrap gap-4 justify-center items-center"
+              className="w-28 flex justify-center items-center"
               key={profile.id}
             >
               <Link
-                className="text-sm hover:underline hover:font-semibold transition-all duration-150"
+                className="text-sm hover:underline transition-all duration-150"
                 href={`authors/${profile.id}`}
               >
                 <div className="flex flex-col justify-center items-center gap-2">
@@ -85,7 +85,7 @@ export default function Home() {
                       quality: 100,
                     }}
                   />
-                  {profile.name}
+                  <span className="text-xs text-center">{profile.name}</span>
                 </div>
               </Link>
             </div>

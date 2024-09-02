@@ -46,7 +46,14 @@ export function createBookDto(
   bookValues: BookFormValues,
 ): CreateBookDto {
   return {
-    id: bookValues.title.toLowerCase().replace(/\s/g, "-") + "-" + authorTag.id,
+    id:
+      bookValues.title
+        .toLowerCase()
+        .replaceAll(" ", "-")
+        .replaceAll(".", "")
+        .replaceAll(",", "") +
+      "-" +
+      authorTag.id,
     title: bookValues.title,
     description: bookValues.description,
     genre: convertToJson(bookValues.genre),

@@ -57,7 +57,7 @@ export const BooksCarousel: FC<BookCarouselProps> = ({
           {books?.map((book) => (
             <CarouselItem
               key={book.id}
-              className={`basis-1/${breakpointClasses.base} md:basis-1/6 lg:basis-1/${breakpointClasses.lg} xl:basis-1/${breakpointClasses.xl} py-2`}
+              className={`basis-1/${breakpointClasses.base} md:basis-1/${breakpointClasses.md} lg:basis-1/${breakpointClasses.lg} xl:basis-1/${breakpointClasses.xl} py-2`}
             >
               <Book bookTag={book} href={`/books/${book.id}`} />
             </CarouselItem>

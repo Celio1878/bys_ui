@@ -23,7 +23,12 @@ export default function NewChapterPage() {
   const dateNow = Date.now();
 
   const dto: CreateChapter = {
-    id: title.toLowerCase().replaceAll(" ", "-") + String(dateNow),
+    id:
+      title
+        .toLowerCase()
+        .replaceAll(" ", "-")
+        .replaceAll(".", "")
+        .replaceAll(",", "") + String(dateNow),
     bookId: String(id),
     title: title,
     content: content,
