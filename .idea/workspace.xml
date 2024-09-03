@@ -4,14 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24dfe38b-6d18-4700-8386-86f955cbefc3" name="Changes" comment="fix: Style and ids">
+    <list default="true" id="24dfe38b-6d18-4700-8386-86f955cbefc3" name="Changes" comment="feat: Remove Profile">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/authors/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/authors/[id]/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/book.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/book.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/carousel/books-carousel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/carousel/books-carousel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/form/insert-book-cover-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/insert-book-cover-form.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/new-book-steps.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/new-book-steps.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/profile/[name]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/profile/[name]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/book/my-book-chapters.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/book/my-book-chapters.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/buttons/logout-button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/buttons/logout-button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/popover-user-data-buttons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/popover-user-data-buttons.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/popover-user.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/popover-user.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/popover_inf_user.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/popover-inf-user.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/profile-link.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/profile-link.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,40 +75,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Docker.services-docker.yml.bys-ui: Compose Deployment.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "code.cleanup.on.save": "true",
-    "git-widget-placeholder": "develop",
-    "javascript.nodejs.core.library.configured.version": "22.6.0",
-    "javascript.nodejs.core.library.typings.version": "22.3.0",
-    "last_opened_file_path": "/home/swango/Documents/projects/be_your_stories/bys_ui/src/tests",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.stylelint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.stylelint": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_interpreter_path": "node",
-    "nodejs_package_manager_path": "npm",
-    "npm.build.executor": "Run",
-    "npm.dev.executor": "Run",
-    "prettierjs.PrettierConfiguration.Package": "/home/swango/Documents/projects/be_your_stories/bys_ui/node_modules/prettier",
-    "rearrange.code.on.save": "true",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "ts.external.directory.path": "/home/swango/Documents/projects/be_your_stories/bys_ui/node_modules/typescript/lib"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Docker.services-docker.yml.bys-ui: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;code.cleanup.on.save&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;22.6.0&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;22.3.0&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/swango/Documents/projects/be_your_stories/bys_ui/src/tests&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.stylelint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/home/swango/Documents/projects/be_your_stories/bys_ui/node_modules/prettier&quot;,
+    &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/home/swango/Documents/projects/be_your_stories/bys_ui/node_modules/typescript/lib&quot;
   }
-}]]></component>
-  <component name="QodanaReportsService">
-    <option name="descriptions">
-      <ReportDescription localRun="true" path="/tmp/qodana_output/qodana.sarif.json" reportGuid="f72b4f7f-6662-4bd1-9a1d-394f1922ae81" reportId="bys_ui/qodana/2024-09-01" />
-    </option>
-  </component>
+}</component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -304,6 +302,7 @@
       <workItem from="1725270073776" duration="2036000" />
       <workItem from="1725283265218" duration="2089000" />
       <workItem from="1725357024693" duration="6266000" />
+      <workItem from="1725381549601" duration="4533000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Add Shadcn-ui">
       <option name="closed" value="true" />
@@ -714,7 +713,6 @@
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat: Create Comments component" />
     <MESSAGE value="fix: Error pages" />
     <MESSAGE value="feat: Memoization components" />
     <MESSAGE value="feat: Fetcher data" />
@@ -739,7 +737,8 @@
     <MESSAGE value="feat: Pagination search results" />
     <MESSAGE value="fix: Dto about creations" />
     <MESSAGE value="fix: Style and ids" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: Style and ids" />
+    <MESSAGE value="feat: Remove Profile" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Remove Profile" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

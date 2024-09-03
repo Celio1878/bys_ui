@@ -1,7 +1,7 @@
 "use client";
 
 import { Loading } from "@/components/loading";
-import { Suspense } from "react";
+import { Suspense, useCallback, useMemo } from "react";
 import { useParams } from "next/navigation";
 import { FollowComponent } from "@/components/follow-component";
 import { Card } from "@/components/ui/card";
@@ -34,15 +34,21 @@ export default function AuthorPage() {
     fetcher<ProfileDto>({}).get,
   );
 
-  const followingTag: Tag<string> = {
-    id: authorProfile?.id!,
-    title: authorProfile?.name!,
-  };
+  const followingTag: Tag<string> = useMemo(
+    () => ({
+      id: authorProfile?.id!,
+      title: authorProfile?.name!,
+    }),
+    [authorProfile?.id, authorProfile?.name],
+  );
 
-  const followerTag: Tag<string> = {
-    id: userProfile?.id!,
-    title: userProfile?.name!,
-  };
+  const followerTag: Tag<string> = useMemo(
+    () => ({
+      id: userProfile?.id!,
+      title: userProfile?.name!,
+    }),
+    [userProfile?.id, userProfile?.name],
+  );
 
   const followerDto: ProfileDto = {
     ...authorProfile!,
@@ -70,7 +76,7 @@ export default function AuthorPage() {
     (follower) => follower.id === userProfile?.id,
   );
 
-  function removeFollower() {
+  const removeFollower = useCallback(() => {
     const filteredFollowers = sanitizeTagList({
       tagList: authorProfile?.followers!,
       newTag: followerTag,
@@ -114,7 +120,30 @@ export default function AuthorPage() {
           type: "foreground",
         }),
       );
-  }
+  }, [
+    authorProfile,
+    userProfile,
+    session,
+    id,
+    followerTag,
+    followingTag,
+    getProfile,
+  ]);
+
+  const handleFollow = useCallback(() => {
+    Promise.all([followerTrigger(), followingTrigger()])
+      .then(() => {
+        toast({
+          description: (
+            <p className="flex flex-row gap-2 items-center justify-center">
+              <HandMetal /> Você será avisado quando esse perfil for atualizado.
+            </p>
+          ),
+          type: "foreground",
+        });
+      })
+      .finally(() => getProfile());
+  }, [followerTrigger, followingTrigger, getProfile]);
 
   return (
     <Suspense fallback={<Loading />}>
@@ -130,23 +159,7 @@ export default function AuthorPage() {
 
         {session?.user.id !== authorProfile?.id &&
           (!alreadyFollowing ? (
-            <FollowButton
-              onClick={() =>
-                Promise.all([followerTrigger(), followingTrigger()])
-                  .then(() =>
-                    toast({
-                      description: (
-                        <p className="flex flex-row gap-2 items-center justify-center">
-                          <HandMetal /> Voce sera avisado quando esse perfil for
-                          atualizado.
-                        </p>
-                      ),
-                      type: "foreground",
-                    }),
-                  )
-                  .finally(() => getProfile())
-              }
-            />
+            <FollowButton onClick={handleFollow} />
           ) : (
             <Button
               className="flex flex-row gap-1 text-white"
