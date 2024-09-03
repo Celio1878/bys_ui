@@ -11,7 +11,7 @@ export const PopoverInfUser: FC<PopoverInfUserProps> = ({ session }) => {
   return (
     <PopoverContent className="flex flex-col items-center justify-center divide-y gap-4">
       <PopoverUserData {...{ session }} />
-      <PopoverUserDataButtons user_name={session?.user.name as string} />
+      <PopoverUserDataButtons userName={session?.user.name!} />
     </PopoverContent>
   );
 };

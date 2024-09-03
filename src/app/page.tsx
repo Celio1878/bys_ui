@@ -32,15 +32,19 @@ export default function Home() {
   if (profilesErr)
     return <GlobalError error={profilesErr} reset={getProfiles} />;
 
+  console.log(books);
+
   return (
     <Suspense fallback={<Loading />}>
       <BannerCarousel />
       <section className="flex flex-col gap-20 md:w-full">
-        <BooksCarousel
-          key={"highlighted"}
-          sectionTitle={"Destaque"}
-          books={books!}
-        />
+        {books?.length! > 0 && (
+          <BooksCarousel
+            key={"highlighted"}
+            sectionTitle={"Destaques"}
+            books={books!}
+          />
+        )}
 
         {GenreTags.map((section) => {
           const booksByGenre = books?.filter(

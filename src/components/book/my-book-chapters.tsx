@@ -60,6 +60,7 @@ export const MyBookChapters: FC<MyBookChaptersProps> = ({ chaptersTags }) => {
                 title: `Tem certeza?`,
                 type: "foreground",
                 role: "alert",
+                className: "border border-red-500",
                 action: (
                   <RemoveChapterToast
                     onRemove={() => {

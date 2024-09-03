@@ -2,12 +2,12 @@ import { FC } from "react";
 import { Button } from "@/components/ui/button";
 
 interface LogoutButtonProps {
-  on_click: VoidFunction;
+  onClick: VoidFunction;
 }
 
-export const LogoutButton: FC<LogoutButtonProps> = ({ on_click }) => {
+export const LogoutButton: FC<LogoutButtonProps> = ({ onClick }) => {
   return (
-    <Button variant="destructive" onClick={on_click}>
+    <Button variant="destructive" onClick={onClick}>
       Sair
     </Button>
   );
