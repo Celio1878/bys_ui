@@ -6,15 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="24dfe38b-6d18-4700-8386-86f955cbefc3" name="Changes" comment="feat: Remove Profile">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/authors/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/authors/[id]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/profile/[name]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/profile/[name]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/book/my-book-chapters.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/book/my-book-chapters.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/book-drawer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/book-drawer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/buttons/logout-button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/buttons/logout-button.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/popover-user-data-buttons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/popover-user-data-buttons.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/popover-user.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/popover-user.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/popover_inf_user.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/popover-inf-user.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/profile-link.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/profile-link.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/new-book-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/new-book-form.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,6 +157,7 @@
         <item itemvalue="npm.build" />
         <item itemvalue="npm.dev" />
         <item itemvalue="npm.build" />
+        <item itemvalue="npm.dev" />
       </list>
     </recent_temporary>
   </component>

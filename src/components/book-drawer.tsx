@@ -113,6 +113,22 @@ export const BookDrawer: FC<BookDrawerProps> = ({
                 book ? book.id : newBookDto.id,
               );
 
+              newBookDto.coauthors.forEach(async (coauthor) => {
+                const author = await fetcher<ProfileDto>({}).get(
+                  `${PROFILE_SERVICE_URL}/${coauthor.id}`,
+                );
+                const newAuthorship = upsertAuthorship(
+                  author!,
+                  formMethods.getValues(),
+                  book ? book.id : newBookDto.id,
+                );
+
+                await fetcher({
+                  body: newAuthorship,
+                  token: session?.access_token,
+                }).put(`${PROFILE_SERVICE_URL}/${profile?.id}`);
+              });
+
               book
                 ? Promise.all([
                     updateBook(book.id, updatedBook!),
