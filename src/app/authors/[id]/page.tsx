@@ -8,14 +8,15 @@ import { Card } from "@/components/ui/card";
 import { Book } from "@/components/book";
 import { FollowButton } from "@/components/buttons/follow-button";
 import { toast } from "@/components/ui/use-toast";
-import { HandMetal } from "lucide-react";
+import { Frown, HandMetal, UserRoundMinus } from "lucide-react";
 import useSWR from "swr";
 import { fetcher } from "@/hooks/fetcher";
 import { ProfileDto } from "@/app/model/profile-dto";
 import Image from "next/image";
 import useSWRMutation from "swr/mutation";
 import { useSession } from "next-auth/react";
-import { Tag } from "@/app/model/tags";
+import { sanitizeTagList, Tag } from "@/app/model/tags";
+import { Button } from "@/components/ui/button";
 
 const PROFILE_SERVICE_URL = String(process.env.NEXT_PUBLIC_PROFILES_API_URL);
 
@@ -29,7 +30,7 @@ export default function AuthorPage() {
   );
 
   const { data: userProfile } = useSWR(
-    `${PROFILE_SERVICE_URL}/${id}`,
+    `${PROFILE_SERVICE_URL}/${session?.user.id}`,
     fetcher<ProfileDto>({}).get,
   );
 
@@ -55,34 +56,80 @@ export default function AuthorPage() {
 
   const { trigger: followerTrigger } = useSWRMutation(
     `${PROFILE_SERVICE_URL}/${id}`,
-    fetcher<ProfileDto>({ body: followerDto!, token: session?.access_token })
+    fetcher<ProfileDto>({ body: followingDto!, token: session?.access_token })
       .put,
   );
 
   const { trigger: followingTrigger } = useSWRMutation(
     `${PROFILE_SERVICE_URL}/${userProfile?.id}`,
-    fetcher<ProfileDto>({ body: followingDto!, token: session?.access_token })
+    fetcher<ProfileDto>({ body: followerDto!, token: session?.access_token })
       .put,
   );
+
+  const alreadyFollowing = authorProfile?.followers.some(
+    (follower) => follower.id === userProfile?.id,
+  );
+
+  function removeFollower() {
+    const filteredFollowers = sanitizeTagList({
+      tagList: authorProfile?.followers!,
+      newTag: followerTag,
+    });
+
+    const filteredFollowing = sanitizeTagList({
+      tagList: userProfile?.following!,
+      newTag: followingTag,
+    });
+
+    const followerDto: ProfileDto = {
+      ...authorProfile!,
+      followers: filteredFollowers,
+    };
+
+    const followingDto: ProfileDto = {
+      ...userProfile!,
+      following: filteredFollowing,
+    };
+
+    Promise.all([
+      fetcher<ProfileDto>({
+        body: followerDto,
+        token: session?.access_token,
+      }).put(`${PROFILE_SERVICE_URL}/${userProfile?.id}`),
+      fetcher<ProfileDto>({
+        body: followingDto,
+        token: session?.access_token,
+      }).put(`${PROFILE_SERVICE_URL}/${id}`),
+    ])
+      .then(() => getProfile())
+      .finally(() =>
+        toast({
+          description: (
+            <p className="flex flex-row gap-2 items-center justify-center">
+              <Frown /> Voce nao recebera atualizacoes de {authorProfile?.name!}
+              .
+            </p>
+          ),
+          className: "border border-red-500 bg-orange-500 text-white",
+          type: "foreground",
+        }),
+      );
+  }
 
   return (
     <Suspense fallback={<Loading />}>
       <section className="flex flex-col items-center gap-4 pb-20">
         <Image
           className="rounded-full"
-          {...{
-            src: authorProfile ? authorProfile.urlImage : "/user.png",
-            alt: "Profile Image",
-            width: 150,
-            height: 150,
-            priority: true,
-            quality: 100,
-          }}
+          src={`${authorProfile ? authorProfile.urlImage : "/user.png"}`}
+          alt={`${authorProfile?.name} image`}
+          width={150}
+          height={150}
         />
         <h1 className="text-2xl font-bold">{authorProfile?.name}</h1>
-        {session?.user.id !== authorProfile?.id && (
+        {session?.user.id !== authorProfile?.id && !alreadyFollowing ? (
           <FollowButton
-            on_click={() => {
+            onClick={() =>
               Promise.all([followerTrigger(), followingTrigger()])
                 .then(() =>
                   toast({
@@ -92,13 +139,20 @@ export default function AuthorPage() {
                         atualizado.
                       </p>
                     ),
-                    className: "border border-red-500 bg-orange-500 text-white",
                     type: "foreground",
                   }),
                 )
-                .finally(() => getProfile());
-            }}
+                .finally(() => getProfile())
+            }
           />
+        ) : (
+          <Button
+            className="flex flex-row gap-1 text-white"
+            variant={"destructive"}
+            onClick={removeFollower}
+          >
+            <UserRoundMinus /> Seguir
+          </Button>
         )}
 
         <FollowComponent

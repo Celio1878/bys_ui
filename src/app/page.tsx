@@ -63,7 +63,7 @@ export default function Home() {
         <h1 className="font-bold text-3xl underline underline-offset-4">
           Principais Autores
         </h1>
-        <div className="flex flex-wrap gap-8 justify-center items-center">
+        <div className="flex flex-wrap gap-4 justify-center items-center">
           {profiles?.map((profile) => (
             <div
               className="w-28 flex justify-center items-center"
@@ -75,12 +75,12 @@ export default function Home() {
               >
                 <div className="flex flex-col justify-center items-center gap-2">
                   <Image
-                    className="rounded-full"
+                    className="rounded-full hover:scale-125 transition-all duration-150"
                     {...{
                       src: profile.urlImage,
                       alt: profile.name,
-                      width: 100,
-                      height: 100,
+                      width: 70,
+                      height: 70,
                       priority: true,
                       quality: 100,
                     }}

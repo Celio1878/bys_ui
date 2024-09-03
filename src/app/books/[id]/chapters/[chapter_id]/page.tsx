@@ -38,14 +38,14 @@ export default function ChapterPage() {
 
   return (
     <Suspense fallback={<Loading />}>
-      <div className="max-w-9/12 w-10/12 flex flex-col items-center justify-center gap-10 pt-8">
+      <div className="max-w-9/12 w-full lg:w-10/12 flex flex-col items-center justify-center gap-10 pt-8">
         <BreadcrumbComponent
           bookLink={`/books/${id}`}
           chaptersLink={`/books/${id}/#chapters`}
           chapterTitle={chapter?.title}
           bookTitle={book?.title!}
         />
-        <Card className="w-full py-2 px-6 sm:px-16 bg-gray-50 mt-8 sm:mt-0">
+        <Card className="w-full py-2 px-6 sm:px-16 bg-gray-50 mt-8 sm:mt-0 dark:bg-yellow-200">
           <CardHeader>
             <CardTitle className="text-center">{chapter?.title}</CardTitle>
           </CardHeader>
@@ -57,7 +57,7 @@ export default function ChapterPage() {
 
         <ChaptersPagination chaptersTags={book?.chapters!} />
         <Separator />
-        <Card className="max-w-9/12 w-8/12 flex flex-col bg-slate-50">
+        <Card className="max-w-full sm:max-w-11/12 lg:max-w-9/12 w-full md:w-10/12 flex flex-col bg-slate-50">
           <CardHeader>
             <CardTitle>Comentarios</CardTitle>
           </CardHeader>

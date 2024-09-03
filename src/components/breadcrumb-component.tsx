@@ -22,7 +22,7 @@ export const BreadcrumbComponent: FC<BreadcrumbComponentProps> = ({
   bookTitle,
 }) => {
   return (
-    <Breadcrumb className="absolute top-[10rem] left-5 sm:left-11 mr-auto">
+    <Breadcrumb className="absolute top-[9.5rem] left-5 sm:left-11 mr-auto">
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink href={"/"}>Home</BreadcrumbLink>
