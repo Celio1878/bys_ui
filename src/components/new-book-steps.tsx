@@ -18,7 +18,13 @@ export const NewBookSteps: FC<NewBookStepsProps> = ({
 }) => {
   const { data: session } = useSession() as any;
   const bookId =
-    bookDto.title.toLowerCase().replace(/\s/g, "-") + "-" + session?.user?.id;
+    bookDto.title
+      .toLowerCase()
+      .replaceAll(" ", "-")
+      .replaceAll(".", "")
+      .replaceAll(",", "") +
+    "-" +
+    session?.user?.id;
 
   return (
     <Tabs value={tabName} defaultValue="content">

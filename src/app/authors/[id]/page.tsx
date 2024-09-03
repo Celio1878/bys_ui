@@ -127,33 +127,35 @@ export default function AuthorPage() {
           height={150}
         />
         <h1 className="text-2xl font-bold">{authorProfile?.name}</h1>
-        {session?.user.id !== authorProfile?.id && !alreadyFollowing ? (
-          <FollowButton
-            onClick={() =>
-              Promise.all([followerTrigger(), followingTrigger()])
-                .then(() =>
-                  toast({
-                    description: (
-                      <p className="flex flex-row gap-2 items-center justify-center">
-                        <HandMetal /> Voce sera avisado quando esse perfil for
-                        atualizado.
-                      </p>
-                    ),
-                    type: "foreground",
-                  }),
-                )
-                .finally(() => getProfile())
-            }
-          />
-        ) : (
-          <Button
-            className="flex flex-row gap-1 text-white"
-            variant={"destructive"}
-            onClick={removeFollower}
-          >
-            <UserRoundMinus /> Seguir
-          </Button>
-        )}
+
+        {session?.user.id !== authorProfile?.id &&
+          (!alreadyFollowing ? (
+            <FollowButton
+              onClick={() =>
+                Promise.all([followerTrigger(), followingTrigger()])
+                  .then(() =>
+                    toast({
+                      description: (
+                        <p className="flex flex-row gap-2 items-center justify-center">
+                          <HandMetal /> Voce sera avisado quando esse perfil for
+                          atualizado.
+                        </p>
+                      ),
+                      type: "foreground",
+                    }),
+                  )
+                  .finally(() => getProfile())
+              }
+            />
+          ) : (
+            <Button
+              className="flex flex-row gap-1 text-white"
+              variant={"destructive"}
+              onClick={removeFollower}
+            >
+              <UserRoundMinus /> Seguir
+            </Button>
+          ))}
 
         <FollowComponent
           followers={authorProfile?.followers!}
