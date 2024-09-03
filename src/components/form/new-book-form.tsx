@@ -12,16 +12,17 @@ import {
   AgeRangeTags,
   CopyrightTags,
   GenreTags,
-  Tag,
   WarningTags,
 } from "@/app/model/tags";
 import useSWR from "swr";
 import { fetcher } from "@/hooks/fetcher";
 import { ProfileDto } from "@/app/model/profile-dto";
+import { useSession } from "next-auth/react";
 
 const PROFILES_SERVICE_URL = String(process.env.NEXT_PUBLIC_PROFILES_API_URL);
 
 export const NewBookForm: FC = () => {
+  const { data: session } = useSession() as any;
   const form = useFormContext();
 
   const { data: profiles } = useSWR(
@@ -29,10 +30,13 @@ export const NewBookForm: FC = () => {
     fetcher<ProfileDto[]>({}).get,
   );
 
-  const authorTagList = tagList(profiles!);
+  const authorTagList = profiles?.map(({ id, name }) => ({ id, title: name }));
+  const coAuthorsList = authorTagList?.filter(
+    (author) => author.id !== session?.user?.id,
+  );
 
   return (
-    <Card className="max-h-[30rem] px-8 py-4 mt-2 bg-slate-50 overflow-y-scroll">
+    <Card className="max-h-[25rem] px-8 py-4 mt-2 bg-slate-50 overflow-y-scroll">
       <Form {...form}>
         <form className="space-y-6">
           <InputFormField form={form} name={"title"} label={"Titulo"} />
@@ -88,7 +92,7 @@ export const NewBookForm: FC = () => {
 
           <SelectItemsSearchFormField
             form={form}
-            listItems={authorTagList}
+            listItems={coAuthorsList!}
             name={"coauthors"}
             label={"CoAutores"}
             inputPlaceholder={"Procure pelo autor ..."}
@@ -102,10 +106,3 @@ export const NewBookForm: FC = () => {
     </Card>
   );
 };
-
-function tagList(profiles: ProfileDto[]): Tag<string>[] {
-  const profileTags: Tag<string>[] = [];
-  profiles?.forEach((p) => profileTags.push({ id: p.id, title: p.name }));
-
-  return profileTags;
-}
