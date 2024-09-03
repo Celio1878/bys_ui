@@ -1,4 +1,4 @@
-import { FC, useCallback, useMemo } from "react";
+import { FC } from "react";
 import {
   Carousel,
   CarouselContent,
@@ -23,25 +23,9 @@ export const BooksCarousel: FC<BookCarouselProps> = ({
   const { current, count, setApi, api, booksBreakpoints } =
     useCarouselComponent();
 
-  const carouselLength = useCallback((standard: number, length: number) => {
-    if (length < standard) return length;
-
-    return standard;
-  }, []);
-
-  const breakpointClasses = useMemo(
-    () => ({
-      base: carouselLength(2, books?.length),
-      md: carouselLength(4, books?.length),
-      lg: carouselLength(5, books?.length),
-      xl: carouselLength(6, books?.length),
-    }),
-    [books?.length, carouselLength],
-  );
-
   return (
     <div className="w-full flex flex-col">
-      <h1 className="text-2xl font-semibold underline text-start mb-1 ml-3">
+      <h1 className="text-2xl font-semibold underline text-start mb-1 ml-1 self-start">
         {sectionTitle}
       </h1>
       <Carousel
@@ -51,15 +35,12 @@ export const BooksCarousel: FC<BookCarouselProps> = ({
           align: "center",
           breakpoints: booksBreakpoints,
         }}
-        className="max-w-xs sm:max-w-screen-sm md:max-w-2xl lg:max-w-screen-md xl:max-w-screen-lg"
+        className="max-w-xs sm:max-w-full sm:w-11/12"
       >
-        <CarouselContent className=" lg:-ml-3.5">
-          {books?.map((book) => (
-            <CarouselItem
-              key={book.id}
-              className={`basis-1/${breakpointClasses.base} md:basis-1/${breakpointClasses.md} lg:basis-1/${breakpointClasses.lg} xl:basis-1/${breakpointClasses.xl} py-2`}
-            >
-              <Book bookTag={book} href={`/books/${book.id}`} />
+        <CarouselContent>
+          {books?.map((b) => (
+            <CarouselItem key={b.id} className="basis-auto py-2">
+              <Book bookTag={b} href={`/books/${b.id}`} />
             </CarouselItem>
           ))}
         </CarouselContent>

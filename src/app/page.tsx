@@ -35,7 +35,7 @@ export default function Home() {
   return (
     <Suspense fallback={<Loading />}>
       <BannerCarousel />
-      <section className="flex flex-col gap-20">
+      <section className="flex flex-col gap-20 md:w-full">
         <BooksCarousel
           key={"highlighted"}
           sectionTitle={"Destaque"}
