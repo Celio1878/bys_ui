@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import { Popover, PopoverTrigger } from "@/components/ui/popover";
 import { UserImage } from "@/components/user-image";
-import { PopoverInfUser } from "@/components/popover_inf_user";
+import { PopoverInfUser } from "@/components/popover-inf-user";
 
 interface Props {
   session?: { user: { image: string; name: string; email: string } };

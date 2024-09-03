@@ -7,7 +7,7 @@ import { Book } from "@/components/book";
 import { Card } from "@/components/ui/card";
 import { BookDrawer } from "@/components/book-drawer";
 import { usePathname } from "next/navigation";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { UserImage } from "@/components/user-image";
 import { FollowComponent } from "@/components/follow-component";
 import { fetcher } from "@/hooks/fetcher";
@@ -16,6 +16,11 @@ import { ProfileDto, removeAuthorship } from "@/app/model/profile-dto";
 import { UpdateBookButtonLabel } from "@/components/buttons/update-book-button-label";
 import { DeleteButton } from "@/components/buttons/delete-button";
 import { useBookApi } from "@/hooks/use-book-api";
+import { Button } from "@/components/ui/button";
+import { Trash2 } from "lucide-react";
+import useSWRMutation from "swr/mutation";
+import { toast } from "@/components/ui/use-toast";
+import { RemoveChapterToast } from "@/components/remove-chapter-toast";
 
 const PROFILE_SERVICE_URL = String(process.env.NEXT_PUBLIC_PROFILES_API_URL);
 
@@ -29,6 +34,16 @@ export default function ProfilePage() {
     fetcher<ProfileDto>({ token: session?.access_token }).get,
   );
 
+  const { trigger: deleteAccount } = useSWRMutation(
+    `${PROFILE_SERVICE_URL}/${profile?.id}?name=${profile?.name}`,
+    fetcher({ token: session?.access_token }).delete,
+  );
+
+  function deleteBooks() {
+    const books = profile?.authorship || [];
+    return Promise.all(books.map((t) => deleteBook(t.id)));
+  }
+
   return (
     <Suspense fallback={<Loading />}>
       <section
@@ -36,7 +51,40 @@ export default function ProfilePage() {
         title={"Perfil"}
       >
         <UserImage width={150} height={150} />
-        <h1 className="text-2xl font-bold">{session?.user?.name}</h1>
+        <div className="flex flex-row gap-x-4 items-center">
+          <h1 className="text-2xl font-bold">{session?.user?.name}</h1>
+          <Button
+            size={"sm"}
+            variant="destructive"
+            title="Remover Conta"
+            id="delete-account-button"
+            onClick={async () =>
+              toast({
+                title: `Tem certeza?`,
+                description: "Essa ação não pode ser desfeita.",
+                className: "border border-red-500",
+                type: "foreground",
+                role: "alert",
+                action: (
+                  <RemoveChapterToast
+                    onRemove={async () => {
+                      try {
+                        await deleteAccount();
+                        await deleteBooks();
+                      } catch (error) {
+                        console.error("Error during deletion:", error);
+                      } finally {
+                        await signOut();
+                      }
+                    }}
+                  />
+                ),
+              })
+            }
+          >
+            <Trash2 size={20} />
+          </Button>
+        </div>
         <FollowComponent
           followers={profile?.followers || []}
           following={profile?.following || []}
