@@ -31,30 +31,51 @@ export const InsertBookCoverForm: FC<InsertBookCoverFormProps> = ({
 
   const handleFileUpload = useCallback(
     async (file: File) => {
-      const s3Url = await trigger();
+      const validateImage = (img: HTMLImageElement): boolean => {
+        if (img.width >= img.height) {
+          toast({
+            title: "Imagem inválida.",
+            description: (
+              <span>
+                A imagem deve ter formato <b>RETRATO</b>.
+              </span>
+            ),
+            variant: "destructive",
+            type: "foreground",
+          });
+          return false;
+        }
+        return true;
+      };
 
-      const res = await fetch(s3Url!, {
-        body: file,
-        method: "PUT",
-        headers: {
-          "Content-Type": file.type,
-        },
-      });
+      try {
+        const isValid = await new Promise<boolean>((resolve) => {
+          const img = new Image();
+          img.onload = () => resolve(validateImage(img));
+          img.src = URL.createObjectURL(file);
+        });
 
-      if (!res.ok) {
-        console.error("Upload failed" + res.statusText);
+        if (!isValid) return;
+
+        const s3Url = await trigger();
+        const res = await fetch(s3Url!, {
+          body: file,
+          method: "PUT",
+          headers: { "Content-Type": file.type },
+        });
+
+        if (!res.ok) throw new Error(res.statusText);
+
+        onUpdateCover();
+      } catch (error) {
+        console.error("Upload failed:", error);
         form.setError("cover", { message: "Upload failed" });
-
         toast({
           title: "Erro ao inserir capa.",
           variant: "destructive",
           type: "foreground",
         });
-
-        return;
       }
-
-      onUpdateCover();
     },
     [trigger, onUpdateCover, form],
   );
@@ -62,7 +83,9 @@ export const InsertBookCoverForm: FC<InsertBookCoverFormProps> = ({
   return (
     <Card className="px-8 py-4 mt-2 max-h-96 overflow-y-auto bg-slate-50 space-y-2 text-center">
       <CardDescription>
-        <span>O tipo da imagem e .jpeg</span>
+        <span>
+          O tipo da imagem deve ser <b>.jpeg</b> e formato <b>retrato</b>.
+        </span>
       </CardDescription>
       <Input
         className="w-full cursor-pointer bg-indigo-700 hover:bg-indigo-800 dark:bg-indigo-300 dark:hover:bg-indigo-400 text-white"
