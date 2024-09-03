@@ -3,6 +3,7 @@ import { UserImage } from "@/components/user-image";
 import { Flag, Trash2 } from "lucide-react";
 import { CommentData } from "@/app/model/chapter-dto";
 import { format } from "date-fns";
+import { useSession } from "next-auth/react";
 
 interface CommentProps {
   comment: CommentData;
@@ -10,10 +11,12 @@ interface CommentProps {
 }
 
 export const Comment: FC<CommentProps> = ({ onRemove, comment }) => {
+  const { data: session } = useSession() as any;
+  const userId = session?.user.id;
   const date = format(comment.createdAt, "dd/MM/yyyy");
 
   return (
-    <div className="flex flex-col w-full self-center gap-2 pl-10">
+    <div className="flex flex-col w-full self-center gap-2 pl-4 md:pl-10">
       <div className="flex flex-row w-full justify-between gap-4">
         <span className="flex flex-row items-center gap-2">
           <UserImage width={40} height={40} />
@@ -28,7 +31,7 @@ export const Comment: FC<CommentProps> = ({ onRemove, comment }) => {
           {comment.content}
         </p>
 
-        <div className="flex flex-row gap-6">
+        {comment.author.id === userId ? (
           <button
             className="text-red-500 hover:opacity-60 transition-all duration-300"
             name={`remove-comment-${comment.author.id}`}
@@ -37,6 +40,7 @@ export const Comment: FC<CommentProps> = ({ onRemove, comment }) => {
           >
             <Trash2 size={20} />
           </button>
+        ) : (
           <button
             className="self-center p-2 rounded-full bg-red-100 bg-opacity-50 dark:bg-transparent text-orange-500 hover:text-red-500 hover:bg-red-50 hover:scale-125 transition-all duration-300"
             name={`report-comment-${comment.author.id}`}
@@ -44,7 +48,7 @@ export const Comment: FC<CommentProps> = ({ onRemove, comment }) => {
           >
             <Flag size={15} />
           </button>
-        </div>
+        )}
       </div>
     </div>
   );
