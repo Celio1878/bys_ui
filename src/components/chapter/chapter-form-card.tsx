@@ -50,7 +50,12 @@ export const ChapterFormCard: FC<ChapterFormCardProps> = ({
           <Button onClick={router.back} variant={"destructive"}>
             Cancelar
           </Button>
-          <Button onClick={onSave}>Salvar Capitulo</Button>
+          <Button
+            onClick={onSave}
+            disabled={!chapterTitle || content.length < 10}
+          >
+            Salvar Capitulo
+          </Button>
         </CardFooter>
       </Card>
     </div>

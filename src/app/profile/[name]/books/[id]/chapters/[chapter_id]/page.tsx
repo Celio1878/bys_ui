@@ -39,7 +39,7 @@ export default function UpdateChapterPage() {
     content,
   };
 
-  const { trigger } = useSWRMutation(
+  const { trigger: updateChapter } = useSWRMutation(
     `${SERVICE_URL}/${chapter_id}?bookId=${id}`,
     fetcher<ChapterDto>({ body: dto, token: session?.access_token }).put,
   );
@@ -62,8 +62,18 @@ export default function UpdateChapterPage() {
         onTitleChange={setTitle}
         onContentChange={setContent}
         onSave={() => {
+          if (!dto.title || dto.content.length < 10) {
+            toast({
+              title: "Erro ao salvar capitulo",
+              description: "Preencha todos os campos",
+              type: "foreground",
+            });
+
+            return;
+          }
+
           Promise.all([
-            trigger(),
+            updateChapter(),
             fetcher({
               body: upsertBookChapters(book!, dto),
               token: session?.access_token,

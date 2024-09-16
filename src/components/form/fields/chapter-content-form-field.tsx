@@ -64,7 +64,7 @@ export const ChapterContentFormField: FC<ChapterContentFormFieldProps> = ({
     <div className="flex flex-col w-full items-start gap-y-1">
       <Label>Conteudo</Label>
       <Card className="w-full py-6 sm:py-0 sm:p-8">
-        <CardContent className="flex flex-col gap-y-4">
+        <CardContent className="flex flex-col gap-y-4 dark:bg-amber-300 dark:bg-opacity-50 py-4">
           <Toolbar
             editor={editor}
             setTextColor={setTextColor}

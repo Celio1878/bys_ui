@@ -1,6 +1,6 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
-import { signin } from "@/app/api/auth/[...nextauth]/signin";
+import { signIn } from "@/app/api/auth/[...nextauth]/signIn";
 import { getSession } from "@/app/api/auth/[...nextauth]/session";
 import { validateToken } from "@/app/api/auth/[...nextauth]/validate-token";
 
@@ -25,7 +25,7 @@ const handler = NextAuth({
   callbacks: {
     jwt: validateToken,
     session: getSession,
-    signIn: signin,
+    signIn: signIn,
     redirect: async () => "/",
   },
   session: { strategy: "jwt" },
