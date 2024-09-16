@@ -13,17 +13,17 @@ export const navbarItems: NavbarItem[] = [
   {
     label: "Aventura",
     key: "adventure",
-    href: "/search?text=adventure&page=1",
+    href: "/search?text=aventura&page=1",
   },
   {
     label: "Comedia",
     key: "comedy",
-    href: "/search?text=comedy&page=1",
+    href: "/search?text=comedia&page=1",
   },
   {
     label: "Fantasia",
     key: "fantasy",
-    href: "/search?text=fantasy&page=1",
+    href: "/search?text=fantasia&page=1",
   },
   {
     label: "Terror",
@@ -33,13 +33,13 @@ export const navbarItems: NavbarItem[] = [
   {
     label: "Suspense",
     key: "thriller",
-    href: "/search?text=thriller&page=1",
+    href: "/search?text=suspense&page=1",
   },
 
   {
     label: "Acao",
     key: "action",
-    href: "/search?text=action&page=1",
+    href: "/search?text=acao&page=1",
   },
   {
     label: "Romance",
