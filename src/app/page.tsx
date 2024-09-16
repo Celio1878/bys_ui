@@ -32,8 +32,6 @@ export default function Home() {
   if (profilesErr)
     return <GlobalError error={profilesErr} reset={getProfiles} />;
 
-  console.log(books);
-
   return (
     <Suspense fallback={<Loading />}>
       <BannerCarousel />

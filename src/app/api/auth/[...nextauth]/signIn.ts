@@ -1,7 +1,6 @@
 import { getProfile } from "@/app/api/auth/[...nextauth]/get-profile";
 import { createProfile } from "@/app/api/auth/[...nextauth]/create-profile";
 import { Account, User } from "next-auth";
-import { AdapterUser } from "next-auth/adapters";
 import { CredentialInput } from "next-auth/providers/credentials";
 
 interface Profile {
@@ -12,7 +11,7 @@ interface Profile {
 }
 
 interface SignInParams {
-  user: User | AdapterUser;
+  user: User;
   account: Account | null;
   profile?: Profile | undefined;
   email?:
@@ -23,10 +22,10 @@ interface SignInParams {
   credentials?: Record<string, CredentialInput>;
 }
 
-export async function signin({ user, account }: SignInParams) {
+export async function signIn({ user, account }: SignInParams) {
   if (account && user) {
     try {
-      const profile = await getProfile(user.email!);
+      const profile = await getProfile(user.id!);
 
       if (!profile) {
         await createProfile(account, user);
