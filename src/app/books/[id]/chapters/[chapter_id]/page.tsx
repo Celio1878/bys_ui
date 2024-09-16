@@ -14,9 +14,11 @@ import { ChapterDto, removeCommentToChapter } from "@/app/model/chapter-dto";
 import { Loading } from "@/components/loading";
 import { Suspense } from "react";
 import { BookDto } from "@/app/model/book-dto";
+import { GoogleLoginButton } from "@/components/buttons/google-login-button";
+import { toast } from "@/components/ui/use-toast";
 
-const CHAPTER_SERVICE_URL = String(process.env.NEXT_PUBLIC_CHAPTERS_API_URL);
 const BOOK_SERVICE_URL = String(process.env.NEXT_PUBLIC_BOOKS_API_URL);
+const CHAPTER_SERVICE_URL = String(process.env.NEXT_PUBLIC_CHAPTERS_API_URL);
 
 export default function ChapterPage() {
   const { id, chapter_id } = useParams();
@@ -32,8 +34,22 @@ export default function ChapterPage() {
     fetcher<ChapterDto>({ token: session?.access_token }).get,
   );
 
-  async function onSuccess() {
-    await getChapter();
+  if (!session) {
+    toast({
+      title: "Você precisa estar logado para LER e COMENTAR!",
+      variant: "destructive",
+      duration: 10000,
+      type: "foreground",
+      role: "alert",
+      action: <GoogleLoginButton />,
+    });
+
+    return (
+      <div className="flex flex-row items-center text-red-500 underline gap-2 min-h-[30rem] md:min-h-[45rem] lg:min-h-[29.5rem]">
+        <GoogleLoginButton />
+        <p>para visualizar e comentar!</p>
+      </div>
+    );
   }
 
   return (
@@ -45,9 +61,11 @@ export default function ChapterPage() {
           chapterTitle={chapter?.title}
           bookTitle={book?.title!}
         />
-        <Card className="w-full py-2 px-6 sm:px-16 bg-gray-50 mt-8 sm:mt-0 dark:bg-yellow-200">
+        <Card className="w-full py-2 px-6 sm:px-16 bg-gray-50 mt-8 sm:mt-0 dark:bg-amber-300 dark:bg-opacity-50">
           <CardHeader>
-            <CardTitle className="text-center">{chapter?.title}</CardTitle>
+            <CardTitle className="text-center text-black">
+              {chapter?.title}
+            </CardTitle>
           </CardHeader>
           <CardContent
             className="flex flex-col gap-1 p-0 leading-6 indent-2.5"
@@ -63,7 +81,11 @@ export default function ChapterPage() {
           </CardHeader>
           <Separator />
           <CardContent className="flex flex-col w-full mt-10 gap-8">
-            <CreateComment chapter={chapter!} onSuccess={onSuccess} />
+            <CreateComment
+              chapter={chapter!}
+              onSuccess={async () => await getChapter()}
+            />
+
             <Separator />
             {chapter?.comments?.map((c) => (
               <Comment

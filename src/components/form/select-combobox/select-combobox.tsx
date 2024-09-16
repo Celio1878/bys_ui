@@ -41,7 +41,6 @@ export const SelectComboBox: FC<SelectComboboxProps> = ({
 
   return (
     <Popover>
-      {" "}
       <ComboboxTrigger buttonText={buttonText} />
       <PopoverContent className="p-0">
         <Command>
@@ -49,7 +48,7 @@ export const SelectComboBox: FC<SelectComboboxProps> = ({
           <CommandList>
             <CommandEmpty>{textOnEmpty}</CommandEmpty>
             <CommandGroup heading={heading}>
-              {listItems.map((item) => (
+              {listItems?.map((item) => (
                 <MemoizedCommandItem
                   key={item.id}
                   item={item}

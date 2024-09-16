@@ -16,8 +16,8 @@ const CHAPTERS_SERVICE_URL = String(process.env.NEXT_PUBLIC_CHAPTERS_API_URL);
 
 export default function NewChapterPage() {
   const { data: session } = useSession() as any;
-  const [title, set_title] = useState("");
-  const [content, set_content] = useState("");
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
   const { id } = useParams();
   const router = useRouter();
   const dateNow = Date.now();
@@ -51,8 +51,8 @@ export default function NewChapterPage() {
       formTitle="Novo Capitulo"
       content={content}
       chapterTitle={title}
-      onTitleChange={set_title}
-      onContentChange={set_content}
+      onTitleChange={setTitle}
+      onContentChange={setContent}
       onSave={() => {
         Promise.all([
           trigger(),
