@@ -47,7 +47,7 @@ export const MyBookChapters: FC<MyBookChaptersProps> = ({ chaptersTags }) => {
         <CardTitle className="text-4xl">Capitulos</CardTitle>
         <NewChapterButton />
       </CardHeader>
-      {chaptersTags.map((chapter) => (
+      {chaptersTags?.map((chapter) => (
         <CardContent
           key={chapter.id}
           className="flex flex-row items-center justify-between w-full text-sm pt-6"

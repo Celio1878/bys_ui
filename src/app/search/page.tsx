@@ -21,20 +21,24 @@ export default function SearchPage() {
   const page = searchParams.get("page");
   const pathname = usePathname();
 
-  const { data } = useSWR(
+  const { data, isLoading } = useSWR(
     `${SERVICE_URL}?text=${text}&page=${page}`,
     fetcher<SearchDto>({}).get,
   );
 
   if (data?.books?.length! === 0 && data?.profiles?.length! === 0) {
     return (
-      <div className="flex flex-col items-center justify-center gap-4">
+      <div className="flex flex-col gap-4">
         <SearchSectionTitle title={text} />
         <h1 className="text-2xl font-bold">
           Nao foram encontrados conteudos com essa pesquisa
         </h1>
       </div>
     );
+  }
+
+  if (isLoading) {
+    return <Loading />;
   }
 
   return (
