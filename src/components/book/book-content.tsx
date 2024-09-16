@@ -35,7 +35,7 @@ export const BookContent: FC<BookContentProps> = ({ book }) => {
     fetcher<ProfileDto>({ token: session?.access_token }).get,
   );
 
-  const liked = book?.followers.some(
+  const liked = book?.followers?.some(
     (follower) => follower.id === session?.user.id,
   );
 
@@ -83,9 +83,10 @@ export const BookContent: FC<BookContentProps> = ({ book }) => {
   }
 
   const inMyLibrary = pathname.includes("profile");
+
   const bookValues: BookDto = {
     ...book!,
-    coauthors: book?.coauthors.concat(book?.author)!,
+    coauthors: book?.coauthors?.concat(book?.author)!,
   };
 
   return (

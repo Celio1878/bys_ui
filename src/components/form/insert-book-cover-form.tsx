@@ -32,7 +32,6 @@ export const InsertBookCoverForm: FC<InsertBookCoverFormProps> = ({
   const handleFileUpload = useCallback(
     async (file: File) => {
       const validateImage = (img: HTMLImageElement): boolean => {
-        // console.log(img.width, img.height, "IMAGE");
         if (img.width >= img.height) {
           toast({
             title: "Imagem inválida.",
