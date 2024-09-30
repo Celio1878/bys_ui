@@ -11,15 +11,27 @@ type DoReq<T> = {
   httpMethod: HttpMethod;
   token?: string;
   body?: T | null;
-  headers?: HeadersInit;
+  headerParams?: HeadersInit;
 };
 
 type Fetcher<T> = {
   body?: T | null;
   token?: string;
+  headers?: HeadersInit;
 };
 
-async function doReq<T>({ httpMethod, url, body, token }: DoReq<T>) {
+async function doReq<T>({
+  httpMethod,
+  url,
+  body,
+  token,
+  headerParams,
+}: DoReq<T>) {
+  const defaultHeaders = {
+    Authorization: !!token ? `Bearer ${token}` : "",
+    "Content-Type": "application/json",
+  };
+
   const res = await fetch(url, {
     method: httpMethod,
     mode: "cors",
@@ -27,10 +39,7 @@ async function doReq<T>({ httpMethod, url, body, token }: DoReq<T>) {
       attributes: { url, httpMethod, token },
       spanName: `fetch - ${url}`,
     },
-    headers: {
-      Authorization: !!token ? `Bearer ${token}` : "",
-      "Content-Type": "application/json",
-    },
+    headers: headerParams ? headerParams : defaultHeaders,
     body: body ? JSON.stringify(body) : null,
   });
 
@@ -47,10 +56,15 @@ async function doReq<T>({ httpMethod, url, body, token }: DoReq<T>) {
   return result.body;
 }
 
-export function fetcher<T>({ body, token }: Fetcher<T>) {
+export function fetcher<T>({ body, token, headers }: Fetcher<T>) {
   return {
     get: async (url: string): Promise<T> =>
-      await doReq<T>({ url, httpMethod: HttpMethod.GET, token }),
+      await doReq<T>({
+        url,
+        httpMethod: HttpMethod.GET,
+        token,
+        headerParams: headers,
+      }),
 
     post: async (url: string): Promise<void> =>
       await doReq<T>({
@@ -58,6 +72,7 @@ export function fetcher<T>({ body, token }: Fetcher<T>) {
         body,
         httpMethod: HttpMethod.POST,
         token,
+        headerParams: headers,
       }),
 
     patch: async (url: string): Promise<void> =>
@@ -66,6 +81,7 @@ export function fetcher<T>({ body, token }: Fetcher<T>) {
         httpMethod: HttpMethod.PATCH,
         body,
         token,
+        headerParams: headers,
       }),
 
     put: async (url: string): Promise<void> =>
@@ -74,9 +90,15 @@ export function fetcher<T>({ body, token }: Fetcher<T>) {
         httpMethod: HttpMethod.PUT,
         body,
         token,
+        headerParams: headers,
       }),
 
     delete: async (url: string): Promise<void> =>
-      await doReq<T>({ url, httpMethod: HttpMethod.DELETE, token }),
+      await doReq<T>({
+        url,
+        httpMethod: HttpMethod.DELETE,
+        token,
+        headerParams: headers,
+      }),
   };
 }
