@@ -4,14 +4,14 @@ import { signIn } from "@/app/api/auth/[...nextauth]/signIn";
 import { getSession } from "@/app/api/auth/[...nextauth]/session";
 import { validateToken } from "@/app/api/auth/[...nextauth]/validate-token";
 
-const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
-const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
+const GOOGLE_CLIENT_ID = String(process.env.GOOGLE_CLIENT_ID);
+const GOOGLE_CLIENT_SECRET = String(process.env.GOOGLE_CLIENT_SECRET);
 
 const handler = NextAuth({
   providers: [
     GoogleProvider({
-      clientId: GOOGLE_CLIENT_ID!,
-      clientSecret: GOOGLE_CLIENT_SECRET!,
+      clientId: GOOGLE_CLIENT_ID,
+      clientSecret: GOOGLE_CLIENT_SECRET,
       allowDangerousEmailAccountLinking: false,
       authorization: {
         params: {

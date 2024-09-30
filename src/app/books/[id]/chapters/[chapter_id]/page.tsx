@@ -22,7 +22,7 @@ const CHAPTER_SERVICE_URL = String(process.env.NEXT_PUBLIC_CHAPTERS_API_URL);
 
 export default function ChapterPage() {
   const { id, chapter_id } = useParams();
-  const { data: session } = useSession() as any;
+  const { data: session, status } = useSession() as any;
 
   const { data: book } = useSWR(
     `${BOOK_SERVICE_URL}/${id}`,
@@ -34,7 +34,9 @@ export default function ChapterPage() {
     fetcher<ChapterDto>({ token: session?.access_token }).get,
   );
 
-  if (!session) {
+  if (!chapter) return <Loading />;
+
+  if (!session || status === "unauthenticated") {
     toast({
       title: "Você precisa estar logado para LER e COMENTAR!",
       variant: "destructive",
