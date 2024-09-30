@@ -3,7 +3,9 @@ import { fetcher } from "@/hooks/fetcher";
 import { CreateProfileDto } from "@/app/model/profile-dto";
 
 const SERVICE_URL = process.env.NEXT_PUBLIC_PROFILES_API_URL;
-const GOOGLE_SIGNIN_ORIGIN = String(process.env.GOOGLE_SIGNIN_ORIGIN);
+const GOOGLE_SIGNIN_ORIGIN = String(
+  process.env.NEXT_PUBLIC_GOOGLE_SIGNIN_ORIGIN,
+);
 
 export async function createProfile(
   account: Account,
