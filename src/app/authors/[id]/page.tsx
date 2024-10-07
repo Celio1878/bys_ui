@@ -72,8 +72,12 @@ export default function AuthorPage() {
       .put,
   );
 
-  const alreadyFollowing = authorProfile?.followers.some(
-    (follower) => follower.id === userProfile?.id,
+  const alreadyFollowing = useMemo(
+    () =>
+      authorProfile?.followers.some(
+        (follower) => follower.id === userProfile?.id,
+      ),
+    [authorProfile?.followers, userProfile?.id],
   );
 
   const removeFollower = useCallback(() => {
@@ -107,19 +111,18 @@ export default function AuthorPage() {
         token: session?.access_token,
       }).put(`${PROFILE_SERVICE_URL}/${id}`),
     ])
-      .then(() => getProfile())
-      .finally(() =>
+      .then(() =>
         toast({
           description: (
             <p className="flex flex-row gap-2 items-center justify-center">
               <Frown /> Voce nao recebera atualizacoes de {authorProfile?.name!}
-              .
             </p>
           ),
           className: "border border-red-500 bg-orange-500 text-white",
           type: "foreground",
         }),
-      );
+      )
+      .finally(() => getProfile());
   }, [
     authorProfile,
     userProfile,
