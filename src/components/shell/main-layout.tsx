@@ -13,7 +13,7 @@ interface MainLayoutProps {
 export const MainLayout: FC<MainLayoutProps> = ({ children }) => {
   return (
     <Suspense fallback={<Loading />}>
-      <main className="flex-1 flex-col min-h-screen">
+      <main className="flex flex-col min-h-screen">
         <Header />
         <NavMenu />
         <Separator />

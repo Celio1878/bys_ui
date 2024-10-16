@@ -101,24 +101,29 @@ export const BookContent: FC<BookContentProps> = ({ book }) => {
           priority={true}
         />
         {!inMyLibrary && (
-          <div className="flex flex-row items-center justify-center gap-6">
-            <Button
-              className="rounded-full hover:text-red-500 transition-all duration-500"
-              variant="ghost"
-              onClick={() =>
-                Promise.all([updateBook(), updateProfile()]).finally(() =>
-                  getProfile(),
-                )
-              }
-            >
-              <Heart
-                className={
-                  liked
-                    ? "text-red-500 animate-pulse scale-110 fill-red-500"
-                    : ""
+          <div className="flex flex-row justify-center gap-6">
+            <div className="flex flex-col  items-center justify-center">
+              <Button
+                className="rounded-full hover:text-red-500 transition-all duration-500"
+                variant="ghost"
+                onClick={() =>
+                  Promise.all([updateBook(), updateProfile()]).finally(() =>
+                    getProfile(),
+                  )
                 }
-              />
-            </Button>
+              >
+                <Heart
+                  className={
+                    liked
+                      ? "text-red-500 animate-pulse scale-110 fill-red-500"
+                      : ""
+                  }
+                />
+              </Button>
+              <span className="text-xs text-gray-400">
+                {book.followers?.length}
+              </span>
+            </div>
             <Button
               className="hover:opacity-50 transition-opacity duration-500"
               title="Compartilhe"

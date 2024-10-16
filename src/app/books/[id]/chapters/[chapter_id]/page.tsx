@@ -83,16 +83,13 @@ export default function ChapterPage() {
           </CardHeader>
           <Separator />
           <CardContent className="flex flex-col w-full mt-10 gap-8">
-            <CreateComment
-              chapter={chapter!}
-              onSuccess={async () => await getChapter()}
-            />
+            <CreateComment chapter={chapter} onSuccess={getChapter} />
 
             <Separator />
-            {chapter?.comments?.map((c) => (
+            {chapter?.comments?.map((comment) => (
               <Comment
-                key={c.id}
-                comment={c}
+                key={comment.id}
+                comment={comment}
                 onRemove={async (id: string) => {
                   const chapterDto = removeCommentToChapter(chapter, id);
                   await fetcher<ChapterDto>({
