@@ -121,7 +121,7 @@ export const BookContent: FC<BookContentProps> = ({ book }) => {
                 />
               </Button>
               <span className="text-xs text-gray-400">
-                {book.followers?.length}
+                {book?.followers?.length}
               </span>
             </div>
             <Button
