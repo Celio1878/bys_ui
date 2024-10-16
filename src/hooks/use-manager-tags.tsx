@@ -15,9 +15,7 @@ export const useManagerTags = ({
   onChange,
 }: UseManagerTagsProps) => {
   const tags: Tag<string>[] = form.watch(name);
-
   const sanitizedTags = useMemo(() => new Set(tags.map((t) => t.id)), [tags]);
-
   const ref: any = useRef(null);
 
   const handleKeyDown = useCallback(

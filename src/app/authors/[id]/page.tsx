@@ -1,7 +1,7 @@
 "use client";
 
 import { Loading } from "@/components/loading";
-import { Suspense, useCallback, useMemo } from "react";
+import { Suspense, useCallback, useMemo, useState } from "react";
 import { useParams } from "next/navigation";
 import { FollowComponent } from "@/components/follow-component";
 import { Card } from "@/components/ui/card";
@@ -17,12 +17,15 @@ import useSWRMutation from "swr/mutation";
 import { useSession } from "next-auth/react";
 import { sanitizeTagList, Tag } from "@/app/model/tags";
 import { Button } from "@/components/ui/button";
+import { ReportButton } from "@/components/buttons/report-button";
+import { ReportDrawer } from "@/components/report-drawer";
 
 const PROFILE_SERVICE_URL = String(process.env.NEXT_PUBLIC_PROFILES_API_URL);
 
 export default function AuthorPage() {
   const { data: session } = useSession() as any;
   const { id } = useParams();
+  const [openReport, setOpenReport] = useState(false);
 
   const { data: authorProfile, mutate: getProfile } = useSWR(
     `${PROFILE_SERVICE_URL}/${id}`,
@@ -158,7 +161,18 @@ export default function AuthorPage() {
           width={150}
           height={150}
         />
-        <h1 className="text-2xl font-bold">{authorProfile?.name}</h1>
+
+        <div className="flex flex-row gap-4 items-center">
+          <h1 className="text-2xl font-bold">{authorProfile?.name}</h1>
+          <span className="absolute right-[24%] md:right-[36%] lg:right-[39%] xl:right-[41%]">
+            <ReportDrawer
+              isOpen={openReport}
+              setIsOpen={setOpenReport}
+              onConfirm={() => {}}
+              trigger={<ReportButton id={"report"} />}
+            />
+          </span>
+        </div>
 
         {session?.user.id !== authorProfile?.id &&
           (!alreadyFollowing ? (
@@ -179,19 +193,20 @@ export default function AuthorPage() {
         />
       </section>
 
-      <h1 className="w-full text-3xl font-bold pb-4">
-        Livros de {authorProfile?.name}
-      </h1>
-
       {authorProfile
         ? authorProfile?.authorship?.length > 0 && (
-            <Card className="flex flex-wrap w-full items-center justify-center gap-8 py-8 bg-zinc-50 dark:bg-neutral-950 dark:border-neutral-950">
-              {authorProfile?.authorship.map((t, k) => {
-                const href = `/books/${t.id}`;
+            <>
+              <h1 className="w-full text-3xl font-bold pb-4">
+                Livros de {authorProfile?.name}
+              </h1>
+              <Card className="flex flex-wrap w-full items-center justify-center gap-8 py-8 bg-zinc-50 dark:bg-neutral-950 dark:border-neutral-950">
+                {authorProfile?.authorship.map((t, k) => {
+                  const href = `/books/${t.id}`;
 
-                return <Book bookTag={t} href={href} key={k} />;
-              })}
-            </Card>
+                  return <Book bookTag={t} href={href} key={k} />;
+                })}
+              </Card>
+            </>
           )
         : null}
     </Suspense>

@@ -4,9 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24dfe38b-6d18-4700-8386-86f955cbefc3" name="Changes" comment="">
+    <list default="true" id="24dfe38b-6d18-4700-8386-86f955cbefc3" name="Changes" comment="feat: New pages and components">
+      <change afterPath="$PROJECT_DIR$/src/app/privacy/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/terms/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/buttons/help-button.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/buttons/report-button.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/form/report-form.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/report-drawer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/aws.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/aws.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/authors/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/authors/[id]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/books/[id]/chapters/[chapter_id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/books/[id]/chapters/[chapter_id]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/book/book-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/book/book-content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/comment.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/comment.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/fields/input-form-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/fields/input-form-field.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shell/contents.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shell/contents.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shell/footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shell/footer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shell/main-layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shell/main-layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/use-manager-tags.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/use-manager-tags.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,8 +31,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="tsconfig.json" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -68,35 +84,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Docker.services-docker.yml.bys-ui: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;code.cleanup.on.save&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
-    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;22.6.0&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;22.3.0&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/swango/Documents/projects/be_your_stories/bys_ui/src/tests&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.stylelint&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.build.executor&quot;: &quot;Run&quot;,
-    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/home/swango/Documents/projects/be_your_stories/bys_ui/node_modules/prettier&quot;,
-    &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.tailwindcss&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/home/swango/Documents/projects/be_your_stories/bys_ui/node_modules/typescript/lib&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Docker.services-docker.yml.bys-ui: Compose Deployment.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "code.cleanup.on.save": "true",
+    "git-widget-placeholder": "develop",
+    "javascript.nodejs.core.library.configured.version": "22.6.0",
+    "javascript.nodejs.core.library.typings.version": "22.3.0",
+    "last_opened_file_path": "/home/swango/Documents/projects/be_your_stories/bys_ui/src/app/terms",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.stylelint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.stylelint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_interpreter_path": "node",
+    "nodejs_package_manager_path": "npm",
+    "npm.build.executor": "Run",
+    "npm.dev.executor": "Run",
+    "prettierjs.PrettierConfiguration.Package": "/home/swango/Documents/projects/be_your_stories/bys_ui/node_modules/prettier",
+    "rearrange.code.on.save": "true",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "configurable.tailwindcss",
+    "ts.external.directory.path": "/home/swango/Documents/projects/be_your_stories/bys_ui/node_modules/typescript/lib"
   }
-}</component>
+}]]></component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -108,6 +124,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/app/terms" />
       <recent name="$PROJECT_DIR$/src/app/api/auth" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -310,6 +327,12 @@
       <workItem from="1728296570428" duration="104000" />
       <workItem from="1728296680087" duration="4224000" />
       <workItem from="1728334127900" duration="2229000" />
+      <workItem from="1728737679505" duration="91000" />
+      <workItem from="1728737776528" duration="3885000" />
+      <workItem from="1728819385573" duration="2751000" />
+      <workItem from="1728903178375" duration="11827000" />
+      <workItem from="1728985000750" duration="12509000" />
+      <workItem from="1729014868270" duration="9774000" />
     </task>
     <task id="LOCAL-00003" summary="feat: Create social icons">
       <option name="closed" value="true" />
@@ -728,7 +751,6 @@
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="style: Loading" />
     <MESSAGE value="ci: Add new libs" />
     <MESSAGE value="ci: Update libs" />
     <MESSAGE value="feat: Mocks" />
@@ -753,7 +775,8 @@
     <MESSAGE value="fix: Styles and get profile on login" />
     <MESSAGE value="fix: SignIn fetcher" />
     <MESSAGE value="fix: Create Profile auth" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: Create Profile auth" />
+    <MESSAGE value="feat: New pages and components" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: New pages and components" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
