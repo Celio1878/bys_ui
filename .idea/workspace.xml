@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24dfe38b-6d18-4700-8386-86f955cbefc3" name="Changes" comment="feat: New pages and components" />
+    <list default="true" id="24dfe38b-6d18-4700-8386-86f955cbefc3" name="Changes" comment="feat: New pages and components">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/books/[id]/chapters/[chapter_id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/books/[id]/chapters/[chapter_id]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/buttons/report-button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/buttons/report-button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/comment.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/comment.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -315,6 +320,7 @@
       <workItem from="1728903178375" duration="11827000" />
       <workItem from="1728985000750" duration="12509000" />
       <workItem from="1729014868270" duration="9774000" />
+      <workItem from="1729160654602" duration="1307000" />
     </task>
     <task id="LOCAL-00003" summary="feat: Create social icons">
       <option name="closed" value="true" />

@@ -56,7 +56,7 @@ export default function ChapterPage() {
 
   return (
     <Suspense fallback={<Loading />}>
-      <div className="max-w-9/12 w-full lg:w-10/12 flex flex-col items-center justify-center gap-10 pt-8">
+      <div className="max-w-9/12 w-full lg:px-28 flex flex-col items-center justify-center gap-10 pt-8">
         <BreadcrumbComponent
           bookLink={`/books/${id}`}
           chaptersLink={`/books/${id}/#chapters`}
@@ -70,7 +70,7 @@ export default function ChapterPage() {
             </CardTitle>
           </CardHeader>
           <CardContent
-            className="flex flex-col gap-1 p-0 leading-6 indent-2.5"
+            className="flex flex-col gap-1 indent-2.5"
             dangerouslySetInnerHTML={{ __html: chapter?.content! }}
           />
         </Card>

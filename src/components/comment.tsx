@@ -35,14 +35,14 @@ export const Comment: FC<CommentProps> = ({ onRemove, comment }) => {
         <span className="flex flex-row items-center gap-2">
           <Image
             className="rounded-full"
-            {...{
-              src: authorProfile?.urlImage!,
-              alt: authorProfile?.name!,
-              width: 40,
-              height: 40,
-              priority: true,
-              quality: 100,
-            }}
+            loading="lazy"
+            decoding="async"
+            src={authorProfile ? authorProfile.urlImage : "/user.png"}
+            alt="Profile's Image"
+            title={authorProfile?.name!}
+            width={40}
+            height={40}
+            quality={100}
           />
           <p className="max-w-[10rem] text-xs opacity-60 text-center">
             {comment.author.title}
