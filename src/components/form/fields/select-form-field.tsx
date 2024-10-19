@@ -21,14 +21,14 @@ interface SelectFormFieldProps {
   label: string;
   placeholder?: string;
   form: UseFormReturn;
-  list_items: Tag<AgeRange | Copyright | Genre>[];
+  listItems: Tag<AgeRange | Copyright | Genre>[];
 }
 
 export const SelectFormField: FC<SelectFormFieldProps> = memo(
-  ({ form, placeholder, label, name, list_items }) => {
+  ({ form, placeholder, label, name, listItems }) => {
     form.watch(name);
 
-    const render_form_field = useCallback(
+    const renderFormField = useCallback(
       ({ field }: any) => (
         <FormItem>
           <FormLabel>{label}</FormLabel>
@@ -39,7 +39,7 @@ export const SelectFormField: FC<SelectFormFieldProps> = memo(
               </SelectTrigger>
             </FormControl>
             <SelectContent>
-              {list_items.map((item) => (
+              {listItems.map((item) => (
                 <SelectItem
                   className="cursor-pointer hover:font-semibold opacity-100"
                   key={item.id}
@@ -53,15 +53,11 @@ export const SelectFormField: FC<SelectFormFieldProps> = memo(
           <FormMessage />
         </FormItem>
       ),
-      [label, placeholder, list_items],
+      [label, placeholder, listItems],
     );
 
     return (
-      <FormField
-        control={form.control}
-        name={name}
-        render={render_form_field}
-      />
+      <FormField control={form.control} name={name} render={renderFormField} />
     );
   },
 );

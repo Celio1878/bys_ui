@@ -5,6 +5,7 @@ export type Tag<T> = {
 
 export enum Genre {
   ORIGINAL = "original",
+  FANFIC = "fanfic",
   ADVENTURE = "adventure",
   ACTION = "action",
   TERROR = "terror",
@@ -48,6 +49,7 @@ export enum AgeRange {
 
 export const GenreTags: Tag<Genre>[] = [
   { id: Genre.ORIGINAL, title: "Original" },
+  { id: Genre.FANFIC, title: "Fanfic" },
   { id: Genre.TERROR, title: "Terror" },
   { id: Genre.ADVENTURE, title: "Aventura" },
   { id: Genre.ACTION, title: "Acao" },

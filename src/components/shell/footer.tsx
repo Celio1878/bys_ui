@@ -36,7 +36,6 @@ export const Footer: FC = memo(() => {
           <ReportDrawer
             isOpen={openReport}
             setIsOpen={setOpenReport}
-            onConfirm={() => {}}
             trigger={<HelpButton />}
           />
         </div>

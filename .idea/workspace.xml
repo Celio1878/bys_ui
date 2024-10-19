@@ -5,10 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24dfe38b-6d18-4700-8386-86f955cbefc3" name="Changes" comment="feat: New pages and components">
+      <change afterPath="$PROJECT_DIR$/src/app/model/report-dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/aws.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/aws.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/auth/error/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/auth/error/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/authors/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/authors/[id]/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/books/[id]/chapters/[chapter_id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/books/[id]/chapters/[chapter_id]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/buttons/report-button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/buttons/report-button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/global-error.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/global-error.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/model/tags.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/model/tags.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/not-found.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/not-found.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/search/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/search/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/comment.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/comment.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/fields/input-form-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/fields/input-form-field.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/fields/select-form-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/fields/select-form-field.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/new-book-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/new-book-form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/report-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/report-form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/loading.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/loading.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/report-drawer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/report-drawer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shell/footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shell/footer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/navbar-items.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/navbar-items.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,9 +35,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript File" />
         <option value="tsconfig.json" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -97,7 +114,8 @@
     &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;configurable.tailwindcss&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/home/swango/Documents/projects/be_your_stories/bys_ui/node_modules/typescript/lib&quot;
+    &quot;ts.external.directory.path&quot;: &quot;/home/swango/Documents/projects/be_your_stories/bys_ui/node_modules/typescript/lib&quot;,
+    &quot;ts.rename.search.for.dynamic.occurrences&quot;: &quot;true&quot;
   }
 }</component>
   <component name="ReactDesignerToolWindowState">
@@ -321,6 +339,8 @@
       <workItem from="1728985000750" duration="12509000" />
       <workItem from="1729014868270" duration="9774000" />
       <workItem from="1729160654602" duration="1307000" />
+      <workItem from="1729341663692" duration="22000" />
+      <workItem from="1729341692220" duration="6075000" />
     </task>
     <task id="LOCAL-00003" summary="feat: Create social icons">
       <option name="closed" value="true" />
@@ -739,7 +759,6 @@
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="ci: Add new libs" />
     <MESSAGE value="ci: Update libs" />
     <MESSAGE value="feat: Mocks" />
     <MESSAGE value="feat: Add author in book form" />
@@ -764,7 +783,8 @@
     <MESSAGE value="fix: SignIn fetcher" />
     <MESSAGE value="fix: Create Profile auth" />
     <MESSAGE value="feat: New pages and components" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: New pages and components" />
+    <MESSAGE value="fix: button and image props" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: button and image props" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

@@ -9,6 +9,7 @@ import Image from "next/image";
 import { DeleteButton } from "@/components/buttons/delete-button";
 import { ReportDrawer } from "@/components/report-drawer";
 import { ReportButton } from "@/components/buttons/report-button";
+import { useParams } from "next/navigation";
 
 interface CommentProps {
   comment: CommentData;
@@ -21,6 +22,7 @@ export const Comment: FC<CommentProps> = ({ onRemove, comment }) => {
   const { data: session } = useSession() as any;
   const userId = session?.user.id;
   const date = format(comment.createdAt, "dd/MM/yyyy");
+  const { id: bookId } = useParams();
 
   const [openReport, setOpenReport] = useState(false);
 
@@ -61,8 +63,8 @@ export const Comment: FC<CommentProps> = ({ onRemove, comment }) => {
           <ReportDrawer
             isOpen={openReport}
             setIsOpen={setOpenReport}
-            onConfirm={() => {}}
             trigger={<ReportButton id={"report"} />}
+            complements={{ ...comment, bookId }}
           />
         )}
       </div>
