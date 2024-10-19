@@ -8,7 +8,7 @@ import { signIn } from "next-auth/react";
 
 export default function AuthError() {
   return (
-    <>
+    <section className="w-full flex flex-col items-center">
       <Image
         {...{
           src: "/website-maintenance.gif",
@@ -20,7 +20,7 @@ export default function AuthError() {
           unoptimized: true,
         }}
       />
-      <section className="relative bottom-10 w-full flex flex-col items-center gap-6 bg-slate-200 dark:bg-slate-900 rounded-md py-10">
+      <div className="w-full flex flex-col items-center gap-6 bg-slate-200 dark:bg-slate-900 rounded-md py-10">
         <h1 className="text-3xl sm:text-4xl text-slate-900 dark:text-white underline text-center">
           Aconteceu algo não planejado!
         </h1>
@@ -35,7 +35,7 @@ export default function AuthError() {
           </Link>
           <Button onClick={() => signIn("google")}>Tente de Novo</Button>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }

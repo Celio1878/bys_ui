@@ -11,6 +11,11 @@ export const navbarItems: NavbarItem[] = [
     href: "/search?text=original&page=1",
   },
   {
+    label: "Fanfic",
+    key: "fanfic",
+    href: "/search?text=fanfic&page=1",
+  },
+  {
     label: "Aventura",
     key: "adventure",
     href: "/search?text=aventura&page=1",

@@ -12,13 +12,14 @@ import useSWR from "swr";
 import { fetcher } from "@/hooks/fetcher";
 import { ChapterDto, removeCommentToChapter } from "@/app/model/chapter-dto";
 import { Loading } from "@/components/loading";
-import { Suspense } from "react";
+import { Suspense, useCallback, useEffect, useMemo } from "react";
 import { BookDto } from "@/app/model/book-dto";
 import { GoogleLoginButton } from "@/components/buttons/google-login-button";
 import { toast } from "@/components/ui/use-toast";
 
 const BOOK_SERVICE_URL = String(process.env.NEXT_PUBLIC_BOOKS_API_URL);
 const CHAPTER_SERVICE_URL = String(process.env.NEXT_PUBLIC_CHAPTERS_API_URL);
+const UNAUTHENTICATED_MESSAGE = "Você precisa logar para LER e COMENTAR!";
 
 export default function ChapterPage() {
   const { id, chapter_id } = useParams();
@@ -27,32 +28,67 @@ export default function ChapterPage() {
   const { data: book } = useSWR(
     `${BOOK_SERVICE_URL}/${id}`,
     fetcher<BookDto>({}).get,
+    { revalidateOnFocus: false },
   );
 
-  const { data: chapter, mutate: getChapter } = useSWR(
+  const {
+    data: chapter,
+    mutate: getChapter,
+    isLoading,
+  } = useSWR(
     session && `${CHAPTER_SERVICE_URL}/${chapter_id}?bookId=${id}`,
     fetcher<ChapterDto>({ token: session?.access_token }).get,
+    { revalidateOnFocus: false },
   );
 
-  if (!chapter) return <Loading />;
+  const handleRemoveComment = useCallback(
+    async (commentId: string) => {
+      if (!chapter) return;
+      const chapterDto = removeCommentToChapter(chapter, commentId);
+      await fetcher<ChapterDto>({
+        token: session?.access_token,
+        body: chapterDto,
+      }).put(`${CHAPTER_SERVICE_URL}/${chapter_id}?bookId=${id}`);
+      await getChapter();
+    },
+    [chapter, session?.access_token, chapter_id, id, getChapter],
+  );
 
-  if (!session || status === "unauthenticated") {
-    toast({
-      title: "Você precisa estar logado para LER e COMENTAR!",
-      variant: "destructive",
-      duration: 10000,
-      type: "foreground",
-      role: "alert",
-      action: <GoogleLoginButton />,
-    });
+  const memoizedChapterContent = useMemo(
+    () => (
+      <CardContent
+        className="flex flex-col gap-1 indent-2.5"
+        dangerouslySetInnerHTML={{ __html: chapter?.content || "" }}
+      />
+    ),
+    [chapter?.content],
+  );
 
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      const tenSeconds = 10000;
+
+      toast({
+        title: UNAUTHENTICATED_MESSAGE,
+        variant: "destructive",
+        duration: tenSeconds,
+        type: "foreground",
+        role: "alert",
+        action: <GoogleLoginButton />,
+      });
+    }
+  }, [status]);
+
+  if (status === "unauthenticated") {
     return (
-      <div className="flex flex-row items-center text-red-500 underline gap-2 min-h-[30rem] md:min-h-[45rem] lg:min-h-[29.5rem]">
+      <div className="flex flex-row items-center justify-center text-red-500 underline gap-2 min-h-[30rem] md:min-h-[45rem] lg:min-h-[29.5rem]">
         <GoogleLoginButton />
-        <p>para visualizar e comentar!</p>
+        <span>para visualizar!</span>
       </div>
     );
   }
+
+  if (isLoading) return <Loading />;
 
   return (
     <Suspense fallback={<Loading />}>
@@ -69,12 +105,8 @@ export default function ChapterPage() {
               {chapter?.title}
             </CardTitle>
           </CardHeader>
-          <CardContent
-            className="flex flex-col gap-1 indent-2.5"
-            dangerouslySetInnerHTML={{ __html: chapter?.content! }}
-          />
+          {memoizedChapterContent}
         </Card>
-
         <ChaptersPagination chaptersTags={book?.chapters!} />
         <Separator />
         <Card className="max-w-full sm:max-w-11/12 lg:max-w-9/12 w-full md:w-10/12 flex flex-col bg-slate-50">
@@ -83,21 +115,13 @@ export default function ChapterPage() {
           </CardHeader>
           <Separator />
           <CardContent className="flex flex-col w-full mt-10 gap-8">
-            <CreateComment chapter={chapter} onSuccess={getChapter} />
-
+            <CreateComment chapter={chapter!} onSuccess={getChapter} />
             <Separator />
             {chapter?.comments?.map((comment) => (
               <Comment
                 key={comment.id}
                 comment={comment}
-                onRemove={async (id: string) => {
-                  const chapterDto = removeCommentToChapter(chapter, id);
-                  await fetcher<ChapterDto>({
-                    token: session?.access_token,
-                    body: chapterDto,
-                  }).put(`${CHAPTER_SERVICE_URL}/${chapter_id}?bookId=${id}`);
-                  await getChapter();
-                }}
+                onRemove={handleRemoveComment}
               />
             ))}
           </CardContent>

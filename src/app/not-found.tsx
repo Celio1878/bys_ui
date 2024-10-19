@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 export default function NotFound() {
   return (
-    <>
+    <section className="w-full flex flex-col items-center">
       <Image
         {...{
           src: "/website-maintenance.gif",
@@ -26,6 +26,6 @@ export default function NotFound() {
           <Link href="/">Voltar para a página inicial</Link>
         </Button>
       </div>
-    </>
+    </section>
   );
 }

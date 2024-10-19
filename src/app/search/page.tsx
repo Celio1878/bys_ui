@@ -64,8 +64,8 @@ export default function SearchPage() {
                     className="rounded-full"
                     src={p.urlImage}
                     alt={p.name}
-                    width={100}
-                    height={100}
+                    width={80}
+                    height={80}
                   />
                   {p.name}
                 </div>

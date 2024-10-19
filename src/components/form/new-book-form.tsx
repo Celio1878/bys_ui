@@ -52,7 +52,7 @@ export const NewBookForm: FC = () => {
             label={"Categorias"}
             form={form}
             placeholder={"Selecione uma categoria"}
-            list_items={GenreTags}
+            listItems={GenreTags}
             key={"genre"}
           />
 
@@ -61,7 +61,7 @@ export const NewBookForm: FC = () => {
             label={"Faixa Etaria"}
             form={form}
             placeholder={"Selecione a faixa etaria"}
-            list_items={AgeRangeTags}
+            listItems={AgeRangeTags}
             key={"age_range"}
           />
 
@@ -77,7 +77,7 @@ export const NewBookForm: FC = () => {
             name={"copyright"}
             label={"Direitos Autorais"}
             form={form}
-            list_items={CopyrightTags}
+            listItems={CopyrightTags}
             placeholder={"Selecione o Copyright"}
             key={"copyright"}
           />

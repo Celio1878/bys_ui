@@ -14,7 +14,7 @@ export default function GlobalError({ error, reset }: GlobalErrorProps) {
   console.error(error, "ERROR");
 
   return (
-    <>
+    <section className="w-full flex flex-col items-center">
       <Image
         {...{
           src: "/website-maintenance.gif",
@@ -26,7 +26,7 @@ export default function GlobalError({ error, reset }: GlobalErrorProps) {
           unoptimized: true,
         }}
       />
-      <section className="relative bottom-10 w-full flex flex-col items-center gap-6 bg-slate-200 dark:bg-slate-900 rounded-md py-10">
+      <div className="relative bottom-10 w-full flex flex-col items-center gap-6 bg-slate-200 dark:bg-slate-900 rounded-md py-10">
         <h1 className="text-3xl sm:text-4xl text-slate-900 dark:text-white underline text-center">
           Aconteceu algo não planejado!
         </h1>
@@ -41,7 +41,7 @@ export default function GlobalError({ error, reset }: GlobalErrorProps) {
           </Link>
           <Button onClick={reset}>Tente de Novo</Button>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }

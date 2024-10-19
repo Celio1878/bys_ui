@@ -18,10 +18,10 @@ interface InputFormFieldProps {
 }
 
 export const InputFormField: FC<InputFormFieldProps> = memo(
-  ({ name, label, form, placeholder = "", disabled }) => {
+  ({ name, label, form, placeholder, disabled }) => {
     form.watch(name);
 
-    const render_form_field = useCallback(
+    const renderFormField = useCallback(
       ({ field }: any) => (
         <FormItem>
           <FormLabel>{label}</FormLabel>
@@ -39,7 +39,7 @@ export const InputFormField: FC<InputFormFieldProps> = memo(
         disabled={disabled}
         control={form.control}
         name={name}
-        render={render_form_field}
+        render={renderFormField}
       />
     );
   },

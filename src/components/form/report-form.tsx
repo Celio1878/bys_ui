@@ -1,6 +1,6 @@
 import { Form } from "@/components/ui/form";
 import { Checkbox } from "@/components/ui/checkbox";
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useMemo, useState } from "react";
 import { useFormContext } from "react-hook-form";
 import useSWR from "swr";
 import { fetcher } from "@/hooks/fetcher";
@@ -21,16 +21,19 @@ export const ReportForm: FC = () => {
     fetcher<ProfileDto[]>({}).get,
   );
 
-  const authorTagList = profiles?.map(({ id, name }) => ({ id, title: name }));
+  const authorTagList = useMemo(
+    () => profiles?.map(({ id, name }) => ({ id, title: name })),
+    [profiles],
+  );
 
   const { data: session, status } = useSession();
 
   useEffect(() => {
-    if (status === "authenticated") {
-      form.setValue("name", session?.user?.name);
-      form.setValue("email", session?.user?.email);
+    if (status === "authenticated" && session.user) {
+      form.setValue("name", session.user.name);
+      form.setValue("email", session.user.email);
     }
-  }, [status]);
+  }, [session, status]);
 
   return (
     <Form {...form}>
@@ -80,18 +83,18 @@ export const ReportForm: FC = () => {
           </label>
         </div>
 
-        {reportUser ? (
+        {reportUser && authorTagList && (
           <SelectItemsSearchFormField
             form={form}
             listItems={authorTagList!}
             label={""}
             name={"profile"}
             buttonText={"Selecione o perfil"}
-            heading={""}
+            heading={"Perfis"}
             textOnEmpty={"Nenhum perfil encontrado"}
             inputPlaceholder={"Procurar pelo perfil..."}
           />
-        ) : null}
+        )}
       </form>
     </Form>
   );

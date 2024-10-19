@@ -168,7 +168,6 @@ export default function AuthorPage() {
             <ReportDrawer
               isOpen={openReport}
               setIsOpen={setOpenReport}
-              onConfirm={() => {}}
               trigger={<ReportButton id={"report"} />}
             />
           </span>
