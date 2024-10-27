@@ -101,7 +101,7 @@ export default function ChapterPage() {
         />
         <Card className="w-full py-2 px-6 sm:px-16 bg-gray-50 mt-8 sm:mt-0 dark:bg-amber-300 dark:bg-opacity-50">
           <CardHeader>
-            <CardTitle className="text-center text-black">
+            <CardTitle className="text-center font-semibold text-2xl md:text-3xl">
               {chapter?.title}
             </CardTitle>
           </CardHeader>
