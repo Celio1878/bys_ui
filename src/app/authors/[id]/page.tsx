@@ -17,8 +17,7 @@ import useSWRMutation from "swr/mutation";
 import { useSession } from "next-auth/react";
 import { sanitizeTagList, Tag } from "@/app/model/tags";
 import { Button } from "@/components/ui/button";
-import { ReportButton } from "@/components/buttons/report-button";
-import { ReportDrawer } from "@/components/report-drawer";
+import { FollowAndReport } from "@/components/follow-and-report";
 
 const PROFILE_SERVICE_URL = String(process.env.NEXT_PUBLIC_PROFILES_API_URL);
 
@@ -162,28 +161,29 @@ export default function AuthorPage() {
           height={150}
         />
 
-        <div className="flex flex-row gap-4 items-center">
-          <h1 className="text-2xl font-bold">{authorProfile?.name}</h1>
-          <span className="absolute right-[24%] md:right-[36%] lg:right-[39%] xl:right-[41%]">
-            <ReportDrawer
-              isOpen={openReport}
-              setIsOpen={setOpenReport}
-              trigger={<ReportButton id={"report"} />}
-            />
-          </span>
-        </div>
+        <h1 className="text-2xl font-bold">{authorProfile?.name}</h1>
 
         {session?.user.id !== authorProfile?.id &&
           (!alreadyFollowing ? (
-            <FollowButton onClick={handleFollow} />
+            <FollowAndReport
+              openReport={openReport}
+              setOpenReport={setOpenReport}
+              followButton={<FollowButton onClick={handleFollow} />}
+            />
           ) : (
-            <Button
-              className="flex flex-row gap-1 text-white"
-              variant={"destructive"}
-              onClick={removeFollower}
-            >
-              <UserRoundMinus /> Seguir
-            </Button>
+            <FollowAndReport
+              openReport={openReport}
+              setOpenReport={setOpenReport}
+              followButton={
+                <Button
+                  className="flex flex-row gap-1 text-white"
+                  variant={"destructive"}
+                  onClick={removeFollower}
+                >
+                  <UserRoundMinus /> Seguir
+                </Button>
+              }
+            />
           ))}
 
         <FollowComponent

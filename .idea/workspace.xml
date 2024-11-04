@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24dfe38b-6d18-4700-8386-86f955cbefc3" name="Changes" comment="feat: New pages and components">
-      <change afterPath="$PROJECT_DIR$/src/components/books-carousel-section.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/main-profile-card.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/main-profile-section.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="24dfe38b-6d18-4700-8386-86f955cbefc3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/follow-and-report.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/authors/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/authors/[id]/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/carousel/banner-carousel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/carousel/banner-carousel.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/banner-images.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/banner-images.tsx" afterDir="false" />
     </list>
@@ -31,7 +29,7 @@
     <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="develop" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -73,36 +71,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Docker.services-docker.yml.bys-ui: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;code.cleanup.on.save&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;staging&quot;,
-    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;22.6.0&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;22.3.0&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/swango/Documents/projects/be_your_stories/bys_ui/src/app/terms&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.stylelint&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.build.executor&quot;: &quot;Run&quot;,
-    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/home/swango/Documents/projects/be_your_stories/bys_ui/node_modules/prettier&quot;,
-    &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.tailwindcss&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/home/swango/Documents/projects/be_your_stories/bys_ui/node_modules/typescript/lib&quot;,
-    &quot;ts.rename.search.for.dynamic.occurrences&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Docker.services-docker.yml.bys-ui: Compose Deployment.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "code.cleanup.on.save": "true",
+    "git-widget-placeholder": "develop",
+    "javascript.nodejs.core.library.configured.version": "22.6.0",
+    "javascript.nodejs.core.library.typings.version": "22.3.0",
+    "last_opened_file_path": "/home/swango/Documents/projects/be_your_stories/bys_ui/src/app/terms",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.stylelint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.stylelint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_interpreter_path": "node",
+    "nodejs_package_manager_path": "npm",
+    "npm.build.executor": "Run",
+    "npm.dev.executor": "Run",
+    "prettierjs.PrettierConfiguration.Package": "/home/swango/Documents/projects/be_your_stories/bys_ui/node_modules/prettier",
+    "rearrange.code.on.save": "true",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "configurable.tailwindcss",
+    "ts.external.directory.path": "/home/swango/Documents/projects/be_your_stories/bys_ui/node_modules/typescript/lib",
+    "ts.rename.search.for.dynamic.occurrences": "true"
   }
-}</component>
+}]]></component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -334,14 +332,6 @@
       <workItem from="1730111854848" duration="3966000" />
       <workItem from="1730716164771" duration="25000" />
       <workItem from="1730716196822" duration="5896000" />
-    </task>
-    <task id="LOCAL-00005" summary="ci: Git Ignore">
-      <option name="closed" value="true" />
-      <created>1714592960947</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1714592960947</updated>
     </task>
     <task id="LOCAL-00006" summary="feat: Nav Menu">
       <option name="closed" value="true" />
@@ -727,7 +717,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730731751436</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="fix: Banner Images imports">
+      <option name="closed" value="true" />
+      <created>1730732038046</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1730732038046</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -752,7 +750,6 @@
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat: Authors page" />
     <MESSAGE value="feat: Create follow data components" />
     <MESSAGE value="feat: Authors link" />
     <MESSAGE value="feat: Project" />
@@ -777,7 +774,8 @@
     <MESSAGE value="style: Chapter title" />
     <MESSAGE value="fix: Portuguese language" />
     <MESSAGE value="fix: Banner Images" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: Banner Images" />
+    <MESSAGE value="fix: Banner Images imports" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: Banner Images imports" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
