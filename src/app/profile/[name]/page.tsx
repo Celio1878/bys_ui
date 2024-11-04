@@ -69,8 +69,8 @@ export default function ProfilePage() {
                   <RemoveChapterToast
                     onRemove={async () => {
                       try {
-                        await deleteAccount();
                         await deleteBooks();
+                        await deleteAccount();
                       } catch (error) {
                         console.error("Error during deletion:", error);
                       } finally {

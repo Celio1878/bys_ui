@@ -23,8 +23,7 @@ export const NewBookDrawerButtons: FC<BookDrawerButtonsProps> = ({
     !bookValues.description ||
     !bookValues.genre ||
     !bookValues.copyright ||
-    !bookValues.ageRange ||
-    bookValues.warnings.length === 0;
+    !bookValues.ageRange;
 
   switch (tabName) {
     case "content":
