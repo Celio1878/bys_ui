@@ -1,4 +1,4 @@
-import { FC, useCallback } from "react";
+import { FC, useCallback, useMemo } from "react";
 import { Card, CardDescription } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { fetcher } from "@/hooks/fetcher";
@@ -7,8 +7,8 @@ import { useFormContext } from "react-hook-form";
 import { useSession } from "next-auth/react";
 import { toast } from "@/components/ui/use-toast";
 
-const SERVICE_URL = String(process.env.NEXT_PUBLIC_BOOKS_API_URL);
-const BUCKET_URL = String(process.env.NEXT_PUBLIC_BUCKET_URL);
+const SERVICE_URL = process.env.NEXT_PUBLIC_BOOKS_API_URL;
+const BUCKET_URL = process.env.NEXT_PUBLIC_BUCKET_URL;
 
 interface InsertBookCoverFormProps {
   bookId: string;
@@ -20,34 +20,38 @@ export const InsertBookCoverForm: FC<InsertBookCoverFormProps> = ({
   onUpdateCover,
 }) => {
   const { data: session } = useSession() as any;
+  const form = useFormContext();
 
   const { trigger } = useSWRMutation(
     `${SERVICE_URL}/${bookId}/cover`,
     fetcher<string>({ token: session?.access_token }).get,
   );
 
-  const form = useFormContext();
-  form.setValue("cover", `${BUCKET_URL}/books/${bookId}/cover.jpeg`);
+  const coverUrl = useMemo(
+    () => `${BUCKET_URL}/books/${bookId}/cover.jpeg`,
+    [bookId],
+  );
+  form.setValue("cover", coverUrl);
+
+  const validateImage = useCallback((img: HTMLImageElement) => {
+    if (img.width >= img.height) {
+      toast({
+        title: "Imagem inválida.",
+        description: (
+          <span>
+            A imagem deve ter formato <b>RETRATO</b>.
+          </span>
+        ),
+        variant: "destructive",
+        type: "foreground",
+      });
+      return false;
+    }
+    return true;
+  }, []);
 
   const handleFileUpload = useCallback(
     async (file: File) => {
-      const validateImage = (img: HTMLImageElement): boolean => {
-        if (img.width >= img.height) {
-          toast({
-            title: "Imagem inválida.",
-            description: (
-              <span>
-                A imagem deve ter formato <b>RETRATO</b>.
-              </span>
-            ),
-            variant: "destructive",
-            type: "foreground",
-          });
-          return false;
-        }
-        return true;
-      };
-
       try {
         const isValid = await new Promise<boolean>((resolve) => {
           const img = new Image();
@@ -58,7 +62,9 @@ export const InsertBookCoverForm: FC<InsertBookCoverFormProps> = ({
         if (!isValid) return;
 
         const s3Url = await trigger();
-        const res = await fetch(s3Url!, {
+        if (!s3Url) throw new Error("Failed to get S3 URL");
+
+        const res = await fetch(s3Url, {
           body: file,
           method: "PUT",
           headers: { "Content-Type": file.type },
@@ -77,7 +83,7 @@ export const InsertBookCoverForm: FC<InsertBookCoverFormProps> = ({
         });
       }
     },
-    [trigger, onUpdateCover, form],
+    [trigger, onUpdateCover, validateImage, form],
   );
 
   return (

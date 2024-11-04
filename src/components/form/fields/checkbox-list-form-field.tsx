@@ -15,11 +15,11 @@ interface CheckboxListFormFieldProps {
   form: UseFormReturn;
   label: string;
   name: string;
-  list_items: Tag<Warning>[];
+  listItems: Tag<Warning>[];
 }
 
 export const CheckboxListFormField: FC<CheckboxListFormFieldProps> = ({
-  list_items,
+  listItems,
   form,
   label,
   name,
@@ -35,7 +35,7 @@ export const CheckboxListFormField: FC<CheckboxListFormFieldProps> = ({
     <FormItem>
       <FormLabel>{label}</FormLabel>
       <div className="grid grid-flow-row-dense grid-cols-2 gap-3">
-        {list_items.map((item) => (
+        {listItems.map((item) => (
           <FormField
             key={item.id}
             control={form.control}

@@ -21,9 +21,9 @@ export const navbarItems: NavbarItem[] = [
     href: "/search?text=aventura&page=1",
   },
   {
-    label: "Comedia",
+    label: "Comédia",
     key: "comedy",
-    href: "/search?text=comedia&page=1",
+    href: "/search?text=comédia&page=1",
   },
   {
     label: "Fantasia",
@@ -42,9 +42,9 @@ export const navbarItems: NavbarItem[] = [
   },
 
   {
-    label: "Acao",
+    label: "Ação",
     key: "action",
-    href: "/search?text=acao&page=1",
+    href: "/search?text=ação&page=1",
   },
   {
     label: "Romance",
