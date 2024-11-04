@@ -21,8 +21,10 @@ import { Trash2 } from "lucide-react";
 import useSWRMutation from "swr/mutation";
 import { toast } from "@/components/ui/use-toast";
 import { RemoveChapterToast } from "@/components/remove-chapter-toast";
+import { BookDto } from "@/app/model/book-dto";
 
 const PROFILE_SERVICE_URL = String(process.env.NEXT_PUBLIC_PROFILES_API_URL);
+const BOOK_SERVICE_URL = String(process.env.NEXT_PUBLIC_BOOKS_API_URL);
 
 export default function ProfilePage() {
   const pathname = usePathname();
@@ -109,14 +111,40 @@ export default function ProfilePage() {
                       />
                       <DeleteButton
                         onClick={async () => {
-                          const authorship = removeAuthorship(profile, t.id);
-                          await Promise.all([
-                            deleteBook(t.id),
-                            fetcher({
-                              body: authorship,
+                          const authors = [profile];
+
+                          const book = await fetcher<BookDto>({
+                            token: session?.access_token,
+                          }).get(`${BOOK_SERVICE_URL}/${t.id}`);
+
+                          for (const coauthor of book.coauthors) {
+                            const author = await fetcher<ProfileDto>({
                               token: session?.access_token,
-                            }).put(`${PROFILE_SERVICE_URL}/${profile?.id}`),
-                          ]).then(() => getProfile());
+                            }).get(`${PROFILE_SERVICE_URL}/${coauthor.id}`);
+
+                            authors.push(author);
+                          }
+
+                          const authorships = authors.map((author) =>
+                            removeAuthorship(author, t.id),
+                          );
+
+                          Promise.all(
+                            authorships.map((authorship, k) =>
+                              fetcher({
+                                body: authorship,
+                                token: session?.access_token,
+                              }).put(`${PROFILE_SERVICE_URL}/${authorship.id}`),
+                            ),
+                          )
+                            .then(() => deleteBook(t.id))
+                            .finally(() => getProfile());
+
+                          toast({
+                            title: "Livro removido!",
+                            type: "foreground",
+                            role: "status",
+                          });
                         }}
                       />
                     </div>
