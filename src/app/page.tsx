@@ -3,15 +3,13 @@
 import { BannerCarousel } from "@/components/carousel/banner-carousel";
 import { Suspense } from "react";
 import { Loading } from "@/components/loading";
-import { BooksCarousel } from "@/components/carousel/books-carousel";
 import useSWR from "swr";
 import { fetcher } from "@/hooks/fetcher";
 import GlobalError from "@/app/global-error";
 import { BookDto } from "@/app/model/book-dto";
 import { ProfileDto } from "@/app/model/profile-dto";
-import Image from "next/image";
-import Link from "next/link";
-import { GenreTags } from "@/app/model/tags";
+import { MainProfilesSection } from "@/components/main-profile-section";
+import { BooksCarouselSection } from "@/components/books-carousel-section";
 
 const BOOKS_SERVICE_URL = process.env.NEXT_PUBLIC_BOOKS_API_URL!;
 const PROFILES_SERVICE_URL = process.env.NEXT_PUBLIC_PROFILES_API_URL!;
@@ -35,65 +33,8 @@ export default function Home() {
   return (
     <Suspense fallback={<Loading />}>
       <BannerCarousel />
-      <section className="flex flex-col gap-20 md:w-full">
-        {books?.length! > 0 && (
-          <BooksCarousel
-            key={"highlighted"}
-            sectionTitle={"Destaques"}
-            books={books!}
-          />
-        )}
-
-        {GenreTags.map((section) => {
-          const booksByGenre = books?.filter(
-            (book) => book.genre.id === section.id,
-          );
-
-          if (!booksByGenre || booksByGenre.length === 0) return null;
-
-          return (
-            <BooksCarousel
-              key={section.id}
-              sectionTitle={section.title}
-              books={booksByGenre}
-            />
-          );
-        })}
-      </section>
-
-      <section className="w-full flex flex-col gap-8 justify-center items-center mt-28">
-        <h1 className="font-bold text-3xl underline underline-offset-4">
-          Principais Autores
-        </h1>
-        <div className="flex flex-wrap gap-4 justify-center items-center">
-          {profiles?.map((profile) => (
-            <div
-              className="w-28 flex justify-center items-center"
-              key={profile.id}
-            >
-              <Link
-                className="text-sm hover:underline transition-all duration-150"
-                href={`authors/${profile.id}`}
-              >
-                <div className="flex flex-col justify-center items-center gap-2">
-                  <Image
-                    className="rounded-full hover:scale-125 transition-all duration-150"
-                    {...{
-                      src: profile.urlImage,
-                      alt: profile.name,
-                      width: 70,
-                      height: 70,
-                      priority: true,
-                      quality: 100,
-                    }}
-                  />
-                  <span className="text-xs text-center">{profile.name}</span>
-                </div>
-              </Link>
-            </div>
-          ))}
-        </div>
-      </section>
+      <BooksCarouselSection books={books!} />
+      <MainProfilesSection profiles={profiles!} />
     </Suspense>
   );
 }
