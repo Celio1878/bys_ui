@@ -4,7 +4,7 @@ export const bannerImages = [
   <picture key={`banner-pic-${1}`}>
     <source
       media="(max-width: 767px)"
-      srcSet={`${BUCKET_URL}/banners/mobile_img1.jpg`}
+      srcSet={`${BUCKET_URL}/banners/desktop_img1.png`}
     />
     <source
       media="(max-width: 1024px)"
@@ -17,14 +17,14 @@ export const bannerImages = [
 
     <img
       src={`${BUCKET_URL}/banners/desktop_img1.png`}
-      className="w-full object-contain md:object-cover rounded-lg"
+      className="w-[40rem] object-contain md:object-cover rounded-lg"
       alt={"banner"}
     />
   </picture>,
   <picture key={`banner-pic-${2}`}>
     <source
       media="(max-width: 767px)"
-      srcSet={`${BUCKET_URL}/banners/mobile_img2.jpg`}
+      srcSet={`${BUCKET_URL}/banners/desktop_img2.png`}
     />
     <source
       media="(max-width: 1024px)"
@@ -37,14 +37,14 @@ export const bannerImages = [
 
     <img
       src={`${BUCKET_URL}/banners/desktop_img2.png`}
-      className="w-full object-contain md:object-cover rounded-lg"
+      className="w-[40rem] object-contain md:object-cover rounded-lg"
       alt={"banner"}
     />
   </picture>,
   <picture key={`banner-pic-${3}`}>
     <source
       media="(max-width: 767px)"
-      srcSet={`${BUCKET_URL}/banners/mobile_img3.jpg`}
+      srcSet={`${BUCKET_URL}/banners/desktop_img3.png`}
     />
     <source
       media="(max-width: 1024px)"
@@ -57,7 +57,7 @@ export const bannerImages = [
 
     <img
       src={`${BUCKET_URL}/banners/desktop_img3.png`}
-      className="w-full object-contain md:object-cover rounded-lg"
+      className="w-[40rem] object-contain md:object-cover rounded-lg"
       alt={"banner"}
     />
   </picture>,
