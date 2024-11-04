@@ -60,15 +60,25 @@ export default function NewChapterPage() {
             body: upsertBookChapters(book!, dto),
             token: session?.access_token,
           }).put(`${BOOK_SERVICE_URL}/${id}`),
-        ]).then(() => {
-          toast({
-            className: "bg-violet-500 text-white",
-            title: `Capitulo ${dto.title} criado!`,
-            description: "Livro atualizado com sucesso!",
-            type: "foreground",
-          });
-          router.back();
-        });
+        ])
+          .then(() => {
+            toast({
+              className: "bg-violet-500 text-white",
+              title: `Capitulo ${dto.title} criado!`,
+              description: "Livro atualizado com sucesso!",
+              type: "foreground",
+            });
+            router.back();
+            return;
+          })
+          .catch((error) =>
+            toast({
+              title: "Erro ao salvar capitulo",
+              description: String(error),
+              type: "foreground",
+              variant: "destructive",
+            }),
+          );
       }}
     />
   );

@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24dfe38b-6d18-4700-8386-86f955cbefc3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/aws.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/aws.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/profile/[name]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/profile/[name]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/buttons/new-book-drawer-buttons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/buttons/new-book-drawer-buttons.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/profile/[name]/books/[id]/chapters/new-chapter/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/profile/[name]/books/[id]/chapters/new-chapter/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/chapter/chapter-form-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/chapter/chapter-form-card.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -333,6 +332,7 @@
       <workItem from="1730716164771" duration="25000" />
       <workItem from="1730716196822" duration="5896000" />
       <workItem from="1730751050286" duration="323000" />
+      <workItem from="1730751995676" duration="2038000" />
     </task>
     <task id="LOCAL-00006" summary="feat: Nav Menu">
       <option name="closed" value="true" />
@@ -751,7 +751,6 @@
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat: Create follow data components" />
     <MESSAGE value="feat: Authors link" />
     <MESSAGE value="feat: Project" />
     <MESSAGE value="fix: Refresh token and syntax" />
@@ -776,7 +775,8 @@
     <MESSAGE value="fix: Portuguese language" />
     <MESSAGE value="fix: Banner Images" />
     <MESSAGE value="fix: Banner Images imports" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: Banner Images imports" />
+    <MESSAGE value="fix: Create book with no warnings" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: Create book with no warnings" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
