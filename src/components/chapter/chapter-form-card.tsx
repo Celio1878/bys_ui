@@ -54,7 +54,7 @@ export const ChapterFormCard: FC<ChapterFormCardProps> = ({
             onClick={onSave}
             disabled={!chapterTitle || content.length < 10}
           >
-            Salvar Capitulo
+            Salvar
           </Button>
         </CardFooter>
       </Card>
