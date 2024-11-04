@@ -26,7 +26,7 @@ export const BannerCarousel: FC = () => {
         <CarouselContent>
           {bannerImages.map((img, i) => (
             <CarouselItem key={i}>
-              <div className="px-1.5">{img}</div>
+              <div className="justify-self-center">{img}</div>
             </CarouselItem>
           ))}
         </CarouselContent>
