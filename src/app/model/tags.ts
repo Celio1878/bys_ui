@@ -52,7 +52,7 @@ export const GenreTags: Tag<Genre>[] = [
   { id: Genre.FANFIC, title: "Fanfic" },
   { id: Genre.TERROR, title: "Terror" },
   { id: Genre.ADVENTURE, title: "Aventura" },
-  { id: Genre.ACTION, title: "Acao" },
+  { id: Genre.ACTION, title: "Ação" },
   { id: Genre.FANTASY, title: "Fantasia" },
   { id: Genre.HUMOR, title: "Humor" },
   { id: Genre.ROMANCE, title: "Romance" },
@@ -61,7 +61,7 @@ export const GenreTags: Tag<Genre>[] = [
 
 export const CopyrightTags: Tag<Copyright>[] = [
   { id: Copyright.PRIVATE, title: "Todos os Direitos Reservados" },
-  { id: Copyright.PUBLIC, title: "Dominio Publico" },
+  { id: Copyright.PUBLIC, title: "Domínio Público" },
 ];
 
 export const AgeRangeTags: Tag<AgeRange>[] = [
@@ -83,7 +83,7 @@ export const WarningTags: Tag<Warning>[] = [
   { id: Warning.INAPPROPRIATE_LANGUAGE, title: "Linguagem Imprópria" },
   { id: Warning.INTERSEXUALITY, title: "Intersexualidade" },
   { id: Warning.RAPE, title: "Estupro" },
-  { id: Warning.SENSITIVE_CONTENT, title: "Conteudo Sensivel" },
+  { id: Warning.SENSITIVE_CONTENT, title: "Conteúdo sensível" },
   { id: Warning.SEX, title: "Sexo" },
   { id: Warning.SPOILERS, title: "Spoilers" },
   { id: Warning.SUICIDE, title: "Suicídio" },

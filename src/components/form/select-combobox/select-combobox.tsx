@@ -45,7 +45,7 @@ export const SelectComboBox: FC<SelectComboboxProps> = ({
       <PopoverContent className="p-0">
         <Command>
           <CommandInput placeholder={inputPlaceholder} />
-          <CommandList>
+          <CommandList className="max-h-60 overflow-y-auto">
             <CommandEmpty>{textOnEmpty}</CommandEmpty>
             <CommandGroup heading={heading}>
               {listItems?.map((item) => (

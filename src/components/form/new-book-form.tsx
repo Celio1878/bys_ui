@@ -39,7 +39,7 @@ export const NewBookForm: FC = () => {
     <Card className="max-h-[25rem] px-8 py-4 mt-2 bg-slate-50 overflow-y-scroll">
       <Form {...form}>
         <form className="space-y-6">
-          <InputFormField form={form} name={"title"} label={"Titulo"} />
+          <InputFormField form={form} name={"title"} label={"Título"} />
 
           <TextAreaFormField
             name={"description"}
@@ -58,9 +58,9 @@ export const NewBookForm: FC = () => {
 
           <SelectFormField
             name={"ageRange"}
-            label={"Faixa Etaria"}
+            label={"Faixa Etária"}
             form={form}
-            placeholder={"Selecione a faixa etaria"}
+            placeholder={"Selecione a faixa etária"}
             listItems={AgeRangeTags}
             key={"age_range"}
           />
@@ -68,7 +68,7 @@ export const NewBookForm: FC = () => {
           <CheckboxListFormField
             form={form}
             name={"warnings"}
-            list_items={WarningTags}
+            listItems={WarningTags}
             label={"Alertas"}
             key={"warnings"}
           />
@@ -97,7 +97,7 @@ export const NewBookForm: FC = () => {
             label={"CoAutores"}
             inputPlaceholder={"Procure pelo autor ..."}
             heading={"Autores"}
-            textOnEmpty={"Autor nao encontrado."}
+            textOnEmpty={"Autor não encontrado."}
             buttonText={"Selecione os CoAutores"}
             key={"coauthors"}
           />

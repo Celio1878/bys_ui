@@ -30,9 +30,7 @@ export default function SearchPage() {
     return (
       <div className="flex flex-col gap-4">
         <SearchSectionTitle title={text} />
-        <h1 className="text-2xl font-bold">
-          Nao foram encontrados conteudos com essa pesquisa
-        </h1>
+        <h1 className="text-2xl font-bold">Nenhum resultado foi encontrado</h1>
       </div>
     );
   }

@@ -57,16 +57,16 @@ export const ReportForm: FC = () => {
         <InputFormField
           key="report-title"
           name="reportTitle"
-          label="Titulo"
+          label="Título"
           form={form}
         />
 
         <TextAreaFormField
           key="report-description"
           name="reportDescription"
-          label="Descricao"
+          label="Descrição"
           form={form}
-          placeholder="Insira a descricao do problema..."
+          placeholder="Insira a descrição do problema..."
         />
 
         <div className="flex items-center gap-2">
