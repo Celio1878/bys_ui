@@ -5,15 +5,17 @@ interface CarouselDotsProps {
   current: number;
   count: number;
   api?: EmblaCarouselType;
+  banner?: boolean;
 }
 
 export const CarouselDots: FC<CarouselDotsProps> = ({
   current,
   count,
   api,
+  banner,
 }) => {
   return (
-    <div className="flex justify-center gap-3 mt-2">
+    <div className={`flex justify-center gap-3 ${banner ? "" : "mt-2"}`}>
       {Array.from({ length: count }).map((_, index) => (
         <div key={index}>
           {count > 1 && (

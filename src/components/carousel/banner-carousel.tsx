@@ -8,13 +8,22 @@ import {
 import { bannerImages } from "@/utils/banner-images";
 import { CarouselDots } from "@/components/carousel/carousel-dots";
 import { useCarouselComponent } from "@/lib/use-carousel-component";
+import { useInView } from "react-intersection-observer";
+import { motion } from "framer-motion";
 
 export const BannerCarousel: FC = () => {
-  const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.5 });
+  const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: false }));
   const { current, count, setApi, api } = useCarouselComponent();
 
   return (
-    <section className="flex flex-col items-center justify-center mt-2 mb-20">
+    <motion.section
+      ref={ref}
+      className="flex flex-col items-center justify-center mt-2 mb-20"
+      initial={{ opacity: 0, y: 20 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.8 }}
+    >
       <Carousel
         setApi={setApi}
         opts={{ loop: true }}
@@ -25,13 +34,13 @@ export const BannerCarousel: FC = () => {
       >
         <CarouselContent>
           {bannerImages.map((img, i) => (
-            <CarouselItem key={i}>
+            <CarouselItem key={`carousel-item-${i}`}>
               <div className="place-self-center">{img}</div>
             </CarouselItem>
           ))}
         </CarouselContent>
       </Carousel>
-      <CarouselDots {...{ api, count, current }} />
-    </section>
+      <CarouselDots {...{ api, count, current, banner: true }} />
+    </motion.section>
   );
 };
