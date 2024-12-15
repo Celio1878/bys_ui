@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useMemo } from "react";
+import React, { FC, useMemo } from "react";
 import { useParams } from "next/navigation";
 import {
   Pagination,
@@ -12,6 +12,7 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 import { Tag } from "@/app/model/tags";
+import { normalizeText } from "@/utils/remove-accents";
 
 interface ChaptersPaginationProps {
   chaptersTags: Tag<string>[];
@@ -21,9 +22,13 @@ export const ChaptersPagination: FC<ChaptersPaginationProps> = ({
   chaptersTags,
 }) => {
   const { chapter_id } = useParams();
+  const chapterIdSanitized = normalizeText(chapter_id.toString());
 
   const getChapterIndex = useMemo(
-    () => (t: Tag<string>) => t.id === chapter_id,
+    () => (t: Tag<string>) => {
+      const tagIdSanitized = normalizeText(t.id);
+      return tagIdSanitized === chapterIdSanitized;
+    },
     [chapter_id],
   );
 
@@ -46,10 +51,61 @@ export const ChaptersPagination: FC<ChaptersPaginationProps> = ({
   const getPreviousClassName = () =>
     `${currentChapter.index === 0 ? "cursor-not-allowed opacity-50" : ""} text-xs`;
 
-  const minChapterLength = useMemo(
-    () => Math.min(2, chaptersTags?.length),
-    [chaptersTags?.length],
-  );
+  const getNextHref = () =>
+    currentChapter.index < chaptersTags?.length - 1
+      ? `${chaptersTags[currentChapter.index + 1].id}`
+      : "";
+
+  const getNextClassName = () =>
+    `${currentChapter.index === chaptersTags?.length - 1 ? "cursor-not-allowed opacity-50" : ""} text-xs`;
+
+  const visiblePages = useMemo(() => {
+    const totalPages = chaptersTags?.length || 0;
+    const current = currentChapter.index;
+
+    if (totalPages <= 7) {
+      return chaptersTags?.map((_, i) => i);
+    }
+
+    let pages = [0];
+
+    if (current > 2) {
+      pages.push(-1);
+    }
+
+    for (
+      let i = Math.max(1, current - 1);
+      i <= Math.min(current + 1, totalPages - 2);
+      i++
+    ) {
+      pages.push(i);
+    }
+
+    if (current < totalPages - 3) {
+      pages.push(-1);
+    }
+
+    pages.push(totalPages - 1);
+
+    return pages;
+  }, [chaptersTags?.length, currentChapter.index]);
+
+  const isFirstPage = currentChapter.index === 0;
+  const isLastPage = currentChapter.index === chaptersTags?.length - 1;
+
+  const handlePreviousClick = (e: React.MouseEvent) => {
+    if (isFirstPage) {
+      e.preventDefault();
+      return;
+    }
+  };
+
+  const handleNextClick = (e: React.MouseEvent) => {
+    if (isLastPage) {
+      e.preventDefault();
+      return;
+    }
+  };
 
   return (
     <Pagination>
@@ -58,46 +114,32 @@ export const ChaptersPagination: FC<ChaptersPaginationProps> = ({
           <PaginationPrevious
             className={getPreviousClassName()}
             href={getPreviousHref()}
+            onClick={handlePreviousClick}
           />
         </PaginationItem>
-        {chaptersTags?.slice(0, minChapterLength).map((c, i) => (
-          <PaginationItem key={i}>
-            <PaginationLink
-              className="text-xs"
-              key={c.id}
-              href={c.id}
-              isActive={currentChapter.index === i}
-            >
-              {i + 1}
-            </PaginationLink>
-          </PaginationItem>
-        ))}
-
-        {chaptersTags?.length - 2 && chaptersTags?.length > 3 ? (
-          <PaginationItem>
-            <PaginationEllipsis />
-          </PaginationItem>
-        ) : null}
-
-        {chaptersTags?.map((t, i, chapters) =>
-          i === chapters.length - 1 && i > 3 ? (
-            <PaginationItem key={i}>
+        {visiblePages?.map((page) =>
+          page === -1 ? (
+            <PaginationItem key={`ellipsis-${page}`}>
+              <PaginationEllipsis />
+            </PaginationItem>
+          ) : (
+            <PaginationItem key={page}>
               <PaginationLink
                 className="text-xs"
-                key={t.id}
-                href={t.id}
-                isActive={currentChapter.index === i}
+                href={chaptersTags[page].id}
+                isActive={currentChapter.index === page}
               >
-                {i + 1}
+                {page + 1}
               </PaginationLink>
             </PaginationItem>
-          ) : null,
+          ),
         )}
 
         <PaginationItem>
           <PaginationNext
-            className={`${currentChapter.index === chaptersTags?.length - 1 && "cursor-not-allowed opacity-50"} text-xs`}
-            href={`${currentChapter.index < chaptersTags?.length - 1 ? `${chaptersTags[currentChapter.index + 1].id}` : ""} `}
+            className={getNextClassName()}
+            href={getNextHref()}
+            onClick={handleNextClick}
           />
         </PaginationItem>
       </PaginationContent>

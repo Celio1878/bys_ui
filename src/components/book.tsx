@@ -15,10 +15,10 @@ const BUCKET_URL = String(process.env.NEXT_PUBLIC_BUCKET_URL);
 export const Book: FC<BookProps> = ({ bookTag, buttons, href }) => {
   return (
     <Suspense fallback={<Loading />}>
-      <div className="flex flex-col w-32 max-h-[30rem] gap-2 items-center">
+      <div className="flex flex-col w-32 h-full gap-2 items-center">
         <Link href={href}>
           <Image
-            className="object-cover cursor-pointer hover:scale-105 hover:shadow-lg hover:shadow-black/50 hover:opacity-90 transition duration-500"
+            className="w-full h-[13rem] object-fill cursor-pointer hover:scale-105 hover:shadow-lg hover:shadow-black/50 hover:opacity-90 transition duration-500"
             src={`${BUCKET_URL}/books/${bookTag.id}/cover.jpeg`}
             alt={bookTag.title}
             width={120}

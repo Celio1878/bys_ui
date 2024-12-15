@@ -13,7 +13,7 @@ export const ChapterTitleFormField: FC<ChapterTitleFormFieldProps> = ({
 }) => {
   return (
     <div className="flex flex-col w-full items-start gap-y-1">
-      <Label>Titulo</Label>
+      <Label>Título</Label>
       <Input
         type="text"
         id="chapter-title"

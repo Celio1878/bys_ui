@@ -4,6 +4,7 @@ import { NewBookForm } from "@/components/form/new-book-form";
 import { InsertBookCoverForm } from "@/components/form/insert-book-cover-form";
 import { BookItemsConfirmForm } from "@/components/form/book-items-confirm-form";
 import { useSession } from "next-auth/react";
+import { normalizeText } from "@/utils/remove-accents";
 
 interface NewBookStepsProps {
   tabName: string;
@@ -18,11 +19,14 @@ export const NewBookSteps: FC<NewBookStepsProps> = ({
 }) => {
   const { data: session } = useSession() as any;
   const bookId =
-    bookDto.title
-      .toLowerCase()
-      .replaceAll(" ", "-")
-      .replaceAll(".", "")
-      .replaceAll(",", "") +
+    normalizeText(
+      bookDto.title
+        .toLowerCase()
+        .trim()
+        .replaceAll(" ", "-")
+        .replaceAll(".", "")
+        .replaceAll(",", ""),
+    ) +
     "-" +
     session?.user?.id;
 

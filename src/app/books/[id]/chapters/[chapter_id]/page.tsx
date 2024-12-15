@@ -57,7 +57,7 @@ export default function ChapterPage() {
   const memoizedChapterContent = useMemo(
     () => (
       <CardContent
-        className="flex flex-col gap-1 indent-2.5"
+        className="p-3 sm:py-6 flex flex-col gap-1 indent-2.5"
         dangerouslySetInnerHTML={{ __html: chapter?.content || "" }}
       />
     ),
@@ -99,7 +99,7 @@ export default function ChapterPage() {
           chapterTitle={chapter?.title}
           bookTitle={book?.title!}
         />
-        <Card className="w-full py-2 px-6 sm:px-16 bg-gray-50 mt-8 sm:mt-0 dark:bg-amber-300 dark:bg-opacity-50">
+        <Card className="w-full py-2 sm:px-16 bg-gray-50 mt-8 sm:mt-0 dark:bg-amber-300 dark:bg-opacity-50">
           <CardHeader>
             <CardTitle className="text-center font-semibold text-2xl md:text-3xl">
               {chapter?.title}
@@ -111,7 +111,7 @@ export default function ChapterPage() {
         <Separator />
         <Card className="max-w-full sm:max-w-11/12 lg:max-w-9/12 w-full md:w-10/12 flex flex-col bg-slate-50">
           <CardHeader>
-            <CardTitle>Comentarios</CardTitle>
+            <CardTitle>Comentários</CardTitle>
           </CardHeader>
           <Separator />
           <CardContent className="flex flex-col w-full mt-10 gap-8">

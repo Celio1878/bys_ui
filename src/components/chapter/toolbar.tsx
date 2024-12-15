@@ -7,6 +7,7 @@ import {
   BoldIcon,
   HighlighterIcon,
   ItalicIcon,
+  Pilcrow,
   SquareSplitVertical,
   UnderlineIcon,
 } from "lucide-react";
@@ -86,6 +87,15 @@ export const Toolbar: FC<ToolbarProps> = memo(
           onClick={() => editor.chain().focus().setHorizontalRule().run()}
         >
           <SquareSplitVertical size={20} />
+        </Button>
+
+        <Button
+          title="Parágrafo"
+          variant="outline"
+          aria-label="Paragraph"
+          onClick={() => editor.chain().focus().setParagraph().run()}
+        >
+          <Pilcrow size={20} />
         </Button>
 
         <ColorPicker color={textColor} setColor={setTextColor} />

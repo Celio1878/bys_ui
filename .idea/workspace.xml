@@ -5,15 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24dfe38b-6d18-4700-8386-86f955cbefc3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/main-page/features-section.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/main-page/hello-section.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/main-page/join-us-section.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/main-page/security-section.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/remove-accents.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/books/[id]/chapters/[chapter_id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/books/[id]/chapters/[chapter_id]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/model/book-dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/model/book-dto.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/buttons/google-login-button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/buttons/google-login-button.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/carousel/banner-carousel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/carousel/banner-carousel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/profile/[name]/books/[id]/chapters/new-chapter/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/profile/[name]/books/[id]/chapters/new-chapter/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/search/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/search/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/book.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/book.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/books-carousel-section.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/books-carousel-section.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/carousel/books-carousel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/carousel/books-carousel.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/carousel/carousel-dots.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/carousel/carousel-dots.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/main-profile-section.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main-profile-section.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/chapter/toolbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/chapter/toolbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/chapters-pagination.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/chapters-pagination.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/fields/chapter-content-form-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/fields/chapter-content-form-field.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/fields/chapter-title-form-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/fields/chapter-title-form-field.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/new-book-steps.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/new-book-steps.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shell/contents.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shell/contents.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/carousel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/carousel.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,8 +37,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="tsconfig.json" />
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -102,7 +115,7 @@
     &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/home/swango/Documents/projects/be_your_stories/bys_ui/node_modules/prettier&quot;,
     &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.tailwindcss&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.inline.completion&quot;,
     &quot;ts.external.directory.path&quot;: &quot;/home/swango/Documents/projects/be_your_stories/bys_ui/node_modules/typescript/lib&quot;,
     &quot;ts.rename.search.for.dynamic.occurrences&quot;: &quot;true&quot;
   }
@@ -165,16 +178,13 @@
       <list>
         <item itemvalue="npm.dev" />
         <item itemvalue="npm.build" />
-        <item itemvalue="npm.dev" />
-        <item itemvalue="npm.build" />
-        <item itemvalue="npm.dev" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-WS-243.21565.180" />
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-WS-243.22562.112" />
       </set>
     </attachedChunks>
   </component>
@@ -343,6 +353,12 @@
       <workItem from="1732474260367" duration="33000" />
       <workItem from="1732474311150" duration="3904000" />
       <workItem from="1732521512913" duration="7862000" />
+      <workItem from="1732530004503" duration="9000" />
+      <workItem from="1732530022290" duration="51000" />
+      <workItem from="1734213890753" duration="259000" />
+      <workItem from="1734214171612" duration="138000" />
+      <workItem from="1734271053985" duration="5709000" />
+      <workItem from="1734286991991" duration="12909000" />
     </task>
     <task id="LOCAL-00007" summary="feat: Main layout">
       <option name="closed" value="true" />
@@ -786,7 +802,6 @@
     <MESSAGE value="fix: Banner Images imports" />
     <MESSAGE value="fix: Create book with no warnings" />
     <MESSAGE value="fix: Remove book from authorship" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: Remove book from authorship" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
