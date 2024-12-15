@@ -44,7 +44,7 @@ export default function SearchPage() {
       <div className="w-full flex flex-col gap-4">
         <SearchSectionTitle title={text} />
 
-        <Card className="flex flex-wrap w-full items-center justify-center gap-8 py-8 bg-zinc-50 dark:bg-neutral-950 dark:border-neutral-950">
+        <Card className="flex flex-wrap w-full justify-center gap-8 py-8 px-2 bg-zinc-50 dark:bg-neutral-950 dark:border-neutral-950">
           {data?.books?.map((b, k) => {
             const href = `/books/${b?.id}`;
             return <Book bookTag={b} href={href} key={k} />;
@@ -53,7 +53,7 @@ export default function SearchPage() {
             const href = `/authors/${p?.id}`;
             return (
               <Link
-                className="hover:underline hover:font-semibold transition-all duration-150"
+                className="hover:underline hover:font-semibold transition-all duration-150 content-center"
                 key={k}
                 href={href}
               >

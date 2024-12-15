@@ -1,6 +1,7 @@
 import { BookFormValues } from "@/utils/form-data";
 import { AgeRange, Copyright, Tag, Warning } from "@/app/model/tags";
 import { CreateChapter } from "@/app/model/chapter-dto";
+import { normalizeText } from "@/utils/remove-accents";
 
 export type BookDto = {
   id: string;
@@ -47,11 +48,14 @@ export function createBookDto(
 ): CreateBookDto {
   return {
     id:
-      bookValues.title
-        .toLowerCase()
-        .replaceAll(" ", "-")
-        .replaceAll(".", "")
-        .replaceAll(",", "") +
+      normalizeText(
+        bookValues.title
+          .toLowerCase()
+          .trim()
+          .replaceAll(" ", "-")
+          .replaceAll(".", "")
+          .replaceAll(",", ""),
+      ) +
       "-" +
       authorTag.id,
     title: bookValues.title,

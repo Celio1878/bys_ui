@@ -15,7 +15,7 @@ export const CarouselDots: FC<CarouselDotsProps> = ({
   banner,
 }) => {
   return (
-    <div className={`flex justify-center gap-3 ${banner ? "" : "mt-2"}`}>
+    <div className="flex justify-center gap-3">
       {Array.from({ length: count }).map((_, index) => (
         <div key={index}>
           {count > 1 && (

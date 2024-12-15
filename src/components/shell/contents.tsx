@@ -6,7 +6,7 @@ interface ContentsProps {
 
 export const Contents: FC<ContentsProps> = ({ children }) => {
   return (
-    <section className="flex-grow flex-col items-center justify-center py-12 container">
+    <section className="flex-grow flex-col items-center justify-center py-12 container px-3 sm:px-[2rem]">
       {children}
     </section>
   );

@@ -5,7 +5,7 @@ import { GenreTags } from "@/app/model/tags";
 
 export const BooksCarouselSection: FC<{ books: BookDto[] }> = ({ books }) => {
   return (
-    <section className="flex flex-col gap-20 md:w-full">
+    <section className="flex flex-col gap-12 md:w-full px-2">
       {books?.length! > 0 && (
         <BooksCarousel
           key={"highlighted"}

@@ -10,6 +10,7 @@ import { useSession } from "next-auth/react";
 import { toast } from "@/components/ui/use-toast";
 import { BookDto, upsertBookChapters } from "@/app/model/book-dto";
 import useSWR from "swr";
+import { normalizeText } from "@/utils/remove-accents";
 
 const BOOK_SERVICE_URL = String(process.env.NEXT_PUBLIC_BOOKS_API_URL);
 const CHAPTERS_SERVICE_URL = String(process.env.NEXT_PUBLIC_CHAPTERS_API_URL);
@@ -24,11 +25,14 @@ export default function NewChapterPage() {
 
   const dto: CreateChapter = {
     id:
-      title
-        .toLowerCase()
-        .replaceAll(" ", "-")
-        .replaceAll(".", "")
-        .replaceAll(",", "") + String(dateNow),
+      normalizeText(
+        title
+          .toLowerCase()
+          .trim()
+          .replaceAll(" ", "-")
+          .replaceAll(".", "")
+          .replaceAll(",", ""),
+      ) + String(dateNow),
     bookId: String(id),
     title: title,
     content: content,
@@ -48,7 +52,7 @@ export default function NewChapterPage() {
 
   return (
     <ChapterFormCard
-      formTitle="Novo Capitulo"
+      formTitle="Novo Capítulo"
       content={content}
       chapterTitle={title}
       onTitleChange={setTitle}
@@ -64,7 +68,7 @@ export default function NewChapterPage() {
           .then(() => {
             toast({
               className: "bg-violet-500 text-white",
-              title: `Capitulo ${dto.title} criado!`,
+              title: `Capítulo ${dto.title} criado!`,
               description: "Livro atualizado com sucesso!",
               type: "foreground",
             });
@@ -73,7 +77,7 @@ export default function NewChapterPage() {
           })
           .catch((error) =>
             toast({
-              title: "Erro ao salvar capitulo",
+              title: "Erro ao salvar capítulo",
               description: String(error),
               type: "foreground",
               variant: "destructive",

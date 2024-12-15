@@ -11,6 +11,7 @@ import { Color } from "@tiptap/extension-color";
 import TextStyle from "@tiptap/extension-text-style";
 import TextAlign from "@tiptap/extension-text-align";
 import { Toolbar } from "@/components/chapter/toolbar";
+import { Paragraph } from "@tiptap/extension-paragraph";
 
 interface ChapterContentFormFieldProps {
   content: string;
@@ -31,6 +32,7 @@ export const ChapterContentFormField: FC<ChapterContentFormFieldProps> = ({
       Typography,
       Color,
       TextStyle,
+      Paragraph,
       TextAlign.configure({
         types: ["heading", "paragraph"],
         alignments: ["left", "center", "right"],
@@ -62,7 +64,7 @@ export const ChapterContentFormField: FC<ChapterContentFormFieldProps> = ({
 
   return (
     <div className="flex flex-col w-full items-start gap-y-1">
-      <Label>Conteudo</Label>
+      <Label>Conteúdo</Label>
       <Card className="w-full py-6 sm:py-0 sm:p-8">
         <CardContent className="flex flex-col gap-y-4 dark:bg-amber-300 dark:bg-opacity-50 py-4">
           <Toolbar
