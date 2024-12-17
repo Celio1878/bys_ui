@@ -5,28 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24dfe38b-6d18-4700-8386-86f955cbefc3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/main-page/features-section.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/main-page/hello-section.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/main-page/join-us-section.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/main-page/security-section.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/remove-accents.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/books/[id]/chapters/[chapter_id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/books/[id]/chapters/[chapter_id]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/model/book-dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/model/book-dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/profile/[name]/books/[id]/chapters/new-chapter/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/profile/[name]/books/[id]/chapters/new-chapter/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/search/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/search/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/book.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/book.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/books-carousel-section.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/books-carousel-section.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/carousel/books-carousel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/carousel/books-carousel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/carousel/carousel-dots.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/carousel/carousel-dots.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/chapter/toolbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/chapter/toolbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/chapters-pagination.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/chapters-pagination.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/form/fields/chapter-content-form-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/fields/chapter-content-form-field.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/form/fields/chapter-title-form-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/fields/chapter-title-form-field.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/new-book-steps.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/new-book-steps.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/shell/contents.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shell/contents.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/carousel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/carousel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/book/book-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/book/book-content.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +79,7 @@
     &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
     &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;22.10.0&quot;,
     &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;22.9.3&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/swango/Documents/projects/be_your_stories/bys_ui/src/app/terms&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/swango/Documents/projects/be_your_stories/bys_mobile&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
@@ -178,6 +158,9 @@
       <list>
         <item itemvalue="npm.dev" />
         <item itemvalue="npm.build" />
+        <item itemvalue="npm.dev" />
+        <item itemvalue="npm.build" />
+        <item itemvalue="npm.dev" />
       </list>
     </recent_temporary>
   </component>
@@ -359,6 +342,7 @@
       <workItem from="1734214171612" duration="138000" />
       <workItem from="1734271053985" duration="5709000" />
       <workItem from="1734286991991" duration="12909000" />
+      <workItem from="1734398708288" duration="327000" />
     </task>
     <task id="LOCAL-00007" summary="feat: Main layout">
       <option name="closed" value="true" />
