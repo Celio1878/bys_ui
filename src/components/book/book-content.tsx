@@ -23,7 +23,7 @@ interface BookContentProps {
 export const BookContent: FC<BookContentProps> = ({ book }) => {
   const { data: session } = useSession() as any;
   const pathname = usePathname();
-  const bysUrl = `https://beyourstories.com/${pathname}`;
+  const bysUrl = `https://beyourstories.com.br${pathname}`;
 
   const userTag: Tag<string> = {
     id: session?.user?.id!,
