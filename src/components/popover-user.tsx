@@ -16,7 +16,7 @@ export const PopoverUser: FC<Props> = ({ session }) => {
         <UserImage
           width={100}
           height={100}
-          className={"cursor-pointer w-12 h-12"}
+          className={"cursor-pointer w-12 h-10 md:w-12 md:h-12"}
         />
       </PopoverTrigger>
       <PopoverInfUser {...{ session }} />

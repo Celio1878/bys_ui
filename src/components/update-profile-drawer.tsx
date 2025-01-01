@@ -57,6 +57,7 @@ export const UpdateProfileDrawer: FC<EditProfileProps> = ({
           role: "status",
         });
         setOpenForm(false);
+        onSuccess();
         form.reset();
       })
       .catch((err) =>
@@ -67,8 +68,7 @@ export const UpdateProfileDrawer: FC<EditProfileProps> = ({
           role: "status",
           variant: "destructive",
         }),
-      )
-      .finally(onSuccess);
+      );
   }
 
   const handleUploadImage = useCallback(
@@ -98,7 +98,9 @@ export const UpdateProfileDrawer: FC<EditProfileProps> = ({
         if (!res.ok) throw new Error(res.statusText);
 
         const urlImage = s3Url.split("?")[0];
-        setUrlImage(urlImage);
+
+        setUrlImage(urlImage + `?:t=${Date.now()}`);
+        form.setValue("picture", urlImage);
         setImageVersion(imageVersion + 1);
       } catch (error) {
         console.error("Upload failed:", error);
@@ -116,7 +118,8 @@ export const UpdateProfileDrawer: FC<EditProfileProps> = ({
   useEffect(() => {
     form.setValue("username", profile.username || profile.name);
     form.setValue("bio", profile.bio);
-  }, [form, profile, handleUploadImage]);
+    form.setValue("picture", profile.urlImage);
+  }, [form, profile, handleUploadImage, urlImage]);
 
   return (
     <Dialog
