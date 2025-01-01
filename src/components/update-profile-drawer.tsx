@@ -110,7 +110,7 @@ export const UpdateProfileDrawer: FC<EditProfileProps> = ({
   );
 
   useEffect(() => {
-    form.setValue("username", profile.username);
+    form.setValue("username", profile.username || profile.name);
     form.setValue("bio", profile.bio);
   }, [form, profile, handleUploadImage]);
 

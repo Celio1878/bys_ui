@@ -1,4 +1,4 @@
-import { DefaultSession, User } from "next-auth";
+import { DefaultSession } from "next-auth";
 import { AdapterUser } from "next-auth/adapters";
 import { JWT } from "next-auth/jwt";
 import { getProfile } from "@/app/api/auth/[...nextauth]/get-profile";
@@ -20,9 +20,10 @@ export async function getSession({
 }: SessionParams & NewSessionParams) {
   const profile = await getProfile(token.sub!);
 
-  const user: User = {
+  const user = {
     id: token.sub!,
-    name: profile.username,
+    name: profile.name,
+    username: profile.username,
     email: token.email,
     image: profile.urlImage,
   };
