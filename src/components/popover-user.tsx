@@ -13,7 +13,11 @@ export const PopoverUser: FC<Props> = ({ session }) => {
   return (
     <Popover open={open} onOpenChange={set_open}>
       <PopoverTrigger>
-        <UserImage {...{ width: 45, height: 45 }} />
+        <UserImage
+          width={100}
+          height={100}
+          className={"cursor-pointer w-12 h-12"}
+        />
       </PopoverTrigger>
       <PopoverInfUser {...{ session }} />
     </Popover>

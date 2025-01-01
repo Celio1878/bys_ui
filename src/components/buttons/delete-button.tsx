@@ -7,7 +7,7 @@ interface DeleteButtonProps {
 
 export const DeleteButton: FC<DeleteButtonProps> = ({ onClick }) => {
   return (
-    <button id="delete-button" title={"Remover"} onClick={onClick}>
+    <button id="delete-button" title="Remover" onClick={onClick}>
       <Trash2 className="w-5 h-5 text-red-500 hover:opacity-70" />
     </button>
   );

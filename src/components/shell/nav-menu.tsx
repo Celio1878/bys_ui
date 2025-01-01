@@ -19,7 +19,7 @@ export const NavMenu: FC = () => {
     <nav className="flex w-full items-center justify-center py-3">
       <Carousel
         opts={{ align: "center", dragFree: true }}
-        className="w-full max-w-xs sm:max-w-2xl md:max-w-full"
+        className="w-full max-w-sm sm:max-w-2xl md:max-w-full"
       >
         <CarouselContent className="md:justify-center -mr-0.5 -ml-0.5 md:-mx-0">
           {navbarItems.map((item) => {

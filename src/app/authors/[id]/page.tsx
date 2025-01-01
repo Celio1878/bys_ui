@@ -157,11 +157,15 @@ export default function AuthorPage() {
           className="rounded-full"
           src={`${authorProfile ? authorProfile.urlImage : "/user.png"}`}
           alt={`${authorProfile?.name} image`}
+          quality={100}
           width={150}
           height={150}
         />
 
         <h1 className="text-2xl font-bold">{authorProfile?.name}</h1>
+        {authorProfile?.bio ? (
+          <p className="text-center text-sm">{authorProfile?.bio}</p>
+        ) : null}
 
         {session?.user.id !== authorProfile?.id &&
           (!alreadyFollowing ? (

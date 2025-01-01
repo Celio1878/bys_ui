@@ -16,12 +16,11 @@ import { ProfileDto, removeAuthorship } from "@/app/model/profile-dto";
 import { UpdateBookButtonLabel } from "@/components/buttons/update-book-button-label";
 import { DeleteButton } from "@/components/buttons/delete-button";
 import { useBookApi } from "@/hooks/use-book-api";
-import { Button } from "@/components/ui/button";
-import { Trash2 } from "lucide-react";
 import useSWRMutation from "swr/mutation";
 import { toast } from "@/components/ui/use-toast";
 import { RemoveChapterToast } from "@/components/remove-chapter-toast";
 import { BookDto } from "@/app/model/book-dto";
+import { UpdateProfileDrawer } from "@/components/update-profile-drawer";
 
 const PROFILE_SERVICE_URL = String(process.env.NEXT_PUBLIC_PROFILES_API_URL);
 const BOOK_SERVICE_URL = String(process.env.NEXT_PUBLIC_BOOKS_API_URL);
@@ -46,20 +45,31 @@ export default function ProfilePage() {
     return Promise.all(books.map((t) => deleteBook(t.id)));
   }
 
+  if (!profile) return <Loading />;
+
   return (
     <Suspense fallback={<Loading />}>
       <section
         className="flex flex-col items-center gap-4 pb-20"
         title={"Perfil"}
       >
-        <UserImage width={150} height={150} />
-        <div className="flex flex-row gap-x-4 items-center">
-          <h1 className="text-2xl font-bold">{session?.user?.name}</h1>
-          <Button
-            size={"sm"}
-            variant="destructive"
-            title="Remover Conta"
-            id="delete-account-button"
+        <UserImage width={150} height={150} className={"w-36 h-36"} />
+        <h1 className="text-2xl font-bold">{profile?.username}</h1>
+        <p className="text-sm text-muted-foreground text-center w-full sm:w-2/3">
+          {profile?.bio}
+        </p>
+
+        <div className="flex items-center gap-4">
+          <UpdateProfileDrawer
+            profile={profile!}
+            token={session?.access_token}
+            onSuccess={() => {
+              getProfile().then(() => {
+                window.location.reload();
+              });
+            }}
+          />
+          <DeleteButton
             onClick={async () =>
               toast({
                 title: `Tem certeza?`,
@@ -83,10 +93,9 @@ export default function ProfilePage() {
                 ),
               })
             }
-          >
-            <Trash2 size={20} />
-          </Button>
+          />
         </div>
+
         <FollowComponent
           followers={profile?.followers || []}
           following={profile?.following || []}
