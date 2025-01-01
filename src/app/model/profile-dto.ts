@@ -2,6 +2,7 @@ import { Tag } from "@/app/model/tags";
 import { BookFormValues } from "@/utils/form-data";
 
 export type CreateProfileDto = {
+  id: string;
   email: string;
   name: string;
   bio: string;
