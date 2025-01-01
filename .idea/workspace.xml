@@ -5,18 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24dfe38b-6d18-4700-8386-86f955cbefc3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/update-profile-drawer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/api/auth/[...nextauth]/session.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/auth/[...nextauth]/session.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/authors/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/authors/[id]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/model/profile-dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/model/profile-dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/profile/[name]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/profile/[name]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/buttons/delete-button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/buttons/delete-button.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/carousel/books-carousel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/carousel/books-carousel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/popover-user.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/popover-user.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/shell/nav-menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shell/nav-menu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/carousel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/carousel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/user-image.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/user-image.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/update-profile-drawer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/update-profile-drawer.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,6 +161,7 @@
         <item itemvalue="npm.build" />
         <item itemvalue="npm.dev" />
         <item itemvalue="npm.build" />
+        <item itemvalue="npm.dev" />
       </list>
     </recent_temporary>
   </component>
@@ -363,22 +355,6 @@
       <workItem from="1735562821325" duration="3695000" />
       <workItem from="1735641554532" duration="11120000" />
       <workItem from="1735737059666" duration="13047000" />
-    </task>
-    <task id="LOCAL-00008" summary="ci: Update GitIgnore">
-      <option name="closed" value="true" />
-      <created>1714736532983</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1714736532983</updated>
-    </task>
-    <task id="LOCAL-00009" summary="feat: Google Login">
-      <option name="closed" value="true" />
-      <created>1714919139745</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1714919139745</updated>
     </task>
     <task id="LOCAL-00010" summary="feat: Login success header">
       <option name="closed" value="true" />
@@ -756,7 +732,23 @@
       <option name="project" value="LOCAL" />
       <updated>1734399085869</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="fix: Create Profile dto">
+      <option name="closed" value="true" />
+      <created>1735757164420</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1735757164420</updated>
+    </task>
+    <task id="LOCAL-00058" summary="fix: Profile link page">
+      <option name="closed" value="true" />
+      <created>1735758238991</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1735758238991</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -781,8 +773,6 @@
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="fix: Refresh token and syntax" />
-    <MESSAGE value="feat: Change Url images" />
     <MESSAGE value="feat: Get data from apis" />
     <MESSAGE value="fix: Reformat error" />
     <MESSAGE value="feat: Update profile when do requests" />
@@ -806,6 +796,9 @@
     <MESSAGE value="fix: Create book with no warnings" />
     <MESSAGE value="fix: Remove book from authorship" />
     <MESSAGE value="fix: copy url" />
+    <MESSAGE value="fix: Create Profile dto" />
+    <MESSAGE value="fix: Profile link page" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: Profile link page" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
