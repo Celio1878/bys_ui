@@ -47,15 +47,17 @@ export const ProfileCard: FC<{ profile: ProfileDto }> = ({ profile }) => {
       >
         <div className="flex flex-col justify-center items-center gap-2">
           <Image
-            className="rounded-full hover:scale-125 transition-all duration-150"
+            className="rounded-full w-24 h-24 hover:scale-125 transition-all duration-150 object-cover"
             src={profile.urlImage}
-            alt={profile.name}
+            alt={profile.username || profile.name}
             width={70}
             height={70}
             priority={false}
             quality={100}
           />
-          <span className="text-xs text-center">{profile.name} </span>
+          <span className="text-xs text-center">
+            {profile.username || profile.name}{" "}
+          </span>
         </div>
       </Link>
     </div>

@@ -36,6 +36,7 @@ export const UpdateProfileDrawer: FC<EditProfileProps> = ({
   const form = useForm();
   const [openForm, setOpenForm] = useState(false);
   const [imageVersion, setImageVersion] = useState(0);
+  const [urlImage, setUrlImage] = useState(profile.urlImage);
 
   async function onSave() {
     const data = form.getValues();
@@ -44,7 +45,7 @@ export const UpdateProfileDrawer: FC<EditProfileProps> = ({
       ...profile,
       username: data.username,
       bio: data.bio,
-      urlImage: data.urlImage,
+      urlImage,
     };
 
     await fetcher<ProfileDto>({ token, body: dto })
@@ -97,7 +98,7 @@ export const UpdateProfileDrawer: FC<EditProfileProps> = ({
         if (!res.ok) throw new Error(res.statusText);
 
         const urlImage = s3Url.split("?")[0];
-        form.setValue("urlImage", urlImage);
+        setUrlImage(urlImage);
         setImageVersion(imageVersion + 1);
       } catch (error) {
         console.error("Upload failed:", error);
@@ -115,7 +116,6 @@ export const UpdateProfileDrawer: FC<EditProfileProps> = ({
   useEffect(() => {
     form.setValue("username", profile.username || profile.name);
     form.setValue("bio", profile.bio);
-    form.setValue("urlImage", profile.urlImage);
   }, [form, profile, handleUploadImage]);
 
   return (
@@ -149,7 +149,7 @@ export const UpdateProfileDrawer: FC<EditProfileProps> = ({
           <Form {...form}>
             <img
               className="rounded-full w-20 h-20 mb-2 object-cover"
-              src={profile?.urlImage}
+              src={urlImage}
               key={imageVersion + 1}
               alt={profile.username}
               width={150}
