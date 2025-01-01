@@ -54,7 +54,9 @@ export default function ProfilePage() {
         title={"Perfil"}
       >
         <UserImage width={150} height={150} className={"w-36 h-36"} />
-        <h1 className="text-2xl font-bold">{profile?.username}</h1>
+        <h1 className="text-2xl font-bold">
+          {profile?.username ? profile?.username : profile?.name}
+        </h1>
         <p className="text-sm text-muted-foreground text-center w-full sm:w-2/3">
           {profile?.bio}
         </p>
