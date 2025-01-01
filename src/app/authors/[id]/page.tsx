@@ -150,6 +150,8 @@ export default function AuthorPage() {
       .finally(() => getProfile());
   }, [followerTrigger, followingTrigger, getProfile]);
 
+  console.log("PROFILE", authorProfile);
+
   return (
     <Suspense fallback={<Loading />}>
       <section className="flex flex-col items-center gap-4 pb-20">
@@ -162,7 +164,7 @@ export default function AuthorPage() {
           height={150}
         />
 
-        <h1 className="text-2xl font-bold">{authorProfile?.name}</h1>
+        <h1 className="text-2xl font-bold">{authorProfile?.username}</h1>
         {authorProfile?.bio ? (
           <p className="text-center text-sm">{authorProfile?.bio}</p>
         ) : null}
