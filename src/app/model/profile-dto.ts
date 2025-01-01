@@ -4,6 +4,7 @@ import { BookFormValues } from "@/utils/form-data";
 export type CreateProfileDto = {
   email: string;
   name: string;
+  bio: string;
   urlImage: string;
 };
 
@@ -11,6 +12,8 @@ export type ProfileDto = {
   id: string;
   email: string;
   name: string;
+  username: string;
+  bio: string;
   urlImage: string;
   createdAt: EpochTimeStamp;
   readList: Tag<string>[];

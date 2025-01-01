@@ -35,7 +35,7 @@ export const BooksCarousel: FC<BookCarouselProps> = ({
           align: "center",
           breakpoints: booksBreakpoints,
         }}
-        className="max-w-sm sm:max-w-full sm:w-11/12"
+        className="max-w-sm sm:max-w-full"
       >
         <CarouselContent>
           {books?.map((b) => (
