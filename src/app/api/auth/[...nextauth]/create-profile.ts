@@ -16,10 +16,11 @@ export async function createProfile(
     Authorization: `Bearer ${account?.id_token}`,
   };
 
-  const dto = {
+  const dto: CreateProfileDto = {
     id: String(user.id),
     email: String(user.email),
     name: String(user.name),
+    bio: "",
     urlImage: String(user.image),
   };
 
