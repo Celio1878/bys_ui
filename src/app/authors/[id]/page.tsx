@@ -150,13 +150,11 @@ export default function AuthorPage() {
       .finally(() => getProfile());
   }, [followerTrigger, followingTrigger, getProfile]);
 
-  console.log("PROFILE", authorProfile);
-
   return (
     <Suspense fallback={<Loading />}>
       <section className="flex flex-col items-center gap-4 pb-20">
         <Image
-          className="rounded-full"
+          className="rounded-full w-36 h-36 object-cover"
           src={`${authorProfile ? authorProfile.urlImage : "/user.png"}`}
           alt={`${authorProfile?.name} image`}
           quality={100}

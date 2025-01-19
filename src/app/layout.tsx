@@ -10,6 +10,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import { WebVitals } from "@/utils/web-vitals";
 import { Toaster } from "@/components/ui/toaster";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const BUCKET_URL = process.env.NEXT_PUBLIC_BUCKET_URL;
@@ -59,6 +60,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <SpeedInsights />
           <WebVitals />
         </body>
+        <GoogleAnalytics gaId="G-VNJB67FBTB" />
         <Analytics />
       </UserProvider>
     </html>
