@@ -122,6 +122,8 @@ export default function ChapterPage() {
                 key={comment.id}
                 comment={comment}
                 onRemove={handleRemoveComment}
+                chapter={chapter!}
+                onSuccess={getChapter}
               />
             ))}
           </CardContent>

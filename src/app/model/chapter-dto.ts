@@ -24,6 +24,7 @@ export type CommentData = {
   content: string;
   author: Tag<string>;
   createdAt: number;
+  otherComments?: CommentData[];
 };
 
 export function addCommentToChapter(

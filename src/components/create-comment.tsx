@@ -39,7 +39,7 @@ export const CreateComment: FC<CreateCommentProps> = ({
     <section className="flex flex-col w-full items-end justify-end gap-2">
       <div className="flex flex-row w-full gap-4">
         <span className="flex items-center">
-          <UserImage width={45} height={45} />
+          <UserImage width={45} height={45} className={"w-12 h-10 md:h-12"} />
         </span>
         <Textarea
           className="dark:bg-zinc-950 text-sm"
