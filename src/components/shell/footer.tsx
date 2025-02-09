@@ -8,6 +8,7 @@ import Link from "next/link";
 
 export const Footer: FC = memo(() => {
   const [openReport, setOpenReport] = useState(false);
+  const year = new Date().getFullYear();
 
   return (
     <footer className="w-full flex flex-col items-center justify-center gap-10 bg-slate-100 dark:bg-slate-950 pb-4 pt-12">
@@ -41,7 +42,7 @@ export const Footer: FC = memo(() => {
         </div>
       </div>
       <p className="text-xs text-center text-slate-500">
-        © 2024 - BeYourStories. Todos os direitos reservados.
+        © {year} - BeYourStories. Todos os direitos reservados.
       </p>
     </footer>
   );
