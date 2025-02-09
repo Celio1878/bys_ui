@@ -19,11 +19,6 @@ export const Book: FC<BookProps> = ({ bookTag, buttons, href }) => {
   const { data: book } = useSWR(
     `${SERVICE_URL}/${bookTag.id}`,
     fetcher<BookDto>({}).get,
-    {
-      revalidateOnFocus: false,
-      revalidateIfStale: false,
-      revalidateOnReconnect: false,
-    },
   );
 
   if (!book) {
@@ -37,7 +32,7 @@ export const Book: FC<BookProps> = ({ bookTag, buttons, href }) => {
           <Image
             className="w-full h-[13rem] object-fill cursor-pointer hover:scale-105 hover:shadow-lg hover:shadow-black/50 hover:opacity-90 transition duration-500"
             src={book.cover}
-            alt={bookTag.title}
+            alt={book.title}
             width={120}
             height={140}
             loading={"lazy"}

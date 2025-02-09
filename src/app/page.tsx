@@ -22,11 +22,8 @@ export default function Home() {
     data: books,
     error: booksErr,
     mutate: getBooks,
-  } = useSWR(BOOKS_SERVICE_URL, fetcher<BookDto[]>({}).get, {
-    revalidateOnFocus: false,
-    revalidateIfStale: false,
-    revalidateOnReconnect: false,
-  });
+  } = useSWR(BOOKS_SERVICE_URL, fetcher<BookDto[]>({}).get);
+
   const {
     data: profiles,
     error: profilesErr,

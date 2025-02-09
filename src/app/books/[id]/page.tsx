@@ -18,11 +18,6 @@ export default function BookPage() {
   const { data: book } = useSWR(
     `${SERVICE_URL}/${id}`,
     fetcher<BookDto>({}).get,
-    {
-      revalidateOnFocus: false,
-      revalidateIfStale: false,
-      revalidateOnReconnect: false,
-    },
   );
 
   return (
