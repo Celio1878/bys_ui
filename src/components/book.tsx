@@ -3,6 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { Tag } from "@/app/model/tags";
 import { Loading } from "@/components/loading";
+import useSWR from "swr";
+import { fetcher } from "@/hooks/fetcher";
+import { BookDto } from "@/app/model/book-dto";
 
 interface BookProps {
   bookTag: Tag<string>;
@@ -10,16 +13,30 @@ interface BookProps {
   href: string;
 }
 
-const BUCKET_URL = String(process.env.NEXT_PUBLIC_BUCKET_URL);
+const SERVICE_URL = String(process.env.NEXT_PUBLIC_BOOKS_API_URL);
 
 export const Book: FC<BookProps> = ({ bookTag, buttons, href }) => {
+  const { data: book } = useSWR(
+    `${SERVICE_URL}/${bookTag.id}`,
+    fetcher<BookDto>({}).get,
+    {
+      revalidateOnFocus: false,
+      revalidateIfStale: false,
+      revalidateOnReconnect: false,
+    },
+  );
+
+  if (!book) {
+    return <Loading />;
+  }
+
   return (
     <Suspense fallback={<Loading />}>
       <div className="flex flex-col w-32 h-full gap-2 items-center">
         <Link href={href}>
           <Image
             className="w-full h-[13rem] object-fill cursor-pointer hover:scale-105 hover:shadow-lg hover:shadow-black/50 hover:opacity-90 transition duration-500"
-            src={`${BUCKET_URL}/books/${bookTag.id}/cover.jpeg`}
+            src={book.cover}
             alt={bookTag.title}
             width={120}
             height={140}

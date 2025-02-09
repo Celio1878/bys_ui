@@ -42,7 +42,6 @@ export default function Home() {
       <HelloSection />
       <FeaturesSection />
       <SecuritySection />
-      {/*<BannerCarousel />*/}
       <BooksCarouselSection books={books!} />
       <MainProfilesSection profiles={profiles!} />
       <JoinUsSection />
