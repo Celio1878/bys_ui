@@ -1,6 +1,5 @@
 "use client";
 
-import { BannerCarousel } from "@/components/carousel/banner-carousel";
 import { Suspense } from "react";
 import { Loading } from "@/components/loading";
 import useSWR from "swr";
@@ -23,7 +22,11 @@ export default function Home() {
     data: books,
     error: booksErr,
     mutate: getBooks,
-  } = useSWR(BOOKS_SERVICE_URL, fetcher<BookDto[]>({}).get);
+  } = useSWR(BOOKS_SERVICE_URL, fetcher<BookDto[]>({}).get, {
+    revalidateOnFocus: false,
+    revalidateIfStale: false,
+    revalidateOnReconnect: false,
+  });
   const {
     data: profiles,
     error: profilesErr,
@@ -39,7 +42,7 @@ export default function Home() {
       <HelloSection />
       <FeaturesSection />
       <SecuritySection />
-      <BannerCarousel />
+      {/*<BannerCarousel />*/}
       <BooksCarouselSection books={books!} />
       <MainProfilesSection profiles={profiles!} />
       <JoinUsSection />

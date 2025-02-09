@@ -35,6 +35,11 @@ export const MyBookChapters: FC<MyBookChaptersProps> = ({ chaptersTags }) => {
   const { data: book, mutate } = useSWR(
     `${BOOK_SERVICE_URL}/${id}`,
     fetcher<BookDto>({ token: session?.access_token }).get,
+    {
+      revalidateOnFocus: false,
+      revalidateIfStale: false,
+      revalidateOnReconnect: false,
+    },
   );
 
   function onEdit(chapterId: string) {

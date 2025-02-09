@@ -70,11 +70,13 @@ export const Comment: FC<CommentProps> = ({
       }),
     };
 
+    const url = `${CHAPTER_SERVICE_URL}/${chapter.id}?bookId=${bookId}`;
+
     await fetcher<ChapterDto>({
       token: session?.access_token,
       body: chapterDto,
     })
-      .put(`${CHAPTER_SERVICE_URL}/${chapter}?bookId=${bookId}`)
+      .put(url)
       .then(() => {
         setAnswerComment(false);
         setCommentAnswer("");
@@ -211,7 +213,7 @@ export const Comment: FC<CommentProps> = ({
                   {author.username}
                 </p>
               </span>
-              <p className="self-center text-[0.6rem] opacity-50 mr-4 md:mr-8">
+              <p className="self-center text-[0.6rem] opacity-50 mr-12 md:mr-14 lg:mr-16">
                 {commentDate}
               </p>
             </div>
