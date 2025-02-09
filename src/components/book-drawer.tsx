@@ -82,6 +82,7 @@ export const BookDrawer: FC<BookDrawerProps> = ({
     title: session?.user?.name,
   };
   const newBookDto = createBookDto(authorTag, formMethods.getValues());
+
   const updatedBook = book && updateBookDto(book!, formMethods.getValues());
 
   function onUpdateCover() {

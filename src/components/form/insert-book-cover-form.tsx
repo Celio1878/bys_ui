@@ -31,6 +31,7 @@ export const InsertBookCoverForm: FC<InsertBookCoverFormProps> = ({
     () => `${BUCKET_URL}/books/${bookId}/cover.jpeg`,
     [bookId],
   );
+
   form.setValue("cover", coverUrl);
 
   const validateImage = useCallback((img: HTMLImageElement) => {
